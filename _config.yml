@@ -16,14 +16,14 @@
 
 #######################################################################################
 # Jekyll site settings
-title: Jupyter Books
-author: Samuel Lau and Deborah Nolan and Chris Holdgraf
-email: samlau95@berkeley.edu
+title: EGLM03 Modern Control Systems
+author: Dr Chris P. Jobling
+email: c.p.jobling@swansea.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
-  This is an example book built with Jupyter Books.
+  Notes and example programmes to accompany the module.
 
-baseurl: "/jupyter-book" # the subpath of your site, e.g. /blog
-url: "https://predictablynoisy.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/eglm03-textbook" # the subpath of your site, e.g. /blog
+url: "http://cpjobling.githib.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 #######################################################################################
 # Jupyter Book settings
@@ -42,8 +42,8 @@ hub_url                  : "https://mybinder.org"  # The URL for your JupyterHub
 hub_name                 : "JupyterHub"  # The name of your JupyterHub (used for the button in the NavBar. If an empty string, no button is shown)
 hub_type                 : "binder"  # ['binder', 'jupyterhub']  Whether to build interact links for a BinderHub or a JupyterHub
 textbook_repo_base       : "https://github.com/"  # The site on which the textbook repository is hosted
-textbook_repo_org        : "choldgraf"  # The username or organization that owns this repository
-textbook_repo_name       : "jupyter-book"  # The name of the repository on the web
+textbook_repo_org        : "cpjobling"  # The username or organization that owns this repository
+textbook_repo_name       : "eglm03-textbook"  # The name of the repository on the web
 textbook_repo_branch     : "master"  # The branch on which your textbook is hosted.
 use_jupyterlab           : false  # If 'true', interact links will use JupyterLab as the interface
 interact_text            : "Interact"  # The text that interact buttons will contain.
