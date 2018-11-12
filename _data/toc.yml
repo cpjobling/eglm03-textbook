@@ -12,7 +12,7 @@
 # divider: true if this entry should just be rendered as a horizontal divider
 #   in the sidebar. All other values are ignored.
 
-- title: Home
+- title: Introduction
   url: /intro
   not_numbered: true
 

@@ -4,7 +4,7 @@ redirect_from:
 title: 'Features'
 prev_page:
   url: /intro
-  title: 'Home'
+  title: 'Introduction'
 next_page:
   url: /features/markdown
   title: 'Markdown files'
