@@ -13,11 +13,11 @@
 #   in the sidebar. All other values are ignored.
 
 - title: Background
-  url: /background
+  url: /background/index
   not_numbered: true
   sections:
   - title: What is the root locus?
-    url: /background/rlocus/what_is_rlocus.md
+    url: /background/rlocus/what_is_rlocus
     not_numbered: true
   - title: What are the rules for sketching a root locus?
     url: /background/rlocus/sketching_rules
