@@ -26,7 +26,10 @@
     url: /background/rlocus/sketching_rules
     not_numbered: true
 
-- title: Introduction
+- divider: true
+- header: textbook
+
+- title: Introduction to this Module
   url: /intro
   not_numbered: true
   

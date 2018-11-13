@@ -46,7 +46,7 @@ textbook_repo_org        : "cpjobling"  # The username or organization that owns
 textbook_repo_name       : "eglm03-textbook"  # The name of the repository on the web
 textbook_repo_branch     : "master"  # The branch on which your textbook is hosted.
 use_jupyterlab           : false  # If 'true', interact links will use JupyterLab as the interface
-interact_text            : "Interact"  # The text that interact buttons will contain.
+interact_text            : ""  # The text that interact buttons will contain.
 
 #######################################################################################
 # Jekyll build settings
