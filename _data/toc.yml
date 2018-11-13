@@ -12,9 +12,21 @@
 # divider: true if this entry should just be rendered as a horizontal divider
 #   in the sidebar. All other values are ignored.
 
+- title: Background
+  url: /background
+  not_numbered: true
+  sections:
+  - title: What is the root locus?
+    url: /background/rlocus/what_is_rlocus.md
+    not_numbered: true
+  - title: What are the rules for sketching a root locus?
+    url: /background/rlocus/sketching_rules
+    not_numbered: true
+
 - title: Introduction
   url: /intro
   not_numbered: true
+  
 
 - title: Features
   url: /features/features
