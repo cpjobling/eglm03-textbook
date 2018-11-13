@@ -7,7 +7,7 @@ prev_page:
   title: 'What does the root locus represent?'
 next_page:
   url: /intro
-  title: 'Introduction'
+  title: 'Introduction to this Module'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # What are the rules for sketching a root locus?

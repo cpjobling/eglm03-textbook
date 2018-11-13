@@ -2,7 +2,7 @@
 redirect_from:
   - "/intro"
 interact_link: content/intro.ipynb
-title: 'Introduction'
+title: 'Introduction to this Module'
 prev_page:
   url: /background/rlocus/sketching_rules
   title: 'What are the rules for sketching a root locus?'
