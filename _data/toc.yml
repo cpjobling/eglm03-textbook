@@ -19,6 +19,9 @@
   - title: What is the root locus?
     url: /background/rlocus/what_is_rlocus
     not_numbered: true
+  - title: What does the root locus represent?
+    url: /background/rlocus/what_does_the_rlocus_represent
+    not_numbered: true
   - title: What are the rules for sketching a root locus?
     url: /background/rlocus/sketching_rules
     not_numbered: true

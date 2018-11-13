@@ -4,7 +4,7 @@
 
 I appreciate that you come to this module with a range of experience of the basics of control (or feedback) systems theory. Unfortunately, I don't have time to cover all of this in the module and I will occasionally make assumptions about your background knowledge that may prove to be wrong. I have therefore created this folder as a place to curate these materials. I welcome your help in populating it! Control Systems is a very common module in Engineering Degree Schemes for many disciplines and there is a wealth of educational resources that have been made available on the world wide web for free by their creators and/or their institutions. Google is your friend here!
 
-This document has been generated from the Wiki [Background to the Module](https://blackboard.swan.ac.uk/webapps/lobj-campuspack-bb_bb60/launch/setupForm.form?course_id=_54756_1&contentId=_2842685_1) that you will find on the Blackboard Site. You can contribute to this decument by editing the wiki by adding new resources or explanations for your peers. You can also add comments to the resources. 
+This document has been generated from the [EGLM03 Textbook Wiki](https://github.com/cpjobling/eglm03-textbook/wiki/Background-to-the-Module) that you will find on GitHub. You can contribute to this document by editing the wiki and adding new resources or explanations for your peers. You can also add comments to the resources. 
 
 I have arranged the wiki as a series of questions. As I get asked questions, I will endeavour to add them and occassionally I will also add answers. But in the main, I would like you to find the answers (and continue to ask the questions) so you are invited to provide answers and additional questions as the course progresses.
 
@@ -23,7 +23,7 @@ I have arranged the wiki as a series of questions. As I get asked questions, I w
 * How does the size of σd relate to the dominance of second order pole-pair?
 * What does the second order system response look like?
 * How is the second-order step response effected by an additional pole? (answered in the module)
-* How is the second-order step response effected by a * zero? (answered in the module)
+* How is the second-order step response effected by a zero? (answered in the module)
 
 ## Block diagram models
 
