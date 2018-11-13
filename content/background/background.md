@@ -48,9 +48,9 @@ I have arranged the wiki as a series of questions. As I get asked questions, I w
 
 ## Root locus
 
-* [What is a root locus?]()
-* [What does the root locus represent?]()
-* [What are the rules for sketching a root locus?]()
+* [What is a root locus?](rlocus/what_is_rlocus.html)
+* [What does the root locus represent?](rlocus/what_does_the_rlocus_represent.html)
+* [What are the rules for sketching a root locus?](rlocus/sketching_rules.html)
 * How can root locus be used in design?
 * What is the root locus gain criterion?
 * What is the root locus angle criterion?
