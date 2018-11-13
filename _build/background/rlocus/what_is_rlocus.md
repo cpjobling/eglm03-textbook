@@ -6,8 +6,8 @@ prev_page:
   url: /background/index
   title: 'Background'
 next_page:
-  url: /background/rlocus/sketching_rules
-  title: 'What are the rules for sketching a root locus?'
+  url: /background/rlocus/what_does_the_rlocus_represent
+  title: 'What does the root locus represent?'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # What is the Root Locus?

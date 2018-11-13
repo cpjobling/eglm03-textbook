@@ -3,8 +3,8 @@ redirect_from:
   - "/background/rlocus/sketching-rules"
 title: 'What are the rules for sketching a root locus?'
 prev_page:
-  url: /background/rlocus/what_is_rlocus
-  title: 'What is the root locus?'
+  url: /background/rlocus/what_does_the_rlocus_represent
+  title: 'What does the root locus represent?'
 next_page:
   url: /intro
   title: 'Introduction'
