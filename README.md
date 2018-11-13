@@ -1,8 +1,29 @@
-# Jupyter Books
+# Textbook for EGLM03 Modern Control Systems
 
-<img src="images/logo/logo.png" width=200 />
+This is the source code for the course notes for EGLM03 Modern Control Systems.
 
-This is a guide and template for hosting your own book using
+It is a collection of Markdown pages and Jupyter Notebooks. 
+
+The Jupyter Notebooks can be presented as pages and slides. They use the MATLAB kernel and after some setup the notebooks can be downloaded and they become executable documents.
+
+The published version of the textbook is **[EGLM03 Modern Control Systems](http://cpjobling.github.io/eglm03-textbook)**.
+
+## Explore this book
+
+This website is a Jupyter Book. You can explore the chapters of the book
+by clicking on links in the sidebar to the left. Or, you can move linearly forward and
+backwards by clicking the left/right arrow on your computer.
+
+## Contribute or improve the book
+
+Notice a typo in the text? Want to add more information
+and make other improvements to this text book? Don't hesitate to [open an issue or a PR on the
+EGLM03 Textbook repo](https://github.com/cpjobling/eglm03-textbook). We'd love your
+help!
+
+## About this book
+
+There is a guide and template for hosting your own book using
 Jupyter Notebooks and Jekyll.
 
 Here are some highlights:
@@ -12,32 +33,11 @@ Here are some highlights:
 * Pages can have [Binder](https://mybinder.org) or JupyterHub links automatically added for interactivity.
 * The website itself is based on Jekyll, and is highly extensible and can be freely-hosted on GitHub.
 
-This repository comes with some sample textbook files from the Data 8 course
-for Data Science at UC Berkeley. You can update these materials and all site
-content with your own, and have a Jupyter-based textbook ready to go shortly!
-
-Here are a few links of interest:
-
-* **[A demo of the hosted textbook](http://predictablynoisy.com/jupyter-book/ )**
-* **[A short guide to deploying your own textbook](https://predictablynoisy.com/jupyter-book/guide/01_overview)**
-* **[The markdown version of the guide in this repo](content/guide/)**
-
-## Explore this book
-
-This website is an example of a Jupyter Book. You can explore the chapters of the book
-by clicking on links in the sidebar to the left. Or, you can move linearly forward and
-backwards by clicking the left/right arrow on your computer.
-
-## Contribute or improve the book
-
-Notice some inefficient CSS? A typo in the text? Want to add a cool feature so that others
-can enjoy the improvements to Jupyter Books? Don't hesitate to [open an issue or a PR on the
-Jupyter Book template repo](https://github.com/choldgraf/jupyter-book). We'd love your
-help!
+See **[A short guide to deploying your own textbook](https://predictablynoisy.com/jupyter-book/guide/01_overview)**.
 
 ## Acknowledgements
 
-Jupyter Books was originally created by [Sam Lau][sam] and [Chris Holdgraf][chris]
+This textbook has been built with the Jupyter Books system originally created by [Sam Lau][sam] and [Chris Holdgraf][chris]
 with support of the **UC Berkeley Data Science Education Program and the Berkeley
 Institute for Data Science**.
 
