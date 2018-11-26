@@ -138,6 +138,7 @@ step(smd_tf)
 ### Integral form
 
 * Makes use of the fact that for any differential term:
+
 $$x(t)=\int_{0}^{t}\,\dot{x}(t)\,dt$$
 
 * We can use this fact to rearrange any *n*<sup>th</sup>-order differential equation into n first-order integral equations.
@@ -147,11 +148,11 @@ $$x(t)=\int_{0}^{t}\,\dot{x}(t)\,dt$$
 
 ### Integral form of SMD equations
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
 \ddot{x}&=&\frac{1}{m}\left(F-b\dot{x}-kx\right)\\
 \dot{x}&=&\int\ddot{x}\,dt\\
 x&=&\int\dot{x}\,dt
-\end{eqnarray*}
+\end{eqnarray*}$$
 
 ### Block diagram
 
@@ -188,6 +189,7 @@ $$\begin{eqnarray*}
 \end{eqnarray*}$$
 
 In matrix form
+
 $$\left[ {\begin{array}{*{20}{c}}
   {\dot {x}_1} \\ 
   {\dot {x}_2} 
