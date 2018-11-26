@@ -7,8 +7,8 @@ prev_page:
   url: /intro
   title: 'Introduction to this Module'
 next_page:
-  url: /guide/01_overview
-  title: 'Guide'
+  url: /02/ssntr
+  title: 'Steady-State and Transient Response'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

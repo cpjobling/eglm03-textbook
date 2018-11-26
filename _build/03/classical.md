@@ -5,7 +5,7 @@ interact_link: content/03/classical.ipynb
 title: 'Classical Control Systems Design'
 prev_page:
   url: /02/ssntr
-  title: 'Steady-State and Transient Resonse'
+  title: 'Steady-State and Transient Response'
 next_page:
   url: /03/1/intro
   title: 'Introducing phase-lead compensation'

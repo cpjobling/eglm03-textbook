@@ -3,8 +3,8 @@ redirect_from:
   - "/guide/01-overview"
 title: 'Guide'
 prev_page:
-  url: /01/modsim
-  title: 'Systems Modelling and Simulation'
+  url: /03/6/pid
+  title: 'PID Compensation'
 next_page:
   url: /guide/02_setup
   title: 'Setup and Install'
