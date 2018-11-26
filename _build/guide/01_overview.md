@@ -3,8 +3,8 @@ redirect_from:
   - "/guide/01-overview"
 title: 'Guide'
 prev_page:
-  url: /features/notebooks
-  title: 'Jupyter notebooks'
+  url: /01/modsim
+  title: 'Systems Modelling and Simulation'
 next_page:
   url: /guide/02_setup
   title: 'Setup and Install'
