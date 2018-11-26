@@ -38,6 +38,9 @@
   not_numbered: false
 
 
+- divider: true
+- header: Jupyter books
+
 - title: Guide
   url: /guide/01_overview
   not_numbered: true
