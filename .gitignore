@@ -109,3 +109,8 @@ _site/
 
 # Test builds
 scripts/tests/site/_build
+
+# MATLAB/Simulink
+slprj
+*.slxc
+
