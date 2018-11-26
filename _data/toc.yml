@@ -80,4 +80,5 @@
     not_numbered: true
   - title: Advanced
     url: /guide/07_advanced
+    not_numbered: true
 
