@@ -37,6 +37,27 @@
   url: /01/modsim
   not_numbered: false
 
+- title: Steady-State and Transient Resonse
+  url: /02/ssntr
+  not_numbered: false
+
+- title: Classical Control Systems Design
+  url: /03/classical
+  not_numbered: false
+  sections:
+  - title: Introducing phase-lead compensation
+    url: /03/1/intro
+  - title: Velocity feedback design
+    url: /03/2/velfb
+  - title: Proportional plus derivative compensation
+    url: /03/3/pplusd
+  - title: Lead compensation
+    url: /03/4/leadc
+    title: Lag compensation
+    url: /03/5/lagc
+    title: PID Compensation
+    url: /03/6/pid
+
 
 - divider: true
 - header: Jupyter books
