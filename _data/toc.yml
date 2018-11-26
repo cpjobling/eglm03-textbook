@@ -26,15 +26,12 @@
     url: /background/rlocus/sketching_rules
     not_numbered: true
 
-- divider: true
-- header: textbook
-
 - title: Introduction to this Module
   url: /intro
   not_numbered: true
 
 - divider: true
-- header: Modern Control Systems - Textbook
+- header: Textbook
 
 - title: Systems Modelling and Simulation
   url: /01/modsim
