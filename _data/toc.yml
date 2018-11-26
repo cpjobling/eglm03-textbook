@@ -35,15 +35,12 @@
 
 - title: Systems Modelling and Simulation
   url: /01/modsim
-  not_numbered: false
 
-- title: Steady-State and Transient Resonse
+- title: Steady-State and Transient Response
   url: /02/ssntr
-  not_numbered: false
 
 - title: Classical Control Systems Design
   url: /03/classical
-  not_numbered: false
   sections:
   - title: Introducing phase-lead compensation
     url: /03/1/intro
@@ -53,9 +50,9 @@
     url: /03/3/pplusd
   - title: Lead compensation
     url: /03/4/leadc
-    title: Lag compensation
+  - title: Lag compensation
     url: /03/5/lagc
-    title: PID Compensation
+  - title: PID Compensation
     url: /03/6/pid
 
 
