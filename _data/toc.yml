@@ -55,8 +55,9 @@
   - title: PID Compensation
     url: /03/6/pid
 
-- title: Appendix A: Defining Transfer Functions in MATLAB
-  url /02/mattf
+- title: Appendix A Defining Transfer Functions in MATLAB
+  url: /02/mattf
+  not_numbered: true
 
 - divider: true
 - header: Jupyter books
