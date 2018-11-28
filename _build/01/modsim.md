@@ -302,3 +302,11 @@ Use the Teams [week 1 discussion](https://teams.microsoft.com/l/channel/19%3aa25
 
 Or tweet @[eglm03](https://twitter.com/eglm03) hashtag #[eglm03](https://twitter.com/hashtag/eglm03)
 
+
+## Additional Background Material
+
+Background is extra topics, usually references to the recommended text or links to web resources, that are provided to amplify topics that are introduced in the other activities. You are expected to access these materials in your own time. For this chapter, the background reading is all from the [Control Systems Wikibook](https://en.wikibooks.org/wiki/Control_Systems).
+
+* [Systems modeling](https://en.wikibooks.org/wiki/Control_Systems/System_Modeling)
+* [Transfer functions](https://en.wikibooks.org/wiki/Control_Systems/Transfer_Functions)
+* [State-space equations(http://en.wikibooks.org/wiki/Control_Systems/State-Space_Equations) 

@@ -7,8 +7,8 @@ prev_page:
   url: /03/5/lagc
   title: 'Lag compensation'
 next_page:
-  url: /guide/01_overview
-  title: 'Guide'
+  url: /01/mattf
+  title: 'Appendix A Defining Transfer Functions in MATLAB'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

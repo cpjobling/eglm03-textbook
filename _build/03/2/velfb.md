@@ -13,3 +13,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 ---
 
 # Velocity feedback design
+
+This chapter is concerned with steady-state and transient analysis of control systems.
+
+Second-order system response and its relationship to the closed-loop poles and zeros is revised. The effect of an additional zero or an additional pole on the 2nd order response is examined; and pole-zero cancellation is discussed.
+
+System type number and its relationship to steady-state error response is revised.

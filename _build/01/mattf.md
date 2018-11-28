@@ -1,14 +1,14 @@
 ---
 redirect_from:
-  - "/02/mattf"
-interact_link: content/02/mattf.ipynb
+  - "/01/mattf"
+interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
   url: /03/6/pid
   title: 'PID Compensation'
 next_page:
-  url: /guide/01_overview
-  title: 'Guide'
+  url: /handouts/csd/index
+  title: 'Control System Design Methods, Compensation Strategies and Design Criteria'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -462,7 +462,7 @@ rlocus(G*H) % root locus
 
 
 
-![png](../images/02/mattf_36_0.png)
+![png](../images/01/mattf_36_0.png)
 
 
 
@@ -474,7 +474,7 @@ bode(G*H)% open-loop frequency response
 
 
 
-![png](../images/02/mattf_37_0.png)
+![png](../images/01/mattf_37_0.png)
 
 
 
@@ -486,7 +486,7 @@ step(Gc) % closed-loop step response
 
 
 
-![png](../images/02/mattf_38_0.png)
+![png](../images/01/mattf_38_0.png)
 
 
 
@@ -498,7 +498,7 @@ bode(Gc) % closed-loop frequency response
 
 
 
-![png](../images/02/mattf_39_0.png)
+![png](../images/01/mattf_39_0.png)
 
 
 Matlab also provides two interactive graphical tools that work with LTI system objects.
@@ -624,7 +624,7 @@ Continuous-time transfer function.
 ```
 
 
-![png](../images/02/mattf_47_1.png)
+![png](../images/01/mattf_47_1.png)
 
 
 (where the $1/s$ term has been eliminated because `step` provides the forcing function itself). This should give exactly the same results as:
@@ -644,7 +644,7 @@ grid
 
 
 
-![png](../images/02/mattf_49_0.png)
+![png](../images/01/mattf_49_0.png)
 
 
 ## Read More
@@ -654,5 +654,5 @@ The Mathworks official documentation on LTI Objects is [Linear (LTI) Models](htt
 ## Footnotes
 
 1. <div id="fb2">You can also convert to and from state-space forms.</div>
-2. <div id"fn1">This is the most significant change from version 4 of MATLAB. There were, for example several forms of the function for obtaining step-responses (`step(num,den)`, `step(A,B,C,D)`) now there is just one `step(sys)`. 
+2. <div id="fn1">This is the most significant change from version 4 of MATLAB. There were, for example several forms of the function for obtaining step-responses (`step(num,den)`, `step(A,B,C,D)`) now there is just one `step(sys)`. 
 3. <div id="fn3">Assuming negative feedback.</div>

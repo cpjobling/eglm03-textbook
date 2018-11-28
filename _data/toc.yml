@@ -56,8 +56,20 @@
     url: /03/6/pid
 
 - title: Appendix A Defining Transfer Functions in MATLAB
-  url: /02/mattf
+  url: /01/mattf
   not_numbered: true
+
+- divider: true
+- header: Handouts
+
+- title: Control System Design Methods, Compensation Strategies and Design Criteria
+  url: /handouts/csd/index
+  not_numbered: true
+  sections: 
+  - title: Appendix Transfer Function Plots for Typical Transfer Functions
+    url: /handouts/csd/appendix
+    not_numbered: true
+
 
 - divider: true
 - header: Jupyter books
