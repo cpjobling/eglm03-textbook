@@ -108,9 +108,9 @@ M-circle which is tangential to the Nyquist diagram since this represents the pe
 
 The formulae for the M and N circles are<sup>[2](#fn2)</sup>:
 
-M-circle (for $M = \left| {{G_c}(j\omega )} \right|$): Centre: ${M^2}/(1 - {M^2}) + j0$, Radius: $\left|M/(1-M^2)\right|$
+M-circle (for $M = \left|G_c(j\omega)\right|$): Centre: ${M^2}/(1 - {M^2}) + j0$, Radius: $\left|M/(1-M^2)\right|$
 
-N-circle (for $\alpha = \angle G_c(j\omega)$): ($N = \tan\alpha$) Centre: $1/2+j(1/2N)$, Radius: $(1/2)\sqrt{1+1/(N^2)}$
+N-circle (for $\alpha = \angle G_c(j\omega)$), $N = \tan\alpha$): Centre: $1/2+j(1/2N)$, Radius: $(1/2)\sqrt{1+1/(N^2)}$
 
 Examples are given in [Figure 1](#fig1). Collections of M and N circles are available as design charts (called *Hall Charts*).
 
@@ -334,7 +334,7 @@ Usually defined as the time taken for the response to reach and remain within so
 
 *Design values*: For a second order system (or a system with a pair of dominant complex poles) rise time may be related to $\sigma$ by
 
-$${t_s} = {\text{ }}\frac{{ - \ln \left( {\frac{{\% \;{\kern 1pt} {\text{of}}\;{\kern 1pt} {\text{final}}\;{\kern 1pt} {\text{value}}}}{{100}}} \right)}}{\sigma }$$
+$${t_s} = \frac{ - \ln \left( \frac{\% \;{\kern 1pt} {\text{of}}\;{\kern 1pt} {\text{final}}\;{\kern 1pt} {\text{value}}}{100} \right)}{\sigma }$$
 
 <div id="tab1">**Table 1 Typical settling time values**</div>
 
@@ -428,7 +428,7 @@ The rate at which the magnitude ratio decreases beyond cut-off. E.g. 6 dB/octave
 A good measure of stability, maximum value of the closed-loop frequency response (see Figures [13](#fig13) and [14](#fig14)).
 
 
-$${M_{\max }} = \mathop {\max }\limits_\omega  \left| {\frac{{C(j\omega )}}{{R(j\omega )}}} \right|$$
+$${M_{\max }} = \mathop {\max }\limits_\omega  \left| \frac{C(j\omega )}{R(j\omega )} \right|$$
 
 *Design values*: a useful rule-of thumb is $M_\max =| C(j\omega_1)|/|R(j\omega_1)|$. That is the closed-loop resonant peak occurs at about the open-loop gain cross-over frequency. A more accurate value can be obtained by finding the M-circle that is tangential to the Nyquist curve (see [Section 2.3](#section2.3)). We usually require $M_\max < 2$ (6 dB), preferably $M_\max < 1.3$ (2.3 dB).
 
