@@ -30,9 +30,6 @@
   url: /intro
   not_numbered: true
 
-- divider: true
-- header: Textbook
-
 - title: Systems Modelling and Simulation
   url: /01/modsim
 
@@ -62,13 +59,24 @@
 - divider: true
 - header: Handouts
 
-- title: Control System Design Methods, Compensation Strategies and Design Criteria
+- title: Control System Design Methods
   url: /handouts/csd/index
   not_numbered: true
   sections: 
-  - title: Appendix Transfer Function Plots for Typical Transfer Functions
-    url: /handouts/csd/appendix
-    not_numbered: true
+    - title: 1. Aims of Control Systems Analysis and Design
+      url: /handouts/csd/1
+    - title: 2. Design Methods
+      url: /handouts/csd/2
+    - title: 3. Design Strategies
+      url: /handouts/csd/3
+    - title: 4. Design Criteria
+      url: /handouts/csd/4
+    - title: 5. Some Useful Design Curves
+      url: /handouts/csd/5
+    - title: Acknowledgements
+      url: /handouts/csd/ack
+    - title: Appendix -- Transfer Function Plots for Typical Transfer Functions
+      url: /handouts/csd/appendix
 
 
 - divider: true

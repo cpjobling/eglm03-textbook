@@ -8,7 +8,7 @@ prev_page:
   title: 'PID Compensation'
 next_page:
   url: /handouts/csd/index
-  title: 'Control System Design Methods, Compensation Strategies and Design Criteria'
+  title: 'Control System Design Methods'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

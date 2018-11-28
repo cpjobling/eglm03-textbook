@@ -23,7 +23,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Notes and example programmes to accompany the module.
 
 baseurl: "/eglm03-textbook" # the subpath of your site, e.g. /blog
-url: "http://cpjobling.github.com" # the base hostname & protocol for your site, e.g. http://example.com
+#url: "http://cpjobling.github.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 #######################################################################################
 # Jupyter Book settings
