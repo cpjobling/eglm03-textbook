@@ -10,7 +10,7 @@ next_page:
   title: 'Appendix Transfer Function Plots for Typical Transfer Functions'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-# Control System Design Methods, Compensation Strategies and Design Criteria<sup>[1](#fn1)</sup>
+# Control System Design Methods, Compensation Strategies and Design Criteria<sup>1</sup>
 
 ## 1	Aims of Control Systems Analysis and Design
 
@@ -29,7 +29,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     For the latter there are several methods used:
 
     * Direct solution to find steady-state and transient solutions. (Difficult with high order systems -- relative stability difficult to study in time domain)
-    * Four graphical methods (described in [Section 2](#section2))
+    * Four graphical methods (described in Section 2)
 
         * Root locus
         * Bode diagram
@@ -51,7 +51,7 @@ The required response is prescribed in either or both forms. In general, the con
 *	relative stability
 *	system accuracy or allowable error.
 
-These are described in [Section 4](#section4).
+These are described in Section 4.
 
 ## 2	Design Methods
 
@@ -59,7 +59,7 @@ These are described in [Section 4](#section4).
 
 Bode diagrams can be used for the quick design of simple systems, provided that the open-loop contains no more than two integrators and no right half plane poles or zeros (almost certainly true if the data has been obtained experimentally). The stability is easily assessed, and the open-loop gain can be adjusted to give the desired gain and phase margins.
 
-Theoretical Bode diagrams can be plotted accurately by calculation (use MATLAB command `bode`), or from summation of first and second order templates (Figures [16](#fig16), [17](#fig17) and [18](#fig18)), but often straight line segment approximations are adequate especially for the gain plot. See also [Appendix](appendix).
+Theoretical Bode diagrams can be plotted accurately by calculation (use MATLAB command `bode`), or from summation of first and second order templates (Figures 16, 17 and 18), but often straight line segment approximations are adequate especially for the gain plot. See also [Appendix](appendix).
 
 Furthermore, for simple designs such as operational amplifier stabilisation where generous stability margins can be allowed and where no time delays exist, the stability can often be estimated on the basis of the gain diagram alone. Observing that a steady slope of $-20$ dB/decade corresponds to a phase lag of $90^\circ$, $-40$ dB/decade to $180^\circ$ lag, etc., it may readily be verified that the amplifier will be very stable if the gain falls at no more than $-20$ dB/decade for a decade on either side of the unity open-loop gain frequency $\omega_1$.
 
@@ -83,7 +83,7 @@ The correlation with the time and frequency domain criteria is usually defined i
 *	Poles subtending larger angles with the negative real axis give an under-damped response.
 * Poles and zeros with the largest negative real parts dominate the response. Poles and zeros with real parts more than perhaps two to five times more negative can generally be neglected.
 
-The response of a dominant first-order pole is easily assessed and examining standard responses of a pure second order can assess dominant second-order poles. [Figure 15](#fig15) shows the family of under-damped second-order step responses, [Figure 9](#fig9) examines the settling time, and Figures [6](#fig6), [14](#fig14) and [11](#fig11) shows the relationship of damping ratio $\zeta$ to percentage overshoot $M_p$, phase margin $\phi_m$ and resonant peak $M_{\mathrm max}$ respectively. The relationship between these show that the damping ratio should generally be greater than $0.25$ and will usually be better placed between $0.5$ and $0.8$.
+The response of a dominant first-order pole is easily assessed and examining standard responses of a pure second order can assess dominant second-order poles. Figure 15 shows the family of under-damped second-order step responses, Figure 9 examines the settling time, and Figures 6, 14 and 11 shows the relationship of damping ratio $\zeta$ to percentage overshoot $M_p$, phase margin $\phi_m$ and resonant peak $M_{\mathrm max}$ respectively. The relationship between these show that the damping ratio should generally be greater than $0.25$ and will usually be better placed between $0.5$ and $0.8$.
 
 The root-locus is equally applicable to digital control systems. The only differences are that in the $z$-plane, the stability boundary is the unit circle and poles and zeros in the negative half plane produce responses that alternate positive and negative, so dominant poles are kept in the right half of the unit circle.
 
@@ -106,9 +106,9 @@ $$G_c(j\omega) = \frac{G_o(j\omega)}{1+G_o(j\omega)}$$
 it is fairly easy to derive equations for curves of constant closed-loop magnitude (magnification) and constant closed-loop phase, both or which turn out to be circles (called respectively the M and N circles) in the $G_o(j\omega)$ plane. By noting at what frequency the Nyquist curve crosses these circles it is possible, if tedious, to develop the closed-loop frequency response. Of particular importance is the
 M-circle which is tangential to the Nyquist diagram since this represents the peak magnification $M_{\mathrm max}$ -- a useful design parameter.
 
-The formulae for the M and N circles are<sup>[2](#fn2)</sup>:
+The formulae for the M and N circles are<sup>2</sup>:
 
-M-circle (for $M = \left|G_c(j\omega)\right|$): Centre: ${M^2}/(1 - {M^2}) + j0$, Radius: $\left|M/(1-M^2)\right|$
+M-circle (for $M = \left\|G_c(j\omega)\right\|$): Centre: ${M^2}/(1 - {M^2}) + j0$, Radius: $\left|M/(1-M^2)\right|$
 
 N-circle (for $\alpha = \angle G_c(j\omega)$), $N = \tan\alpha$): Centre: $1/2+j(1/2N)$, Radius: $(1/2)\sqrt{1+1/(N^2)}$
 
