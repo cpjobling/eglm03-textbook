@@ -108,11 +108,11 @@ M-circle which is tangential to the Nyquist diagram since this represents the pe
 
 The formulae for the M and N circles are<sup>2</sup>:
 
-M-circle (for $M = \left\|G_c(j\omega)\right\|$): Centre: ${M^2}/(1 - {M^2}) + j0$, Radius: $\left|M/(1-M^2)\right|$
+M-circle (for $M = \left\|G_c(j\omega)\right\|$): Centre: ${M^2}/(1 - {M^2}) + j0$, Radius: $\left\|M/(1-M^2)\right\|$
 
 N-circle (for $\alpha = \angle G_c(j\omega)$), $N = \tan\alpha$): Centre: $1/2+j(1/2N)$, Radius: $(1/2)\sqrt{1+1/(N^2)}$
 
-Examples are given in [Figure 1](#fig1). Collections of M and N circles are available as design charts (called *Hall Charts*).
+Examples are given in Figure 1. Collections of M and N circles are available as design charts (called *Hall Charts*).
 
 Design in the Nyquist domain is somewhat tedious, due to the fact that any modification in gain or phase requires a reshaping of the frequency response. This is somewhat less of a problem in MATLAB where the functions `nyquist`, `mcircle` and `ncircle` have been provided to do the donkeywork.
 
