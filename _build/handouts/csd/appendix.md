@@ -10,7 +10,7 @@ next_page:
   title: 'Guide'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
-## Appendix – Transfer Function Plots for Typical Transfer Functions</div>
+## Appendix – Transfer Function Plots for Typical Transfer Functions
 
 Note error in Nyquist diagrams for terms with denominator factor $s(s\tau_1 +1)$. The real part of $G(j\omega)$ does not (necessarily) tend to zero as $\omega \to \infty$.
 
