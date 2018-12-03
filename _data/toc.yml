@@ -41,7 +41,7 @@
   sections:
   - title: Introducing phase-lead compensation
     url: /03/1/intro
-  - title: Velocity feedback design
+  - title: Introduction to Root Locus Design
     url: /03/2/velfb
   - title: Proportional plus derivative compensation
     url: /03/3/pplusd
