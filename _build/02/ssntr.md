@@ -71,9 +71,9 @@ subplot(212),step( G),axis([0,10,0,2])
 
 G =
  
-        9
-  --------------
-  s^2 + 15 s + 9
+        100
+  ----------------
+  s^2 + 50 s + 100
  
 Continuous-time transfer function.
 
@@ -830,15 +830,15 @@ For a unity-gain negative feedback system with open-loop transfer function Go(s)
 
 Where
 
-Position error constant for step input: $R(s) = 1/s$:
+**Position error constant for step input**: $R(s) = 1/s$:
 
 $$K_p = \lim_{s\to\infty}\;G_0(s)$$
 
-Velocity error constant for ramp input: $R(s) = 1/s^2$:
+**Velocity error constant for ramp input**: $R(s) = 1/s^2$:
 
 $$K_v = \lim_{s\to\infty}\;sG_0(s)$$
 
-Acceleration error constant for parabolic input: $R(s) = 1/s^3$:
+**Acceleration error constant for parabolic input**: $R(s) = 1/s^3$:
 
 $$K_v = \lim_{s\to\infty}\;s^2G_0(s)$$
 

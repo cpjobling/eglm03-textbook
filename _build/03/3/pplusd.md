@@ -5,7 +5,7 @@ interact_link: content/03/3/pplusd.ipynb
 title: 'Proportional plus derivative compensation'
 prev_page:
   url: /03/2/velfb
-  title: 'Velocity feedback design'
+  title: 'Introduction to Root Locus Design'
 next_page:
   url: /03/4/leadc
   title: 'Lead compensation'
