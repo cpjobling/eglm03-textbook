@@ -3,8 +3,8 @@ redirect_from:
   - "/guide/01-overview"
 title: 'Guide'
 prev_page:
-  url: /handouts/csd/appendix
-  title: 'Appendix -- Transfer Function Plots for Typical Transfer Functions'
+  url: /homework/revision/problems
+  title: 'Homework 1 - Revision'
 next_page:
   url: /guide/02_setup
   title: 'Setup and Install'

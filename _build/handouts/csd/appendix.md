@@ -6,8 +6,8 @@ prev_page:
   url: /handouts/csd/ack
   title: 'Acknowledgements'
 next_page:
-  url: /guide/01_overview
-  title: 'Guide'
+  url: /homework/index
+  title: 'Homework Problems'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 ## Appendix – Transfer Function Plots for Typical Transfer Functions

@@ -75,7 +75,7 @@ $$F(s) = ms^2X(s) + bsX(s) + bX(s)$$
 
 ### Transfer function
 
-$$X(s) = \frac{1}{ms^2 + bs + b}F(s)$$
+$$X(s) = \frac{1}{ms^2 + bs + k}F(s)$$
 
 ### Block diagram
 
@@ -309,4 +309,4 @@ Background is extra topics, usually references to the recommended text or links 
 
 * [Systems modeling](https://en.wikibooks.org/wiki/Control_Systems/System_Modeling)
 * [Transfer functions](https://en.wikibooks.org/wiki/Control_Systems/Transfer_Functions)
-* [State-space equations(http://en.wikibooks.org/wiki/Control_Systems/State-Space_Equations) 
+* [State-space equations](http://en.wikibooks.org/wiki/Control_Systems/State-Space_Equations) 
