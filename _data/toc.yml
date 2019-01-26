@@ -57,6 +57,16 @@
   not_numbered: true
 
 - divider: true
+- header: Homework
+
+- title: Homework Problems
+  url: /homework/index
+  not_numbered: true
+  sections:
+  - title: Homework 1 - Revision
+    url: homework/revision/problems
+
+- divider: true
 - header: Handouts
 
 - title: Control System Design Methods
@@ -78,13 +88,6 @@
     - title: Appendix -- Transfer Function Plots for Typical Transfer Functions
       url: /handouts/csd/appendix
 
-- divider: true
-- header: Homework
-- title: Homework Problems
-  url: /homework/index
-  sections:
-  - title: Revision
-    url: homework/revision/problems
 
 
 
