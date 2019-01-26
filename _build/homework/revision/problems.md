@@ -7,8 +7,8 @@ prev_page:
   url: /homework/index
   title: 'Homework Problems'
 next_page:
-  url: /guide/01_overview
-  title: 'Guide'
+  url: /handouts/csd/index
+  title: 'Control System Design Methods'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

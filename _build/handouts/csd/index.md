@@ -3,8 +3,8 @@ redirect_from:
   - "/handouts/csd/index"
 title: 'Control System Design Methods'
 prev_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /homework/revision/problems
+  title: 'Homework 1 - Revision'
 next_page:
   url: /handouts/csd/1
   title: '1. Aims of Control Systems Analysis and Design'

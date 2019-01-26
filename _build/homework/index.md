@@ -3,8 +3,8 @@ redirect_from:
   - "/homework/index"
 title: 'Homework Problems'
 prev_page:
-  url: /handouts/csd/appendix
-  title: 'Appendix -- Transfer Function Plots for Typical Transfer Functions'
+  url: /01/mattf
+  title: 'Appendix A Defining Transfer Functions in MATLAB'
 next_page:
   url: /homework/revision/problems
   title: 'Homework 1 - Revision'

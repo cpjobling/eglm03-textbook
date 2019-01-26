@@ -7,8 +7,8 @@ prev_page:
   url: /03/6/pid
   title: 'PID Compensation'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/index
+  title: 'Homework Problems'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
