@@ -78,6 +78,15 @@
     - title: Appendix -- Transfer Function Plots for Typical Transfer Functions
       url: /handouts/csd/appendix
 
+- divider: true
+- header: Homework
+- title: Homework Problems
+  url: /homework/index
+  sections:
+  - title: Revision
+    url: homework/revision/problems
+
+
 
 - divider: true
 - header: Jupyter books
