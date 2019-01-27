@@ -56,6 +56,20 @@ Go = G*H
 ```
 
 
+{:.output_stream}
+```
+
+Go =
+ 
+   1
+  ---
+  s^2
+ 
+Continuous-time transfer function.
+
+
+```
+
 *Note*: The root locus gain $K$ is implied in Matlab (it does not need to be defined)
 
 
@@ -64,6 +78,10 @@ Go = G*H
 ```matlab
 rlocus(Go),title('Root locus diagram for gain modulated satellite attitude control')
 ```
+
+
+
+![png](../../images/03/2/velfb_7_0.png)
 
 
 Pick off an arbitrary gain
@@ -92,9 +110,23 @@ Closed-loop transfer function
 
 {:.input_area}
 ```matlab
-Gc = feedback(K*G,H);
+Gc = feedback(K*G,H)
 ```
 
+
+{:.output_stream}
+```
+
+Gc =
+ 
+     0.5625
+  ------------
+  s^2 + 0.5625
+ 
+Continuous-time transfer function.
+
+
+```
 
 $$G_c(s) = \frac{0.5625}{s^s + 0.5625}$$
 
@@ -107,7 +139,7 @@ step(Gc,45),title('Step response for closed-loop system with K=sqrt(3)/2')
 
 
 
-![png](../../images/03/2/velfb_12_0.png)
+![png](../../images/03/2/velfb_13_0.png)
 
 
 ## With velocity feedback,
@@ -119,6 +151,7 @@ The root locus equation is
 $$1 + \frac{KK_T(s + 1/K_T)}{s^2} = 0$$
 
 where $KK_T$ is the root locus gain.
+
  
 ![System with velocity feedback](images/velfb_fig2.png)
  
@@ -135,7 +168,7 @@ rlocus(Go2),title('Root locus of system with velocity feedback')
 
 
 
-![png](../../images/03/2/velfb_14_0.png)
+![png](../../images/03/2/velfb_16_0.png)
 
 
 ## Closed-loop step response
@@ -161,9 +194,9 @@ Gc2=feedback(G1,1)
 
 Gc2 =
  
-        8
-  -------------
-  s^2 + 4 s + 8
+          0.5625
+  -----------------------
+  s^2 + 0.2812 s + 0.5625
  
 Continuous-time transfer function.
 
@@ -179,5 +212,5 @@ step(Gc2),title('Step response for velocity feedback (rate) compensated system')
 
 
 
-![png](../../images/03/2/velfb_17_0.png)
+![png](../../images/03/2/velfb_19_0.png)
 
