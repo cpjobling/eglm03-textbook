@@ -62,6 +62,11 @@
     url: /04/2/tuning
   - title: Analytical Design of a PID Compensator
     url: /04/3/analpid 
+- title: Frequency Response Design
+  url: /05/freqresp
+  sections:
+  - title: Frequency Response Design of a Lead Compensator
+    url: /05/1/freqlead
 
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
