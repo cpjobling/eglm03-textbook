@@ -7,8 +7,8 @@ prev_page:
   url: /04/2/tuning
   title: 'Manually Tuning a PID compensator'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /05/freqresp
+  title: 'Frequency Response Design'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
