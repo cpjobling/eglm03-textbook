@@ -12,6 +12,28 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
+**Lecturer**
+
+Set up MATLAB
+
+
+
+{:.input_area}
+```matlab
+cd matlab
+pwd
+clear all
+format compact
+```
+
+
+{:.output_stream}
+```
+ans =
+    '/Users/eechris/dev/eglm03-textbook/content/01/matlab'
+
+```
+
 # System Modelling and Simulation
 
 ## Contents
@@ -87,10 +109,25 @@ $$X(s) = \frac{1}{ms^2 + bs + k}F(s)$$
 
 {:.input_area}
 ```matlab
+%%file matlab/smd_params.m
+%% SMD_PARAMS - define parameters for Spring Mass Damper (SMD) model
 m = 1; % kg
 b = 0.6; % Ns/m
 k = 5; % N/m
+```
 
+
+{:.output_stream}
+```
+Created file '/Users/eechris/dev/eglm03-textbook/content/01/matlab/smd_params.m'.
+
+```
+
+
+
+{:.input_area}
+```matlab
+smd_params
 ```
 
 
@@ -125,7 +162,7 @@ step(smd_tf)
 
 
 
-![png](../images/01/modsim_16_0.png)
+![png](../images/01/modsim_19_0.png)
 
 
 ## Integral Models
@@ -269,7 +306,7 @@ step(smd_ss)
 
 
 
-![png](../images/01/modsim_32_0.png)
+![png](../images/01/modsim_35_0.png)
 
 
 ## Comparison

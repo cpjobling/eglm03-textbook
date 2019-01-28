@@ -12,14 +12,30 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
+**Lecturer**
+
+Set up MATLAB
+
 
 
 {:.input_area}
 ```matlab
+cd matlab
+pwd
 clear all
 format compact
 ```
 
+
+{:.output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eglm03-textbook/content/03/3/matlab'
+
+
+```
 
 # Proportional Plus Derivative Compensation
 
@@ -35,7 +51,7 @@ $$H(s) = 1$$
 
 With velocity feedback the system is as shown in Figure 1.
 
-![Figure 1 Satellite Attitude Control with Velocity Feedback](fig1.png)
+![Figure 1 Satellite Attitude Control with Velocity Feedback](images/fig1.png)
 **Figure 1 Satellite Attitude Control with Velocity Feedback**
 
 For this system, the root locus equation is
@@ -93,7 +109,7 @@ law using cascade compensation.
 
 An alternative compensation architecture is the cascade compensator illustrated in Figure 2.
 
-![Figure 2 The cascade compensator](pd.png)
+![Figure 2 The cascade compensator](images/pd.png)
 **Figure 2 The cascade compensator**
 
 The compensator is in series with the plant so that, in general, if the compensator transfer function is
@@ -147,7 +163,7 @@ rlocus(Go),title('Root locus for cascade compensated system')
 
 
 
-![png](../../images/03/3/pplusd_16_0.png)
+![png](../../images/03/3/pplusd_17_0.png)
 
 
 Find the root locus gain at the point on the root locus where the poles are located at $s=-2+j2$.
@@ -269,7 +285,7 @@ plot(t1,y1,t2,y2),...
 
 
 
-![png](../../images/03/3/pplusd_27_0.png)
+![png](../../images/03/3/pplusd_28_0.png)
 
 
 ## Notes
@@ -278,3 +294,9 @@ Notice that, although the settling time is about the same in both designs,
 the overshoot is considerably larger in the P+D compensated system. This is 
 because the zero added by the P+D compensator appears in the numerator of the 
 closed-loop transfer function. (refer back to Contact Hour 2 for an explanation).
+
+## Resources
+
+An executable version of this document is available to download as a MATLAB Live Script file [pplusd.mlx](matlab/pplusd.mlx).
+
+The Simulink model of the satellite attitude control system with P+D compensation is [satellite.slx](matlab/pd.slx).

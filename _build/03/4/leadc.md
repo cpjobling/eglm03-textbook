@@ -7,19 +7,35 @@ prev_page:
   url: /03/3/pplusd
   title: 'Proportional plus derivative compensation'
 next_page:
-  url: /03/5/lagc
-  title: 'Lag compensation'
+  url: /03/5/analrloc
+  title: 'Analytical Root-Locus Design of Phase-Lead Compensators'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+
+**Lecturer**
+
+Set up MATLAB
 
 
 
 {:.input_area}
 ```matlab
+cd matlab
+pwd
 clear all
 format compact
 ```
 
+
+{:.output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eglm03-textbook/content/03/4/matlab'
+
+
+```
 
 # Cascade Lead compensation
 
@@ -61,7 +77,7 @@ to below 10.
 As  $|p_0| > |z_0|$, the angle contributed by the compensator to some arbitrary
 point $s_1$ at on the _s_-plane is illustrated in Figure 1.
 
-![Figure 1](fig1.png)
+![Figure 1](images/fig1.png)
 
 **Figure 1 Angle contribution of a lead compensator**
 
@@ -116,7 +132,7 @@ rlocus(G1*H)
 
 
 
-![png](../../images/03/4/leadc_20_0.png)
+![png](../../images/03/4/leadc_21_0.png)
 
 
 Clearly, we cannot achieve a closed-loop pole at $s_1 = -2 + j2$ without some dynamic compensation. 
@@ -141,7 +157,7 @@ rlocus(Go1)
 
 
 
-![png](../../images/03/4/leadc_23_0.png)
+![png](../../images/03/4/leadc_24_0.png)
 
 
 which will have a closed-loop pole at the desired location when the gain is
@@ -184,7 +200,7 @@ The following graphical method maximizes the ratio between pole and zero for
 any given angle contribution. This minimizes the additional compensator gain
 needed to satisfy the gain criterion. 
 
-![Figure 2 Graphical construction for locating the pole and zero of a lead compensator](fig2.png)
+![Figure 2 Graphical construction for locating the pole and zero of a lead compensator](images/fig2.png)
 *Figure 2 Graphical construction for locating the pole and zero of a lead compensator.*
 
 The steps in the location of the lead-compensator pole and zero are as follows (refer to Figure 2).
@@ -207,7 +223,7 @@ $$G(s) = \frac{1}{s^2}$$
 
 Requiring a closed-loop pole $S_1 = -2 + j2$, the geometry of the problem is illustrated in Figure 3.
 
-![Figure 3 Lead compensator design for the satellite attitude control problem](fig3.png)
+![Figure 3 Lead compensator design for the satellite attitude control problem](images/fig3.png)
 *Figure 3 Lead compensator design for the satellite attitude control problem.*
 
 Note that the line drawn from the origin to the point s1 subtends an angle
@@ -402,7 +418,7 @@ rlocus(Go)
 
 
 
-![png](../../images/03/4/leadc_56_0.png)
+![png](../../images/03/4/leadc_57_0.png)
 
 
 
@@ -465,14 +481,14 @@ plot(t1,y1,t2,y2,t3,y3),legend('Velocity fb','P+D','cascade lead'),title('Lead c
 
 
 
-![png](../../images/03/4/leadc_60_0.png)
+![png](../../images/03/4/leadc_61_0.png)
 
 
 When evaluating the third design you should take into account the location of the compensator zero and the third closed-loop pole (at $s = -2.828$) relative to the desired closed-loop pole at $s_1$.
 
 ## Method 3
 
-The third method referenced in D'Azzo and Houpis addresses a problem with lead compensator design that has so far not been addressed. That is that only the desired transient performance, and hence the desired location of the dominant closed-loop poles, is considered. The desired system gain is not specified. A method of achieving both gain and desired pole location has been proposed by Phillips and Harbour (1988) and is considered in the [Analytic Root Locus Design](analrloc.pdf) document to be found in the **Week 3> Self-Directed Learning** folder in the OneNote class notebook.
+The third method referenced in D'Azzo and Houpis addresses a problem with lead compensator design that has so far not been addressed. That is that only the desired transient performance, and hence the desired location of the dominant closed-loop poles, is considered. The desired system gain is not specified. A method of achieving both gain and desired pole location has been proposed by Phillips and Harbour (1988) and is considered in the [Analytic Root Locus Design](../5/analrloc) section (**not assessed**).
 
 ## References
 
@@ -480,4 +496,8 @@ John J. D'Azzo and Constantne Houpis, (1975) *Linear Control System Analysis and
 
 Phillips and Harbor (1988), *Feedback Control Systems*, Prentice Hall.
 
-A version of this document is available to download as a Matlab Live Script file [cclead.mlx](cclead.mlx).
+## Resources
+
+An executable version of this document is available to download as a MATLAB Live Script file [cclead.mlx](matlab/cclead.mlx).
+
+The Simulink model which compares the results of the satellite attitude control system compensated with velocity feedback, P+D compensation *and* lead compensation is [lead_compensation.slx](matlab/lead_compensation.slx).

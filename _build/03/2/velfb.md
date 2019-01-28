@@ -12,6 +12,47 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
+**Lecturer**
+
+Set up MATLAB
+
+
+
+{:.input_area}
+```matlab
+help livescript
+```
+
+
+{:.output_stream}
+```
+
+livescript not found.
+
+Use the Help browser search field to search the documentation, or
+type "help help" for help command options, such as help for methods.
+
+
+```
+
+
+
+{:.input_area}
+```matlab
+cd matlab
+pwd
+clear all
+format compact
+```
+
+
+{:.output_stream}
+```
+ans =
+    '/Users/eechris/dev/eglm03-textbook/content/03/2/matlab'
+
+```
+
 # Introduction to Root Locus Design
 
 In this section we will engage in a short exploration of compensator design in the time domain with a look at root-locus design of a velocity-feedback compensator for a simple "double integrator" system. This serves as an introduction to the topic of phase lead compensation which is used to improve transient performance and relative stability.
@@ -81,7 +122,7 @@ rlocus(Go),title('Root locus diagram for gain modulated satellite attitude contr
 
 
 
-![png](../../images/03/2/velfb_7_0.png)
+![png](../../images/03/2/velfb_10_0.png)
 
 
 Pick off an arbitrary gain
@@ -96,11 +137,8 @@ Pick off an arbitrary gain
 
 {:.output_stream}
 ```
-
 K =
-
     0.5625
-
 
 ```
 
@@ -139,7 +177,7 @@ step(Gc,45),title('Step response for closed-loop system with K=sqrt(3)/2')
 
 
 
-![png](../../images/03/2/velfb_13_0.png)
+![png](../../images/03/2/velfb_16_0.png)
 
 
 ## With velocity feedback,
@@ -168,7 +206,7 @@ rlocus(Go2),title('Root locus of system with velocity feedback')
 
 
 
-![png](../../images/03/2/velfb_16_0.png)
+![png](../../images/03/2/velfb_19_0.png)
 
 
 ## Closed-loop step response
@@ -212,5 +250,13 @@ step(Gc2),title('Step response for velocity feedback (rate) compensated system')
 
 
 
-![png](../../images/03/2/velfb_19_0.png)
+![png](../../images/03/2/velfb_22_0.png)
 
+
+## Resources
+
+An executable version of this document is available to download as a MATLAB Live Script file [velfb.mlx](matlab/velfb.mlx).
+
+The Simulink model of the satellite attitude control system is [satellite.slx](matlab/satellite.slx).
+
+The system with velocity feedback control is available as [velfb.slx](matlab/velfb.slx).

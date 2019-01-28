@@ -47,14 +47,26 @@
     url: /03/3/pplusd
   - title: Lead compensation
     url: /03/4/leadc
+  - title: Analytical Root-Locus Design of Phase-Lead Compensators
+    url: /03/5/analrloc
   - title: Lag compensation
-    url: /03/5/lagc
-  - title: PID Compensation
-    url: /03/6/pid
+    url: /03/6/lagc
+- title: PID Compensation
+  url: /04/pid
+  sections:
+  - title: Introduction to PID Compensation
+    url: /04/0/intro
+  - title: Zeigler-Nichols Tuning Algorithms
+    url: /04/1/zeigler
+  - title: Manually Tuning a PID compensator
+    url: /04/2/tuning
+  - title: Analytical Design of a PID Compensator
+    url: /04/3/analpid 
 
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true
+  sections:
 
 - divider: true
 - header: Homework
