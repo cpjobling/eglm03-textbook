@@ -4,8 +4,8 @@ redirect_from:
 interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
-  url: /05/1/freqlead
-  title: 'Frequency Response Design of a Lead Compensator'
+  url: /05/2/freqlag
+  title: 'Frequency Response Design of a Lag Compensator'
 next_page:
   url: /homework/index
   title: 'Homework Problems'

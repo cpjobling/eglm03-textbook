@@ -7,8 +7,8 @@ prev_page:
   url: /05/freqresp
   title: 'Frequency Response Design'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /05/2/freqlag
+  title: 'Frequency Response Design of a Lag Compensator'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
