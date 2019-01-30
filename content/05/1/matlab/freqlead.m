@@ -9,7 +9,8 @@
 % $$G(s) = \frac{1}{s(s+1)}.$$
 % 
 % The system has unity gain feedback and the compensated closed-loop system 
-% is to have a static velocity error constant of 10 and a phase margin of 50%.
+% is to have a static velocity error constant of 10 and a phase margin of ${50}^{\circ 
+% }$.
 % 
 % Defining the system in Matlab 
 

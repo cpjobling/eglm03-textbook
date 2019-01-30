@@ -67,7 +67,8 @@
   sections:
   - title: Frequency Response Design of a Lead Compensator
     url: /05/1/freqlead
-
+  - title: Frequency Response Design of a Lag Compensator
+    url: /05/2/freqlag
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true
