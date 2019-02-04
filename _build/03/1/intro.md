@@ -14,8 +14,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Introducing phase-lead compensation
 
-**TO DO: Write Survey for inclass answers to the design questions**
-
 ## Time Response Design Characteristics
 
 Two types of characteristic given:
@@ -97,7 +95,8 @@ $$\zeta = \frac{1}{\sqrt{2}}$$
 
 Settling time:
 
-$$T_s = 2.3\;\mathrm{s}$$:
+$$T_s = 2.3\;\mathrm{s}$$
+
 
 
 

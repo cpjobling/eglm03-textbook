@@ -27,9 +27,19 @@ format compact
 ```
 
 
+{:.output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eglm03-textbook/content/02/matlab'
+
+
+```
+
 # Steady-state and Transient Response
 
-This chapter is concerned with steady-state and transient analysis of control systems.
+This chapter is concerned with the analysis of steady-state and transient response performance of control systems.
 
 The second-order system response and its relationship to the closed-loop poles and zeros is revised. The effect of an additional zero or an additional pole on the 2<sup>nd</sup> order response is examined and pole-zero cancellation is discussed.
 
@@ -81,6 +91,24 @@ subplot(212),step( G),axis([0,10,0,2])
 ```
 
 
+{:.output_stream}
+```
+
+G =
+ 
+        9
+  --------------
+  s^2 + 15 s + 9
+ 
+Continuous-time transfer function.
+
+
+```
+
+
+![png](../images/02/ssntr_9_1.png)
+
+
 Or download and run this script [second_resp.m](second_resp.m) in MATLAB.
 
 ![model 2nd order response](images/fig2.png)
@@ -91,7 +119,7 @@ Or download and run this script [second_resp.m](second_resp.m) in MATLAB.
  $$T(s) = \frac{\omega _n^2}{s^2 + \zeta {\omega _n}s + \omega _n^2}$$
  
 
-$$\begin{eqnarray*}{P_{1,2}} &=&  - \zeta  \pm {\omega _n}\sqrt {1 - {\zeta ^2}}\\
+$$\begin{eqnarray*}{P_{1,2}} &=&  - \zeta\omega_n  \pm j{\omega _n}\sqrt {1 - {\zeta ^2}}\\
  &=& - {\sigma _d} \pm j{\omega _d}\end{eqnarray*}$$
 
  ![pole locations](images/fig3.png)
@@ -158,7 +186,7 @@ Note that $\alpha$ is a multiplier of the real part of the complex poles $\zeta\
 
 #### 2nd order system with extra zero
 
-Matlab demo (run [zero2nd.m](zero2nd.m)):
+Matlab demo (run [zero2nd.m](matlab/zero2nd.m)):
 
 
 
@@ -166,6 +194,105 @@ Matlab demo (run [zero2nd.m](zero2nd.m)):
 ```matlab
 zero2nd
 ```
+
+
+{:.output_stream}
+```
+clf
+wn = 10;
+zeta = 0.7;
+t = 0:0.01:2;
+s = tf('s');
+Tc = tf(1/((s/wn)^2 + 2*zeta*(s/wn) + 1))
+
+Tc =
+ 
+          1000
+  ---------------------
+  10 s^2 + 140 s + 1000
+ 
+Continuous-time transfer function.
+
+[c]=step(Tc,t);
+plot(t,c,'r-')
+title('Effect of an additional zero on model 2nd order response')
+ylabel('Controlled variable C(t)')
+xlabel('Normalised time wn t')
+hold on
+for alpha = [100,50,10,8,6,4,3,2,1.5,1,0.5]
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+      plot(t,c,'g*')
+   end
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+   T2 = tf((s/(alpha*zeta*wn)+1)/((s/wn)^2 + 2*zeta*(s/wn) + 1));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+```
+
+
+![png](../images/02/ssntr_38_1.png)
 
 
 ![result](images/fig8.png)
@@ -183,7 +310,7 @@ Note that $\alpha$ is a multiplier of the real part of the complex poles.
 
 #### 2nd order system with extra pole
 
-Matlab demo (run [pole2nd.m](pole2nd.m)):
+Matlab demo (run [pole2nd.m](matlab/pole2nd.m)):
 
 
 
@@ -191,6 +318,95 @@ Matlab demo (run [pole2nd.m](pole2nd.m)):
 ```matlab
 pole2nd
 ```
+
+
+{:.output_stream}
+```
+clf
+wn = 10;
+zeta = 0.7;
+t = 0:0.01:2;
+s = tf('s');
+Tc = tf(1/((s/wn)^2 + 2*zeta*(s/wn) + 1))
+
+Tc =
+ 
+          1000
+  ---------------------
+  10 s^2 + 140 s + 1000
+ 
+Continuous-time transfer function.
+
+[c]=step(Tc,t);
+plot(t,c,'r-')
+title('Effect of an additional pole on model 2nd order response')
+ylabel('Controlled variable C(t)')
+xlabel('Normalised time wn t')
+hold on
+
+for alpha = [100,50,10,8,6,4,3,2,1.5,1,0.5]
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+      plot(t,c,'g*')
+   end
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+   T2 = tf(1/((s/(alpha*zeta*wn)+1)*((s/wn)^2 + 2*zeta*(s/wn) + 1)));
+   [c,t]=step(T2,t);
+   if (alpha == 4)
+   plot(t,c,'b-')
+end
+
+```
+
+
+![png](../images/02/ssntr_46_1.png)
 
 
 ![result](images/fig10.png)
@@ -203,7 +419,7 @@ Design curves (see handout):
 
 Because the time response of many real systems will be dominated by two or three low frequency poles, a complex high order system can often be simplified by ignoring the effects of high-frequency poles and zeros or a pole that is effectively cancelled by a zero. This MATLAB script file demonstrates this.
 
-Matlab demo (Run [reduction.m](reduction.m))
+Matlab demo (Run [reduction.m](matlab/reduction.m))
 
 In this example we ignore any poles or zeros that are located 4 or more times the real part of the dominant poles $s = -1 \pm j$ or poles that a cancelled by a closed-loop zero and see that the seventh order system is effectively only a third-order system.
 
@@ -226,6 +442,23 @@ g = zpk(zeros,poles,prod(abs(poles))/prod(abs(zeros)));
 ```
 
 
+{:.output_stream}
+```
+Full order system
+zeros =
+   -6.0000
+   -3.2000
+poles =
+  -9.0000 + 0.0000i
+  -7.0000 + 2.0000i
+  -7.0000 - 2.0000i
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+
+```
+
 
 
 {:.input_area}
@@ -235,6 +468,10 @@ pzmap(poles,zeros)
 subplot(122)
 step(g)
 ```
+
+
+
+![png](../images/02/ssntr_52_0.png)
 
 
 Now remove redundant terms
@@ -251,6 +488,21 @@ g1 = zpk(z1,p1,prod(abs(p1))/prod(abs(z1)));
 ```
 
 
+{:.output_stream}
+```
+z1 =
+   -6.0000
+   -3.2000
+p1 =
+  -7.0000 + 2.0000i
+  -7.0000 - 2.0000i
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+
+```
+
 
 
 {:.input_area}
@@ -260,6 +512,10 @@ pzmap(p1,z1)
 subplot(122)
 step(g,g1)
 ```
+
+
+
+![png](../images/02/ssntr_55_0.png)
 
 
 Step 2: remove complex hf pole pair
@@ -274,6 +530,19 @@ g2 = zpk(z2,p2,prod(abs(p2))/prod(abs(z2)));
 ```
 
 
+{:.output_stream}
+```
+z2 =
+   -6.0000
+   -3.2000
+p2 =
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+
+```
+
 
 
 {:.input_area}
@@ -283,6 +552,10 @@ pzmap(p2,z2)
 subplot(122)
 step(g,g1,g2)
 ```
+
+
+
+![png](../images/02/ssntr_58_0.png)
 
 
 Step 3: remove hf zero
@@ -297,6 +570,18 @@ g3 = zpk(z3,p3,prod(abs(p3))/prod(abs(z3)));
 ```
 
 
+{:.output_stream}
+```
+z3 =
+   -3.2000
+p3 =
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+
+```
+
 
 
 {:.input_area}
@@ -306,6 +591,10 @@ pzmap(p3,z3)
 subplot(122)
 step(g,g1,g2,g3)
 ```
+
+
+
+![png](../images/02/ssntr_61_0.png)
 
 
 Step 4: remove pole-zero cancellation terms
@@ -320,6 +609,17 @@ g4 = zpk(z4,p4,prod(abs(p4))/prod(abs(z4)));
 ```
 
 
+{:.output_stream}
+```
+z4 =
+     []
+p4 =
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+
+```
+
 
 
 {:.input_area}
@@ -329,6 +629,10 @@ pzmap(p4,z4)
 subplot(122)
 step(g,g1,g2,g3,g4)
 ```
+
+
+
+![png](../images/02/ssntr_64_0.png)
 
 
 Step 5: remove last non-dominant pole')
@@ -343,6 +647,16 @@ g5 = zpk(z5,p5,prod(abs(p5))/prod(abs(z5)));
 ```
 
 
+{:.output_stream}
+```
+z5 =
+     []
+p5 =
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+
+```
+
 
 
 {:.input_area}
@@ -352,6 +666,10 @@ pzmap(p5,z5)
 subplot(122)
 step(g,g1,g2,g3,g4,g5)
 ```
+
+
+
+![png](../images/02/ssntr_67_0.png)
 
 
 Original system
@@ -364,6 +682,20 @@ g
 ```
 
 
+{:.output_stream}
+```
+
+g =
+ 
+                298.12 (s+6) (s+3.2)
+  -------------------------------------------------
+  (s+9) (s+3) (s+2) (s^2 + 2s + 2) (s^2 + 14s + 53)
+ 
+Continuous-time zero/pole/gain model.
+
+
+```
+
 Reduced order system
 
 
@@ -373,6 +705,20 @@ Reduced order system
 g4
 ```
 
+
+{:.output_stream}
+```
+
+g4 =
+ 
+           4
+  --------------------
+  (s+2) (s^2 + 2s + 2)
+ 
+Continuous-time zero/pole/gain model.
+
+
+```
 
 
 
@@ -387,6 +733,10 @@ pzmap(p4,z4)
 subplot(224)
 step(g,g4)
 ```
+
+
+
+![png](../images/02/ssntr_72_0.png)
 
 
 What are the steady-state performance criteria?
@@ -467,19 +817,17 @@ For a unity-gain negative feedback system with open-loop transfer function Go(s)
     </tbody>
 </table>
 
-Where
-
 **Position error constant for step input**: $R(s) = 1/s$:
 
-$$K_p = \lim_{s\to\infty}\;G_0(s)$$
+$$K_p = \lim_{s\to\infty}\;G_o(s)$$
 
 **Velocity error constant for ramp input**: $R(s) = 1/s^2$:
 
-$$K_v = \lim_{s\to\infty}\;sG_0(s)$$
+$$K_v = \lim_{s\to\infty}\;sG_o(s)$$
 
 **Acceleration error constant for parabolic input**: $R(s) = 1/s^3$:
 
-$$K_v = \lim_{s\to\infty}\;s^2G_0(s)$$
+$$K_a = \lim_{s\to\infty}\;s^2G_o(s)$$
 
 ## Special Cases
 
@@ -496,7 +844,7 @@ Assuming that the system is originally at steady-state ($E(s) = R(s) - C(s) = 0$
 
 ![A system to illustrate compliance](images/fig13.png)
 
-[Model file [disturbance_rejection.mdl](disturbance_rejection.mdl)]
+[Model file [disturbance_rejection.mdl](matlab/disturbance_rejection.mdl)]
 
 
 
@@ -511,7 +859,7 @@ disturbance_rejection
 
 ![A system to illustrate non-unity gain feedback](images/fig14.png)
 
-[Model file [non_unity_gain_feedback.mdl](non_unity_gain_feedback.mdl)]
+[Model file [non_unity_gain_feedback.mdl](matlab/non_unity_gain_feedback.mdl)]
 
 
 
