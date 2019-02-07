@@ -7,8 +7,8 @@ prev_page:
   url: /homework/index
   title: 'Homework Problems'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/lead_compensation/problems
+  title: 'Homework 2 - Dominant Poles and Lead Compensation'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
