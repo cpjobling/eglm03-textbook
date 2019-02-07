@@ -20,25 +20,6 @@ Set up MATLAB
 
 {:.input_area}
 ```matlab
-help livescript
-```
-
-
-{:.output_stream}
-```
-
-livescript not found.
-
-Use the Help browser search field to search the documentation, or
-type "help help" for help command options, such as help for methods.
-
-
-```
-
-
-
-{:.input_area}
-```matlab
 cd matlab
 pwd
 clear all
@@ -60,7 +41,7 @@ In this section we will engage in a short exploration of compensator design in t
 ## Gain compensation
 
 First design example (Satellite Attitude Control). The system may be represented 
-in block diagram form as shown in Figure 1. (Simulink model: [satellite.slx](satellite.slx))
+in block diagram form as shown in Figure 1. (Simulink model: [satellite.slx](matlab/satellite.slx))
 
 ![Satellite control with gain modulated torque](images/velfb_fig1.png)
 
@@ -122,7 +103,7 @@ rlocus(Go),title('Root locus diagram for gain modulated satellite attitude contr
 
 
 
-![png](../../images/03/2/velfb_10_0.png)
+![png](../../images/03/2/velfb_9_0.png)
 
 
 Pick off an arbitrary gain
@@ -177,12 +158,12 @@ step(Gc,45),title('Step response for closed-loop system with K=sqrt(3)/2')
 
 
 
-![png](../../images/03/2/velfb_16_0.png)
+![png](../../images/03/2/velfb_15_0.png)
 
 
 ## With velocity feedback,
 
-The block diagram becomes that shown in Figure 2 (Simulink model: [velfb.slx](velfb.slx)). 
+The block diagram becomes that shown in Figure 2 (Simulink model: [velfb.slx](matlab/velfb.slx)). 
 
 The root locus equation is
 
@@ -206,7 +187,7 @@ rlocus(Go2),title('Root locus of system with velocity feedback')
 
 
 
-![png](../../images/03/2/velfb_19_0.png)
+![png](../../images/03/2/velfb_18_0.png)
 
 
 ## Closed-loop step response
@@ -250,7 +231,7 @@ step(Gc2),title('Step response for velocity feedback (rate) compensated system')
 
 
 
-![png](../../images/03/2/velfb_22_0.png)
+![png](../../images/03/2/velfb_21_0.png)
 
 
 ## Resources
