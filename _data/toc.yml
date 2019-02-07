@@ -69,6 +69,11 @@
     url: /05/1/freqlead
   - title: Frequency Response Design of a Lag Compensator
     url: /05/2/freqlag
+- title: Digital Control Systems
+  url: /06/digital
+  sections:
+  - title: Introduction to Digital Systems
+    url: 06/1/digi_intro   
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true
