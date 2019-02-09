@@ -474,7 +474,13 @@ Let's pretend that we are solving this problem in a context where we only have a
 
 $$D(z)=k\frac{1-e^{-aT}z^{-1}}{1-e^{-bT}z^{-1}}$$
 
-where $k$ is determined by matching the DC gain of the two compensators. For the continuous compensator $D(s)|_{s=0} = 16/6$. For the digital compensator $D(z)|_{z=1} = k(1-e^{-aT})/(1-e^{-bT})$, so
+where $k$ is determined by matching the DC gain of the two compensators. For the continuous compensator $$D(s)|_{s=0} = 16/6.$$ 
+
+For the digital compensator 
+
+$$D(z)|_{z=1} = k(1-e^{-aT})/(1-e^{-bT}),$$
+
+so
 
 $$k=\frac{16}{6}\times\frac{1-e^{-bT}}{1-e^{-aT}}$$
 
