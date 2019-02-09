@@ -77,7 +77,7 @@
   - title: Digital System Models and System Response
     url: 06/2/dsm
   - title: Continuous Systems Equivalence
-    url: 06/3/dsm
+    url: 06/3/cse
   - title: Introduction to Digital Control
     url: 06/4/digictrl
 - title: Appendix A Defining Transfer Functions in MATLAB

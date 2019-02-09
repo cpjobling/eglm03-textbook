@@ -7,8 +7,8 @@ prev_page:
   url: /06/digital
   title: 'Digital Control Systems'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /06/2/dsm
+  title: 'Digital System Models and System Response'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
