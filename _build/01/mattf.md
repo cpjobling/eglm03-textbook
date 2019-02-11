@@ -4,8 +4,8 @@ redirect_from:
 interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
-  url: /06/4/digictrl
-  title: 'Introduction to Digital Control'
+  url: /07/index
+  title: 'Modelling Systems in State-Space'
 next_page:
   url: /homework/index
   title: 'Homework Problems'

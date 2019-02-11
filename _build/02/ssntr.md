@@ -148,9 +148,9 @@ $$T_r \approx \frac{1.8}{\omega_n}$$
 
 Percentage overshoot is related to damping
 
-$$M_p = \exp\left(\frac{-\pi\zeta}{\sqrt{1-\zeta^2}}\right)\times 100$$
+$$\%OS = \exp\left(\frac{-\pi\zeta}{\sqrt{1-\zeta^2}}\right)\times 100$$
 
-$$M_p \approx \left( 1 - \frac{\zeta }{0.6} \right) \times 100\;{\kern 1pt} 0 \leqslant \zeta  \leqslant 0.6$$
+$$\%OS \approx \left( 1 - \frac{\zeta }{0.6} \right) \times 100\;{\kern 1pt} 0 \leqslant \zeta  \leqslant 0.6$$
 
 
 ![Design region for specified Percentage Overshoot](images/fig6.png)

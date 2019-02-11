@@ -82,7 +82,7 @@ $$Q(s)=KE(s)$$
 
 ### Design Requirements
 
-Zero steady-state error:
+Zero steady-state step error:
 
 $$e(t) = \left.\theta(t)-\theta_d(t)\right|_{t\to\infty} = 0$$
 

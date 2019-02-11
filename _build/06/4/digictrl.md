@@ -7,8 +7,8 @@ prev_page:
   url: /06/3/cse
   title: 'Continuous Systems Equivalence'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /07/index
+  title: 'Modelling Systems in State-Space'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

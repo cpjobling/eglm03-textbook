@@ -29,8 +29,11 @@ format compact
 
 {:.output_stream}
 ```
+
 ans =
+
     '/Users/eechris/dev/eglm03-textbook/content/03/2/matlab'
+
 
 ```
 
@@ -202,6 +205,21 @@ $$G_c(s) = \frac{K}{s^2 + KK_T s + K}$$
 
 {:.input_area}
 ```matlab
+[K] = rlocfind(Go2,-2+2j)
+```
+
+
+{:.output_stream}
+```
+K =
+     8
+
+```
+
+
+
+{:.input_area}
+```matlab
 Integrator=tf(1,[1,0]);
 G1=feedback(K*Integrator,Kt)*Integrator;
 Gc2=feedback(G1,1)
@@ -213,9 +231,9 @@ Gc2=feedback(G1,1)
 
 Gc2 =
  
-          0.5625
-  -----------------------
-  s^2 + 0.2812 s + 0.5625
+        8
+  -------------
+  s^2 + 4 s + 8
  
 Continuous-time transfer function.
 
@@ -231,7 +249,7 @@ step(Gc2),title('Step response for velocity feedback (rate) compensated system')
 
 
 
-![png](../../images/03/2/velfb_21_0.png)
+![png](../../images/03/2/velfb_22_0.png)
 
 
 ## Resources
