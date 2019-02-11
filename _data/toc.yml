@@ -80,6 +80,8 @@
     url: 06/3/cse
   - title: Introduction to Digital Control
     url: 06/4/digictrl
+- title: Modelling Systems in State-Space
+  url: /07/index
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true
