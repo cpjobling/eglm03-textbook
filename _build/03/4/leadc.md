@@ -19,23 +19,13 @@ Set up MATLAB
 
 
 {:.input_area}
-```matlab
+```
 cd matlab
 pwd
 clear all
 format compact
 ```
 
-
-{:.output_stream}
-```
-
-ans =
-
-    '/Users/eechris/dev/eglm03-textbook/content/03/4/matlab'
-
-
-```
 
 # Cascade Lead compensation
 
@@ -116,7 +106,7 @@ Define the plant
 
 
 {:.input_area}
-```matlab
+```
 G1 = tf(1,conv([1, 0],[1, 1])); H=1;
 ```
 
@@ -126,13 +116,13 @@ Plot root-locus
 
 
 {:.input_area}
-```matlab
+```
 rlocus(G1*H)
 ```
 
 
 
-![png](../../images/03/4/leadc_21_0.png)
+![png](../../images/03/4/leadc_23_0.png)
 
 
 Clearly, we cannot achieve a closed-loop pole at $s_1 = -2 + j2$ without some dynamic compensation. 
@@ -142,7 +132,7 @@ However, if we use the zero of a cascade lead compensator to cancel the pole at 
 
 
 {:.input_area}
-```matlab
+```
 D1 = zpk([-1],[-4],1);
 Go1 = D1*G1*H;
 ```
@@ -151,13 +141,13 @@ Go1 = D1*G1*H;
 
 
 {:.input_area}
-```matlab
+```
 rlocus(Go1)
 ```
 
 
 
-![png](../../images/03/4/leadc_24_0.png)
+![png](../../images/03/4/leadc_26_0.png)
 
 
 which will have a closed-loop pole at the desired location when the gain is
@@ -165,7 +155,7 @@ which will have a closed-loop pole at the desired location when the gain is
 
 
 {:.input_area}
-```matlab
+```
 Kc = rlocfind(Go1,-2+2j)
 ```
 
@@ -235,7 +225,7 @@ of the plant and feedback at $s_1$ is obtained as follows.
 
 
 {:.input_area}
-```matlab
+```
 G = tf(1,[1,0,0]);
 H = 1;
 GH = G*H;
@@ -249,7 +239,7 @@ directly using the Matlab equivalent of the angle criterion
 
 
 {:.input_area}
-```matlab
+```
 [zeros,poles,gain]=zpkdata(GH,'v');
 ```
 
@@ -259,15 +249,18 @@ contribution in degrees
 
 
 {:.input_area}
-```matlab
+```
 contrib = (180/pi)*(sum(angle(s1 - zeros)) - sum(angle(s1 - poles)))
 ```
 
 
 {:.output_stream}
 ```
+
 contrib =
+
   -270
+
 
 ```
 
@@ -279,30 +272,36 @@ $$\begin{array}{c}\angle G({s_1})H({s_1}) + {\phi _c} =  - {180^ \circ
 
 
 {:.input_area}
-```matlab
+```
 phi_c = -180 - contrib
 ```
 
 
 {:.output_stream}
 ```
+
 phi_c =
+
     90
+
 
 ```
 
 
 
 {:.input_area}
-```matlab
+```
 half_phi_c = phi_c/2
 ```
 
 
 {:.output_stream}
 ```
+
 half_phi_c =
+
     45
+
 
 ```
 
@@ -311,7 +310,7 @@ Because the line BA and OD are parallel, the angle subtended by the line OAB is 
 
 
 {:.input_area}
-```matlab
+```
 angle_OAB = 135;
 angle_BAD = angle_OAB/2 - half_phi_c;
 angle_BEO = angle_OAB/2 + half_phi_c;
@@ -323,30 +322,36 @@ and by parallel line theory
 
 
 {:.input_area}
-```matlab
+```
 theta_p = angle_BAD
 ```
 
 
 {:.output_stream}
 ```
+
 theta_p =
+
    22.5000
+
 
 ```
 
 
 
 {:.input_area}
-```matlab
+```
 theta_z = angle_BEO
 ```
 
 
 {:.output_stream}
 ```
+
 theta_z =
+
   112.5000
+
 
 ```
 
@@ -355,30 +360,36 @@ The pole and zero locations are given by
 
 
 {:.input_area}
-```matlab
+```
 p0 = -2-2/tan(theta_p*pi/180)
 ```
 
 
 {:.output_stream}
 ```
+
 p0 =
+
    -6.8284
+
 
 ```
 
 
 
 {:.input_area}
-```matlab
+```
 z0 = -2-2/tan(theta_z*pi/180)
 ```
 
 
 {:.output_stream}
 ```
+
 z0 =
+
    -1.1716
+
 
 ```
 
@@ -393,15 +404,18 @@ $${K_0} = \left( \frac{\left| s_1 - p_0 \right|}{\left| s - z_0
 
 
 {:.input_area}
-```matlab
+```
 Ko = (abs(s1-p0)*prod(abs(s1-poles)))/(abs(s1-z0)*prod(abs(s1-zeros)))
 ```
 
 
 {:.output_stream}
 ```
+
 Ko =
+
    19.3137
+
 
 ```
 
@@ -410,7 +424,7 @@ Let us also check this result using the root locus.
 
 
 {:.input_area}
-```matlab
+```
 D = zpk(z0,p0,1);
 Go=D*GH;
 rlocus(Go)
@@ -418,21 +432,24 @@ rlocus(Go)
 
 
 
-![png](../../images/03/4/leadc_57_0.png)
+![png](../../images/03/4/leadc_60_0.png)
 
 
 
 
 {:.input_area}
-```matlab
+```
 Kc = rlocfind(Go,s1)
 ```
 
 
 {:.output_stream}
 ```
+
 Kc =
+
    19.3137
+
 
 ```
 
@@ -448,7 +465,7 @@ $$G_2(s) = \frac{4(s+2)}{s^2 + 4s + 8}$$
 
 
 {:.input_area}
-```matlab
+```
 G1 = tf(8,[1, 4, 8]);
 G2 = tf(4*[1, 2],[1, 4, 8]);
 G3 = feedback(Kc*D*G,H)
@@ -472,7 +489,7 @@ Continuous-time zero/pole/gain model.
 
 
 {:.input_area}
-```matlab
+```
 [y1,t1]=step(G1);
 [y2,t2]=step(G2);
 [y3,t3]=step(G3);
@@ -481,7 +498,7 @@ plot(t1,y1,t2,y2,t3,y3),legend('Velocity fb','P+D','cascade lead'),title('Lead c
 
 
 
-![png](../../images/03/4/leadc_61_0.png)
+![png](../../images/03/4/leadc_64_0.png)
 
 
 When evaluating the third design you should take into account the location of the compensator zero and the third closed-loop pole (at $s = -2.828$) relative to the desired closed-loop pole at $s_1$.

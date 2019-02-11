@@ -62,6 +62,7 @@ Controller:
  
 $$D(s) = K$$
  
+
 The root locus equation is:
  
 $$1 + KG(s)H(s) = 0$$
@@ -106,7 +107,7 @@ rlocus(Go),title('Root locus diagram for gain modulated satellite attitude contr
 
 
 
-![png](../../images/03/2/velfb_9_0.png)
+![png](../../images/03/2/velfb_10_0.png)
 
 
 Pick off an arbitrary gain
@@ -161,12 +162,20 @@ step(Gc,45),title('Step response for closed-loop system with K=sqrt(3)/2')
 
 
 
-![png](../../images/03/2/velfb_15_0.png)
+![png](../../images/03/2/velfb_16_0.png)
 
 
 ## With velocity feedback,
 
 The block diagram becomes that shown in Figure 2 (Simulink model: [velfb.slx](matlab/velfb.slx)). 
+
+
+
+{:.input_area}
+```matlab
+velfb
+```
+
 
 The root locus equation is
 
@@ -190,7 +199,7 @@ rlocus(Go2),title('Root locus of system with velocity feedback')
 
 
 
-![png](../../images/03/2/velfb_18_0.png)
+![png](../../images/03/2/velfb_21_0.png)
 
 
 ## Closed-loop step response
@@ -249,8 +258,27 @@ step(Gc2),title('Step response for velocity feedback (rate) compensated system')
 
 
 
-![png](../../images/03/2/velfb_22_0.png)
+![png](../../images/03/2/velfb_25_0.png)
 
+
+Since $KK_t = 4$
+
+
+
+{:.input_area}
+```matlab
+Kt = 4/K
+```
+
+
+{:.output_stream}
+```
+Kt =
+    0.5000
+
+```
+
+Running the simulink model with these values should give you the same result.
 
 ## Resources
 

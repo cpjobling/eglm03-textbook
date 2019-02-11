@@ -163,7 +163,7 @@ rlocus(Go),title('Root locus for cascade compensated system')
 
 
 
-![png](../../images/03/3/pplusd_17_0.png)
+![png](../../images/03/3/pplusd_18_0.png)
 
 
 Find the root locus gain at the point on the root locus where the poles are located at $s=-2+j2$.
@@ -285,7 +285,7 @@ plot(t1,y1,t2,y2),...
 
 
 
-![png](../../images/03/3/pplusd_28_0.png)
+![png](../../images/03/3/pplusd_29_0.png)
 
 
 ## Notes
