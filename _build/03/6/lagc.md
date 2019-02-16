@@ -29,11 +29,9 @@ format compact
 
 {:.output_stream}
 ```
-
+/Users/eechris/dev/eglm03-textbook/content/03/6/matlab/matlab
 ans =
-
     '/Users/eechris/dev/eglm03-textbook/content/03/6/matlab'
-
 
 ```
 
@@ -479,7 +477,7 @@ F = 1;
 
 {:.output_stream}
 ```
-Created file '/Users/eechris/dev/eglm03-textbook/content/03/6/params.m'.
+Created file '/Users/eechris/dev/eglm03-textbook/content/03/6/matlab/params.m'.
 
 ```
 

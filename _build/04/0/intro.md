@@ -53,7 +53,7 @@ for the PID compensator are:
 
 $$\begin{equation}D_{\mathrm{P}}(s)=K_{\mathrm{prop}}\end{equation}$$                                                            
 This type of compensation can be used when dynamic compensation is not 
-needed to achieve the required steday-state acuracy and transient performance. 
+needed to achieve the required steady-state acuracy and transient performance. 
 In general, larger values of poportional gain reduce steady-state errors and 
 rise times but tend to increase the size and number of overshoots and setting 
 time.
@@ -64,7 +64,7 @@ $$\begin{eqnarray}D_{\mathrm{P+D}}(s) &=& K_{\mathrm{prop}}\left(1+sT_D\right)\\
 &=& K_{\mathrm{prop}}T_D\,\left(s+1/T_D\right)\end{eqnarray}$$
 
 This configuration adds a zero to the proportional only compensator. This zero is used to increase the system damping thereby improving stability and reducing settling time. The cascade zero may cause a small reduction in rise 
-time and an increase in the size of the first overshoot. Note that derivative action is _never _used alone!
+time and an increase in the size of the first overshoot. Note that derivative action is *never*used alone!
 
 ### Proportional plus Integral (P+I)
 
@@ -82,7 +82,7 @@ response.
 
 $$\begin{equation}D_{\mathrm{PID}}(s)=K_{\mathrm{prop}}\left(\frac{T_D\,s^2+s+1/T_I}{s}\right)\end{equation}$$
 
-The PID compensator raises the system type number by 1. It also introduces two zeros which can be used to improve the transient response. Root locus methods can be used to locate these zeros in order to satisfy the steady-state and transient response requirements of a design. We shall illustrate the [Zeigler-Nicjols method](../1/zeigler) next. There is also an [analytical technique](../3/analpid) for achieving a specified steady-state error performance and defined dominant poles. In industrial practice, however, it is quite common to tune a PID compensator "in the loop" and this is discussed in a companion document ([Tuning a PID Compensator](../2/tuning)). The tuning rules are essentially summarised 
+The PID compensator raises the system type number by 1. It also introduces two zeros which can be used to improve the transient response. Root locus methods can be used to locate these zeros in order to satisfy the steady-state and transient response requirements of a design. We shall illustrate the [Zeigler-Nichols method](../1/zeigler) next. There is also an [analytical technique](../3/analpid) for achieving a specified steady-state error performance and defined dominant poles. In industrial practice, however, it is quite common to tune a PID compensator "in the loop" and this is discussed in a companion document ([Tuning a PID Compensator](../2/tuning)). The tuning rules are essentially summarised 
 as:
 
 1. Choose $K_{\mathrm{prop}}$ to achieve the required speed of response.

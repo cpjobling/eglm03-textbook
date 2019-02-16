@@ -20,7 +20,7 @@ Set up MATLAB
 
 {:.input_area}
 ```matlab
-cd matlab
+%cd matlab
 pwd
 clear all
 format compact
@@ -29,11 +29,9 @@ format compact
 
 {:.output_stream}
 ```
-
+/Users/eechris/dev/eglm03-textbook/content/04/2/matlab/matlab
 ans =
-
-    '/Users/eechris/dev/eglm03-textbook/content/04/1/matlab'
-
+    '/Users/eechris/dev/eglm03-textbook/content/04/2/matlab'
 
 ```
 
