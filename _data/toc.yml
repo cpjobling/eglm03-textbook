@@ -100,6 +100,8 @@
     url: homework/lead_compensation/problems
   - title: Homework 3 - Lag Compensation
     url: homework/lag_compensation/problems
+  - title: Homework 4 - Lag-Lead and PID Compensation
+    url: homework/lag_lead_pid/problems
 
 - divider: true
 - header: Handouts
