@@ -7,8 +7,8 @@ prev_page:
   url: /homework/lag_compensation/problems
   title: 'Homework 3 - Lag Compensation'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/freqresp/problems
+  title: 'Homework 5 - Frequency Response Cascade Compensator Design'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

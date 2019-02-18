@@ -45,7 +45,7 @@ In most cases it is also important to ensure that the steady-state accuracy of t
 
 In order to reduce the steady-state errors in a system we can use integral action (see [PID compensation](../4/pid)) which has the affect of increasing the system type number by 1 or increase the system gain. 
 
-Unfortunately the latter, because it acts at all frequencies, usually has the effect of reducing stability. 
+Unfortunately gain compensation, because it acts at all frequencies, usually has the effect of reducing stability. 
 
 What is needed is a form of compensation that acts in a frequency dependent way: adding gain at low frequencies while maintaining mid-to-high frequency gains at the values needed to guarantee stable transient behaviour. 
 
