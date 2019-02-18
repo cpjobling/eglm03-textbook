@@ -19,7 +19,7 @@ Set up MATLAB
 
 
 {:.input_area}
-```
+```matlab
 cd matlab
 pwd
 clear all
@@ -41,7 +41,7 @@ is the so-called "lead compensator"
 
 $$D_{\rm{lead}}(s) = {K_c}\left( \frac{s - z_0}{s - p_0}\right)$$
 
-where  $|p_0| > |z_0|$.
+where  $$|p_0| > |z_0|.$$
 
 Considering the frequency response of $D_{\mathrm{lead}}$  
 
@@ -106,7 +106,7 @@ Define the plant
 
 
 {:.input_area}
-```
+```matlab
 G1 = tf(1,conv([1, 0],[1, 1])); H=1;
 ```
 
@@ -116,7 +116,7 @@ Plot root-locus
 
 
 {:.input_area}
-```
+```matlab
 rlocus(G1*H)
 ```
 
@@ -132,7 +132,7 @@ However, if we use the zero of a cascade lead compensator to cancel the pole at 
 
 
 {:.input_area}
-```
+```matlab
 D1 = zpk([-1],[-4],1);
 Go1 = D1*G1*H;
 ```
@@ -141,7 +141,7 @@ Go1 = D1*G1*H;
 
 
 {:.input_area}
-```
+```matlab
 rlocus(Go1)
 ```
 
@@ -155,7 +155,7 @@ which will have a closed-loop pole at the desired location when the gain is
 
 
 {:.input_area}
-```
+```matlab
 Kc = rlocfind(Go1,-2+2j)
 ```
 
@@ -225,7 +225,7 @@ of the plant and feedback at $s_1$ is obtained as follows.
 
 
 {:.input_area}
-```
+```matlab
 G = tf(1,[1,0,0]);
 H = 1;
 GH = G*H;
@@ -239,7 +239,7 @@ directly using the Matlab equivalent of the angle criterion
 
 
 {:.input_area}
-```
+```matlab
 [zeros,poles,gain]=zpkdata(GH,'v');
 ```
 
@@ -249,7 +249,7 @@ contribution in degrees
 
 
 {:.input_area}
-```
+```matlab
 contrib = (180/pi)*(sum(angle(s1 - zeros)) - sum(angle(s1 - poles)))
 ```
 
@@ -272,7 +272,7 @@ $$\begin{array}{c}\angle G({s_1})H({s_1}) + {\phi _c} =  - {180^ \circ
 
 
 {:.input_area}
-```
+```matlab
 phi_c = -180 - contrib
 ```
 
@@ -290,7 +290,7 @@ phi_c =
 
 
 {:.input_area}
-```
+```matlab
 half_phi_c = phi_c/2
 ```
 
@@ -310,7 +310,7 @@ Because the line BA and OD are parallel, the angle subtended by the line OAB is 
 
 
 {:.input_area}
-```
+```matlab
 angle_OAB = 135;
 angle_BAD = angle_OAB/2 - half_phi_c;
 angle_BEO = angle_OAB/2 + half_phi_c;
@@ -322,7 +322,7 @@ and by parallel line theory
 
 
 {:.input_area}
-```
+```matlab
 theta_p = angle_BAD
 ```
 
@@ -340,7 +340,7 @@ theta_p =
 
 
 {:.input_area}
-```
+```matlab
 theta_z = angle_BEO
 ```
 
@@ -360,7 +360,7 @@ The pole and zero locations are given by
 
 
 {:.input_area}
-```
+```matlab
 p0 = -2-2/tan(theta_p*pi/180)
 ```
 
@@ -378,7 +378,7 @@ p0 =
 
 
 {:.input_area}
-```
+```matlab
 z0 = -2-2/tan(theta_z*pi/180)
 ```
 
@@ -404,7 +404,7 @@ $${K_0} = \left( \frac{\left| s_1 - p_0 \right|}{\left| s - z_0
 
 
 {:.input_area}
-```
+```matlab
 Ko = (abs(s1-p0)*prod(abs(s1-poles)))/(abs(s1-z0)*prod(abs(s1-zeros)))
 ```
 
@@ -424,7 +424,7 @@ Let us also check this result using the root locus.
 
 
 {:.input_area}
-```
+```matlab
 D = zpk(z0,p0,1);
 Go=D*GH;
 rlocus(Go)
@@ -438,7 +438,7 @@ rlocus(Go)
 
 
 {:.input_area}
-```
+```matlab
 Kc = rlocfind(Go,s1)
 ```
 
@@ -465,7 +465,7 @@ $$G_2(s) = \frac{4(s+2)}{s^2 + 4s + 8}$$
 
 
 {:.input_area}
-```
+```matlab
 G1 = tf(8,[1, 4, 8]);
 G2 = tf(4*[1, 2],[1, 4, 8]);
 G3 = feedback(Kc*D*G,H)
@@ -489,7 +489,7 @@ Continuous-time zero/pole/gain model.
 
 
 {:.input_area}
-```
+```matlab
 [y1,t1]=step(G1);
 [y2,t2]=step(G2);
 [y3,t3]=step(G3);

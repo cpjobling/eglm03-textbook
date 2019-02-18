@@ -55,7 +55,7 @@ The lag compensator has the transfer function:
 
 $$D_{\mathrm{lag}}(s)=K_c\left(\frac{s-z_0}{s-p_0}\right)$$
 
-where $|z_0| > |p_0|$.
+where $$|z_0| > |p_0|.$$
 
 Considering the frequency response of $D_{\mathrm{lag}}(s)$
 

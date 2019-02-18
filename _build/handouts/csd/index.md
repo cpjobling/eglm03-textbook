@@ -3,8 +3,8 @@ redirect_from:
   - "/handouts/csd/index"
 title: 'Control System Design Methods'
 prev_page:
-  url: /homework/lag_compensation/problems
-  title: 'Homework 3 - Lag Compensation'
+  url: /homework/lag_lead_pid/problems
+  title: 'Homework 4 - Lag-Lead and PID Compensation'
 next_page:
   url: /handouts/csd/1
   title: '1. Aims of Control Systems Analysis and Design'
