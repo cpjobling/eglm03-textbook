@@ -27,6 +27,16 @@ format compact
 ```
 
 
+{:.output_stream}
+```
+
+ans =
+
+    '/Users/eechris/dev/eglm03-textbook/content/03/4/matlab'
+
+
+```
+
 # Cascade Lead compensation
 
 ## Introduction
@@ -176,7 +186,7 @@ $$G_2(s) = \frac{1}{(s + 1)(s + 2)}$$
 the zero should be used to cancel the pole at $s=-2$. We leave it as an
 exercise to prove that the compensator
 
-$$D_2(s)=2.5\left(\frac{s+2}{s+3}\right)$$
+$$D_2(s)=5\left(\frac{s+2}{s+3}\right)$$
 
 gives the desired closed-loop poles.
 
