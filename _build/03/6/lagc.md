@@ -29,9 +29,11 @@ format compact
 
 {:.output_stream}
 ```
-/Users/eechris/dev/eglm03-textbook/content/03/6/matlab/matlab
+
 ans =
+
     '/Users/eechris/dev/eglm03-textbook/content/03/6/matlab'
+
 
 ```
 
@@ -423,6 +425,7 @@ The benefits of the lag compensated repsonse can only be really seen when we com
 ```matlab
 Ge1 = 1/(1+K0*G*H);
 [y3,t3]=step(Ge1*1/s,10);
+
 ```
 
 
@@ -474,11 +477,5 @@ H = 1;
 F = 1;
 ```
 
-
-{:.output_stream}
-```
-Created file '/Users/eechris/dev/eglm03-textbook/content/03/6/matlab/params.m'.
-
-```
 
 using this Simulink model [lag_sim.slx](matlab/lag_sim.slx) [[params.m](matlab/params.c)].

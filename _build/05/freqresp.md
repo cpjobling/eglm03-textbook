@@ -3,8 +3,8 @@ redirect_from:
   - "/05/freqresp"
 title: 'Frequency Response Design'
 prev_page:
-  url: /04/3/analpid
-  title: 'Analytical Design of a PID Compensator'
+  url: /04/4/autotune
+  title: 'PID Autotuning in MATLAB'
 next_page:
   url: /05/1/freqlead
   title: 'Frequency Response Design of a Lead Compensator'

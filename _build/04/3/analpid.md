@@ -7,8 +7,8 @@ prev_page:
   url: /04/2/tuning
   title: 'Manually Tuning a PID compensator'
 next_page:
-  url: /05/freqresp
-  title: 'Frequency Response Design'
+  url: /04/4/autotune
+  title: 'PID Autotuning in MATLAB'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

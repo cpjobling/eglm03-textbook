@@ -90,7 +90,7 @@ $$H(z) = \frac{b_0}{1 + a_1z^{-1} + \ldots + a_n z^{-n}}$$
 A digital system in this form is known as an "*all pole, infinite
 impulse response, recursive auto-regressive digital filter.*"
 
-### z Transfer Function (2)
+### z Transfer Function (3)
 
 When $a_1 = a_2 = \cdots = a_n = 0$ then the transfer function is
 $$H(z) = b_0 + b_{1}z^{-1} + \ldots + b_n
@@ -124,8 +124,7 @@ This was implemented with the physically realistic integral operator
 
 This concludes the pre-class presentation.
 
-In the class we will look at system response and compute the impulse and
-step responses of and example system.
+In the class we will look at system response and compute the impulse and step responses of an example system.
 
 ## Digital System Response
 
@@ -944,7 +943,7 @@ A simulink model of the digital implementation is here [digiresp.slx](matlab/dig
 
 {:.input_area}
 ```matlab
-%cd matlab
+cd matlab
 digiresp_model
 ```
 
