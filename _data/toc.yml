@@ -62,6 +62,8 @@
     url: /04/2/tuning
   - title: Analytical Design of a PID Compensator
     url: /04/3/analpid 
+  - title: PID Autotuning in MATLAB
+    url: /04/4/autotune
 - title: Frequency Response Design
   url: /05/freqresp
   sections:
