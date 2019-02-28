@@ -3,8 +3,8 @@ redirect_from:
   - "/handouts/csd/index"
 title: 'Control System Design Methods'
 prev_page:
-  url: /homework/freqresp/problems
-  title: 'Homework 5 - Frequency Response Cascade Compensator Design'
+  url: /homework/digirev/problems
+  title: 'Homework 6 - Digital Systems Revision'
 next_page:
   url: /handouts/csd/1
   title: '1. Aims of Control Systems Analysis and Design'

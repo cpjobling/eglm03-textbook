@@ -7,8 +7,8 @@ prev_page:
   url: /homework/lag_lead_pid/problems
   title: 'Homework 4 - Lag-Lead and PID Compensation'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/digirev/problems
+  title: 'Homework 6 - Digital Systems Revision'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
