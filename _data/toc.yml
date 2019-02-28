@@ -106,6 +106,9 @@
     url: homework/lag_lead_pid/problems
   - title: Homework 5 - Frequency Response Cascade Compensator Design
     url: homework/freqresp/problems
+  - title: Homework 6 - Digital Systems Revision
+    url: homework/digirev/problems
+
 
 - divider: true
 - header: Handouts
