@@ -84,6 +84,9 @@
     url: 06/4/digictrl
 - title: Modelling Systems in State-Space
   url: /07/index
+  sections:
+  - title: State-Space Models
+    url: /07/1/intro2ss
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true

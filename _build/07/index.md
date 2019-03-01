@@ -6,7 +6,7 @@ prev_page:
   url: /06/4/digictrl
   title: 'Introduction to Digital Control'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /07/1/intro2ss
+  title: 'State-Space Models'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---

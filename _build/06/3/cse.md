@@ -67,7 +67,8 @@ Which can be represented in transform as
 From the preceding arguments 
 
 $$\begin{equation}
-    z^{-1} = e^{-sT}\end{equation}$$ 
+z^{-1} = e^{-sT}
+\end{equation}$$ 
     
 
 That is $$\begin{equation}
@@ -253,13 +254,15 @@ $$Y(z)=z^{-1}Y(z)+\frac{T}{2}\{z^{-1}U(z)+U(z)\}$$
 
 thus
 
-$$\frac{Y(z)}{U(z)}=D(z)=\frac{T}{2}\left\{ {\frac{{1 + {z^{ - 1}}}}{{1 - {z^{ - 1}}}}} \right\}.$$
+
+$$\frac{Y(z)}{U(z)}=D(z)=\frac{T}{2}\left\{ {\frac{1 + {z^{ - 1}}}{1 - {z^{ - 1}}}} \right\}.$$
+
 
 #### Approximation of s by numerical integration
 
 By comparison with continuous integration $Y(s)/U(s)=1/s$, this result, obtained by *numerical integration* allows us to say that 
 
-$$s \approx \frac{2}{T}\{{\frac{1-z^{-1}}{1+z^{-1}}}\}.$$ 
+$$s \approx \frac{2}{T}\left\{\frac{1-z^{-1}}{1+z^{-1}}\right\}.$$ 
 
 These results are summarised in the next few slides.
 
@@ -388,8 +391,8 @@ As $D(s)$ is type 1, we can't use the value of $D(0)$ to compute the DC
 gain. Instead, let us compute the gain at $s = -1$: 
 
 $$\begin{aligned}
-  D( - 1) =& {\left. {\frac{{s + a}}{{s(s + b)}}} \right|_{s =  - 1}} \\
-   =& \frac{{-1 + a}}{{( - 1)(-1 + b)}} = \frac{{a - 1}}{{(1 - b)}} \\\end{aligned}$$
+  D( - 1) =& \left. \frac{s + a}{s(s + b)} \right|_{s =  - 1} \\
+   =& \frac{-1 + a}{( - 1)(-1 + b)} = \frac{a - 1}{(1 - b)} \\\end{aligned}$$
 
 The equivalent value $s=-1$ in the $z$-plane is $z=e^{-T}$.
 
