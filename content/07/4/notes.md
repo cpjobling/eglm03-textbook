@@ -1,774 +1,912 @@
-The canonical forms described in the last lecture give different
-descriptions of the same transfer function (TF) and are therefore
-equivalent in their overall input-output relationship. This means that
-it should be possible to convert one canonical form into another by the
-operation of simple matrix operations. Furthermore, by transforming a
-system to the *normal form*, determining the response and mapping back,
-it is possible to determine the total system response of any state space
-system.
+Although a state-space model may uniquely represent a given dynamic
+system, there is no state-space model that uniquely represents a given
+transfer function. That is there are many state-space models that can be
+transformed into a given transfer function. If one begins the analysis
+of a dynamic system from an analysis of the elementary dynamics then the
+state space model that results from such an analysis will accurately
+reflect the physical state variables in the system. However, if one's
+analysis begins from a differential equation or (equivalently) from a
+transfer function, then it is convenient to transform the model
+description into one of a small number of "standard" or *canonical
+forms*.
 
-The *eigenvalues* of the state matrix $\mathbf{A}$ have an important
-influence on the system response and understanding them is key to
-understanding the general solution of state-space systems.
+Standard forms for state space models derived from differential
+equations or transfer function models.
 
-In this lecture we define eigenvalues and eigenvectors, show the system
-transformation method and prove that it has no impact on the system
-eigenvalues, show how it can be used to transform an arbitrary
-state-space model into one with a diagonal (normal) structure, and
-finally we use these results to find a general time-response solution to
-the state space equations.
+-   Derivation of the companion form
 
--   For a given transfer function the canonical forms are equivalent in
-    their input-output relationships.
+-   Example
 
--   We can convert one form of canonical system into another by the
-    application of simple matrix operations.
+Converting a Differential Equation into State Space Form {#converting-a-differential-equation-into-state-space-form .unnumbered}
+========================================================
 
--   Transforming to normal form simplifies the calculation of system
-    response.
+These notes describe how a general differential equation may be
+converted into a state-space model.
 
--   The *eigenvalues* of the $\mathbf{A}$ matrix are key to the process.
+Consider the general differential equation:
 
--   Knowledge of a system's eigenvalues means that we can determine the
-    system response of any LTI system.
+Consider the equation: $$\frac{d^{n}y}{dt^{n}} +
+a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
+y = b_0 u$$
 
-<!-- -->
+In class we will show how this can be converted into the so-called
+"companion form" state-space model.
 
--   Eigenvalues and eigenvectors
+$$\frac{d^{n}y}{dt^{n}} +
+a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
+y = b_0 u$$
 
--   System transformation
+We rearrange this equation so that the highest power is on the left
+$$\frac{d^{n}y}{dt^{n}} =
+-a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}-a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}-\cdots-a_1\frac{dy}{dt}-a_0
+y + b_0 u.$$ Let: $$\begin{aligned}
+x_1 &=& y \\ x_2 &=& \frac{dy}{dt} \\ x_3 & = & \frac{d^2y}{dt^2}
+\\ \vdots \\ x_{n-1} &=& \frac{d^{n-2}y}{dt^{n-2}} \\ x_{n} &=& \frac{d^{n-1}y}{dt^{n-1}}\end{aligned}$$
+If we differentiate both sides of these new definitions we obtain
+$$\begin{aligned}
+\dot{x}_1 &=& \frac{dy}{dt} \\ \dot{x}_2 &=& \frac{d^2y}{dt^2} \\
+\dot{x}_3 & = & \frac{d^3y}{dt^3}
+\\ \vdots \\ \dot{x}_{n-1}  &=& \frac{d^{n-1}y}{dt^{n-1}} \\ \dot{x}_{n} &=& \frac{d^{n}y}{dt^{n}}\end{aligned}$$
 
--   Diagonalization of a state space model
+These equations represent the left-hand-side of the state equations and
+if we make the substitutions we get $$\begin{aligned}
+\dot{x}_1 &=&
+   x_2 \\ \dot{x}_2 &=&  x_3   \\
+\dot{x}_3 & = &  x_4
+\\ \vdots \\ \dot{x}_{n-1}  &=& x_n \\ \dot{x}_{n} &=&
+-a_{0}x_1 -a_1x_2 - \cdots  -a_{n-2}x_{n-1} -a_{n-1}x_{n} + b_0 u\end{aligned}$$
+We then define the state vector $$\mathbf{x}=[x_1,\ x_2,\ \ldots,\
+x_n]^T$$ and the matrix form of the state equations are
+$$\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & 0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & 1 \\
+  -a_{0} & -a_{1} & -a_{2} & \cdots & -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{array}\right]u$$ The system matrix is in "*companion form*", so
+called because the coefficients in the final row are the same as for the
+differential equation. The output equation depends on the dependent
+variable of interest but the simplest is $y=x_1$ which gives the
+solution of the differential equation. Thus
+$$y = [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.$$
 
--   Solution to the general state equations
+The transfer function equivalent of this differential equation is
+obtained from the differential equation: $$\frac{d^{n}y}{dt^{n}} +
+a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
+y = b_0 u$$ The transform of this equation, ignoring initial conditions,
+is $$\left(s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0\right)Y(s) = b_0
+U(s)$$ so the transfer function is
+$$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.$$ Note that the
+numerator has no terms in $s$. We shall consider completely general case
+for both proper and strictly proper systems later.
 
-Eigenvalues and Eigenvectors {#sub:eigenvalues_and_eigenvectors .unnumbered}
-============================
+The Companion Form {#the-companion-form .unnumbered}
+==================
 
-Definitions {#ssub:Definitions .unnumbered}
------------
+We have just shown that a state space model for the system defined by
+the general differential equation, shown in , was the companion form
+illustrated in . This structure of this state-space model is illustrated
+in .
 
-*Eigenvector*:[^1] The eignevectors of the matrix $\mathbf{A}$ are all
-vectors $\mathbf{x}_i\ne\mathbf{0}$, which under the transformation
-$\mathbf{A}$ become multiples of themselves; that is,
-$$\label{eq:eigenvector}
-\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$$ where each $\lambda_i$ is
-a constant called an *eigenvalue*.
+[\[slide:l5s1\]]{#slide:l5s1 label="slide:l5s1"}
+$$\frac{d^{n}y}{dt^{n}} +
+a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
+y = b_0 u$$ or transfer function $$\label{canon1}
+G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.$$ The state variables in
+this model are the so-called "*phase variables*" $x_1 = y$,
+$x_2 = dy/dt$, $\ldots$ $x_n = d^n/dt^n$.
 
-The eignevectors of the matrix $\mathbf{A}$ are all vectors
-$\mathbf{x}_i\ne\mathbf{0}$, which under the transformation $\mathbf{A}$
-become multiples of themselves; that is, $$\label{eq:eigenvector}
-\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$$ where each $\lambda_i$ is
-a constant called an *eigenvalue*.
+[\[slide:l5s2\]]{#slide:l5s2 label="slide:l5s2"} $$\begin{aligned}
+ \dot{\mathbf{x}} &=&
+\left[\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & 0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & 1 \\
+  -a_{0} & -a_{1} & -a_{2} & \cdots & -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  b_0
+\end{array}\right]u\\
+y & = & [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{aligned}$$
 
-illustrates this definition of eigenvectors. If $\mathbf{Ax}$ is not
-collinear with $\mathbf{x}$ after the transformation, $\mathbf{x}$ is
-not an eigenvector. If $\mathbf{Ax}$ is collinear with $\mathbf{x}$
-after the transformation, $\mathbf{x}$ is an eigenvector.
+[\[slide:l5s3\]]{#slide:l5s3 label="slide:l5s3"}
 
-[\[slide:eigenvector\]]{#slide:eigenvector label="slide:eigenvector"}
+System with a Strictly Proper Transfer Function {#system-with-a-strictly-proper-transfer-function .unnumbered}
+-----------------------------------------------
 
-To be an eigenvector, the transformation $\mathbf{Ax}$ must be collinear
-with $\mathbf{x}$. Thus, in (a), $\mathbf{x}$ is not an eigenvector: in
-(b), it is.
+Now let us consider the case of a system that has derivatives of the
+input.
 
-*Eigenvalues*: The eigenvalues of the matrix $\mathbf{A}$ are the values
-of $\lambda_i$ that satisfy
-([\[eq:eigenvector\]](#eq:eigenvector){reference-type="ref"
-reference="eq:eigenvector"}) for $\mathbf{x}_i\ne \mathbf{0}$.
+A strictly proper system has transfer function
+$$G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
+b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$ where $m<n$.
 
-To find the eigenvectors, we arrange equation
-([\[eq:eigenvector\]](#eq:eigenvector){reference-type="ref"
-reference="eq:eigenvector"}). Eigenvectors, $\mathbf{x}_i$, satisfy
-$$\label{eq:581}
-    \mathbf{0}=(\lambda_i\mathbf{I}-\mathbf{A})\mathbf{x}_i$$ Solving
-for $\mathbf{x}_i$ by premultiplying both sides by
-$(\lambda_i\mathbf{I}-\mathbf{A})^{-1}$ yields
-$$\mathbf{x}_i = (\lambda_i\mathbf{I}-\mathbf{A})^{-1}\mathbf{0} =
-           \frac{\textrm{adj}(\lambda_i\mathbf{I}-\mathbf{A})^{-1}}{\det(\lambda_i\mathbf{I}-\mathbf{A})^{-1}}\mathbf{0}$$
-Since $\mathbf{x}_i\ne \mathbf{0}$, a nonzero solution exists if
-$$\label{eq:eigenvalue}
-    \det(\lambda_i\mathbf{I}-\mathbf{A}) = \mathbf{0} \label{eq:eigenvalue}$$
-From which $\lambda_i$, the eigenvalues, can be found.
+How is this more general system converted into a state-space model?
 
-The eigenvalues of the matrix $\mathbf{A}$ are the values of $\lambda_i$
-that satisfy ([\[eq:eigenvector\]](#eq:eigenvector){reference-type="ref"
-reference="eq:eigenvector"}) for $\mathbf{x}_i\ne \mathbf{0}$.
+A strictly proper system has transfer function
+$$G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
+b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$ where $m<n$.
 
-The eigenvectors, $\mathbf{x}_i$, satisfy
-$$\mathbf{0}=(\lambda_i\mathbf{I}-\mathbf{A})\mathbf{x}_i \label{eq:581}$$
-Solving for $\mathbf{x}_i$ (see notes), a nonzero solution exists if
-$$\label{eq:eigenvalue}
-    \det(\lambda_i\mathbf{I}-\mathbf{A}) = \mathbf{0} \label{eq:eigenvalue}$$
-From which $\lambda_i$, the eigenvalues, can be found.
+How is this more general system converted into a state-space model?
 
-We are now ready to show how to find the eigenvectors $\mathbf{x}_i$.
-First we find the eigenvalues, $\lambda_i$, using
-$\det(\lambda_i\mathbf{I}-\mathbf{A} = \mathbf{0})$, and then we use
-equation ([\[eq:eigenvector\]](#eq:eigenvector){reference-type="ref"
-reference="eq:eigenvector"}) to find the eigenvectors.
+Well, let us introduce an intermediate variable $W(s)$ and use this to
+split the transfer function into two parts like so: $$\label{eq:l5e1}
+W(s) = \frac{1}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}U(s)$$ and
+$$\label{eq:l5e2}
+Y(s) = \left(b_ms^m +
+b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0\right)W(s).$$
 
-To find the eigenvectors $\mathbf{x}_i$ of a system matrix $\mathbf{A}$
+Now equation ([\[eq:l5e1\]](#eq:l5e1){reference-type="ref"
+reference="eq:l5e1"}) has the same form as the system of
+equation ([\[canon1\]](#canon1){reference-type="ref"
+reference="canon1"}) with $b_0 = 1$. So if we define our first phase
+variable to be $X_1(s) = W(s)$ then the state matrix $\mathbf{A}$ will
+be the same as for the previous example and the input matrix
+$\mathbf{B} = \left[0, 0, \ldots, 1\right]^T$. To determine the output
+matrix $\mathbf{C}$ we inverse Laplace transform equation
+([\[eq:l5e2\]](#eq:l5e2){reference-type="ref" reference="eq:l5e2"}) to
+get: $$\label{eq:l5e3}
+y(t) = b_m\frac{d^m}{dt^m}w(t) +
+b_{m-1}\frac{d^{m-1}}{dt^{m-1}}w(t)+\cdots+b_1\frac{d}{dt}w(t)+
+b_0w(t).$$ Now, since by definition $x_1(t) = w(t)$, then
+$$y(t) = b_mx_{m+1}(t) + b_{m-1}x_m(t)+\cdots+b_1x_2(t)+
+b_0x_1(t).\label{eq:l5e4}$$ Where, in
+([\[eq:l5e4\]](#eq:l5e4){reference-type="ref" reference="eq:l5e4"}),
+substitutions have been made according to the definition of the phase
+variables. The vector state equations are therefore: $$\begin{aligned}
+ \dot{\mathbf{x}} &=&
+\left[\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & 0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & 1 \\
+  -a_{0} & -a_{1} & -a_{2} & \cdots & -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{array}\right]u\\
+y & = & [b_0,\ b_1,\ \dots,\ b_{m-1}, b_m]
+\mathbf{x}.\end{aligned}$$ Note that the coefficients of the numerator
+appear in reverse order in the $\mathbf{C}$ matrix. The structure of
+this system is illustrated in for the case $m=n-1$.
 
-1.  First find the eigenvalues, $\lambda_i$, using
-    $\det(\lambda_i\mathbf{I}-\mathbf{A}) = \mathbf{0}$
+[\[slide:l5s4\]]{#slide:l5s4 label="slide:l5s4"}
 
-2.  Use $\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$ to find the
-    eigenvectors.
+System with a Proper Transfer Function {#system-with-a-proper-transfer-function .unnumbered}
+--------------------------------------
 
-We will work through an example in class.
+The general form of a transfer function of a proper single-input,
+single-output system of order $n$ is
+$$\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}$$
+How is this system converted into state-space form?
 
-Example 1: finding eigenvectors {#ssub:example_1 .unnumbered}
--------------------------------
+The general form of a transfer function of a proper single-input,
+single-output system of order $n$ is
+$$\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}$$
+How is this system converted into state-space form?
 
-**Problem**: Find the eigenvectors of the matrix
-$${\bf{A}} = \left[ {\begin{array}{*{20}c}
-       { - 3} & 1  \\
-       1 & { - 3}  \\
-    \end{array}} \right]$$
+An alternative form, obtained by dividing the numerator by the
+denominator, is
+$$b_n+\frac{(b_{n-1} - b_n a_{n-1})s^{n-1}+\cdots+(b_1 - b_n a_1)+(b_0 - b_n a_0)}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}.$$
+If we define $d=b_n$ and the modified numerator coefficients are
+$$c_j=b_j - b_n a_j,\ j=1,2,\ldots,n$$ then the transfer function may be
+re-written
+$$d+\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s + c_n}{s^n+a_{n-1}s^{n-1}+\cdots++a_1s + a_0}.$$
+Writing the transfer function in its functional form we have:
+$$Y(s)=d U(s) +\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s +
+c_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}U(s).$$ Performing a similar
+analysis, as before, we obtain the state-equations for a proper system:
+$$\begin{aligned}
+\dot{\mathbf{x}} & = & \left[\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & 0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & 1 \\
+  -a_{0} & -a_{1} & -a_{2} & \cdots & -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{array}\right]u\\
+y & = & [c_0,\ c_1,\ \dots,\ c_{n-1}, c_n] \mathbf{x} + d
+u.\end{aligned}$$ The block diagram fro this system is illustrated in .
 
-**SOLUTION**: The eigenvectors, $\mathbf{x}_i$, satisfy Eq.
-([\[eq:581\]](#eq:581){reference-type="ref" reference="eq:581"}). First,
-use $\det(\lambda_i\mathbf{I}-\mathbf{A})=0$ to find the eigenvalues,
-$\lambda_i$, for Eq. ([\[eq:581\]](#eq:581){reference-type="ref"
-reference="eq:581"}): $$\begin{array}{c}
- \det (\lambda {\bf{I}} - {\bf{A}}) = \left| {\left[ {\begin{array}{*{20}c}
-   \lambda  & 0  \\
-   0 & \lambda   \\
-\end{array}} \right] - \left[ {\begin{array}{*{20}c}
-   { - 3} & 1  \\
-   1 & { - 3}  \\
-\end{array}} \right]} \right| \\
-  = \left| {\begin{array}{*{20}c}
-   {\lambda  + 3} & { - 1}  \\
-   { - 1} & {\lambda  + 3}  \\
-\end{array}} \right| \\
-  = \lambda ^2  + 6\lambda  + 8 \\
- \end{array}$$
+[\[slide:proper\]]{#slide:proper label="slide:proper"}
 
-from which the eigenvalues are $\lambda_1 = -2$ and $\lambda_2 = -4$.
+A system has transfer function
+$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
+This system is "proper" because order of numerator equals order of
+denominator.
 
-Using Eq. ([\[eq:eigenvector\]](#eq:eigenvector){reference-type="ref"
-reference="eq:eigenvector"}) successively with each eigenvalue, we have
-$$\begin{array}{l}
- {\bf{Ax}}_i  = \lambda {\bf{x}}_i  \\
- \left[ {\begin{array}{*{20}c}
-   { - 3} & 1  \\
-   1 & { - 3}  \\
-\end{array}} \right]\left[ {\begin{array}{*{20}c}
-   {x_1 }  \\
-   {x_2 }  \\
-\end{array}} \right] =  - 2\left[ {\begin{array}{*{20}c}
-   {x_1 }  \\
-   {x_2 }  \\
-\end{array}} \right] \\
- \end{array}$$ or $$\begin{aligned}
--3x_1+x_2 & = & -2x_1 \\
-x_1-3x_2 & = & -2x_2\end{aligned}$$ from which $x_1 = x_2$. Thus,
-$$\label{ex1:ev1}
-{\bf{x}} = \left[ {\begin{array}{*{20}c}
-   c  \\
-   c  \\
-\end{array}} \right]$$ Using the other eigenvalue, $-4$, we have
-$$\label{ex1:ev2}
-{\bf{x}} = \left[ {\begin{array}{*{20}c}
-   c  \\
-   -c  \\
-\end{array}} \right]$$ Using Eqs.
-([\[ex1:ev1\]](#ex1:ev1){reference-type="ref" reference="ex1:ev1"}) and
-([\[ex1:ev2\]](#ex1:ev2){reference-type="ref" reference="ex1:ev2"}), one
-choice of eigenvectors is $$\label{ex1:solution}
-{\bf{x}}_1  = \left[ {\begin{array}{*{20}c}
-   1  \\
-   1  \\
-\end{array}} \right]\quad {\rm{and}}\quad {\bf{x}}_2  = \left[ {\begin{array}{*{20}c}
-   1  \\
-   { - 1}  \\
-\end{array}} \right]$$
+Determine the system state-space model in companion form.
 
-Transformation of State Space Models {#transformation-of-state-space-models .unnumbered}
-====================================
+In class we will:
 
-Suppose we have a state space model with states $\mathbf{x}$ and
-matrices $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$ and $\mathbf{D}$ and
-we wish to transform to a model with states $\mathbf{w}$ where
-$\mathbf{x}=\mathbf{Tw}$. $\mathbf{T}$ is the *transformation matrix*
-for the states.
+-   Work through the three cases introduced here
+
+-   Complete the worked example
+
+Example {#example .unnumbered}
+=======
+
+A system has transfer function
+$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
+This system is "proper" because order of numerator equals order of
+denominator.
+
+Determine the system state-space model in companion form.
+
+Solution {#solution .unnumbered}
+--------
+
+First divide the numerator into the denominator to get $$\begin{aligned}
+G(s)&=&\frac{2(s^3 + 7s^2 + 10s) + 2s^2 + 10s + 8}{s^3 + 7s^2 +
+10s}\\ &=& \frac{2s^2 + 10s + 8}{s^3 + 7s^2 + 10s} +
+2.\end{aligned}$$
+
+The companion form of the state matrices are $$\begin{aligned}
+\mathbf{A} & = & \left[\begin{array}{ccc}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  0 & -10 & -7
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  0 \\
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
+  8 & 10 & 2
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
+
+-   Controller canonical form
+
+-   Observer canonical form
+
+-   Normal form
+
+-   Jordan forms
+
+Controller Canonical Form {#controller-canonical-form .unnumbered}
+=========================
+
+If one defines a transfer function in , e.g. as shown in , the result of
+converting the system into state-space form is rather surprisingly not
+the companion form we have seen before. Instead, the result is what is
+known as the *Controller Canonical Form*. This is still a companion form
+because the coefficients of the $\mathbf{A}$ and $\mathbf{C}$ matrices
+are the coefficients of the transfer function's denominator and
+numerator polynomials.
+
+[\[slide:l5s5\]]{#slide:l5s5 label="slide:l5s5"} Let $$G(s)
+=\frac{Y(s)}{U(s)} = \frac{s^2 + 7s + 2 }{s^3 + 9s^2 + 26s + 24}$$
+
+    >> num=[1, 7, 2]; den=[1, 9, 26 24];
+    >> [A,B,C,D]=tf2ss(num,den);
+
+Result: $$\begin{aligned}
+\dot{\mathbf{x}} & = &\left[\begin{array}{ccc}
+  -9 & -26 & -24  \\
+  1 & 0 & 0  \\
+  0 & 1  & 0
+ \end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  1 \\
+  0 \\
+  0
+\end{array}\right]u\\
+y & = & [1,\ 7,\ 2] \mathbf{x}.\end{aligned}$$
+
+The controller canonical form is simply obtained by re-ordering the
+phase variables as shown in , and . The general form of the controller
+canonical state-space model is as shown in .
+
+[\[slide:l5s6\]]{#slide:l5s6 label="slide:l5s6"} $$\begin{aligned}
+ \left[\begin{array}{c}
+  \dot{x}_{1} \\
+  \dot{x}_{2} \\
+  \vdots \\
+  \dot{x}_{n-1} \\
+  \dot{x}_n
+\end{array}\right] &=& \left[\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & 0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & 1 \\
+  -a_{0} & -a_{1} & -a_{2} & \cdots & -a_{n-1}
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{1} \\
+  {x}_{2} \\
+  \vdots \\
+  {x}_{n-1} \\
+  {x}_{n}
+\end{array}\right]+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  \vdots \\
+  0 \\
+  1
+\end{array}\right]u\\
+y & = & [b_0,\ b_1,\ \dots,\ b_{n-2}, b_{n-1}][
+  {x}_{1},\
+  {x}_{2},\
+  \ldots,\
+  {x}_{n-1},\
+  {x}_{n}]^T\end{aligned}$$
+
+[\[slide:l5s6-2\]]{#slide:l5s6-2 label="slide:l5s6-2"}
 
 $$\begin{aligned}
-	\frac{d\mathbf{x}}{dt} & = & \mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u} \\
-	\frac{d\mathbf{Tw}}{dt} & = & \mathbf{ATw}+\mathbf{B}\mathbf{u} \\
-	\mathbf{T}\frac{d\mathbf{w}}{dt} & = & \mathbf{ATw}+\mathbf{B}\mathbf{u} \\
-	\frac{d\mathbf{w}}{dt} & = & \mathbf{T}^{-1}\mathbf{ATw}+\mathbf{T}^{-1}\mathbf{B}\mathbf{u} \\	\end{aligned}$$
+ \left[\begin{array}{c}
+  \dot{x}_{n} \\
+  \dot{x}_{n-1} \\
+  \vdots \\
+  \dot{x}_{2} \\
+  \dot{x}_{1}
+\end{array}\right] &=& \left[\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & 0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & 1 \\
+  -a_{0} & -a_{1} & -a_{2} & \cdots & -a_{n-1}
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{n} \\
+  {x}_{n-1} \\
+  \vdots \\
+  {x}_{2} \\
+  {x}_{1}
+\end{array}\right]+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  \vdots \\
+  0 \\
+  1
+\end{array}\right]u\\ y & = & [b_0,\ b_1,\ \dots,\ b_{n-2}, b_{n-1}]
+\left[
+  {x}_{n},\
+  {x}_{n-1},\
+  \ldots,\
+  {x}_{2},\
+  {x}_{1}
+\right]^T\end{aligned}$$
 
-Suppose we have a state space model with states $\mathbf{x}$ and
-matrices $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$ and $\mathbf{D}$ and
-we wish to transform to a model with states $\mathbf{w}$ where
-$\mathbf{x}=\mathbf{Tw}$. $\mathbf{T}$ is the *transformation matrix*
-for the states.
-
-$$\begin{aligned}
-	\frac{d\mathbf{x}}{dt} & = & \mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u} \\
-	\frac{d\mathbf{Tw}}{dt} & = & \mathbf{ATw}+\mathbf{B}\mathbf{u} \\
-	\mathbf{T}\frac{d\mathbf{w}}{dt} & = & \mathbf{ATw}+\mathbf{B}\mathbf{u} \\
-	\frac{d\mathbf{w}}{dt} & = & \mathbf{T}^{-1}\mathbf{ATw}+\mathbf{T}^{-1}\mathbf{B}\mathbf{u} \\	\end{aligned}$$
-
-Similarly for the output equation: $$\begin{aligned}
-	\mathbf{y} & = & \mathbf{Cx} + \mathbf{Du} \\
-	\mathbf{y} & = & \mathbf{CTw} + \mathbf{Du} \\	\end{aligned}$$
-
-Similarly for the output equation: $$\begin{aligned}
-	\mathbf{y} & = & \mathbf{Cx} + \mathbf{Du} \\
-	\mathbf{y} & = & \mathbf{CTw} + \mathbf{Du} \\	\end{aligned}$$
-
-Therefore the new state space model is:
-
-$$\begin{aligned}
-	\frac{d\mathbf{w}}{dt} & = & \mathbf{A}'\mathbf{w} + \mathbf{B}'\mathbf{u} \\
-	\mathbf{y} & = & \mathbf{C}'\mathbf{w}+\mathbf{D}'\mathbf{u}\end{aligned}$$
-
-where $\mathbf{A}'=\mathbf{T}^{-1}\mathbf{A}\mathbf{T}$,
-$\mathbf{B}'=\mathbf{T}^{-1}\mathbf{B}$, $\mathbf{C}'=\mathbf{CT}$, and
-$\mathbf{D}'=\mathbf{D}$.
-
-Therefore the new state space model is:
+[\[slide:l5s7\]]{#slide:l5s7 label="slide:l5s7"}
 
 $$\begin{aligned}
-	\frac{d\mathbf{w}}{dt} & = & \mathbf{A}'\mathbf{w} + \mathbf{B}'\mathbf{u} \\
-	\mathbf{y} & = & \mathbf{C}'\mathbf{w}+\mathbf{D}'\mathbf{u}\end{aligned}$$
+ \left[\begin{array}{c}
+  \dot{x}_{1} \\
+  \dot{x}_{2} \\
+  \vdots \\
+  \dot{x}_{n-1} \\
+  \dot{x}_{n}
+\end{array}\right] &=& \left[\begin{array}{ccccc}
+ -a_{n-1} & -a_{n-2} & \cdots & -a_{1} & -a_{0} \\
+   1 & 0 & \cdots & 0 & 0 \\
+  0 & 1 & \cdots & 0 & 0 \\
+  \vdots & \vdots & \ddots & \vdots & \vdots \\
+  0 & 0 & \cdots & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{1} \\
+  {x}_{2} \\
+  \vdots \\
+  {x}_{n-1} \\
+  {x}_{n}
+\end{array}\right]+\left[\begin{array}{c}
+  1 \\
+  0 \\
+  \vdots \\
+  0 \\
+  0
+\end{array}\right]u\\ y & = & [b_{n-1},\ b_{n-2},\ \dots,\ b_{1}, b_{0}]
+\left[
+  {x}_{1},\
+  {x}_{2},\
+  \ldots,\
+  {x}_{n-1},\
+  {x}_{n}
+\right]^T\end{aligned}$$
 
-where $\mathbf{A}'=\mathbf{T}^{-1}\mathbf{A}\mathbf{T}$,
-$\mathbf{B}'=\mathbf{T}^{-1}\mathbf{B}$, $\mathbf{C}'=\mathbf{CT}$, and
-$\mathbf{D}'=\mathbf{D}$.
+[\[slide:l5s8\]]{#slide:l5s8 label="slide:l5s8"}
 
--   Notice that the state matrix $\mathbf{A}'$for the new model is a
-    *similarity transformation* on the $\mathbf{A}$ matrix of the
-    original system and therefore they share the same set of
-    eigenvalues.
+Observer Canonical Form {#observer-canonical-form .unnumbered}
+=======================
 
--   This should not be surprising since the poles of the system being
-    modelled correspond to the eigenvalues of the state matrix, whatever
-    the choice of states.
+The observer canonical form is the \"dual\" of the controller canonical
+form.
 
-Proof {#sub:invariance_of_system_transformation .unnumbered}
------
+The observer canonical form is the \"dual\" of the controller canonical
+form. The state equations are shown in . Note that the $\mathbf{A}$
+matrix is the transpose of the controller canonical form and that
+$\mathbf{b}$ and $\mathbf{c}$ are the transposes of the $\mathbf{c}$ and
+$\mathbf{b}$ matrices, respectively, of the controller canonical form.
 
-$$\begin{aligned}
-	\mathbf{Ax} & = & \lambda\mathbf{x} \\
-	\mathbf{T}^{-1}\mathbf{Ax} & = & \lambda\mathbf{T}^{-1}\mathbf{x} \\	\end{aligned}$$
-Let $\mathbf{x}=\mathbf{Tw}$ then $$\begin{aligned}
-	\mathbf{T}^{-1}\mathbf{ATw} & = & \lambda\mathbf{T}^{-1}\mathbf{Tw} \\	
-	(\mathbf{T}^{-1}\mathbf{AT})\mathbf{w} & = & \lambda\mathbf{w} \\	\end{aligned}$$
+[\[slide:l5s9\]]{#slide:l5s9 label="slide:l5s9"} $$\begin{aligned}
+ \left[\begin{array}{c}
+  \dot{x}_{1} \\
+  \dot{x}_{2} \\
+  \vdots \\
+  \dot{x}_{n-1} \\
+  \dot{x}_{n}
+\end{array}\right] &=& \left[\begin{array}{ccccc}
+ -a_{n-1} & 1 & 0 & \cdots & 0 \\
+ -a_{n-2} & 0 & 1 & \cdots & 0 \\
+ -a_{n-3} & 0 & 0 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+ -a_{1} & 0 & \cdots & 0 & 1 \\
+ -a_{0} & 0 & \cdots & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{1} \\
+  {x}_{2} \\
+  {x}_{3} \\
+  \vdots \\
+  {x}_{n-1} \\
+  {x}_{n}
+\end{array}\right]+\left[\begin{array}{c}
+  b_{n-1} \\
+  b_{n-2} \\
+  b_{n-3} \\
+  \vdots \\
+  b_{1} \\
+  b_0
+\end{array}\right]u\\ y & = & [1,\ 0,\ 0,\ \ldots, 0]\left[
+  {x}_{1},\
+  {x}_{2},\
+  \ldots,\
+  {x}_{n-1},\
+  {x}_{n}
+\right]^T\end{aligned}$$
 
-The transformation $\mathbf{T}^{-1}\mathbf{AT}$ is a *similarity
-transform*. That is the eigenvalues are the same as for $\mathbf{A}$.
+[\[slide:l5s\]]{#slide:l5s label="slide:l5s"}
 
-*Proof* $$\begin{aligned}
-	\mathbf{Ax} & = & \lambda\mathbf{x} \\
-	\mathbf{T}^{-1}\mathbf{Ax} & = & \lambda\mathbf{T}^{-1}\mathbf{x} \\	\end{aligned}$$
-Let $\mathbf{x}=\mathbf{Tw}$ then $$\begin{aligned}
-	\mathbf{T}^{-1}\mathbf{ATw} & = & \lambda\mathbf{T}^{-1}\mathbf{Tw} \\	
-	(\mathbf{T}^{-1}\mathbf{AT})\mathbf{w} & = & \lambda\mathbf{w} \\	\end{aligned}$$
-
-Therefore if $\lambda$ is an eigenvalue of $\mathbf{A}$ the it is also
-one of $\mathbf{A}'=\mathbf{T}^{-1}\mathbf{AT}$.
-
-*QED*.
-
-Example 2: Similarity transformations on state equations {#sub:similarity_transforms_on_state_equations .unnumbered}
---------------------------------------------------------
-
-**Problem**: Given the system represented in state space by the
-following equations $$\begin{array}{l}
- {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
-   0 & 1 & 0  \\
-   0 & 0 & 1  \\
-   { - 2} & { - 5} & { - 7}  \\
-\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
-   0  \\
-   0  \\
-   1  \\
-\end{array}} \right]u \\
- y = \left[ {\begin{array}{*{20}c}
-   1 & 0 & 0  \\
-\end{array}} \right]{\bf{x}} \\
- \end{array}$$ transform the system to a new set of state variables,
-$\mathbf{w}$, where the new state variables are related to the original
-state variables, $\mathbf{x}$, as follows: $$\begin{aligned}
-	w_1 & = & 2x_1 \\
-	w_2 & = & 3x_1 + 2x_2 \\
-	w_3 & = & x_1 + 4x_2 + 5x_3\end{aligned}$$
-
-**SOLUTION**: Expressing the transformed states in vector-matrix form,
-$${\bf{w}} = \left[ {\begin{array}{*{20}c}
-   2 & 0 & 0  \\
-   3 & 2 & 0  \\
-   1 & 4 & 5  \\
-\end{array}} \right]{\bf{x}} = {\bf{T}}^{ - 1} {\bf{x}}$$
-
-Thus $$\begin{array}{c}
- {\bf{T}}^{ - 1} {\bf{AT}} = \left[ {\begin{array}{*{20}c}
-   2 & 0 & 0  \\
-   3 & 2 & 0  \\
-   1 & 4 & 5  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   0 & 1 & 0  \\
-   0 & 0 & 1  \\
-   { - 2} & { - 5} & { - 7}  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   {0.5} & 0 & 0  \\
-   { - 0.75} & {0.5} & 0  \\
-   {0.5} & { - 0.4} & {0.2}  \\
-\end{array}} \right] \\
-  = \left[ {\begin{array}{*{20}c}
-   { - 1.5} & 1 & 0  \\
-   { - 1.25} & {0.7} & {0.4}  \\
-   { - 2.5} & {0.4} & { - 6.2}  \\
-\end{array}} \right] \\
- \end{array}$$
-
-$${\bf{T}}^{ - 1} {\bf{B}} = \left[ {\begin{array}{*{20}c}
-   2 & 0 & 0  \\
-   3 & 2 & 0  \\
-   1 & 4 & 5  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   0  \\
-   0  \\
-   1  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   0  \\
-   0  \\
-   5  \\
-\end{array}} \right]$$
-
-$${\bf{CT}} = \left[ {\begin{array}{*{20}c}
-   1 & 0 & 0  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   {0.5} & 0 & 0  \\
-   { - 0.75} & {0.5} & 0  \\
-   {0.5} & { - 0.4} & {0.2}  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   {0.5} & 0 & 0  \\
-\end{array}} \right]$$
-
-Therefore the transformed system is $$\begin{array}{l}
- {\bf{\dot w}} = \left[ {\begin{array}{*{20}c}
-   { - 1.5} & 1 & 0  \\
-   { - 1.25} & {0.7} & {0.4}  \\
-   { - 2.5} & { 0.4} & {-6.2}  \\
-\end{array}} \right]{\bf{w}} + \left[ {\begin{array}{*{20}c}
-   0  \\
-   0  \\
-   5  \\
-\end{array}} \right]u \\
- y = \left[ {\begin{array}{*{20}c}
-   {0.5} & 0 & 0  \\
-\end{array}} \right]{\bf{w}} \\
- \end{array}$$
-
-Diagonalization of a System Matrix {#sec:diagonalization_of_a_system_matrix .unnumbered}
-==================================
-
-If we choose the eigenvectors of a system matrix $\mathbf{A}$ to be the
-basis of a transformation, $\mathbf{T}$, the resulting system matrix
-will be in the diagonal normal form. Let the transformation matrix
-$\mathbf{T}$ consist of the eigenvectors of $\mathbf{A}$,
-$\mathbf{x}_i$. $$\label{eq:591}
-    \mathbf{T}=[\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, \ldots, \mathbf{x}_n]$$
-Since $\mathbf{x}_i$ are eigenvectors,
-$\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$, which can be written
-equivalently as a set of equations expressed by $$\label{eq:592}
-    \mathbf{AT}=\mathbf{T\Lambda}$$ where $\mathbf{\Lambda}$ is a matrix
-which has the eigenvalues $\lambda_i$ on the diagonal in some order and
-zeros elsewhere, and $\mathbf{T}$ is as defined in Eq.
-([\[eq:591\]](#eq:591){reference-type="ref" reference="eq:591"}).
-Solving Eq. ([\[eq:592\]](#eq:592){reference-type="ref"
-reference="eq:592"}) for $\mathbf{\Lambda}$ by premultiplying by
-$\mathbf{T}^{-1}$, we get $$\label{eq:593}
-    \mathbf{\Lambda}=\mathbf{T}^{-1}\mathbf{AT}$$ which is the system
-matrix in normal canonical form.[^2]
-
-Choose the eigenvectors of a system matrix $\mathbf{A}$ to be the basis
-of a transformation $\mathbf{T}$. $$\label{eq:591}
-    \mathbf{T}=[\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, \ldots, \mathbf{x}_n]$$
-$\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$, can be written
-equivalently as a set of equations expressed by $$\label{eq:592}
-    \mathbf{AT}=\mathbf{T\Lambda}$$ Solving Eq.
-([\[eq:592\]](#eq:592){reference-type="ref" reference="eq:592"}) for
-$\mathbf{\Lambda}$ $$\label{eq:593}
-    \mathbf{\Lambda}=\mathbf{T}^{-1}\mathbf{AT}$$ which is the system
-matrix in normal canonical form.
-
-In summary, under the transformation $\mathbf{T}$, consisting of the
-eigenvalues of the system matrix, the transformed system is identical to
-that obtained using the partial fraction expansion of the transfer
-function with distinct real roots.
-
-Example 3: Diagonalization of a system in state space {#ssub:example_2 .unnumbered}
------------------------------------------------------
-
-**Problem**: Given the system shown below, find the diagonal (normal
-form) system that is similar. $$\begin{array}{c}
- {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
-   { - 3} & 1  \\
-   1 & { - 3}  \\
-\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
-   1  \\
-   2  \\
-\end{array}} \right]u \\
- y = \left[ {\begin{array}{*{20}c}
-   2 & 3  \\
-\end{array}} \right]{\bf{x}} \\
- \end{array}$$
-
-**SOLUTION**: First find the eigenvalues and the eigenvectors. This step
-was performed in Example 1. Next form the transformation matrix
-$\mathbf{T}$, whose columns are the eignevectors.
-$${\bf{T}} = \left[ {\begin{array}{*{20}c}
-   1 & 1  \\
-   1 & { - 1}  \\
-\end{array}} \right]$$ finally form the similar systems's system matrix,
-input matrix and output matrix respectively. $$\begin{array}{c}
- {\bf{T}}^{ - 1} {\bf{A}}T = \left[ {\begin{array}{*{20}c}
-   {{1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}} & {{1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-   {{1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}} & { - {1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   { - 3} & 1  \\
-   1 & { - 3}  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   1 & 1  \\
-   1 & { - 1}  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   { - 2} & 0  \\
-   0 & { - 4}  \\
-\end{array}} \right] \\
- {\bf{T}}^{ - 1} {\bf{B}} = \left[ {\begin{array}{*{20}c}
-   {{1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}} & {{1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-   {{1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}} & { - {1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   1  \\
-   2  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   {{3 \mathord{\left/
- {\vphantom {3 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-   { - {1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-\end{array}} \right] \\
- {\bf{CT}} = \left[ {\begin{array}{*{20}c}
-   2 & 3  \\
-\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
-   1 & 1  \\
-   1 & { - 1}  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   5 & { - 1}  \\
-\end{array}} \right] \\
- \end{array}$$ Substituting this result into the equivalent state
-equations gives $$\begin{array}{c}
- {\bf{\dot w}} = \left[ {\begin{array}{*{20}c}
-   { - 2} & 0  \\
-   0 & { - 4}  \\
-\end{array}} \right]{\bf{w}} + \left[ {\begin{array}{*{20}c}
-   {{3 \mathord{\left/
- {\vphantom {3 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-   { - {1 \mathord{\left/
- {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-\end{array}} \right]u \\
- y = \left[ {\begin{array}{*{20}c}
-   5 & { - 1}  \\
-\end{array}} \right]{\bf{w}} \\
- \end{array}$$
-
-Notice that the transformed system matrix is diagonal, with the
-eigenvalues on the diagonal.
-
-Using Diagonalization to Solve State Equations {#using-diagonalization-to-solve-state-equations .unnumbered}
-==============================================
-
-It is possible to obtain solutions for the state equations in any set of
-states, $\mathbf{x}$, by transforming to normal canonical form and
-solving the latter's states, $\mathbf{w}$, as shown in Lecture 16.
-
-The initial states are found, using the inverse transformation, as:
-$$\mathbf{w}_0=\mathbf{T}^{-1}\mathbf{x}_0$$
-
-The solutions to the original states can then be found from $\mathbf{w}$
-using the transformation $$\mathbf{x}=\mathbf{Tw}$$
-
-Since the state space model for $\mathbf{w}$ is in normal form then the
-state matrix, $\mathbf{A}' = \mathbf{\Lambda}$, is diagonal with the
-eigenvalues of $\mathbf{A}$ in some order on the diagonal.
-
-As demonstrated above, the columns of the transformation matrix,
-$\mathbf{T}$ will be formed by concatenation of the corresponding
-eigenvectors of $\mathbf{A}$ in the same order.
-
--   In Lecture 16 we showed how we could determine the solution to a
-    state equation in normal (diagonal form).
-
--   Here we have demonstrated how to use the eignenvalues and
-    eigenvectors to transform a model in state space form to the normal
-    form.
-
--   Thus if we have $\mathbf{w}$ the initial states will be
-    $\mathbf{w}_0=\mathbf{T}^{-1}\mathbf{x}_0$, and
-
--   The solutions to the original states can then be found from
-    $\mathbf{w}$ using the transformation $\mathbf{x}=\mathbf{Tw}$
-
-Example 4 illustrates the procedure.
-
-Example 4 {#sub:example_3 .unnumbered}
----------
-
-**Problem**: Solve the state equations
-$${\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
-   { - 3} & { - 2}  \\
-   1 & 0  \\
-\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
-   1  \\
-   0  \\
-\end{array}} \right]u$$ given $\mathbf{x}_0 = [1, 0]^T$ at $t=0$ and
-$u=0$.
-
-**SOLUTION**: *First find the eigenvalues*: The eigenvalues of the state
-matrix are the roots of: $$\det(\lambda\mathbf{I}-\mathbf{A})=0$$
-$$\begin{array}{l}
- \det \left( {\left[ {\begin{array}{*{20}c}
-   \lambda  & 0  \\
-   0 & \lambda   \\
-\end{array}} \right] - \left[ {\begin{array}{*{20}c}
-   { - 3} & { - 2}  \\
-   1 & 0  \\
-\end{array}} \right]} \right) = \left| {\begin{array}{*{20}c}
-   {\lambda  + 3} & 2  \\
-   { - 1} & \lambda   \\
-\end{array}} \right| = 0 \\
- (\lambda  + 3)\lambda  + 2 = \lambda ^2  + 3\lambda  + 2 = (\lambda  + 1)(\lambda  + 2) = 2 \\
- \end{array}$$ Thus $\lambda_1=-1$ and $\lambda_2=-2$.
-
-*Next, find the transformation matrix*: The eigenvectors are the
-solutions of $\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$ for $i=1,2$.
-
-For $i=1$ $$\begin{aligned}
- \left[ {\begin{array}{*{20}c}
-   { - 3} & { - 2}  \\
-   1 & 0  \\
-\end{array}} \right]\underbrace {\left[ {\begin{array}{*{20}c}
-   {x_1 }  \\
-   {x_2 }  \\
-\end{array}} \right]}_{{\bf{x}}_1 } & = & \underbrace {( - 1)}_{\lambda _1 }\left[ {\begin{array}{*{20}c}
-   {x_1 }  \\
-   {x_2 }  \\
-\end{array}} \right] \\
-  - 3x_1  - 2x_2  & = &  - x_1  \\
- x_1  + 0x_2  & = &  - x_2  \\
- \end{aligned}$$ These equations are linearly dependent, and if we let
-$x_1 =1$ then $x_2 = -1$ giving $\mathbf{x}_1=[1,\ -1]^T$.
-
-Similarly, for $i=2$ we obtain $\mathbf{x}_2=[1, -0.5]^T$.
-
-Then $$\begin{array}{l}
- {\bf{T}} = \left[ {\begin{array}{*{20}c}
-   {{\bf{x}}_1 } &  \vdots  & {{\bf{x}}_2 }  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   1 & 1  \\
-   { - 1} & { - 0.5}  \\
-\end{array}} \right] \\
- {\bf{T}}^{ - 1}  = \left[ {\begin{array}{*{20}c}
-   { - 1} & { - 2}  \\
-   2 & 2  \\
-\end{array}} \right] \\
- \end{array}$$
-
-*Finally solve the state equations of the transformed system*
-
-Transform the initial states:
-$${\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
-   { - 1} & { - 2}  \\
-   2 & 2  \\
-\end{array}} \right]\left[ {\begin{array}{*{20}c}
-   1  \\
-   0  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   { - 1}  \\
-   2  \\
-\end{array}} \right]$$
-
-Solve for the transformed states: $$\begin{aligned}
-    w_1 & = & w_{1,0}e^{\lambda_1t} \\
-    w_1 & = & (-1)e^{-t} \\\end{aligned}$$ and $$\begin{aligned}
-    w_2 & = & w_{2,0}e^{\lambda_2t} \\
-    w_2 & = & (2)e^{-2t} \\\end{aligned}$$
-
-Transform the answers back to the original states:
-$${\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
-   1 & 1  \\
-   { - 1} & { - 0.5}  \\
-\end{array}} \right]\left[ {\begin{array}{*{20}c}
-   { - e^{ - t} }  \\
-   {2e^{ - 2t} }  \\
-\end{array}} \right]$$
-
-Therefore $$\begin{aligned}
-    x_1 & = & -e^{-t} + 2e^{-2t} \\
-    x_2 & = & e^{-t}-e^{-2t} \\\end{aligned}$$
-
--   Eigenvalues and eigenvectors
-
--   System transformation
-
--   Diagonalization of a state space model
-
--   Solution to the general state equations
-
-<!-- -->
-
--   Worked Examples (solutions in notes)
-
--   System Transformations in Matlab
-
-Find the eigenvectors of the matrix
-$${\bf{A}} = \left[ {\begin{array}{*{20}c}
-       { - 3} & 1  \\
-       1 & { - 3}  \\
-    \end{array}} \right]$$
-
-Given the system represented in state space by the following equations
-$$\begin{array}{l}
- {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
-   0 & 1 & 0  \\
-   0 & 0 & 1  \\
-   { - 2} & { - 5} & { - 7}  \\
-\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
-   0  \\
-   0  \\
-   1  \\
-\end{array}} \right]u \\
- y = \left[ {\begin{array}{*{20}c}
-   1 & 0 & 0  \\
-\end{array}} \right]{\bf{x}} \\
- \end{array}$$ transform the system to a new set of state variables,
-$\mathbf{w}$, where the new state variables are related to the original
-state variables, $\mathbf{x}$, as follows: $$\begin{aligned}
-	w_1 & = & 2x_1 \\
-	w_2 & = & 3x_1 + 2x_2 \\
-	w_3 & = & x_1 + 4x_2 + 5x_3\end{aligned}$$
-
-Given the system shown below, find the diagonal (normal form) system
-that is similar. $$\begin{array}{c}
- {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
-   { - 3} & 1  \\
-   1 & { - 3}  \\
-\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
-   1  \\
-   2  \\
-\end{array}} \right]u \\
- y = \left[ {\begin{array}{*{20}c}
-   2 & 3  \\
-\end{array}} \right]{\bf{x}} \\
- \end{array}$$
-
-Solve the state equations
-$${\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
-   { - 3} & { - 2}  \\
-   1 & 0  \\
-\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
-   1  \\
-   0  \\
-\end{array}} \right]u$$ given $\mathbf{x}_0 = [1, 0]^T$ at $t=0$ and
-$u=0$.
-
-System Transforms in Matlab {#system-transforms-in-matlab .unnumbered}
+Examples of Companion Forms {#examples-of-companion-forms .unnumbered}
 ===========================
 
-Matlab provides a rich set of tools for finding eigenvalues and
-eigenvectors, transforming state equations using similarity transforms
-and solving state space equations. We conclude this lecture by reworking
-the first three examples in Matlab. You should repeat these examples
-during the self-directed learning session.
+The system with transfer function
+$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
+was found, earlier, to have companion form $$\begin{aligned}
+\mathbf{A} & = & \left[\begin{array}{ccc}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  0 & -10 & -7
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  0 \\
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
+  8 & 10 & 2
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
 
-Eigenvalues and eigenvectors {#eigenvalues-and-eigenvectors .unnumbered}
-----------------------------
+Express this system in controller canonical and observer canonical
+forms.
 
-Solution of Example 1
+The system with transfer function
+$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
+was found, earlier, to have companion form $$\begin{aligned}
+\mathbf{A} & = & \left[\begin{array}{ccc}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  0 & -10 & -7
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  0 \\
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
+  8 & 10 & 2
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
 
-        A = [-3 1; 1 -3]
-        [T, Lambda] = eig(A)
+Express this system in controller canonical and observer canonical
+forms.
 
-Note $\mathbf{T}$ is the transform matrix whose columns are the
-eigenvectors, $\mathbf{\Lambda}$ is the diagonal matrix of eigenvalues.
+The controller canonical form is obtained by re-ordering the state
+variables: $$\begin{aligned}
+\mathbf{A} & = & \left[\begin{array}{ccc}
+  -7 & -10 & 0 \\
+  1 & 0 & 0 \\
+  0 & 1 & 0
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  1 \\
+  0 \\
+  0
+\end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
+  2 & 10 & 8
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$ and the
+observable canonical form is obtained by transposing the $\mathbf{A}$
+matrix and letting $\mathbf{B} = \mathbf{C}^T$ and
+$\mathbf{C}=\mathbf{B}^T$. $$\begin{aligned}
+\mathbf{A} & = & \left[\begin{array}{ccc}
+  -7 & 1 & 0 \\
+  -10 & 0 & 1 \\
+  0 & 0 & 0
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  2 \\
+  10 \\
+  8
+\end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
+  1 & 0 & 0
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
 
-Similarity transforms {#similarity-transforms .unnumbered}
----------------------
+[\[slide:l5s10\]]{#slide:l5s10 label="slide:l5s10"}
 
-Solution of Example 2
+    >> num = [2, 16, 30, 8]; den = [1, 7, 10, 0];
+    >> G = tf(num,den);
+    >> Gcc = ss(G);
+    >> [Acc,Bcc,Ccc,Dcc]=ssdata(Gcc);
 
-            Tinv = [2 0 0; 3 2 0; 1 4 5];
-            T = inv(Tinv)
-            Ax = [0 1 0; 0 0 1; -2 -5 -7];
-            Bx = [0; 0; 1];
-            Cx = [ 1 0 0];
-            % Transform
-            Aw = Tinv*Ax*T
-            Bw = Tinv*Bx
-            Cw = Cx*T
+The resulting variables `A`, `B`, `C`, and `D` are in controller
+canonical form.
 
-            Tinv = [2 0 0; 3 2 0; 1 4 5];
-            % Ax, Bx, Cx as previously defined
-            sysx = ss(Ax, Bx, Cx, 0) % Dx = 0
-            % Perform transformation
-            sysw = ss2ss(ss, Tinv)
+    >> Goc = ss(Acc',Ccc',Bcc',Dcc);
 
-Diagonalization {#diagonalization .unnumbered}
----------------
+will create the observer canonical form.
 
-Example 3
+[\[slide:15s10a\]]{#slide:15s10a label="slide:15s10a"} To obtain the
+companion form, some trickery is needed to re-order the controller
+canonical state matrices:
 
-        A = [-3 1; 1 -3]; B = [1; 2]; C = [2 3];
-        [T,Lambda] = eig(A)
-        Adt = inv(T)*A*T
-        Bdt = inv(T)*B
-        Cdt = C*T
+    >> [n,m]=size(Acc); % n = m = 3 for the example
+    >> Acf = Acc(n:-1:1,n:-1:1);
+    >> Bcf = Bcc(n:-1:1,:);
+    >> Ccf = Ccc(:,n:-1:1);
+    >> Dcf = Dcc;
 
-Example 3
+The companion form is then created from the reordered matrices.
 
-        A = [-3 1; 1 -3]; B = [1; 2]; C = [2 3];
-        S = ss(A, B, C, 0)
-        Sp = canon(S, 'modal')
+    >> Gcf = ss(Acf,Bcf,Ccf,Dcf);
 
-[^1]: The world *eigen* is from the German for "characteristic" so
-    another name for eigenvalue might be *characteristic value*. There
-    is a very close relationship between the eigenvalues and the
-    characteristic equation we have discussed in earlier lectures.
-    Indeed as we shall see, the equation
-    $\det(\lambda\mathbf{I}-\mathbf{A})=0$ that is used to find the
-    eignenvalues of a system is almost identical to
-    $\det(s\mathbf{I}-A)=0$ that determines the poles of the system
-    defined in transfer function form. From this is should be clear that
-    the eigenvalues of the $\mathbf{A}$ matrix are the same as the poles
-    of the corresponding transfer function.
+[\[slide:l5s11\]]{#slide:l5s11 label="slide:l5s11"}
 
-[^2]: Note we need to perform some additional manipulations if there are
-    repeated or complex eigenvalues. We leave the discovery of these
-    extra steps as an exercise for the interested student. It will not
-    be examined!
+    >> G1 = tf(Gcf) % Companion form
+    Transfer function:
+    2 s^3 + 16 s^2 + 30 s + 8
+    -------------------------
+       s^3 + 7 s^2 + 10 s
+    >> G2 = tf(Gcc) % Controller Canonical form
+    ditto!
+    >> G3 = tf(Goc) % Observer Canonical Form
+    ditto!
+
+We now consider one final canonical form, the so-called "normal" or
+"parallel" form.
+
+Normal Canonical Form {#normal-canonical-form .unnumbered}
+=====================
+
+The normal form of a state-space model isolates the characteristic
+values, also called the eigen values, or system poles, of the system.
+
+If all the poles of a system are real and distinct then the transfer
+function may be written as a partial fraction expansion
+$$G(s) = \frac{Y(s)}{U(s)} = \left\{\frac{r_1}{s-p_1} +
+\frac{r_2}{s-p_2} + \cdots + \frac{r_n}{s-p_n} + d\right\}$$ we can
+develop a state-space model for each term:
+$$Y(s)=\frac{r_i}{s-p_i}U(s).$$ $$\begin{aligned}
+(s-p_i)Y(s) & = & r_i U(s)\\ \frac{d}{dt}y(t)-p_i y(t) &=& r_i
+u(t).\end{aligned}$$ If we let $x_i(t) = y(t)$ then $$\begin{aligned}
+\dot{x}_i &=& p_i x_i + r_i u \\ y &=& x_i\end{aligned}$$ Thus, each
+partial fraction term may be represented by the block diagram shown in .
+
+[\[slide:l6s1\]]{#slide:l6s1 label="slide:l6s1"} $$\begin{aligned}
+\dot{x}_i &=& p_i x_i + r_i u \\ y &=& x_i\end{aligned}$$
+
+Thus, the total state-space model of the system is simply the sum of
+such terms as shown in .
+
+[\[slide:l6s2\]]{#slide:l6s2 label="slide:l6s2"}
+
+Therefore the state space model for the whole system is as shown in .
+
+[\[slide:l6s3\]]{#slide:l6s3 label="slide:l6s3"} $$\begin{aligned}
+ \mathbf{\dot{x}}&=&\left[\begin{array}{ccccc}
+  p_1 & 0 & 0 & \cdots & 0 \\
+  0 & p_2 & 0 & \cdots & 0 \\
+  0 & 0 & p_3 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & p_n
+\end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  r_1 \\
+  r_2 \\
+  r_3 \\
+  \vdots \\
+  r_n
+\end{array}\right] u\\ y &=& \left[1,\ 1,\ 1,\ \ldots,\ 1\right] \mathbf{x} + d u\end{aligned}$$
+
+Note that the residues of the partial fraction expansion $r_1,\
+r_2,\ \ldots,\ r_n$ have been allocated to the input side of the block
+diagram and therefore to the input matrix in the state space model. This
+model, in which all the elements of the output matrix are unity, is
+called the "*Normal Observable Canonical Form*". It would be equally
+valid to allocate the residues to the output matrix, leaving the
+elements of the input matrix as unity, this would be the "*Normal
+Controllable Canonical Form*" illustrated in .
+
+[\[slide:l6s3b\]]{#slide:l6s3b label="slide:l6s3b"} $$\begin{aligned}
+ \mathbf{\dot{x}}&=&\left[\begin{array}{ccccc}
+  p_1 & 0 & 0 & \cdots & 0 \\
+  0 & p_2 & 0 & \cdots & 0 \\
+  0 & 0 & p_3 & \cdots & 0 \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & 0 & \cdots & p_n
+\end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  1 \\
+  1 \\
+  1 \\
+  \vdots \\
+  1
+\end{array}\right] u\\ y &=& \left[r_1,\ r_2,\ r_3,\ \ldots,\ r_n\right] \mathbf{x} + d u\end{aligned}$$
+
+The most important property of the normal canonical model is that the
+$\mathbf{A}$ matrix is diagonal and that the elements on the diagonal
+are the eigenvalues of the system matrix. If you form the system
+transition matrix for this system each state response is simply of the
+form $r_i e^{p_i t}$, that is each state response is equal to the
+corresponding mode response[^1].
+
+Example {#example-1 .unnumbered}
+-------
+
+For the system examined earlier $$\begin{aligned}
+G(s) &=& \frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s} \\
+ &=&
+\frac{2s^2 + 10s + 8}{s^3 + 7s^2 + 10s} + 2 \\
+ &=& \frac{2s^2 + 10s + 8}{s(s+2)(s+5)} + 2 \\
+ &=& \frac{4/5}{s} + \frac{2/3}{s+2} + \frac{8/15}{s+5} + 2
+\\\end{aligned}$$ The normal controllable canonical form therefore is:
+$$\begin{aligned}
+\mathbf{\dot{x}}&=&\left[\begin{array}{ccc}
+  0 & 0 & 0  \\
+  0 & -2 & 0  \\
+  0 & 0 & -5  \\
+ \end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  4/5 \\
+  2/3 \\
+  8/15
+\end{array}\right] u\\ y &=& \left[1,\ 1,\ 1\right] \mathbf{x} + d u\end{aligned}$$
+and the normal observable canonical form is: $$\begin{aligned}
+\mathbf{\dot{x}}&=&\left[\begin{array}{ccc}
+  0 & 0 & 0  \\
+  0 & -2 & 0  \\
+  0 & 0 & -5  \\
+ \end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  1 \\
+  1  \\
+  1
+\end{array}\right] u\\ y &=& \left[4/5,\ 2/3,\ 8/15\right] \mathbf{x} + d u\end{aligned}$$
+
+Time Response from Normal Form {#time-response-from-normal-form .unnumbered}
+------------------------------
+
+Notice that in the case of a system defined in *normal form*, because
+the $\mathbf{A}$ matrix is diagonal, the state equations are decoupled
+from each other and can be solved independently. This canonical form is
+useful for the solution of the state equations. Thus given initial
+states $x_1(t)=x_{10}$, $x_2(t)=x_{20}$, etc at $t=0$ and taking Laplace
+transforms of the first row of the state equations derived above, the
+solutions are: $$\begin{aligned}
+ sX_1 (s) - x_{10}  & = & p_1 X_1 (s) + r_1 U(s) \\
+ (s - p_1 )X_1 (s) & = & x_{10}  + r_1 U(s) \\
+ X_1 (s) & = & \frac{{x_{10} }}{{s - p_1 }} + \frac{{r_1 }}{{s - p_1 }}U(s)\end{aligned}$$
+Taking inverse Laplace transforms:
+$$x_1 = x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ and
+similarly for the other states.
+
+Given initial states $x_1(t)=x_{10}$, $x_2(t)=x_{20}$, etc at $t=0$
+$$\begin{aligned}
+     sX_1 (s) - x_{10}  & = & p_1 X_1 (s) + r_1 U(s) \\
+     (s - p_1 )X_1 (s) & = & x_{10}  + r_1 U(s) \\
+     X_1 (s) & = & \frac{{x_{10} }}{{s - p_1 }} + \frac{{r_1 }}{{s - p_1 }}U(s)
+    \end{aligned}$$ Taking inverse Laplace transforms:
+$$x_1 = x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ Repeated
+for the other states.
+
+These are then combined through the output equation to give the solution
+for $y$: $$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$
+$$\begin{aligned}
+	y(t) & = & x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
+         & + &	x_{20}e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
+	     & \vdots & \\
+	     & + & x_{n0}e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{aligned}$$
+
+Combine state responses through the output equation
+$$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$ $$\begin{aligned}
+	y(t) & = & x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
+         & + &	x_{20}e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
+	     & \vdots & \\
+	     & + & x_{n0}e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{aligned}$$
+
+-   Systems with repeated poles
+
+-   Systems wih complex poles
+
+System with Repeated Poles {#system-with-repeated-poles .unnumbered}
+--------------------------
+
+If the transfer function has repeated poles, then the form of the model
+must be changed. The partial fraction expansion contains terms of the
+form $$\frac{r_i}{s-p_i} +
+\frac{r_{i+1}}{(s-p_i)^2}.$$ This is most easily implemented using the
+*Normal Controllable Canonical Form* using a series connection of the
+block diagram for the single pole $$\frac{1}{s-p_i}$$ as shown in . By
+examination of this diagram it should be clear that the signal seen at
+point $A$ is $$A(s) = \frac{r_i}{s-p_i}U(s)$$ and that at $B$ is
+$$B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)$$ as
+required.
+
+[\[slide:l6s4\]]{#slide:l6s4 label="slide:l6s4"}
+
+For this portion of the state space model we have $$\begin{aligned}
+\left[\begin{array}{c}
+  \dot{x}_i \\
+  \dot{x}_{i+1}
+\end{array}\right] &=& \left[\begin{array}{cc}
+  p_i & 1 \\
+  0 & p_i
+\end{array}\right]\left[\begin{array}{c}
+  x_i \\
+  x_{i+1}
+\end{array}\right] + \left[\begin{array}{c}
+  0 \\
+  1
+\end{array}\right] u\\
+y & = & \left[r_{i+1},\ r_i\right]\left[\begin{array}{c}
+  x_i \\
+  x_{i+1}
+\end{array}\right].\end{aligned}$$
+
+By comparison of this result with the normal situation we see that the
+state matrices (of the observer controllable canonical form) are
+modified as follows.
+
+-   in $\mathbf{A}$ $$\left[\begin{array}{cc}
+        p_i & 0 \\
+        0 & p_{i+1} \\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        p_i & 1 \\
+        0 & p_{i} \\
+      \end{array}\right];$$
+
+-   in $\mathbf{B}$ $$\left[\begin{array}{c}
+        1 \\
+        1  \\
+      \end{array}\right] \rightarrow \left[\begin{array}{c}
+        0 \\
+        1 \\
+      \end{array}\right];$$
+
+-   in $\mathbf{C}$ $$\left[\begin{array}{cc}
+        r_i & r_{i+1}\\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        r_{i+1} & r_i\\
+      \end{array}\right].$$
+
+The block $$\left[\begin{array}{cc}
+    p_i & 1 \\
+    0 & p_{i} \\
+  \end{array}\right]$$ is known as a "*Jordan Block*". A matrix with one
+(or more) Jordan Blocks instead of a pure diagonal
+$$\left[\begin{array}{cc}
+    p_i & 0 \\
+    0 & p_{i+1} \\
+  \end{array}\right]$$ is in the "*Jordan Form*". The idea may be
+extended to systems with poles of higher multiplicity. For example for
+the case where the multiplicity is 3 as in $$\frac{1}{(s-p_i)^3}$$ the
+Jordan Block is $$\left[\begin{array}{ccc}
+    p_i & 1 & 0 \\
+    0 & p_{i} & 1 \\
+    0 & 0 & p_i
+  \end{array}\right].$$
+
+Example {#example-2 .unnumbered}
+-------
+
+The system with transfer function $$\begin{aligned}
+G(s) &=& \frac{1}{s^3 + 4s^2 + 5s + 2}\\
+&=& \frac{1}{(s+1)^2(s+2)} \\ &=& \frac{-1}{s+1} +
+\frac{1}{(s+1)^2} + \frac{1}{s+2}.\end{aligned}$$ The normal canonical
+form is therefore given by: $$\begin{aligned}
+\mathbf{A} &=& \left[\begin{array}{ccc}
+  -1 & 1 & 0 \\
+  0 & -1 & 0 \\
+  0 & 0 & -2
+\end{array}\right] \mathbf{B} = \left[\begin{array}{c}
+  0 \\
+  1 \\
+  1
+\end{array}\right]\\ \mathbf{C} &=& \left[\begin{array}{ccc}
+  1 & -1 & 1
+\end{array}\right] \mathbf{D} = \left[0\right]\end{aligned}$$
+
+Normal Canonical Form with Complex Poles {#normal-canonical-form-with-complex-poles .unnumbered}
+----------------------------------------
+
+A system with complex poles will have a partial fraction expansion
+containing terms of the form
+$$\frac{\Re\{ r_i\} + j\Im\{ r_i\}}{s - \Re\{p_i\} + j\Im\{p_i\}} + \frac{\Re\{r_i\} - j\Im\{ r_i\}}{s - \Re\{p_i\} - j\Im\{p_i\}}$$
+(where the poles and the residuals both appear as complex conjugate
+pairs). We cannot implement these directly in state space form because
+the state matrices must have real coefficients to be realisable.
+However, the complex factors involved can be combined into a quadratic
+form and blocks replaced in the normal canonical form[^2] as follows:
+
+-   in $\mathbf{A}$ $$\left[\begin{array}{cc}
+        p_i & 0 \\
+        0 & p_{i+1} \\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        +\Re\{p_i\} & +\Im\{p_i\} \\
+        -\Im\{p_i\} & +\Re\{p_i\} \\
+      \end{array}\right];$$
+
+-   in $\mathbf{B}$ $$\left[\begin{array}{c}
+        1 \\
+        1  \\
+      \end{array}\right] \rightarrow \left[\begin{array}{c}
+        0 \\
+        1 \\
+      \end{array}\right];$$
+
+-   in $\mathbf{C}$ $$\left[\begin{array}{cc}
+        r_i & r_{i+1}\\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        2\Im\{r_{i}\} & 2\Re\{r_i\}\\
+      \end{array}\right].$$
+
+Final Example {#final-example .unnumbered}
+-------------
+
+The system with transfer function $$\begin{aligned}
+G(s) &=& \frac{6s+6}{s^2 + 4s + 13}\\
+&=& \frac{6(s+1)}{(s+2)^2 + 3^2} \\ &=&
+\frac{6(s+1)}{(s+2+3j)(s+2-3j)}
+\\ &=& \frac{3-j}{s+2+3j} + \frac{3-j}{s+2-3j}.\end{aligned}$$ The
+normal canonical form is therefore given by: $$\begin{aligned}
+\mathbf{A} &=& \left[\begin{array}{cc}
+  -2-3j & 0 \\
+  0 & -2+3j
+\end{array}\right] \mathbf{B} = \left[\begin{array}{c}
+  1 \\
+  1
+\end{array}\right]\\ \mathbf{C} &=& \left[\begin{array}{cc}
+  3-j & 3+j
+\end{array}\right] \mathbf{D} = \left[0\right]\end{aligned}$$ But this
+is not realisable so instead we use $$\begin{aligned}
+\mathbf{A} &=& \left[\begin{array}{cc}
+  -2 & -3 \\
+  3 & -2
+\end{array}\right] \mathbf{B} = \left[\begin{array}{c}
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} &=& \left[\begin{array}{cc}
+  -2 & -6
+\end{array}\right] \mathbf{D} = \left[0\right].\end{aligned}$$
+
+In class we will work through the examples given here and if we have
+time we'll look at
+
+-   Examples of controllable and observable forms
+
+-   Normal form
+
+-   Time response of normal form
+
+-   Jordan forms
+
+[^1]: The proof is left as an exercise.
+
+[^2]: The details are left as an exercise.
