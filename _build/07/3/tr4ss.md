@@ -7,8 +7,8 @@ prev_page:
   url: /07/2/tf4ss
   title: 'Laplace Transforms of State Space Models'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /07/4/canon
+  title: 'Canonical Forms'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
