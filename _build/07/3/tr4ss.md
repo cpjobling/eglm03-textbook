@@ -616,12 +616,31 @@ Visit the MATLAB Control Systems Toolbox help pages to find out more.
 ## Footnote
 
 
-1. For a first order differential equation $$\frac{dx}{dt}=ax$$ so
-    the Laplace transform is $$\begin{eqnarray*}
+1. For a first order differential equation 
+
+    $$\frac{dx}{dt}=ax$$ 
+    
+    so
+    the Laplace transform is 
+    
+    $$\begin{eqnarray*}
     sX(s) - x(0) & = &
     aX(s)\\ X(s)(s - a)& = & x(0)\\ X(s)
-    &=&\frac{x(0)}{s-a}.\end{eqnarray*}$$ The inverse laplace transform of
-    the final equation gives $$x(t) = e^{at}.$$ For the vector case
-    $$s\mathbf{X}(s)-\mathbf{x}(0)=\mathbf{A}\mathbf{X(s)}$$ so by
-    comparison $$\mathbf{x}(t)=e^{\mathbf{A} t}.$$ The proper proof is
+    &=&\frac{x(0)}{s-a}.\end{eqnarray*}$$ 
+    
+    The inverse laplace transform of
+    the final equation gives 
+    
+    $$x(t) = e^{at}.$$ 
+    
+    For the vector case
+    
+    $$s\mathbf{X}(s)-\mathbf{x}(0)=\mathbf{A}\mathbf{X(s)}$$ 
+    
+    so by
+    comparison 
+    
+    $$\mathbf{x}(t)=e^{\mathbf{A} t}.$$ 
+    
+    The proper proof is
     of course a little more involved and will be explored in [Section 7.6](../5/gensolution)!

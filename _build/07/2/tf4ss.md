@@ -131,12 +131,12 @@ $$\begin{eqnarray}
 
 Substituting $\mathbf{X}$ from (1) into (2) gives 
 
-$$\begin{equation}\label{eqn:def-of-y2}
+$$\begin{equation}
   \mathbf{Y}=\left[\mathbf{C}\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{B}\mathbf{U}+
   \mathbf{C}\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{x}(0)\right]+\mathbf{D}\mathbf{U}\end{equation}$$
 
 which after gathering terms and simplifying gives
-$$\begin{equation}\label{eqn:def-of-y3}
+$$\begin{equation}
   \mathbf{Y}=\left[\mathbf{C}\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{B}+\mathbf{D}\right]\mathbf{U}
       +\mathbf{C}
   \left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{x}(0)\end{equation}$$
@@ -144,7 +144,7 @@ $$\begin{equation}\label{eqn:def-of-y3}
 When the initial conditions of the state-variables are all zero, this
 reduces to the transfer matrix model 
 
-$$\begin{equation}\label{eqn:transfer-function}
+$$\begin{equation}
   \mathbf{Y}=\left[\mathbf{C}\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{B}+\mathbf{D}\right]\mathbf{U}\end{equation}$$
 
 The matrix $\mathbf{C}\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{B}+\mathbf{D}$ is the *system transfer matrix*.
@@ -157,8 +157,9 @@ The matrix $\left[s\mathbf{I}-\mathbf{A}\right]^{-1}$ is very important.
 
 It is known as the *resolvent matrix* of the system.
 
-It may be written as $$\label{eqn:resolvent}
-      \left[s\mathbf{I}-\mathbf{A}\right]^{-1} =
+It may be written as 
+
+$$\left[s\mathbf{I}-\mathbf{A}\right]^{-1} =
         \frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}\right]}
              {\det\left[s\mathbf{I}-\mathbf{A}\right]}.$$
 
@@ -730,7 +731,7 @@ $$\frac{Y(s)}{U(s)} = \frac{\det \left[ \begin{array}{*{20}c}
 
 ## Time Responses from Transfer Function Matrices
 
-In the [next section](../3/sstr) we will consider how we can use the transfer function model to compute time responses from state-space models.
+In the [next section](../3/tr4ss) we will consider how we can use the transfer function model to compute time responses from state-space models.
 
 ## Footnote
 
