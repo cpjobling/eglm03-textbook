@@ -4,8 +4,8 @@ redirect_from:
 interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
-  url: /07/1/intro2ss
-  title: 'State-Space Models'
+  url: /07/3/tr4ss
+  title: 'Time Response for State Space Models'
 next_page:
   url: /homework/index
   title: 'Homework Problems'

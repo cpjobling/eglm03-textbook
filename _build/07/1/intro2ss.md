@@ -7,8 +7,8 @@ prev_page:
   url: /07/index
   title: 'Modelling Systems in State-Space'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /07/2/tf4ss
+  title: 'Laplace Transforms of State Space Models'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -407,19 +407,89 @@ Simulink model: [statemodel.slx](matlab/statemodel.slx)
 
 For the example above
 
-        A = [0 -1/Cap; 1/L -R/L];
-        B = [1/Cap; 0];
-        C = [1 0; 0 1; 1 -R; 0 R; 0 -1];
-        D = [0; 0; 0; 0; 1];
-        circ_ss = ss(A, B, C, D,...
-           'statename',{'v31' 'i1'}, 'inputname','u',...
-           'outputname', {'v31' 'i1' 'v32' 'v21' 'i2'});
+Important note, for this to work you must assign numerical values to the
+the parameters `Cap`, `R` and `L`.
+
+
+
+{:.input_area}
+```matlab
+clear all
+cd matlab
+format compact
+```
+
+
+
+
+{:.input_area}
+```matlab
+Cap = 1e-6; % 1 uF
+L = 3e-3;  % 2 mH
+R = 200e3; % 200 kOhm
+```
+
+
+
+
+{:.input_area}
+```matlab
+A = [0 -1/Cap; 1/L -R/L];
+B = [1/Cap; 0];
+C = [1 0; 0 1; 1 -R; 0 R; 0 -1];
+D = [0; 0; 0; 0; 1];
+circ_ss = ss(A, B, C, D,...
+   'statename',{'v31' 'i1'}, 'inputname','u',...
+   'outputname', {'v31' 'i1' 'v32' 'v21' 'i2'});
+```
+
+
+
+
+{:.input_area}
+```matlab
+circ_ss
+```
+
+
+{:.output_stream}
+```
+
+circ_ss =
+ 
+  A = 
+               v31          i1
+   v31           0      -1e+06
+   i1        333.3  -6.667e+07
+ 
+  B = 
+            u
+   v31  1e+06
+   i1       0
+ 
+  C = 
+           v31      i1
+   v31       1       0
+   i1        0       1
+   v32       1  -2e+05
+   v21       0   2e+05
+   i2        0      -1
+ 
+  D = 
+        u
+   v31  0
+   i1   0
+   v32  0
+   v21  0
+   i2   1
+ 
+Continuous-time state-space model.
+
+
+```
 
 Once you have the state-space model, all the analysis techniques seen so
 far are open to you.
-
-Important note, for this to work you must assign numerical values to the
-the parameters `Cap`, `R` and `L`.
 
 ### In class activity
 

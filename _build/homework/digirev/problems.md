@@ -7,8 +7,8 @@ prev_page:
   url: /homework/freqresp/problems
   title: 'Homework 5 - Frequency Response Cascade Compensator Design'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/ss2tf/problems
+  title: 'Homework 7 - Modelling Systems in Statespace'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
