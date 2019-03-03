@@ -91,6 +91,12 @@
     url: /07/2/tf4ss
   - title: Time Response for State Space Models
     url: /07/3/tr4ss
+  - title: Canonical Forms
+    url: /07/4/canon
+  - title: Transformation of States and System Diagonalization
+    url: /07/5/systransf
+  - title: The General Solution of the State Equations
+    url: /07/6/gensolution
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true
