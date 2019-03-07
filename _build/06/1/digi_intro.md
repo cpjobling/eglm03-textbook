@@ -165,7 +165,7 @@ between sampling instants is equivalent to a sampling frequency
 $\omega_s$ rad s$^{-1}$, where $$T = \frac{2\pi}{\omega_s}.$$
 
 Sampling is assumed to be synchronized to the time origin $t=0$ so that
-$$v_k = v(kT)\ \forall \ k.$$
+$$v_k = v(kT)\ \forall \ k \ge 0.$$
 
 #### Sampling: The Signals
 
@@ -364,7 +364,7 @@ $$\begin{eqnarray*}
   \mathcal{Z}\triangle v & = &  v_1 z^0 + v_2 z^{-1} + v_3 z^{-3} + \cdots
   + v_{k+1}z^{-k}+\cdots \\
 & = & z(v_0 + v_1 z^{-1} + v_2 z^{-2} + \cdots
-  + v_{k+1}z^-{k+1}+\cdots)-zv_0\\
+  + v_{k+1}z^{-{k+1}}+\cdots)-zv_0\\
 &=& zV(z) - zv_0.\end{eqnarray*}$$ 
 
 Similar arguments may be used to prove
