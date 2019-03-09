@@ -113,6 +113,20 @@ ds = tf([p], [1 p])
 ```
 
 
+{:.output_stream}
+```
+
+ds =
+ 
+    5
+  -----
+  s + 5
+ 
+Continuous-time transfer function.
+
+
+```
+
 
 
 {:.input_area}
@@ -495,11 +509,15 @@ So $$D(z) = \frac{12.64(1-0.9048z^{-1})}{(1-0.5488z^{-1})}.$$
 
 Since 
 
-$D(z)=U(z)/E(z)$ then $$\begin{aligned}
+$D(z)=U(z)/E(z)$ then 
+
+$$\begin{aligned}
 	(1-0.5488z^{-1})U(z) = & 12.64(1-0.9048z^{-1})E(z) \\
 	U(z) - 0.5488z^{-1}U(z) = & 12.64 E(z) - 11.44 z^{-1} E(z) \\
 	U(z) = & 0.5488z^{-1}U(z) + 12.64 E(z) - 11.44 z^{-1} E(z)\end{aligned}$$
+
 Converting this into (sampled) time domain
+
 $$u(n) = 0.5488 u(n-1) + 12.64 e(n) - 11.44 e(n-1)$$
 
 #### Implementation of design - pseudocode

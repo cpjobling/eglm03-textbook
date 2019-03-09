@@ -36,6 +36,10 @@ transfer function $H(s)$ into its digital equivalent $H(z)$. These are:
 
 -   Modified matched pole-zero equivalent
 
+## Examples
+
+Will be done in class
+
 Before we can describe what we might mean by a continuous equivalent system, it is necessary to establish the
 relationship between digital operations, such as the shift, and
 continuous operations.
@@ -159,7 +163,9 @@ We can now design a 'hold-equivalent' digital system.
 
 ![Hold-Equivalent Digital System](pictures/holdequiv.png)
 
-From the diagram in the previous slide. $$\begin{eqnarray*}
+From the diagram in the previous slide. 
+
+$$\begin{eqnarray*}
   Y(z) &=& H(z) U(z)\\
   Y(z) &=& \mathcal{Z} Y(s)\\
        &=& \mathcal{Z} \frac{1}{s} H(s) \frac{z-1}{z} U(z)\end{eqnarray*}$$
@@ -170,7 +176,10 @@ so $$\begin{equation}
 #### Example 1
 
 If
-$$H(s) = \frac{a}{s+a}$$ then find the Zero-Order Hold Equivalent $H(z)$
+
+$$H(s) = \frac{a}{s+a}$$ 
+
+then find the Zero-Order Hold Equivalent $H(z)$
 
 ##### Solution
 
@@ -189,8 +198,12 @@ continous system in any *lti* format<sup>1</sup> use:
 
 ### Approximation based on numerical integration
 
-An alternative approach is to use the relationship $$s  = \frac{1}{T}
-\ln z.$$ This cannot be substituted into a transfer function directly as
+An alternative approach is to use the relationship 
+
+$$s  = \frac{1}{T}
+\ln z.$$ 
+
+This cannot be substituted into a transfer function directly as
 the result is not rational, but an approximation may be used.
 
 #### Approximation by Numerical Integration
@@ -270,10 +283,10 @@ These results are summarised in the next few slides.
 
 #### Trapezoidal approximation
 
-$$\begin{aligned}
+$$\begin{eqnarray*}
      s &=& \frac{2}{T}\, \frac{z-1}{z+1} \\
      z &=& \frac{1 + 1/2 sT}{1 - 1/2 sT}
-  \end{aligned}$$
+  \end{eqnarray*}$$
 
 compare expansion
 
@@ -415,6 +428,7 @@ If
 $$\frac{Y(z)}{U(z)}=D(z)=k\frac{1-\alpha z^{-1}}{1-\beta z^{-1}}$$
 
 then the digital implementation will be
+
 $$y(n)=\beta y(n-1)+k(u(n)-\alpha u(n-1))$$
 
 $y(n)$ is the current calculated value, $y(n-1)$ is previous calculated value, $u(n)$ is current sample, and $u(n-1)$ is previous sample.
@@ -469,6 +483,10 @@ zero equivalent.
     type `help lti` inside *MATLAB*.
 
 2: Which these days is unlikely
+
+## End of Pre-Class Presentation
+
+In class we will do the examples and conclude with a MATLAB demo.
 
 ## MATLAB example
 
@@ -606,7 +624,7 @@ step(Gs,'-',Gz_zoh,'--')
 
 
 
-![png](../../images/06/3/cse_104_0.png)
+![png](../../images/06/3/cse_106_0.png)
 
 
 ### Approximation by numerical-integration
@@ -647,7 +665,7 @@ step(Gs,'-',Gz_tustin,'--')
 
 
 
-![png](../../images/06/3/cse_108_0.png)
+![png](../../images/06/3/cse_110_0.png)
 
 
 #### Matched pole-zero mapping
@@ -686,7 +704,7 @@ step(Gs,'-',Gz_mpz,'--')
 
 
 
-![png](../../images/06/3/cse_112_0.png)
+![png](../../images/06/3/cse_114_0.png)
 
 
 #### Other supported equivalents?
