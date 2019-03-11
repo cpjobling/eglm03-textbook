@@ -290,9 +290,9 @@ $$\begin{eqnarray*}
 
 compare expansion
 
-$$z=(1+ (1/2) sT)(1- (1/2) sT)^{-1} = 1 + sT + (1/2)
- s^2T^2 + (1/4) s^3T^3
- + \cdots$$ with
+$$z=(1+ (1/2) sT)(1- (1/2) sT)^{-1} = 1 + sT + (1/2) s^2T^2 + (1/4) s^3T^3 + \cdots$$ 
+
+with
 
 $$z = e^{sT} = 1 + sT + (1/2) s^2T^2 + (1/6) s^3T^3 + \cdots$$
 
@@ -320,8 +320,10 @@ $$\begin{aligned}
 
 compare expansion
 
-$$z=(1-sT)^{-1} = 1 + sT + s^2T^2 + s^3T^3
- + \cdots$$ with
+$$z=(1-sT)^{-1} = 1 + sT + s^2T^2 + s^3T^3 + \cdots$$ 
+
+with
+
 $$z = e^{sT} = 1 + sT + (1/2) s^2T^2 + (1/6) s^3T^3 + \cdots$$
 
 ### Example 2
@@ -368,7 +370,9 @@ Method:
 
 #### Example 3
 
-Use the Matched-Pole-Zero (MPZ) approximation to give the z-transfer function equivalent to $$D(s)=\frac{s+a}{s+b}.$$
+Use the Matched-Pole-Zero (MPZ) approximation to give the z-transfer function equivalent to 
+
+$$D(s)=\frac{s+a}{s+b}.$$
 
 ##### Solution
 
@@ -379,7 +383,11 @@ $$D(z)=k\left(\frac{1-e^{-aT}z^{-1}}{1 - e^{-bT}z^{-1}}\right).$$
 
 For $D(s)$ the DC gain is $D(s)|_{s=0} = a/b$. 
 
-The DC gain for $D(z)$ is $D(z)|_{z=1}$ (from final value theorem) that is
+The DC gain for $D(z)$ is 
+
+$$\left.D(z)\right|_{z=1}$$ 
+
+(from final value theorem) that is
 
 $$k\left(\frac{1-e^{-aT}}{1-e^{-bT}}\right) = \frac{a}{b}.$$
 
@@ -403,16 +411,16 @@ $$D(z)=k\left(\frac{(1+z^{-1})(1-e^{-aT}z^{-1})}{(1-z^{-1})(1 - e^{-bT}z^{-1})}\
 As $D(s)$ is type 1, we can't use the value of $D(0)$ to compute the DC
 gain. Instead, let us compute the gain at $s = -1$: 
 
-$$\begin{aligned}
-  D( - 1) =& \left. \frac{s + a}{s(s + b)} \right|_{s =  - 1} \\
-   =& \frac{-1 + a}{( - 1)(-1 + b)} = \frac{a - 1}{(1 - b)} \\\end{aligned}$$
+$$\begin{eqnarray*}
+  D( - 1) &=& \left. \frac{s + a}{s(s + b)} \right|_{s =  - 1} \\
+   &=& \frac{-1 + a}{( - 1)(-1 + b)} = \frac{a - 1}{(1 - b)} \\\end{eqnarray*}$$
 
 The equivalent value $s=-1$ in the $z$-plane is $z=e^{-T}$.
 
-$$\begin{aligned}
-  k\left.\frac{(1 + z^{-1})(1 - e^{-aT}z^{-1})}{(1 - e^{-bT}z^{-1})} \right|_{z = k} =& \frac{(1 + {e^T})(1 - e^{-aT}e^T)}{(1 - e^{-bT}e^T)} \hfill \\
-   =& k\frac{\left( 1 + {e^T} \right)\left( 1 - e^{- (1 - a)T} \right)}{\left( 1 - e^{-(1-b)T} \right)} \hfill \\
-\end{aligned}$$
+$$\begin{eqnarray*}
+  k\left.\frac{(1 + z^{-1})(1 - e^{-aT}z^{-1})}{(1 - e^{-bT}z^{-1})} \right|_{z = k} &=& \frac{(1 + {e^T})(1 - e^{-aT}e^T)}{(1 - e^{-bT}e^T)} \hfill \\
+   &=& k\frac{\left( 1 + {e^T} \right)\left( 1 - e^{- (1 - a)T} \right)}{\left( 1 - e^{-(1-b)T} \right)} \hfill \\
+\end{eqnarray*}$$
 
 Again, we choose $k$ so that the equivalent gains match, i.e.
 

@@ -51,7 +51,11 @@ We can use Equation (1) to define a mapping between the $s$ and $z$ planes as s
 
 Since $z=e^{sT}$ we can define a 'mapping' from the $s$-plane to the $z$-plane. Various properties of the $z$-plane follow.
 
--   s-plane stability boundary $s=j\omega$ maps to the unit circle $|z|=1$ in the z-plane.
+-   s-plane stability boundary $s=j\omega$ maps to the unit circle in the z-plane:
+
+$$|z|=1$$ 
+
+
 
 -   Maximum frequency is half the sampling frequency $\omega_s/2$ (a consequence of Nyquist's sampling theorem) and is mapped to the negative real axis in the z-plane.
 
@@ -143,6 +147,7 @@ dz = c2d(ds, Ts, method)
 ```
 
  ### Summary of Discretization Methods
+ 
  
  | **Method**                    | **Transform**                     |  **c2d method** |
  |-------------------------------|-----------------------------------|-----------------|
@@ -488,7 +493,9 @@ Let's pretend that we are solving this problem in a context where we only have a
 
 $$D(z)=k\frac{1-e^{-aT}z^{-1}}{1-e^{-bT}z^{-1}}$$
 
-where $k$ is determined by matching the DC gain of the two compensators. For the continuous compensator $$D(s)|_{s=0} = 16/6.$$ 
+where $k$ is determined by matching the DC gain of the two compensators. For the continuous compensator 
+
+$$\left.$D(s)\right|_{s=0} = 16/6.$$ 
 
 For the digital compensator 
 
