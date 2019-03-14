@@ -5,7 +5,7 @@ interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
   url: /07/6/gensolution
-  title: 'The General Solution of the State Equations'
+  title: 'The General Solution of LTI Systems'
 next_page:
   url: /homework/index
   title: 'Homework Problems'

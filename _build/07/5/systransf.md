@@ -8,7 +8,7 @@ prev_page:
   title: 'Canonical Forms'
 next_page:
   url: /07/6/gensolution
-  title: 'The General Solution of the State Equations'
+  title: 'The General Solution of LTI Systems'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -442,14 +442,14 @@ $${\bf{T}} = \left[ {\begin{array}{*{20}c}
 \end{array}} \right]$$ finally form the similar systems's system matrix,
 input matrix and output matrix respectively. $$\begin{array}{c}
  {\bf{T}}^{ - 1} {\bf{A}}T = \left[ {\begin{array}{*{20}c}
-   {{1 \mathord{\left/
+   {1 \mathord{\left/
  {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}} & {{1 \mathord{\left/
+ \kern-\nulldelimiterspace} 2} & {1 \mathord{\left/
  {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}}  \\
-   {{1 \mathord{\left/
+ \kern-\nulldelimiterspace} 2}  \\
+   {1 \mathord{\left/
  {\vphantom {1 2}} \right.
- \kern-\nulldelimiterspace} 2}} & { - {1 \mathord{\left/
+ \kern-\nulldelimiterspace} 2} & { - {1 \mathord{\left/
  {\vphantom {1 2}} \right.
  \kern-\nulldelimiterspace} 2}}  \\
 \end{array}} \right]\;\left[ {\begin{array}{*{20}c}
@@ -533,7 +533,7 @@ As demonstrated above, the columns of the transformation matrix,
 $\mathbf{T}$ will be formed by concatenation of the corresponding
 eigenvectors of $\mathbf{A}$ in the same order.
 
--   In Lecture 16 we showed how we could determine the solution to a
+-   In [Section 7.3](../3/tr4ss) we showed how we could determine the solution to a
     state equation in normal (diagonal form).
 
 -   Here we have demonstrated how to use the eignenvalues and
@@ -565,7 +565,10 @@ $u=0$.
 #### Solution
 
 *First find the eigenvalues*: The eigenvalues of the state
-matrix are the roots of: $$\det(\lambda\mathbf{I}-\mathbf{A})=0$$
+matrix are the roots of: 
+
+$$\det(\lambda\mathbf{I}-\mathbf{A})=0$$
+
 $$\begin{array}{l}
  \det \left( {\left[ {\begin{array}{*{20}c}
    \lambda  & 0  \\
@@ -578,12 +581,16 @@ $$\begin{array}{l}
    { - 1} & \lambda   \\
 \end{array}} \right| = 0 \\
  (\lambda  + 3)\lambda  + 2 = \lambda ^2  + 3\lambda  + 2 = (\lambda  + 1)(\lambda  + 2) = 2 \\
- \end{array}$$ Thus $\lambda_1=-1$ and $\lambda_2=-2$.
+ \end{array}$$ 
+ 
+Thus $\lambda_1=-1$ and $\lambda_2=-2$.
 
 *Next, find the transformation matrix*: The eigenvectors are the
 solutions of $\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i$ for $i=1,2$.
 
-For $i=1$ $$\begin{aligned}
+For $i=1$ 
+
+$$\begin{eqnarray*}
  \left[ {\begin{array}{*{20}c}
    { - 3} & { - 2}  \\
    1 & 0  \\
@@ -596,14 +603,17 @@ For $i=1$ $$\begin{aligned}
 \end{array}} \right] \\
   - 3x_1  - 2x_2  & = &  - x_1  \\
  x_1  + 0x_2  & = &  - x_2  \\
- \end{aligned}$$ These equations are linearly dependent, and if we let
-$x_1 =1$ then $x_2 = -1$ giving $\mathbf{x}_1=[1,\ -1]^T$.
+ \end{eqnarray*}$$ 
+ 
+These equations are linearly dependent, and if we let $x_1 =1$ then $x_2 = -1$ giving $\mathbf{x}_1=[1,\ -1]^T$.
 
 Similarly, for $i=2$ we obtain $\mathbf{x}_2=[1, -0.5]^T$.
 
-Then $$\begin{array}{l}
+Then 
+
+$$\begin{array}{l}
  {\bf{T}} = \left[ {\begin{array}{*{20}c}
-   {{\bf{x}}_1 } &  \vdots  & {{\bf{x}}_2 }  \\
+   {\bf{x}_1 } &  \vdots  & {\bf{x}_2 }  \\
 \end{array}} \right] = \left[ {\begin{array}{*{20}c}
    1 & 1  \\
    { - 1} & { - 0.5}  \\
@@ -617,6 +627,7 @@ Then $$\begin{array}{l}
 *Finally solve the state equations of the transformed system*
 
 Transform the initial states:
+
 $${\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
    { - 1} & { - 2}  \\
    2 & 2  \\
@@ -628,13 +639,20 @@ $${\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
    2  \\
 \end{array}} \right]$$
 
-Solve for the transformed states: $$\begin{aligned}
+Solve for the transformed states: 
+
+$$\begin{eqnarray*}
     w_1 & = & w_{1,0}e^{\lambda_1t} \\
-    w_1 & = & (-1)e^{-t} \\\end{aligned}$$ and $$\begin{aligned}
+    w_1 & = & (-1)e^{-t} \\\end{eqnarray*}$$ 
+    
+and 
+
+$$\begin{eqnarray*}
     w_2 & = & w_{2,0}e^{\lambda_2t} \\
-    w_2 & = & (2)e^{-2t} \\\end{aligned}$$
+    w_2 & = & (2)e^{-2t} \\\end{eqnarray*}$$
 
 Transform the answers back to the original states:
+
 $${\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
    1 & 1  \\
    { - 1} & { - 0.5}  \\
@@ -643,9 +661,9 @@ $${\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
    {2e^{ - 2t} }  \\
 \end{array}} \right]$$
 
-Therefore $$\begin{aligned}
+Therefore $$\begin{eqnarray*}
     x_1 & = & -e^{-t} + 2e^{-2t} \\
-    x_2 & = & e^{-t}-e^{-2t} \\\end{aligned}$$
+    x_2 & = & e^{-t}-e^{-2t} \\\end{eqnarray*}$$
 
 -   Eigenvalues and eigenvectors
 
@@ -655,19 +673,19 @@ Therefore $$\begin{aligned}
 
 -   Solution to the general state equations
 
-<!-- -->
-
 -   Worked Examples (solutions in notes)
 
 -   System Transformations in Matlab
 
 Find the eigenvectors of the matrix
+
 $${\bf{A}} = \left[ {\begin{array}{*{20}c}
        { - 3} & 1  \\
        1 & { - 3}  \\
     \end{array}} \right]$$
 
 Given the system represented in state space by the following equations
+
 $$\begin{array}{l}
  {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
    0 & 1 & 0  \\
@@ -681,15 +699,19 @@ $$\begin{array}{l}
  y = \left[ {\begin{array}{*{20}c}
    1 & 0 & 0  \\
 \end{array}} \right]{\bf{x}} \\
- \end{array}$$ transform the system to a new set of state variables,
-$\mathbf{w}$, where the new state variables are related to the original
-state variables, $\mathbf{x}$, as follows: $$\begin{aligned}
+ \end{array}$$ 
+ 
+transform the system to a new set of state variables, $\mathbf{w}$, where the new state variables are related to the original state variables, $\mathbf{x}$, as follows: 
+
+$$\begin{aligned}
 	w_1 & = & 2x_1 \\
 	w_2 & = & 3x_1 + 2x_2 \\
 	w_3 & = & x_1 + 4x_2 + 5x_3\end{aligned}$$
 
 Given the system shown below, find the diagonal (normal form) system
-that is similar. $$\begin{array}{c}
+that is similar. 
+
+$$\begin{array}{c}
  {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
    { - 3} & 1  \\
    1 & { - 3}  \\
@@ -703,14 +725,16 @@ that is similar. $$\begin{array}{c}
  \end{array}$$
 
 Solve the state equations
+
 $${\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
    { - 3} & { - 2}  \\
    1 & 0  \\
 \end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
    1  \\
    0  \\
-\end{array}} \right]u$$ given $\mathbf{x}_0 = [1, 0]^T$ at $t=0$ and
-$u=0$.
+\end{array}} \right]u$$ 
+
+given $\mathbf{x}_0 = [1, 0]^T$ at $t=0$ and $u=0$.
 
 ## System Transforms in MATLAB
 

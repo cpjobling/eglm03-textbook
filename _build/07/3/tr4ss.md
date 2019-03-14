@@ -92,8 +92,9 @@ states.
 
 ### Resolvent matrix
 
-The
-*resolvent matrix* is defined as $$\Phi(s) = \left[s\mathbf{I}-\mathbf{A}\right]^{-1} =
+The *resolvent matrix* is defined as 
+
+$$\Phi(s) = \left[s\mathbf{I}-\mathbf{A}\right]^{-1} =
 \frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]}{\left|s\mathbf{I}-\mathbf{A}\right|}.$$ 
 
 The resolvent matrix is a matrix of rational polynomials in the Laplace transform variable $s$. 

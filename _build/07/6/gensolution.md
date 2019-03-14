@@ -2,7 +2,7 @@
 redirect_from:
   - "/07/6/gensolution"
 interact_link: content/07/6/gensolution.ipynb
-title: 'The General Solution of the State Equations'
+title: 'The General Solution of LTI Systems'
 prev_page:
   url: /07/5/systransf
   title: 'Transformation of States and System Diagonalization'

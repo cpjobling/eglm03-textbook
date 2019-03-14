@@ -283,7 +283,7 @@ $$\begin{equation*}
 +1/(LC)}+1
 \end{array}\right]\end{equation*}$$
 
-$$\begin{aligned}
+$$\begin{eqnarray*}
  &=& \frac{1}{s^2 + (R/L)s
 +1/(LC)}\left[\begin{array}{c}
   (1/C)s+R/(LC) \\
@@ -309,7 +309,7 @@ $$\begin{aligned}
 +1/(LC)} \\
   -\frac{1/(LC)}{s^2 + (R/L)s
 +1/(LC)}+1
-\end{array}\right]\end{aligned}$$
+\end{array}\right]\end{eqnarray*}$$
 
 In matrix form, when combined with the input and output transforms we
 have the situation illustrated below. Each transfer function relates the

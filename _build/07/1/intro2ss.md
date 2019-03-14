@@ -516,9 +516,15 @@ Construct the state-space model chosen by you from the CTMS.
 
 ### Solution to Example 2
 
-Introducing state variables $x_1=y$ and $x_2=dy/dt$ then the state equations are: $$\frac{dx_1}{dt}=\frac{dy}{dt}=x_2$$
-$$\frac{dx_2}{dt}=\frac{d^2y}{dt^2}=-2x_1 - 3x_2 + u$$ and the output
-equation is: $$y=x_1.$$
+Introducing state variables $x_1=y$ and $x_2=dy/dt$ then the state equations are: 
+
+$$\frac{dx_1}{dt}=\frac{dy}{dt}=x_2$$
+
+$$\frac{dx_2}{dt}=\frac{d^2y}{dt^2}=-2x_1 - 3x_2 + u$$ 
+
+and the output equation is: 
+
+$$y=x_1.$$
 
 ### Solution to Example 3
 
@@ -528,8 +534,8 @@ $$F = m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx$$
 
 If we chose the position of the mass $x$ and it's velocity $dx/dt$ to be the states, and let the force $F$ be the system input, then $x_1 = x$, $x_2 = dx/dt$ and $u=F$ and the state equations are:
 
-$$\begin{aligned}
-    \frac{dx_1}{dt} = & x_2 \\
-    \frac{dx_2}{dt} = & -\frac{k}{m} x_1 -\frac{b}{m} x_2 + \frac{1}{m} u\end{aligned}$$
+$$\begin{eqnarray*}
+    \frac{dx_1}{dt} & = & x_2 \\
+    \frac{dx_2}{dt} & = & -\frac{k}{m} x_1 -\frac{b}{m} x_2 + \frac{1}{m} u\end{eqnarray*}$$
 
 You should construct the Simulink model represented by these equations and compare the results with those shown in [Chapter 1](../../01/modsim).
