@@ -101,10 +101,9 @@ The resolvent matrix is a matrix of rational polynomials in the Laplace transfor
 
 The state transition matrix is 
 
-$$\phi(t)
-=
-\mathcal{L}^{-1}\left\{\frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]}{\left|s\mathbf{I}-\mathbf{A}\right|}\right\}.$$ What
-is the form of this function?
+$$\phi(t) = \mathcal{L}^{-1}\left\{\frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]}{\left|s\mathbf{I}-\mathbf{A}\right|}\right\}.$$ 
+
+What is the form of this function?
 
 ### Characteristic Polynomial
 
