@@ -12,9 +12,18 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Laplace Transforms of State Space Models
+# Transforms and Time Responses for State Space Models
+
+* Laplace Transform of State Space Models
+* Time Responses for State Space Models
+* Detailed example (in class)
+* Problems (homework)
+
+## Laplace Transforms of State Space Models
 
 The Laplace transform can be used to convert a differential equation into a transfer function. It can also be used to convert a state space model into a transfer function. In this lecture we demonstrate how this is done and we give an example.
+
+### Laplace transform of a vector of functions
 
 The Laplace transform of a vector $\mathbf{v}(t)$ is a vector $\mathbf{V}(s)$. The elements of $\mathbf{V}(s)$ are the Laplace transforms of the corresponding elements of the vector $\mathbf{v}(t)$.
 
@@ -61,6 +70,8 @@ then $$\mathbf{V}(s)=\left[ \begin{array}{c}
    1/s+a \\
    b/(s^2+b^2) \\
   \end{array} \right]$$
+
+### Transform of State Equations
 
 Let us now transform the generalized form of the state equations obtained in the last lecture. 
 
@@ -127,7 +138,9 @@ $$\begin{eqnarray}
   1
 \end{array}\right]\left[U\right].\end{eqnarray}$$
 
-## Laplace Transform from State-Space Models
+## Transfer function from State-Space Models
+
+The transform equations may be solved as follows (the Laplace transform operator $s$ is omitted for brevity).
 
 Substituting $\mathbf{X}$ from (1) into (2) gives 
 
@@ -311,9 +324,10 @@ $$\begin{eqnarray*}
 +1/(LC)}+1
 \end{array}\right]\end{eqnarray*}$$
 
-In matrix form, when combined with the input and output transforms we
-have the situation illustrated below. Each transfer function relates the
-corresponding output transform to the input transform. For example
+In matrix form, when combined with the input and output transforms we have the situation illustrated below. Each transfer function relates the corresponding output transform to the input transform. 
+
+For example
+
 $$V_{31}= \frac{(1/C)s+R/(LC)}{s^2 + (R/L)s
 +1/(LC)}\ U.$$
 
@@ -455,7 +469,7 @@ step(circ_ss)
 
 
 
-![png](../../images/07/2/tf4ss_45_0.png)
+![png](../../images/07/2/tf4ss_48_0.png)
 
 
 #### Convert to transfer functiom matrix

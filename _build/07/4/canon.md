@@ -12,8 +12,6 @@ next_page:
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
-# Draft work in Progress
-
 # Canonical Forms
 
 Although a state-space model may uniquely represent a given dynamic
@@ -28,52 +26,71 @@ transfer function, then it is convenient to transform the model
 description into one of a small number of "standard" or *canonical
 forms*.
 
+## Part 1: Introducing Canonical Forms
+
 Standard forms for state space models derived from differential
 equations or transfer function models.
 
 -   Derivation of the companion form
 
--   Example
+* Example
 
 ## Converting a Differential Equation into State Space Form
 
-These notes describe how a general differential equation may be
-converted into a state-space model.
+These notes describe how a general differential equation may be converted into a state-space model.
+
+### General Differential Equation
 
 Consider the general differential equation:
-
-Consider the equation: $$\frac{d^{n}y}{dt^{n}} +
-a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
-y = b_0 u$$
-
-In class we will show how this can be converted into the so-called
-"companion form" state-space model.
 
 $$\frac{d^{n}y}{dt^{n}} +
 a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
 y = b_0 u$$
 
-We rearrange this equation so that the highest power is on the left
-$$\frac{d^{n}y}{dt^{n}} =
--a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}-a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}-\cdots-a_1\frac{dy}{dt}-a_0
-y + b_0 u.$$ Let: $$\begin{aligned}
-x_1 &=& y \\ x_2 &=& \frac{dy}{dt} \\ x_3 & = & \frac{d^2y}{dt^2}
-\\ \vdots \\ x_{n-1} &=& \frac{d^{n-2}y}{dt^{n-2}} \\ x_{n} &=& \frac{d^{n-1}y}{dt^{n-1}}\end{aligned}$$
-If we differentiate both sides of these new definitions we obtain
-$$\begin{aligned}
-\dot{x}_1 &=& \frac{dy}{dt} \\ \dot{x}_2 &=& \frac{d^2y}{dt^2} \\
-\dot{x}_3 & = & \frac{d^3y}{dt^3}
-\\ \vdots \\ \dot{x}_{n-1}  &=& \frac{d^{n-1}y}{dt^{n-1}} \\ \dot{x}_{n} &=& \frac{d^{n}y}{dt^{n}}\end{aligned}$$
+In class we will show how this can be converted into the so-called "companion form" state-space model.
 
-These equations represent the left-hand-side of the state equations and
-if we make the substitutions we get $$\begin{aligned}
-\dot{x}_1 &=&
-   x_2 \\ \dot{x}_2 &=&  x_3   \\
-\dot{x}_3 & = &  x_4
-\\ \vdots \\ \dot{x}_{n-1}  &=& x_n \\ \dot{x}_{n} &=&
--a_{0}x_1 -a_1x_2 - \cdots  -a_{n-2}x_{n-1} -a_{n-1}x_{n} + b_0 u\end{aligned}$$
-We then define the state vector $$\mathbf{x}=[x_1,\ x_2,\ \ldots,\
-x_n]^T$$ and the matrix form of the state equations are
+We rearrange this equation so that the highest power is on the left
+
+$$\frac{d^{n}y}{dt^{n}} = -a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}-a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}-\cdots-a_1\frac{dy}{dt}-a_0 y + b_0 u.$$ 
+
+Let:
+
+$$\begin{eqnarray*}
+x_1 &=& y \\ x_2 &=& \frac{dy}{dt} \\
+x_3 & = & \frac{d^2y}{dt^2} \\ 
+\vdots \\ 
+x_{n-1} &=& \frac{d^{n-2}y}{dt^{n-2}} \\ 
+x_{n} &=& \frac{d^{n-1}y}{dt^{n-1}}
+\end{eqnarray*}$$
+
+If we differentiate both sides of these new definitions we obtain
+
+$$\begin{eqnarray*}
+\dot{x}_1 &=& \frac{dy}{dt} \\
+\dot{x}_2 &=& \frac{d^2y}{dt^2} \\
+\dot{x}_3 & = & \frac{d^3y}{dt^3} \\ 
+\vdots \\ 
+\dot{x}_{n-1}  &=& \frac{d^{n-1}y}{dt^{n-1}} \\
+\dot{x}_{n} &=& \frac{d^{n}y}{dt^{n}}
+\end{eqnarray*}$$
+
+These equations represent the left-hand-side of the state equations and if we make the substitutions we get 
+
+$$\begin{eqnarray*}
+\dot{x}_1 &=& x_2 \\ 
+\dot{x}_2 &=&  x_3   \\
+\dot{x}_3 & = &  x_4 \\ 
+\vdots \\ 
+\dot{x}_{n-1}  &=& x_n \\ 
+\dot{x}_{n} &=& -a_{0}x_1 -a_1x_2 - \cdots  -a_{n-2}x_{n-1} -a_{n-1}x_{n} + b_0 u
+\end{eqnarray*}$$
+
+We then define the state vector 
+
+$$\mathbf{x}=[x_1,\ x_2,\ \ldots,\ x_n]^T$$ 
+
+and the matrix form of the state equations are
+
 $$\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
   0 & 1 & 0 & \cdots & 0 \\
   0 & 0 & 1 & \cdots & 0 \\
@@ -86,42 +103,50 @@ $$\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
   0 \\
   \vdots \\
   1
-\end{array}\right]u$$ The system matrix is in "*companion form*", so
-called because the coefficients in the final row are the same as for the
-differential equation. The output equation depends on the dependent
-variable of interest but the simplest is $y=x_1$ which gives the
-solution of the differential equation. Thus
+\end{array}\right]u$$ 
+
+The system matrix is in "*companion form*", so called because the coefficients in the final row are the same as for the differential equation. The output equation depends on the dependent variable of interest but the simplest is $y=x_1$ which gives the solution of the differential equation. Thus 
+
 $$y = [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.$$
 
-The transfer function equivalent of this differential equation is
-obtained from the differential equation: $$\frac{d^{n}y}{dt^{n}} +
-a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
-y = b_0 u$$ The transform of this equation, ignoring initial conditions,
-is $$\left(s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0\right)Y(s) = b_0
-U(s)$$ so the transfer function is
-$$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.$$ Note that the
-numerator has no terms in $s$. We shall consider completely general case
-for both proper and strictly proper systems later.
+### Transfer Function
+
+The transfer function equivalent of this differential equation is obtained from the differential equation: 
+
+$$\frac{d^{n}y}{dt^{n}} + a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0 y = b_0 u$$ 
+
+The transform of this equation, ignoring initial conditions, is 
+
+$$\left(s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0\right)Y(s) = b_0 U(s)$$ 
+
+so the transfer function is
+
+$$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.$$ 
+
+Note that the numerator has no terms in $s$. We shall consider completely general case for both proper and strictly proper systems later.
 
 ## The Companion Form
 
-We have just shown that a state space model for the system defined by
-the general differential equation, shown in , was the companion form
-illustrated in . This structure of this state-space model is illustrated
-in .
+We have just shown that a state space model for the system defined by the **general differential equation** was the **companion form**. This structure of this state-space model is illustrated in Figure 1.
 
-[\[slide:l5s1\]]{#slide:l5s1 label="slide:l5s1"}
+### General differential equation
+
 $$\frac{d^{n}y}{dt^{n}} +
 a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
-y = b_0 u$$ or transfer function $$\label{canon1}
+y = b_0 u$$ 
+
+or transfer function 
+
+$$\begin{equation}\label{canon1}
 G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.$$ The state variables in
-this model are the so-called "*phase variables*" $x_1 = y$,
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.\end{equation}$$ 
+
+The state variables in this model are the so-called "*phase variables*" $x_1 = y$,
 $x_2 = dy/dt$, $\ldots$ $x_n = d^n/dt^n$.
 
-[\[slide:l5s2\]]{#slide:l5s2 label="slide:l5s2"} $$\begin{aligned}
+### Companion Form
+
+$$\begin{eqnarray*}
  \dot{\mathbf{x}} &=&
 \left[\begin{array}{ccccc}
   0 & 1 & 0 & \cdots & 0 \\
@@ -136,54 +161,53 @@ $x_2 = dy/dt$, $\ldots$ $x_n = d^n/dt^n$.
   \vdots \\
   b_0
 \end{array}\right]u\\
-y & = & [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{aligned}$$
+y & = & [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{eqnarray*}$$
 
-[\[slide:l5s3\]]{#slide:l5s3 label="slide:l5s3"}
+### Figure 1: Block Diagram of Companion Form
+
+
+![Block Diagram of Companion Form](pictures/companion1.png)
 
 ### System with a Strictly Proper Transfer Function
+
 Now let us consider the case of a system that has derivatives of the
 input.
 
 A strictly proper system has transfer function
 $$G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
 b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$ where $m<n$.
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$ 
 
-How is this more general system converted into a state-space model?
-
-A strictly proper system has transfer function
-$$G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
-b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$ where $m<n$.
+where $m<n$.
 
 How is this more general system converted into a state-space model?
 
 Well, let us introduce an intermediate variable $W(s)$ and use this to
-split the transfer function into two parts like so: $$\label{eq:l5e1}
-W(s) = \frac{1}{s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}U(s)$$ and
-$$\label{eq:l5e2}
-Y(s) = \left(b_ms^m +
-b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0\right)W(s).$$
+split the transfer function into two parts like so: 
 
-Now equation ([\[eq:l5e1\]](#eq:l5e1){reference-type="ref"
-reference="eq:l5e1"}) has the same form as the system of
-equation ([\[canon1\]](#canon1){reference-type="ref"
-reference="canon1"}) with $b_0 = 1$. So if we define our first phase
-variable to be $X_1(s) = W(s)$ then the state matrix $\mathbf{A}$ will
-be the same as for the previous example and the input matrix
-$\mathbf{B} = \left[0, 0, \ldots, 1\right]^T$. To determine the output
-matrix $\mathbf{C}$ we inverse Laplace transform equation
-([\[eq:l5e2\]](#eq:l5e2){reference-type="ref" reference="eq:l5e2"}) to
-get: $$\label{eq:l5e3}
+$$\begin{equation}
+W(s) = \frac{1}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}U(s)\end{equation}$$ 
+and
+$$\begin{equation}\label{eq:l5e2}
+Y(s) = \left(b_ms^m +
+b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0\right)W(s).\end{equation}$$
+
+Now equation (2) has the same form as the system of equation (1) with $b_0 = 1$. So if we define our first phase
+variable to be $X_1(s) = W(s)$ then the state matrix $\mathbf{A}$ will be the same as for the previous example and the input matrix $\mathbf{B} = \left[0, 0, \ldots, 1\right]^T$. To determine the output matrix $\mathbf{C}$ we inverse Laplace transform equation (3) to
+get: 
+$$\begin{equation}
 y(t) = b_m\frac{d^m}{dt^m}w(t) +
 b_{m-1}\frac{d^{m-1}}{dt^{m-1}}w(t)+\cdots+b_1\frac{d}{dt}w(t)+
-b_0w(t).$$ Now, since by definition $x_1(t) = w(t)$, then
-$$y(t) = b_mx_{m+1}(t) + b_{m-1}x_m(t)+\cdots+b_1x_2(t)+
-b_0x_1(t).\label{eq:l5e4}$$ Where, in
-([\[eq:l5e4\]](#eq:l5e4){reference-type="ref" reference="eq:l5e4"}),
-substitutions have been made according to the definition of the phase
-variables. The vector state equations are therefore: $$\begin{aligned}
+b_0w(t).\end{equation}$$ 
+Now, since by definition $x_1(t) = w(t)$, then
+$$\begin{equation}y(t) = b_mx_{m+1}(t) + b_{m-1}x_m(t)+\cdots+b_1x_2(t)+
+b_0x_1(t).\end{equation}$$ 
+Where, in (5), substitutions have been made according to the definition of the phase variables. 
+
+The vector state equations are therefore: 
+
+$$\begin{eqnarray*}
  \dot{\mathbf{x}} &=&
 \left[\begin{array}{ccccc}
   0 & 1 & 0 & \cdots & 0 \\
@@ -199,11 +223,14 @@ variables. The vector state equations are therefore: $$\begin{aligned}
   1
 \end{array}\right]u\\
 y & = & [b_0,\ b_1,\ \dots,\ b_{m-1}, b_m]
-\mathbf{x}.\end{aligned}$$ Note that the coefficients of the numerator
-appear in reverse order in the $\mathbf{C}$ matrix. The structure of
-this system is illustrated in for the case $m=n-1$.
+\mathbf{x}.\end{eqnarray*}$$ 
 
-[\[slide:l5s4\]]{#slide:l5s4 label="slide:l5s4"}
+Note that the coefficients of the numerator appear in reverse order in the $\mathbf{C}$ matrix. The structure of
+this system is illustrated in Figure 2 for the case $m=n-1$.
+
+### Figure 2: System with a Strictly Proper Transfer Function
+
+![System with a Strictly Proper Transfer Function](pictures/companion2.png)
 
 ### System with a Proper Transfer Function
 
@@ -296,6 +323,12 @@ The companion form of the state matrices are $$\begin{aligned}
 -   Normal form
 
 -   Jordan forms
+
+- Controller and Observer Canonical Forms
+
+- Normal form
+
+- Jordan forms
 
 ## Controller Canonical Form
 

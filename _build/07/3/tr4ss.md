@@ -83,13 +83,6 @@ $$\begin{eqnarray}
 \left\{\Phi(s)\right\}\mathbf{x}(0)\nonumber \\ & = &
 \phi(t)\mathbf{x}(0).\label{eq:l4eq3}\end{eqnarray}$$
 
-## State Transition Matrix
-
-The vector of time functions $\phi(t)$ is known as the *state transition
-matrix*. It defines the motion (or *trajectory*) of the state variables
-through the $n$-dimensional *state space* from a given set of initial
-states.
-
 ### Resolvent matrix
 
 The *resolvent matrix* is defined as 
@@ -104,6 +97,13 @@ The state transition matrix is
 $$\phi(t) = \mathcal{L}^{-1}\left\{\frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]}{\left|s\mathbf{I}-\mathbf{A}\right|}\right\}.$$ 
 
 What is the form of this function?
+
+## State Transition Matrix
+
+The vector of time functions $\phi(t)$ is known as the *state transition
+matrix*. It defines the motion (or *trajectory*) of the state variables
+through the $n$-dimensional *state space* from a given set of initial
+states.
 
 ### Characteristic Polynomial
 
@@ -305,6 +305,8 @@ $$\begin{eqnarray}
 \mathbf{Y}_{\mathrm{full}}(s) &=& \mathbf{Y}_{\mathrm{zs}}(s) +
 \mathbf{Y}_{\mathrm{zi}}(s)\nonumber\\ &=&
 \mathbf{C}\Phi(s)\left[\mathbf{x}(0)+\mathbf{B}\mathbf{U}(s)\right] + \mathbf{DU}(s).\end{eqnarray}$$
+
+## End of Pre-Class Presentation
 
 In the class we will reinforce these concepts by working through an
 example in detail.
@@ -596,7 +598,7 @@ ezplot(y(2),[0,6]),grid,title('y_2(t)')
 
 
 
-![png](../../images/07/3/tr4ss_71_0.png)
+![png](../../images/07/3/tr4ss_72_0.png)
 
 
 ### Simulation of State Space Models in Matlab
