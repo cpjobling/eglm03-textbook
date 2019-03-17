@@ -137,7 +137,7 @@ y = b_0 u$$
 
 or transfer function 
 
-$$\begin{equation}\label{canon1}
+$$\begin{equation}
 G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
 a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.\end{equation}$$ 
 
@@ -190,21 +190,28 @@ split the transfer function into two parts like so:
 $$\begin{equation}
 W(s) = \frac{1}{s^n +
 a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}U(s)\end{equation}$$ 
+
 and
-$$\begin{equation}\label{eq:l5e2}
+
+$$\begin{equation}
 Y(s) = \left(b_ms^m +
 b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0\right)W(s).\end{equation}$$
 
 Now equation (2) has the same form as the system of equation (1) with $b_0 = 1$. So if we define our first phase
 variable to be $X_1(s) = W(s)$ then the state matrix $\mathbf{A}$ will be the same as for the previous example and the input matrix $\mathbf{B} = \left[0, 0, \ldots, 1\right]^T$. To determine the output matrix $\mathbf{C}$ we inverse Laplace transform equation (3) to
 get: 
+
 $$\begin{equation}
 y(t) = b_m\frac{d^m}{dt^m}w(t) +
 b_{m-1}\frac{d^{m-1}}{dt^{m-1}}w(t)+\cdots+b_1\frac{d}{dt}w(t)+
 b_0w(t).\end{equation}$$ 
+
 Now, since by definition $x_1(t) = w(t)$, then
-$$\begin{equation}y(t) = b_mx_{m+1}(t) + b_{m-1}x_m(t)+\cdots+b_1x_2(t)+
+
+$$\begin{equation}
+y(t) = b_mx_{m+1}(t) + b_{m-1}x_m(t)+\cdots+b_1x_2(t)+
 b_0x_1(t).\end{equation}$$ 
+
 Where, in (5), substitutions have been made according to the definition of the phase variables. 
 
 The vector state equations are therefore: 
@@ -245,15 +252,25 @@ In class, we will show how this system converted into state-space form.
 
 An alternative form, obtained by dividing the numerator by the
 denominator, is
+
 $$b_n+\frac{(b_{n-1} - b_n a_{n-1})s^{n-1}+\cdots+(b_1 - b_n a_1)+(b_0 - b_n a_0)}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}.$$
+
 If we define $d=b_n$ and the modified numerator coefficients are
-$$c_j=b_j - b_n a_j,\ j=1,2,\ldots,n$$ then the transfer function may be
-re-written
+
+$$c_j=b_j - b_n a_j,\ j=1,2,\ldots,n$$ 
+
+then the transfer function may be re-written
+
 $$d+\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s + c_n}{s^n+a_{n-1}s^{n-1}+\cdots++a_1s + a_0}.$$
+
 Writing the transfer function in its functional form we have:
+
 $$Y(s)=d U(s) +\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s +
-c_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}U(s).$$ Performing a similar
+c_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}U(s).$$ 
+
+Performing a similar
 analysis, as before, we obtain the state-equations for a proper system:
+
 $$\begin{aligned}
 \dot{\mathbf{x}} & = & \left[\begin{array}{ccccc}
   0 & 1 & 0 & \cdots & 0 \\
@@ -269,7 +286,9 @@ $$\begin{aligned}
   1
 \end{array}\right]u\\
 y & = & [c_0,\ c_1,\ \dots,\ c_{n-1}, c_n] \mathbf{x} + d
-u.\end{aligned}$$ The block diagram for this system is illustrated in Figure 3.
+u.\end{aligned}$$ 
+
+The block diagram for this system is illustrated in Figure 3.
 
 ### Figure 3: System with a Proper Transfer Function
 
@@ -287,12 +306,16 @@ Determine the system state-space model in companion form.
 
 #### Solution
 
-First divide the numerator into the denominator to get $$\begin{aligned}
+First divide the numerator into the denominator to get 
+
+$$\begin{eqnarray*}
 G(s)&=&\frac{2(s^3 + 7s^2 + 10s) + 2s^2 + 10s + 8}{s^3 + 7s^2 +
 10s}\\ &=& \frac{2s^2 + 10s + 8}{s^3 + 7s^2 + 10s} +
-2.\end{aligned}$$
+2.\end{eqnarray*}$$
 
-The companion form of the state matrices are $$\begin{aligned}
+The companion form of the state matrices are 
+
+$$\begin{eqnarray*}
 \mathbf{A} & = & \left[\begin{array}{ccc}
   0 & 1 & 0 \\
   0 & 0 & 1 \\
@@ -303,15 +326,7 @@ The companion form of the state matrices are $$\begin{aligned}
   1
 \end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
   8 & 10 & 2
-\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
-
--   Controller canonical form
-
--   Observer canonical form
-
--   Normal form
-
--   Jordan forms
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}$$
 
 ## End of Pre-Class Presentation
 
@@ -369,7 +384,9 @@ D =
 
 ```
 
-Result: $$\begin{eqnarray*}
+Result: 
+
+$$\begin{eqnarray*}
 \dot{\mathbf{x}} & = &\left[\begin{array}{ccc}
   -9 & -26 & -24  \\
   1 & 0 & 0  \\
@@ -551,8 +568,12 @@ $$\begin{eqnarray*}
 ### Example 2
 
 The system with transfer function
+
 $$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
-was found, earlier, to have companion form $$\begin{aligned}
+
+was found, earlier, to have companion form 
+
+$$\begin{eqnarray*}
 \mathbf{A} & = & \left[\begin{array}{ccc}
   0 & 1 & 0 \\
   0 & 0 & 1 \\
@@ -563,7 +584,7 @@ was found, earlier, to have companion form $$\begin{aligned}
   1
 \end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
   8 & 10 & 2
-\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}$$
 
 Express this system in controller canonical and observer canonical
 forms.
