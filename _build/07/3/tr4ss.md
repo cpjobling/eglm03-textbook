@@ -55,7 +55,9 @@ and zero input. This is the *zero input response* or homogeneous
 response of the system. 
 
 With the input transform $U(s)=0$ the state
-equation becomes $$\mathbf{X}(s)=\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{x}(0).$$ 
+equation becomes 
+
+$$\mathbf{X}(s)=\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{x}(0).$$ 
 
 We define
 $$\Phi(s) = \left[s\mathbf{I}-\mathbf{A}\right]^{-1}$$ 
@@ -124,6 +126,7 @@ always a polynomial of degree $n$.
 
 Therefore each element of the
 resolvent matrix $\Phi(s)$ is of the form
+
 $$\frac{b_{n-1}s^{n-1}+ \cdots + b_0}{s^n + a_{n-1}s^{n-1}+\cdots+a_0}.$$
 
 ### System Characteristic (or Eigen) Values
@@ -133,8 +136,7 @@ coefficients $b_i$ of each element of the resolvent matrix $\Phi(s)$
 depend on the form of the system. The characteristic polynomial
 $\left|s\mathbf{I}-\mathbf{A}\right|$ is the common denominator of all elements of $\Phi(s)$.
 
-
-It may be factorized: 
+$\Phi(s)$ may be factorized: 
 
 $$\begin{eqnarray*}
 \left|s\mathbf{I}-\mathbf{A}\right|&=&s^n + a_{n-1}s^{n-1} + \cdots + a_1s + a_0
@@ -235,17 +237,6 @@ Note that, by an alternative derivation<sup>1</sup>, we can show that
 $$\phi(t)=e^{\mathbf{A}t}$$ where $e^{\mathbf{A}t}$ is called the matrix
 exponential.
 
-### Unforced system response
-
-To determine the response of the system to the initial state we recall
-that 
-
-$$\mathbf{x} = \mathbf{B}\mathbf{\Phi(s)} \mathbf{x}(0)$$ 
-
-and putting
-this together with the definition of $\mathbf{Y(s)}$ we can determine
-the unforced system response of a system.
-
 ### Zero Input System Response
 
 For non-zero
@@ -289,14 +280,6 @@ $$\begin{equation}\label{eq:l4eq8}
 (where $\mathbf{C}\Phi(s)\mathbf{B}+\mathbf{D}$ is the system transfer matrix).
 
 ## Full System Response
-
-The full system response for the state-space model is simply the sum of
-the zero-state and zero-input responses: 
-
-$$\begin{eqnarray}
-\mathbf{Y}_{\mathrm{full}}(s) &=& \mathbf{Y}_{\mathrm{zs}}(s) +
-\mathbf{Y}_{\mathrm{zi}}(s)\nonumber\\ &=&
-\mathbf{C}\Phi(s)\left[\mathbf{x}(0)+\mathbf{B}\mathbf{U}(s)\right] + \mathbf{DU}(s).\end{eqnarray}$$
 
 The full system response for the state-space model is simply the sum of
 the zero-state and zero-input responses: 
@@ -598,7 +581,7 @@ ezplot(y(2),[0,6]),grid,title('y_2(t)')
 
 
 
-![png](../../images/07/3/tr4ss_72_0.png)
+![png](../../images/07/3/tr4ss_71_0.png)
 
 
 ### Simulation of State Space Models in Matlab

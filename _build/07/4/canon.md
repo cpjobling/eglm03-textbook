@@ -39,7 +39,7 @@ equations or transfer function models.
 
 These notes describe how a general differential equation may be converted into a state-space model.
 
-### General Differential Equation
+### Differential Equation into State Space
 
 Consider the general differential equation:
 
@@ -127,7 +127,7 @@ Note that the numerator has no terms in $s$. We shall consider completely genera
 
 ## The Companion Form
 
-We have just shown that a state space model for the system defined by the **general differential equation** was the **companion form**. This structure of this state-space model is illustrated in Figure 1.
+We have just shown that a state space model for the system defined by the **general differential equation** was the **companion form**.
 
 ### General differential equation
 
@@ -163,6 +163,8 @@ $$\begin{eqnarray*}
 \end{array}\right]u\\
 y & = & [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{eqnarray*}$$
 
+The structure of this state-space model is illustrated in Figure 1.
+
 ### Figure 1: Block Diagram of Companion Form
 
 
@@ -180,7 +182,7 @@ a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$
 
 where $m<n$.
 
-How is this more general system converted into a state-space model?
+In class, we will show how this more general system converted into a state-space model.
 
 Well, let us introduce an intermediate variable $W(s)$ and use this to
 split the transfer function into two parts like so: 
@@ -236,13 +238,10 @@ this system is illustrated in Figure 2 for the case $m=n-1$.
 
 The general form of a transfer function of a proper single-input,
 single-output system of order $n$ is
-$$\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}$$
-How is this system converted into state-space form?
 
-The general form of a transfer function of a proper single-input,
-single-output system of order $n$ is
 $$\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}$$
-How is this system converted into state-space form?
+
+In class, we will show how this system converted into state-space form.
 
 An alternative form, obtained by dividing the numerator by the
 denominator, is
@@ -270,29 +269,19 @@ $$\begin{aligned}
   1
 \end{array}\right]u\\
 y & = & [c_0,\ c_1,\ \dots,\ c_{n-1}, c_n] \mathbf{x} + d
-u.\end{aligned}$$ The block diagram fro this system is illustrated in .
+u.\end{aligned}$$ The block diagram for this system is illustrated in Figure 3.
 
-[\[slide:proper\]]{#slide:proper label="slide:proper"}
+### Figure 3: System with a Proper Transfer Function
 
-A system has transfer function
-$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
-This system is "proper" because order of numerator equals order of
-denominator.
-
-Determine the system state-space model in companion form.
-
-In class we will:
-
--   Work through the three cases introduced here
-
--   Complete the worked example
+![System with a Proper Transfer Function](pictures/companion3.png)
 
 ### Example 1
 
 A system has transfer function
+
 $$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
-This system is "proper" because order of numerator equals order of
-denominator.
+
+This system is "proper" because order of numerator equals order of denominator.
 
 Determine the system state-space model in companion form.
 
@@ -324,6 +313,16 @@ The companion form of the state matrices are $$\begin{aligned}
 
 -   Jordan forms
 
+## End of Pre-Class Presentation
+
+In class we will:
+
+-   Work through the three cases introduced here
+
+-   Complete the worked example
+
+## Part 2: Other Canonical Forms
+
 - Controller and Observer Canonical Forms
 
 - Normal form
@@ -332,21 +331,45 @@ The companion form of the state matrices are $$\begin{aligned}
 
 ## Controller Canonical Form
 
-If one defines a transfer function in , e.g. as shown in , the result of
-converting the system into state-space form is rather surprisingly not
-the companion form we have seen before. Instead, the result is what is
-known as the *Controller Canonical Form*. This is still a companion form
-because the coefficients of the $\mathbf{A}$ and $\mathbf{C}$ matrices
-are the coefficients of the transfer function's denominator and
-numerator polynomials.
+If one defines a transfer function in , e.g. as shown in the slide entitled **A Litte MATLAB** below, the result of
+converting the system into state-space form using MATLAB's `tf2ss` function is rather surprisingly not the companion form we have seen before. 
 
-[\[slide:l5s5\]]{#slide:l5s5 label="slide:l5s5"} Let $$G(s)
-=\frac{Y(s)}{U(s)} = \frac{s^2 + 7s + 2 }{s^3 + 9s^2 + 26s + 24}$$
+Instead, the result is what is known as the *Controller Canonical Form*. This is still a companion form because the coefficients of the $\mathbf{A}$ and $\mathbf{C}$ matrices are the coefficients of the transfer function's denominator and numerator polynomials.
 
-    >> num=[1, 7, 2]; den=[1, 9, 26 24];
-    >> [A,B,C,D]=tf2ss(num,den);
+### A Little MATLAB
 
-Result: $$\begin{aligned}
+Let 
+
+$$G(s) =\frac{Y(s)}{U(s)} = \frac{s^2 + 7s + 2 }{s^3 + 9s^2 + 26s + 24}$$
+
+
+
+{:.input_area}
+```matlab
+format compact
+num=[1, 7, 2]; den=[1, 9, 26 24];
+[A,B,C,D]=tf2ss(num,den)
+```
+
+
+{:.output_stream}
+```
+A =
+    -9   -26   -24
+     1     0     0
+     0     1     0
+B =
+     1
+     0
+     0
+C =
+     1     7     2
+D =
+     0
+
+```
+
+Result: $$\begin{eqnarray*}
 \dot{\mathbf{x}} & = &\left[\begin{array}{ccc}
   -9 & -26 & -24  \\
   1 & 0 & 0  \\
@@ -356,13 +379,13 @@ Result: $$\begin{aligned}
   0 \\
   0
 \end{array}\right]u\\
-y & = & [1,\ 7,\ 2] \mathbf{x}.\end{aligned}$$
+y & = & [1,\ 7,\ 2] \mathbf{x}.\end{eqnarray*}$$
 
-The controller canonical form is simply obtained by re-ordering the
-phase variables as shown in , and . The general form of the controller
-canonical state-space model is as shown in .
+The controller canonical form is simply obtained by re-ordering the phase variables as illustrated below. 
 
-[\[slide:l5s6\]]{#slide:l5s6 label="slide:l5s6"} $$\begin{aligned}
+### The Companion Form
+
+$$\begin{eqnarray*}
  \left[\begin{array}{c}
   \dot{x}_{1} \\
   \dot{x}_{2} \\
@@ -393,11 +416,11 @@ y & = & [b_0,\ b_1,\ \dots,\ b_{n-2}, b_{n-1}][
   {x}_{2},\
   \ldots,\
   {x}_{n-1},\
-  {x}_{n}]^T\end{aligned}$$
+  {x}_{n}]^T\end{eqnarray*}$$
 
-[\[slide:l5s6-2\]]{#slide:l5s6-2 label="slide:l5s6-2"}
+### Controller canonical form: Re-number States
 
-$$\begin{aligned}
+$$\begin{eqnarray*}
  \left[\begin{array}{c}
   \dot{x}_{n} \\
   \dot{x}_{n-1} \\
@@ -429,11 +452,13 @@ $$\begin{aligned}
   \ldots,\
   {x}_{2},\
   {x}_{1}
-\right]^T\end{aligned}$$
+\right]^T\end{eqnarray*}$$
 
-[\[slide:l5s7\]]{#slide:l5s7 label="slide:l5s7"}
+The general form of the controller canonical state-space model is the as shown below.
 
-$$\begin{aligned}
+### Controller canonical form: Re-Ordered States
+
+$$\begin{eqnarray*}
  \left[\begin{array}{c}
   \dot{x}_{1} \\
   \dot{x}_{2} \\
@@ -465,22 +490,25 @@ $$\begin{aligned}
   \ldots,\
   {x}_{n-1},\
   {x}_{n}
-\right]^T\end{aligned}$$
+\right]^T\end{eqnarray*}$$
 
-[\[slide:l5s8\]]{#slide:l5s8 label="slide:l5s8"}
+### Figure 4: Controller Canonical Form: Block Diagram
+
+![Controller Canonical Form: Block Diagram](pictures/ccanon.png)
 
 ## Observer Canonical Form
 
-The observer canonical form is the \"dual\" of the controller canonical
+The observer canonical form is the "dual" of the controller canonical
 form.
 
-The observer canonical form is the \"dual\" of the controller canonical
-form. The state equations are shown in . Note that the $\mathbf{A}$
+The state equations are shown below. Note that the $\mathbf{A}$
 matrix is the transpose of the controller canonical form and that
 $\mathbf{b}$ and $\mathbf{c}$ are the transposes of the $\mathbf{c}$ and
 $\mathbf{b}$ matrices, respectively, of the controller canonical form.
 
-[\[slide:l5s9\]]{#slide:l5s9 label="slide:l5s9"} $$\begin{aligned}
+### Observer canonical form
+
+$$\begin{eqnarray*}
  \left[\begin{array}{c}
   \dot{x}_{1} \\
   \dot{x}_{2} \\
@@ -514,29 +542,13 @@ $\mathbf{b}$ matrices, respectively, of the controller canonical form.
   \ldots,\
   {x}_{n-1},\
   {x}_{n}
-\right]^T\end{aligned}$$
+\right]^T\end{eqnarray*}$$
 
-[\[slide:l5s\]]{#slide:l5s label="slide:l5s"}
+### Figure 5: Observer Canonical Form: Block Diagram
 
-### Example 2: Companion Forms
+![Controller Canonical Form: Block Diagram](pictures/ocanon.png)
 
-The system with transfer function
-$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
-was found, earlier, to have companion form $$\begin{aligned}
-\mathbf{A} & = & \left[\begin{array}{ccc}
-  0 & 1 & 0 \\
-  0 & 0 & 1 \\
-  0 & -10 & -7
-\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
-  0 \\
-  0 \\
-  1
-\end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
-  8 & 10 & 2
-\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
-
-Express this system in controller canonical and observer canonical
-forms.
+### Example 2
 
 The system with transfer function
 $$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
@@ -555,9 +567,13 @@ was found, earlier, to have companion form $$\begin{aligned}
 
 Express this system in controller canonical and observer canonical
 forms.
+
+### Solution
 
 The controller canonical form is obtained by re-ordering the state
-variables: $$\begin{aligned}
+variables: 
+
+$$\begin{eqnarray*}
 \mathbf{A} & = & \left[\begin{array}{ccc}
   -7 & -10 & 0 \\
   1 & 0 & 0 \\
@@ -568,10 +584,14 @@ variables: $$\begin{aligned}
   0
 \end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
   2 & 10 & 8
-\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$ and the
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}$$ 
+
+and the
 observable canonical form is obtained by transposing the $\mathbf{A}$
 matrix and letting $\mathbf{B} = \mathbf{C}^T$ and
-$\mathbf{C}=\mathbf{B}^T$. $$\begin{aligned}
+$\mathbf{C}=\mathbf{B}^T$. 
+
+$$\begin{eqnarray*}
 \mathbf{A} & = & \left[\begin{array}{ccc}
   -7 & 1 & 0 \\
   -10 & 0 & 1 \\
@@ -582,78 +602,359 @@ $\mathbf{C}=\mathbf{B}^T$. $$\begin{aligned}
   8
 \end{array}\right]\\ \mathbf{C} & = & \left[\begin{array}{ccc}
   1 & 0 & 0
-\end{array}\right]\ \mathbf{D}=\left[2\right]\end{aligned}$$
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}$$
 
-[\[slide:l5s10\]]{#slide:l5s10 label="slide:l5s10"}
+### MATLAB Code for Examples
 
-    >> num = [2, 16, 30, 8]; den = [1, 7, 10, 0];
-    >> G = tf(num,den);
-    >> Gcc = ss(G);
-    >> [Acc,Bcc,Ccc,Dcc]=ssdata(Gcc);
+We will show these in class.
 
-The resulting variables `A`, `B`, `C`, and `D` are in controller
-canonical form.
+#### Controller canonical companion form
 
-    >> Goc = ss(Acc',Ccc',Bcc',Dcc);
 
-will create the observer canonical form.
 
-[\[slide:15s10a\]]{#slide:15s10a label="slide:15s10a"} To obtain the
-companion form, some trickery is needed to re-order the controller
+{:.input_area}
+```matlab
+Acc = [-7, -10, 0; 1, 0, 0; 0, 1, 0];
+Bcc = [1, 0, 0]';
+Ccc = [2, 10, 8]; D = 2;
+Gcc = ss(Acc,Bcc,Ccc,D)
+```
+
+
+{:.output_stream}
+```
+
+Gcc =
+ 
+  A = 
+        x1   x2   x3
+   x1   -7  -10    0
+   x2    1    0    0
+   x3    0    1    0
+ 
+  B = 
+       u1
+   x1   1
+   x2   0
+   x3   0
+ 
+  C = 
+       x1  x2  x3
+   y1   2  10   8
+ 
+  D = 
+       u1
+   y1   2
+ 
+Continuous-time state-space model.
+
+
+```
+
+#### Observer canonical form
+
+To create the observer canonical form, we transpose some of the matrices
+
+
+
+{:.input_area}
+```matlab
+Goc = ss(Acc',Ccc',Bcc',D)
+```
+
+
+{:.output_stream}
+```
+
+Goc =
+ 
+  A = 
+        x1   x2   x3
+   x1   -7    1    0
+   x2  -10    0    1
+   x3    0    0    0
+ 
+  B = 
+       u1
+   x1   2
+   x2  10
+   x3   8
+ 
+  C = 
+       x1  x2  x3
+   y1   1   0   0
+ 
+  D = 
+       u1
+   y1   2
+ 
+Continuous-time state-space model.
+
+
+```
+
+#### Companion form
+
+To obtain the companion form, some trickery is needed to re-order the controller
 canonical state matrices:
 
-    >> [n,m]=size(Acc); % n = m = 3 for the example
-    >> Acf = Acc(n:-1:1,n:-1:1);
-    >> Bcf = Bcc(n:-1:1,:);
-    >> Ccf = Ccc(:,n:-1:1);
-    >> Dcf = Dcc;
+
+
+{:.input_area}
+```matlab
+[n,m]=size(Acc); % n = m = 3 for the example
+Acf = Acc(n:-1:1,n:-1:1);
+Bcf = Bcc(n:-1:1,:);
+Ccf = Ccc(:,n:-1:1);
+```
+
 
 The companion form is then created from the reordered matrices.
 
-    >> Gcf = ss(Acf,Bcf,Ccf,Dcf);
 
-[\[slide:l5s11\]]{#slide:l5s11 label="slide:l5s11"}
 
-    >> G1 = tf(Gcf) % Companion form
-    Transfer function:
-    2 s^3 + 16 s^2 + 30 s + 8
-    -------------------------
-       s^3 + 7 s^2 + 10 s
-    >> G2 = tf(Gcc) % Controller Canonical form
-    ditto!
-    >> G3 = tf(Goc) % Observer Canonical Form
-    ditto!
+{:.input_area}
+```matlab
+Gcf = ss(Acf,Bcf,Ccf,D)
+```
 
-We now consider one final canonical form, the so-called "normal" or
-"parallel" form.
+
+{:.output_stream}
+```
+
+Gcf =
+ 
+  A = 
+        x1   x2   x3
+   x1    0    1    0
+   x2    0    0    1
+   x3    0  -10   -7
+ 
+  B = 
+       u1
+   x1   0
+   x2   0
+   x3   1
+ 
+  C = 
+       x1  x2  x3
+   y1   8  10   2
+ 
+  D = 
+       u1
+   y1   2
+ 
+Continuous-time state-space model.
+
+
+```
+
+#### MATLAB's built-in canonical form
+
+This is none of the forms discussed. So for example if we convert the transfer function directly:
+
+
+
+
+
+{:.input_area}
+```matlab
+num = [2, 16, 30, 8];
+den = [1, 7, 10, 0];
+G = tf(num,den)
+```
+
+
+{:.output_stream}
+```
+
+G =
+ 
+  2 s^3 + 16 s^2 + 30 s + 8
+  -------------------------
+     s^3 + 7 s^2 + 10 s
+ 
+Continuous-time transfer function.
+
+
+```
+
+Then convert into state space using the `ss` function
+
+
+
+{:.input_area}
+```matlab
+Gtf = ss(G)
+```
+
+
+{:.output_stream}
+```
+
+Gtf =
+ 
+  A = 
+         x1    x2    x3
+   x1    -7  -2.5     0
+   x2     4     0     0
+   x3     0  0.25     0
+ 
+  B = 
+       u1
+   x1   4
+   x2   0
+   x3   0
+ 
+  C = 
+          x1     x2     x3
+   y1    0.5  0.625      2
+ 
+  D = 
+       u1
+   y1   2
+ 
+Continuous-time state-space model.
+
+
+```
+
+This is a canonical form known only to the Mathworks! The algorithm used to generate it presumably has some useful numerical properties.
+
+#### All forms represent the same transfer function!
+
+
+
+{:.input_area}
+```matlab
+G1 = tf(Gtf) % Mathworks tf-t--ss form
+```
+
+
+{:.output_stream}
+```
+
+G1 =
+ 
+  2 s^3 + 16 s^2 + 30 s + 8
+  -------------------------
+     s^3 + 7 s^2 + 10 s
+ 
+Continuous-time transfer function.
+
+
+```
+
+
+
+{:.input_area}
+```matlab
+G2 = tf(Gcc) % Controller Canonical form
+```
+
+
+{:.output_stream}
+```
+
+G2 =
+ 
+  2 s^3 + 16 s^2 + 30 s + 8
+  -------------------------
+     s^3 + 7 s^2 + 10 s
+ 
+Continuous-time transfer function.
+
+
+```
+
+
+
+{:.input_area}
+```matlab
+G3 = tf(Goc) % Observer Canonical Form
+```
+
+
+{:.output_stream}
+```
+
+G3 =
+ 
+  2 s^3 + 16 s^2 + 30 s + 8
+  -------------------------
+     s^3 + 7 s^2 + 10 s
+ 
+Continuous-time transfer function.
+
+
+```
+
+
+
+{:.input_area}
+```matlab
+G4 = tf(Gcf)
+```
+
+
+{:.output_stream}
+```
+
+G4 =
+ 
+  2 s^3 + 16 s^2 + 30 s + 8
+  -------------------------
+     s^3 + 7 s^2 + 10 s
+ 
+Continuous-time transfer function.
+
+
+```
+
+We now consider one final canonical form, the so-called "normal" or "parallel" form.
 
 ## Normal Canonical Form
 
-The normal form of a state-space model isolates the characteristic
-values, also called the eigen values, or system poles, of the system.
+The normal form of a state-space model isolates the characteristic values, also called the eigen values, or system poles, of the system.
 
-If all the poles of a system are real and distinct then the transfer
-function may be written as a partial fraction expansion
+If all the poles of a system are real and distinct then the transfer function may be written as a partial fraction expansion
+
 $$G(s) = \frac{Y(s)}{U(s)} = \left\{\frac{r_1}{s-p_1} +
-\frac{r_2}{s-p_2} + \cdots + \frac{r_n}{s-p_n} + d\right\}$$ we can
-develop a state-space model for each term:
-$$Y(s)=\frac{r_i}{s-p_i}U(s).$$ $$\begin{aligned}
+\frac{r_2}{s-p_2} + \cdots + \frac{r_n}{s-p_n} + d\right\}$$ 
+
+we can develop a state-space model for each term:
+
+$$Y(s)=\frac{r_i}{s-p_i}U(s).$$ 
+
+$$\begin{eqnarray*}
 (s-p_i)Y(s) & = & r_i U(s)\\ \frac{d}{dt}y(t)-p_i y(t) &=& r_i
-u(t).\end{aligned}$$ If we let $x_i(t) = y(t)$ then $$\begin{aligned}
-\dot{x}_i &=& p_i x_i + r_i u \\ y &=& x_i\end{aligned}$$ Thus, each
-partial fraction term may be represented by the block diagram shown in .
+u(t).\end{eqnarray*}$$ 
 
-[\[slide:l6s1\]]{#slide:l6s1 label="slide:l6s1"} $$\begin{aligned}
-\dot{x}_i &=& p_i x_i + r_i u \\ y &=& x_i\end{aligned}$$
+If we let $x_i(t) = y(t)$ then 
 
-Thus, the total state-space model of the system is simply the sum of
-such terms as shown in .
+$$\begin{eqnarray*}
+\dot{x}_i &=& p_i x_i + r_i u \\ y &=& x_i\end{eqnarray*}$$ 
 
-[\[slide:l6s2\]]{#slide:l6s2 label="slide:l6s2"}
+Thus, each partial fraction term may be represented by the block diagram shown in Figure 6.
 
-Therefore the state space model for the whole system is as shown in .
+### Figure 6 State-Space model of a first-order system
 
-[\[slide:l6s3\]]{#slide:l6s3 label="slide:l6s3"} $$\begin{aligned}
+$$\begin{eqnarray*}
+\dot{x}_i &=& p_i x_i + r_i u \\ y &=& x_i\end{eqnarray*}$$
+
+![state-space model of a single pole](pictures/sspole.png)
+
+Thus, the total state-space model of the system is simply the sum of such terms as shown in Figure 7.
+
+### Figure 7 Normal Canonical Form: Block Diagram
+
+![Normal Canonical Form: Block Diagram](pictures/normalcan.png)
+
+Therefore the state space model for the whole system is as shown below.
+
+### Normal Observable Canonical State-Space Model
+
+$$\begin{eqnarray*}
  \mathbf{\dot{x}}&=&\left[\begin{array}{ccccc}
   p_1 & 0 & 0 & \cdots & 0 \\
   0 & p_2 & 0 & \cdots & 0 \\
@@ -666,18 +967,14 @@ Therefore the state space model for the whole system is as shown in .
   r_3 \\
   \vdots \\
   r_n
-\end{array}\right] u\\ y &=& \left[1,\ 1,\ 1,\ \ldots,\ 1\right] \mathbf{x} + d u\end{aligned}$$
+\end{array}\right] u\\ y &=& \left[1,\ 1,\ 1,\ \ldots,\ 1\right] \mathbf{x} + d u\end{eqnarray*}$$
 
-Note that the residues of the partial fraction expansion $r_1,\
-r_2,\ \ldots,\ r_n$ have been allocated to the input side of the block
-diagram and therefore to the input matrix in the state space model. This
-model, in which all the elements of the output matrix are unity, is
-called the "*Normal Observable Canonical Form*". It would be equally
-valid to allocate the residues to the output matrix, leaving the
-elements of the input matrix as unity, this would be the "*Normal
-Controllable Canonical Form*" illustrated in .
+Note that the residues of the partial fraction expansion $r_1,\ r_2,\ \ldots,\ r_n$ have been allocated to the input side of the block diagram and therefore to the input matrix in the state space model. This model, in which all the elements of the output matrix are unity, is called the "*Normal Observable Canonical Form*". It would be equally
+valid to allocate the residues to the output matrix, leaving the elements of the input matrix as unity, this would be the "*Normal Controllable Canonical Form*" illustrated below.
 
-[\[slide:l6s3b\]]{#slide:l6s3b label="slide:l6s3b"} $$\begin{aligned}
+### Normal Controllable Canonical State-Space Model
+
+$$\begin{eqnarray*}
  \mathbf{\dot{x}}&=&\left[\begin{array}{ccccc}
   p_1 & 0 & 0 & \cdots & 0 \\
   0 & p_2 & 0 & \cdots & 0 \\
@@ -690,25 +987,27 @@ Controllable Canonical Form*" illustrated in .
   1 \\
   \vdots \\
   1
-\end{array}\right] u\\ y &=& \left[r_1,\ r_2,\ r_3,\ \ldots,\ r_n\right] \mathbf{x} + d u\end{aligned}$$
+\end{array}\right] u\\ y &=& \left[r_1,\ r_2,\ r_3,\ \ldots,\ r_n\right] \mathbf{x} + d u\end{eqnarray*}$$
 
-The most important property of the normal canonical model is that the
-$\mathbf{A}$ matrix is diagonal and that the elements on the diagonal
-are the eigenvalues of the system matrix. If you form the system
-transition matrix for this system each state response is simply of the
-form $r_i e^{p_i t}$, that is each state response is equal to the
-corresponding mode response[^1].
+The most important property of the normal canonical model is that the $\mathbf{A}$ matrix is diagonal and that the elements on the diagonal are the eigenvalues of the system matrix. If you form the systemtransition matrix for this system each state response is simply of the form $r_i e^{p_i t}$, that is each state response is equal to the corresponding mode response<sup>1</sup>.
 
 ### Example 3
 
-For the system examined earlier $$\begin{aligned}
+Determine the observer and controller normal canonical forms for the system examined earlier.
+
+#### Solution
+
+$$\begin{eqnarray*}
 G(s) &=& \frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s} \\
  &=&
 \frac{2s^2 + 10s + 8}{s^3 + 7s^2 + 10s} + 2 \\
  &=& \frac{2s^2 + 10s + 8}{s(s+2)(s+5)} + 2 \\
  &=& \frac{4/5}{s} + \frac{2/3}{s+2} + \frac{8/15}{s+5} + 2
-\\\end{aligned}$$ The normal controllable canonical form therefore is:
-$$\begin{aligned}
+\\\end{eqnarray*}$$ 
+
+The normal controllable canonical form therefore is:
+
+$$\begin{eqnarray*}
 \mathbf{\dot{x}}&=&\left[\begin{array}{ccc}
   0 & 0 & 0  \\
   0 & -2 & 0  \\
@@ -717,8 +1016,11 @@ $$\begin{aligned}
   4/5 \\
   2/3 \\
   8/15
-\end{array}\right] u\\ y &=& \left[1,\ 1,\ 1\right] \mathbf{x} + d u\end{aligned}$$
-and the normal observable canonical form is: $$\begin{aligned}
+\end{array}\right] u\\ y &=& \left[1,\ 1,\ 1\right] \mathbf{x} + 2 u\end{eqnarray*}$$
+
+and the normal observable canonical form is: 
+
+$$\begin{eqnarray*}
 \mathbf{\dot{x}}&=&\left[\begin{array}{ccc}
   0 & 0 & 0  \\
   0 & -2 & 0  \\
@@ -727,68 +1029,79 @@ and the normal observable canonical form is: $$\begin{aligned}
   1 \\
   1  \\
   1
-\end{array}\right] u\\ y &=& \left[4/5,\ 2/3,\ 8/15\right] \mathbf{x} + d u\end{aligned}$$
+\end{array}\right] u\\ y &=& \left[4/5,\ 2/3,\ 8/15\right] \mathbf{x} + 2
+u\end{eqnarray*}$$
 
 ## Time Response from Normal Form
 
-Notice that in the case of a system defined in *normal form*, because
-the $\mathbf{A}$ matrix is diagonal, the state equations are decoupled
-from each other and can be solved independently. This canonical form is
-useful for the solution of the state equations. Thus given initial
-states $x_1(t)=x_{10}$, $x_2(t)=x_{20}$, etc at $t=0$ and taking Laplace
-transforms of the first row of the state equations derived above, the
-solutions are: $$\begin{aligned}
- sX_1 (s) - x_{10}  & = & p_1 X_1 (s) + r_1 U(s) \\
- (s - p_1 )X_1 (s) & = & x_{10}  + r_1 U(s) \\
- X_1 (s) & = & \frac{x_{10} }{s - p_1 } + \frac{r_1 }{s - p_1 }U(s)\end{aligned}$$
-Taking inverse Laplace transforms:
-$$x_1 = x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ and
-similarly for the other states.
+Notice that in the case of a system defined in *normal form*, because the $\mathbf{A}$ matrix is diagonal, the state equations are decoupled from each other and can be solved independently. This canonical form is useful for the solution of the state equations. 
 
 Given initial states $x_1(t)=x_{10}$, $x_2(t)=x_{20}$, etc at $t=0$
-$$\begin{aligned}
+
+$$\begin{eqnarray*}
      sX_1 (s) - x_{10}  & = & p_1 X_1 (s) + r_1 U(s) \\
      (s - p_1 )X_1 (s) & = & x_{10}  + r_1 U(s) \\
      X_1 (s) & = & \frac{x_{10}}{s - p_1 } + \frac{r_1 }{s - p_1 }U(s)
-    \end{aligned}$$ Taking inverse Laplace transforms:
-$$x_1 = x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ Repeated
-for the other states.
+    \end{eqnarray*}$$ 
+    
+    
 
-These are then combined through the output equation to give the solution
-for $y$: $$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$
-$$\begin{aligned}
-	y(t) & = & x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
-         & + &	x_{20}e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
-	     & \vdots & \\
-	     & + & x_{n0}e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{aligned}$$
+Taking inverse Laplace transforms:
+
+$$x_1 = x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ 
+
+Repeated for the other states.
+
+These are then combined through the output equation to give the solution for $y$: 
+
+$$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t).$$
+
+### System Response
 
 Combine state responses through the output equation
-$$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$ $$\begin{aligned}
+
+$$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$ 
+
+$$\begin{eqnarray*}
 	y(t) & = & x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
          & + &	x_{20}e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
 	     & \vdots & \\
-	     & + & x_{n0}e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{aligned}$$
+	     & + & x_{n0}e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{eqnarray*}$$
+         
+
+## Jordan Forms
+
+Are needed for the special cases of
 
 -   Systems with repeated poles
 
 -   Systems wih complex poles
 
+These are discussed in the notes but will not be examined!
+
 ## System with Repeated Poles
 
-If the transfer function has repeated poles, then the form of the model
-must be changed. The partial fraction expansion contains terms of the
-form $$\frac{r_i}{s-p_i} +
-\frac{r_{i+1}}{(s-p_i)^2}.$$ This is most easily implemented using the
-*Normal Controllable Canonical Form* using a series connection of the
-block diagram for the single pole $$\frac{1}{s-p_i}$$ as shown in . By
-examination of this diagram it should be clear that the signal seen at
-point $A$ is $$A(s) = \frac{r_i}{s-p_i}U(s)$$ and that at $B$ is
+If the transfer function has repeated poles, then the form of the model must be changed. The partial fraction expansion contains terms of the form 
+
+$$\frac{r_i}{s-p_i} + \frac{r_{i+1}}{(s-p_i)^2}.$$ 
+
+This is most easily implemented using the *Normal Controllable Canonical Form* using a series connection of the
+block diagram for the single pole $$\frac{1}{s-p_i}$$ as shown in Figure 8. By examination of this diagram it should be clear that the signal seen at point $A$ is 
+
+$$A(s) = \frac{r_i}{s-p_i}U(s)$$
+
+and that at $B$ is
+
 $$B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)$$ as
 required.
 
-[\[slide:l6s4\]]{#slide:l6s4 label="slide:l6s4"}
+### Figure 8 Part of a system with repeated poles
 
-For this portion of the state space model we have $$\begin{aligned}
+![Part of a system with repeated poles](pictures/jordanblock.png)
+
+For this portion of the state space model we have 
+
+$$\begin{eqnarray*}
 \left[\begin{array}{c}
   \dot{x}_i \\
   \dot{x}_{i+1}
@@ -805,13 +1118,15 @@ For this portion of the state space model we have $$\begin{aligned}
 y & = & \left[r_{i+1},\ r_i\right]\left[\begin{array}{c}
   x_i \\
   x_{i+1}
-\end{array}\right].\end{aligned}$$
+\end{array}\right].\end{eqnarray*}$$
 
 By comparison of this result with the normal situation we see that the
 state matrices (of the observer controllable canonical form) are
 modified as follows.
 
--   in $\mathbf{A}$ $$\left[\begin{array}{cc}
+-   in $\mathbf{A}$ 
+
+    $$\left[\begin{array}{cc}
         p_i & 0 \\
         0 & p_{i+1} \\
       \end{array}\right] \rightarrow \left[\begin{array}{cc}
@@ -819,7 +1134,9 @@ modified as follows.
         0 & p_{i} \\
       \end{array}\right];$$
 
--   in $\mathbf{B}$ $$\left[\begin{array}{c}
+-   in $\mathbf{B}$ 
+   
+    $$\left[\begin{array}{c}
         1 \\
         1  \\
       \end{array}\right] \rightarrow \left[\begin{array}{c}
@@ -827,24 +1144,36 @@ modified as follows.
         1 \\
       \end{array}\right];$$
 
--   in $\mathbf{C}$ $$\left[\begin{array}{cc}
+-   in $\mathbf{C}$ 
+
+     $$\left[\begin{array}{cc}
         r_i & r_{i+1}\\
       \end{array}\right] \rightarrow \left[\begin{array}{cc}
         r_{i+1} & r_i\\
       \end{array}\right].$$
 
-The block $$\left[\begin{array}{cc}
+The block 
+
+$$\left[\begin{array}{cc}
     p_i & 1 \\
     0 & p_{i} \\
-  \end{array}\right]$$ is known as a "*Jordan Block*". A matrix with one
-(or more) Jordan Blocks instead of a pure diagonal
+  \end{array}\right]$$
+  
+is known as a "*Jordan Block*". A matrix with one (or more) Jordan Blocks instead of a pure diagonal
+
 $$\left[\begin{array}{cc}
     p_i & 0 \\
     0 & p_{i+1} \\
-  \end{array}\right]$$ is in the "*Jordan Form*". The idea may be
-extended to systems with poles of higher multiplicity. For example for
-the case where the multiplicity is 3 as in $$\frac{1}{(s-p_i)^3}$$ the
-Jordan Block is $$\left[\begin{array}{ccc}
+  \end{array}\right]$$
+  
+is in the "*Jordan Form*". The idea may be extended to systems with poles of higher multiplicity. For example for
+the case where the multiplicity is 3 as in 
+
+$$\frac{1}{(s-p_i)^3}$$ 
+
+the Jordan Block is 
+
+$$\left[\begin{array}{ccc}
     p_i & 1 & 0 \\
     0 & p_{i} & 1 \\
     0 & 0 & p_i
@@ -852,11 +1181,18 @@ Jordan Block is $$\left[\begin{array}{ccc}
 
 ### Example 4
 
-The system with transfer function $$\begin{aligned}
+**Not examined**
+
+The system with transfer function 
+
+$$\begin{eqnarray*}
 G(s) &=& \frac{1}{s^3 + 4s^2 + 5s + 2}\\
 &=& \frac{1}{(s+1)^2(s+2)} \\ &=& \frac{-1}{s+1} +
-\frac{1}{(s+1)^2} + \frac{1}{s+2}.\end{aligned}$$ The normal canonical
-form is therefore given by: $$\begin{aligned}
+\frac{1}{(s+1)^2} + \frac{1}{s+2}.\end{eqnarray*}$$ 
+
+The normal canonical form is therefore given by: 
+
+$$\begin{eqnarray*}
 \mathbf{A} &=& \left[\begin{array}{ccc}
   -1 & 1 & 0 \\
   0 & -1 & 0 \\
@@ -867,20 +1203,19 @@ form is therefore given by: $$\begin{aligned}
   1
 \end{array}\right]\\ \mathbf{C} &=& \left[\begin{array}{ccc}
   1 & -1 & 1
-\end{array}\right] \mathbf{D} = \left[0\right]\end{aligned}$$
+\end{array}\right] \mathbf{D} = \left[0\right]\end{eqnarray*}$$
 
 ## Normal Canonical Form with Complex Poles
 
-A system with complex poles will have a partial fraction expansion
-containing terms of the form
-$$\frac{\Re\{ r_i\} + j\Im\{ r_i\}}{s - \Re\{p_i\} + j\Im\{p_i\}} + \frac{\Re\{r_i\} - j\Im\{ r_i\}}{s - \Re\{p_i\} - j\Im\{p_i\}}$$
-(where the poles and the residuals both appear as complex conjugate
-pairs). We cannot implement these directly in state space form because
-the state matrices must have real coefficients to be realisable.
-However, the complex factors involved can be combined into a quadratic
-form and blocks replaced in the normal canonical form[^2] as follows:
+A system with complex poles will have a partial fraction expansion containing terms of the form
 
--   in $\mathbf{A}$ $$\left[\begin{array}{cc}
+$$\frac{\Re\{ r_i\} + j\Im\{ r_i\}}{s - \Re\{p_i\} + j\Im\{p_i\}} + \frac{\Re\{r_i\} - j\Im\{ r_i\}}{s - \Re\{p_i\} - j\Im\{p_i\}}$$
+
+(where the poles and the residuals both appear as complex conjugate pairs). We cannot implement these directly in state space form because the state matrices must have real coefficients to be realisable. However, the complex factors involved can be combined into a quadratic form and blocks replaced in the normal canonical form<sup>2</sup> as follows:
+
+-   in $\mathbf{A}$ 
+
+    $$\left[\begin{array}{cc}
         p_i & 0 \\
         0 & p_{i+1} \\
       \end{array}\right] \rightarrow \left[\begin{array}{cc}
@@ -888,7 +1223,9 @@ form and blocks replaced in the normal canonical form[^2] as follows:
         -\Im\{p_i\} & +\Re\{p_i\} \\
       \end{array}\right];$$
 
--   in $\mathbf{B}$ $$\left[\begin{array}{c}
+-   in $\mathbf{B}$ 
+
+    $$\left[\begin{array}{c}
         1 \\
         1  \\
       \end{array}\right] \rightarrow \left[\begin{array}{c}
@@ -896,7 +1233,9 @@ form and blocks replaced in the normal canonical form[^2] as follows:
         1 \\
       \end{array}\right];$$
 
--   in $\mathbf{C}$ $$\left[\begin{array}{cc}
+-   in $\mathbf{C}$ 
+
+    $$\left[\begin{array}{cc}
         r_i & r_{i+1}\\
       \end{array}\right] \rightarrow \left[\begin{array}{cc}
         2\Im\{r_{i}\} & 2\Re\{r_i\}\\
@@ -904,12 +1243,17 @@ form and blocks replaced in the normal canonical form[^2] as follows:
 
 ### Example 5
 
-The system with transfer function $$\begin{aligned}
+The system with transfer function 
+
+$$\begin{eqnarray*}
 G(s) &=& \frac{6s+6}{s^2 + 4s + 13}\\
 &=& \frac{6(s+1)}{(s+2)^2 + 3^2} \\ &=&
 \frac{6(s+1)}{(s+2+3j)(s+2-3j)}
-\\ &=& \frac{3-j}{s+2+3j} + \frac{3-j}{s+2-3j}.\end{aligned}$$ The
-normal canonical form is therefore given by: $$\begin{aligned}
+\\ &=& \frac{3-j}{s+2+3j} + \frac{3-j}{s+2-3j}.\end{eqnarray*}$$ 
+
+The normal canonical form is therefore given by: 
+
+$$\begin{eqnarray*}
 \mathbf{A} &=& \left[\begin{array}{cc}
   -2-3j & 0 \\
   0 & -2+3j
@@ -918,8 +1262,11 @@ normal canonical form is therefore given by: $$\begin{aligned}
   1
 \end{array}\right]\\ \mathbf{C} &=& \left[\begin{array}{cc}
   3-j & 3+j
-\end{array}\right] \mathbf{D} = \left[0\right]\end{aligned}$$ But this
-is not realisable so instead we use $$\begin{aligned}
+\end{array}\right] \mathbf{D} = \left[0\right]\end{eqnarray*}$$ 
+
+But this is not realisable so instead we use 
+
+$$\begin{eqnarray*}
 \mathbf{A} &=& \left[\begin{array}{cc}
   -2 & -3 \\
   3 & -2
@@ -928,21 +1275,23 @@ is not realisable so instead we use $$\begin{aligned}
   1
 \end{array}\right]\\ \mathbf{C} &=& \left[\begin{array}{cc}
   -2 & -6
-\end{array}\right] \mathbf{D} = \left[0\right].\end{aligned}$$
+\end{array}\right] \mathbf{D} = \left[0\right].\end{eqnarray*}$$
 
-In class we will work through the examples given here and if we have
-time we'll look at
+## End of Pre-Class Presentation
+
+In class we will work through the examples given here and if we have time we'll look at
 
 -   Examples of controllable and observable forms
+
+-   MATLAB and canonical forms
 
 -   Normal form
 
 -   Time response of normal form
 
--   Jordan forms
 
 ## Footnotes
 
-[^1]: The proof is left as an exercise.
+1. The proof is left as an exercise.
 
-[^2]: The details are left as an exercise.
+2. The details are left as an exercise.

@@ -67,7 +67,7 @@ $$\mathbf{v}(t)=\left[ \begin{array}{c}
 
 then $$\mathbf{V}(s)=\left[ \begin{array}{c}
    1/s \\
-   1/s+a \\
+   1/(s+a) \\
    b/(s^2+b^2) \\
   \end{array} \right]$$
 
@@ -296,34 +296,6 @@ $$\begin{equation*}
 +1/(LC)}+1
 \end{array}\right]\end{equation*}$$
 
-$$\begin{eqnarray*}
- &=& \frac{1}{s^2 + (R/L)s
-+1/(LC)}\left[\begin{array}{c}
-  (1/C)s+R/(LC) \\
-  1/(LC) \\
-  (1/C)s \\
-  R/(LC) \\
-  -1/(LC)
-\end{array}\right] + \left[\begin{array}{c}
-  0 \\
-  0 \\
-  0 \\
-  0 \\
-  1
-\end{array} \right]\\
-&=& \left[\begin{array}{c}
-  \frac{(1/C)s+R/(LC)}{s^2 + (R/L)s
-+1/(LC)} \\
-  \frac{1/(LC)}{s^2 + (R/L)s
-+1/(LC)} \\
-  \frac{(1/C)s}{s^2 + (R/L)s
-+1/(LC)} \\
-  \frac{R/(LC)}{s^2 + (R/L)s
-+1/(LC)} \\
-  -\frac{1/(LC)}{s^2 + (R/L)s
-+1/(LC)}+1
-\end{array}\right]\end{eqnarray*}$$
-
 In matrix form, when combined with the input and output transforms we have the situation illustrated below. Each transfer function relates the corresponding output transform to the input transform. 
 
 For example
@@ -373,6 +345,8 @@ corresponding differential equations relating the dependant variable to
 the input.
 
 ### Converting SS to TF in Matlab
+
+We will do this in class
 
 Continuing example from [Section 7.1](../1/intro2ss):
 
@@ -469,7 +443,7 @@ step(circ_ss)
 
 
 
-![png](../../images/07/2/tf4ss_48_0.png)
+![png](../../images/07/2/tf4ss_47_0.png)
 
 
 #### Convert to transfer functiom matrix
@@ -684,30 +658,6 @@ Thus: $$\begin{eqnarray*}
 \mathbf{CX}+dU = Y & = & 0\end{eqnarray*}$$ 
 
 In matrix form:
-$$\left[ {\begin{array}{*{20}c}
-   {s{\bf{I}} - {\bf{A}}} &  \vdots  & {\bf{B}}  \\
-    \cdots  &  \cdots  &  \cdots   \\
-   {\bf{C}} &  \vdots  & d  \\
-\end{array}} \right]\left[ {\begin{array}{*{20}c}
-   {\bf{X}}  \\
-    \cdots   \\
-   U  \\
-\end{array}} \right] = \left[ {\begin{array}{*{20}c}
-   {\bf{0}}  \\
-    \cdots   \\
-   0  \\
-\end{array}} \right]$$
-
-Zeros are those values of $s$ for which the system output is zero when
-the input and states are not zero 
-
-$$\begin{aligned}
-        (s\mathbf{I}-\mathbf{A})\mathbf{X}-\mathbf{B}U & = & \mathbf{0} \\
-        \mathbf{CX}+dU = Y & = & 0
-    \end{aligned}$$ 
-
-In matrix form: 
-
 $$\left[ {\begin{array}{*{20}c}
    {s{\bf{I}} - {\bf{A}}} &  \vdots  & {\bf{B}}  \\
     \cdots  &  \cdots  &  \cdots   \\

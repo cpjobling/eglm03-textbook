@@ -24,6 +24,27 @@ State space models can do anything that classical TF models can do.
 
 In addition state space models have allowed control theory to be extended in various directions:
 
+### Classical control system theory
+
+is based on the *Transfer Function* model.
+
+* Can only be used for systems that are defined by LTI differential
+equations.
+
+### Modern control systems theory
+
+is based on a *time-domain* description of systems.
+
+* System defined in terms of a set of first order coupled differential equations 
+
+* Uses the so-called *state variables* of the system
+
+* Convenient matrix form makes the model attractive for simulation,
+analysis and design using packages like MATLAB.
+
+* All classical control methods seen so far also apply to state-space
+models.
+
 ### The Advances Enabled by State Space Models
 
 1.  Handling Multiple Input Multiple Output (MIMO) systems.
@@ -58,6 +79,8 @@ Figure 7.1 shows a simple electrical circuit. We shall develop this circuit into
 
 <div style="text-align:center"><b>Figure 7.1: A Simple Circuit</b></div>
 
+### Equations for example 1
+
 If we write down the equations for the elements we get: 
 
 $$\begin{eqnarray}
@@ -72,7 +95,11 @@ $$\begin{eqnarray}
   u &=& i_1 + i_2 \label{eq:l13e4}\\
   v_{31} &=& v_{32} + v_{21} \label{eq:l13e5}\end{eqnarray}$$
 
-Since the system "source" is $u$, we can construct the block diagram systematically by tracing the equations through from the source. We also introduce the additional constraint that we would like the derivative terms $dv_{31}/dt$ and $di_1/dt$ to appear as inputs to integrator blocks whose outputs are therefore
+Since the system "source" is $u$, we can construct the block diagram systematically by tracing the equations through from the source. 
+
+We also introduce the additional constraint that we would like the derivative terms $dv_{31}/dt$ and $di_1/dt$ to appear as inputs to integrator blocks whose outputs are therefore
+
+Integrator equations
 
 $$\begin{eqnarray}
   v_{31} = \int \frac{dv_{31}}{dt} dt \label{eq:l13e6}\\
@@ -82,6 +109,8 @@ We can model these equations in MATLAB/Simulink<sup>2</sup> using component bloc
 
 Simulink model: [blocks.slx](matlab/blocks.slx).
 
+### Modelled equations
+
 ![Figure 7.2 Block Diagram](pictures/blocks.png)
 
 
@@ -90,6 +119,8 @@ Simulink model: [blocks.slx](matlab/blocks.slx).
 Combining these blocks such that the input is $u$ and the output is the current flowing through the inductance $i_1$<sup>3</sup> we obtain the block diagram shown in Figure 7.3.
 
 Simulink model: [blockdiag.slx](matlab/blockdiag.slx)
+
+### Example 1 as a block diagram
 
 ![Figure 7.3 Block Diagram](pictures/blockdiag.png)
 
@@ -102,7 +133,7 @@ To do this we first identify the "*state-variables*" which are (in this case) th
 
 These equations have apparently already been written down as (1) and (2), but we impose an additional condition that the state equations can only involve the state-variables, their derivatives and the system input. Thus we have to trace the path back through the block diagram from the inputs to the integrator blocks to the (nearest) state variable(s). 
 
-The state equations are
+### State equations for the example
 
 $$\begin{eqnarray}
   \frac{dv_{31}}{dt} &=& \frac{1}{C}\ i_2 = -\frac{1}{C}i_1 +
@@ -110,6 +141,8 @@ $$\begin{eqnarray}
   \frac{di_{i}}{dt} &=& \frac{1}{L}\ v_{32} = \frac{1}{L}v_{31} -\frac{R}{L} i_1 \label{eq:l13e9}\end{eqnarray}$$
 
 Equations (8) and (9) together form a pair of simultaneous equations (they must both be satisfied by the dynamic response of the circuit voltages and currents to the input) and they may therefore be written in vector form<sup>5</sup>:
+
+### State equations in vector form
 
 $$\begin{equation}\label{eq:l13e10}
   \left[\begin{array}{c}
@@ -127,6 +160,8 @@ $$\begin{equation}\label{eq:l13e10}
     \end{array}\right]\ u\end{equation}$$
 
 The vector $[v_{31}, i_{1}]^T$ is called the "*state vector*." Its elements are state variables.<sup>6</sup>
+
+### Generalizing the equations
 
 We can generalize this result by defining general state variables $x_1=v_{31}$ and $x_2=i_1$. Using the notational shorthand $\dot{x}=dx/dt$ we then get: 
 
@@ -252,6 +287,21 @@ equations.
 For linear time varying systems, the matrices have elements which are
 functions of time, but for time invariant systems all the matrices are
 constant.
+
+* Linear systems most important for control systems analysis and design.
+
+* Best control methods and techniques apply to linear systems.
+
+* Nonlinear systems can often be linearized around a given operating
+point allowing linear methods to be used.
+
+* Linear models can be modelled with matrix equations with makes them
+attractive to tools like MATLAB.
+
+* Linear time-varying systems have matrix elements which are functions
+of time.
+
+* Linear time invariant systems have constant matrix elements.
 
 ### A vector/matrix notation
 
@@ -399,9 +449,21 @@ is shown in Figure 7.6.
 
 Simulink model: [statemodel.slx](matlab/statemodel.slx)
 
+### State-space model for example 1
+
 ![Figure 7.6](pictures/statemodel.png)
 
 <div style="text-align:center"><b>Figure 7.6: State Space Model of Example 1</b></div> 
+
+## End of Pre-Lecture
+
+In class activities
+
+* We will review the Simulink modles of the circuit
+* We will work through examples 2 and 3
+* We will show the MATLAB commands for defining the state-space system of the circuit
+* We will look at one of the derivation of a state-space model of one of the CTMS
+
 
 ### Modelling State Space Systems in MATLAB
 
@@ -491,12 +553,9 @@ Continuous-time state-space model.
 Once you have the state-space model, all the analysis techniques seen so
 far are open to you.
 
-### In class activity
+## Example 4
 
-In class we will construct the state-space model for the model chosen by
-you from the CTMS.
-
-Construct the state-space model chosen by you from the CTMS.
+Construct the state-space model chosen by the class from the [Control Systems Tutorials in MATLAB and Simulink](http://ctms.engin.umich.edu/CTMS/index.php?aux=Home) collection.
 
 ## Footnotes
 
@@ -512,7 +571,7 @@ Construct the state-space model chosen by you from the CTMS.
 
 6. The matrix operator $[]^T$ is the "transpose" operator. In this case it converts the row vector shown into the column vector actually used in the state equations. When applied to a matrix, the rows of the matrix become the columns of the transposed matrix. We shall use the transpose operator in the discussion of state equations to avoid messy attempts to write column vectors in the body of a sentence!
 
-## Answers to In-Class Problems
+## Answers to In-Class Examples
 
 ### Solution to Example 2
 
@@ -532,7 +591,7 @@ For this system, summing the forces in the direction $x$ we have
 
 $$F = m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx$$
 
-If we chose the position of the mass $x$ and it's velocity $dx/dt$ to be the states, and let the force $F$ be the system input, then $x_1 = x$, $x_2 = dx/dt$ and $u=F$ and the state equations are:
+If we chose the position $x$ of the mass $m$ and its velocity $dx/dt$ to be the states, and let the force $F$ be the system input, then $x_1 = x$, $x_2 = dx/dt$ and $u=F$ and the state equations are:
 
 $$\begin{eqnarray*}
     \frac{dx_1}{dt} & = & x_2 \\
