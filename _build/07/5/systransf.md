@@ -148,9 +148,12 @@ The transformation $\mathbf{T}^{-1}\mathbf{AT}$ is a *similarity transform*. Tha
 
 $$\begin{eqnarray*}
 	\mathbf{Ax} & = & \lambda\mathbf{x} \\
-	\mathbf{T}^{-1}\mathbf{Ax} & = & \lambda\mathbf{T}^{-1}\mathbf{x} \\	\end{eqnarray*}$$
+	\mathbf{T}^{-1}\mathbf{Ax} & = & \lambda\mathbf{T}^{-1}\mathbf{x}	
+\end{eqnarray*}$$
 
-Let $\mathbf{x}=\mathbf{Tw}$ then $$\begin{eqnarray*}
+Let $\mathbf{x}=\mathbf{Tw}$ then
+
+$$\begin{eqnarray*}
 	\mathbf{T}^{-1}\mathbf{ATw} & = & \lambda\mathbf{T}^{-1}\mathbf{Tw} \\	
 	(\mathbf{T}^{-1}\mathbf{AT})\mathbf{w} & = & \lambda\mathbf{w} \\	\end{eqnarray*}$$
 

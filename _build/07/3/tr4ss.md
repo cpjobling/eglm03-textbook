@@ -234,7 +234,10 @@ $$\phi(t)=\left[\begin{array}{cc}
 \end{array}\right].$$
 
 Note that, by an alternative derivation<sup>1</sup>, we can show that
-$$\phi(t)=e^{\mathbf{A}t}$$ where $e^{\mathbf{A}t}$ is called the matrix
+
+$$\phi(t)=e^{\mathbf{A}t}$$
+
+where $e^{\mathbf{A}t}$ is called the matrix
 exponential.
 
 ### Zero Input System Response

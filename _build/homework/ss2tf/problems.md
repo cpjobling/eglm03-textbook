@@ -7,8 +7,8 @@ prev_page:
   url: /homework/digirev/problems
   title: 'Homework 6 - Digital Systems Revision'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/ssm/problems
+  title: 'Homework 8 - State Space Modelling'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
