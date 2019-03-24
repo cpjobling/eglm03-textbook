@@ -16,7 +16,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 In this section we conclude our introduction to state space systems by developing a method that can be used to solve any linear time invariant (LTI) system using the state space model. This will put on a formal mathematical footing the approach described in [Section 7.3](../3/tr4ss). 
 
-To do this we need to derive the Taylor series for the state matrix and then use the results from the previous two lectures to formally derive the state transmission matrix $\mathbf{\phi}(t)$ from the resolvant matrix $\mathbf{\Phi}(\lambda) = |\lambda\mathbf{I}-\mathbf{A}|$. This will lead is to a general solution which we will illustrate with examples and compare with the solution developed in the [last section](../5/systrans) and the solution obtained by inverting the system transfer function. As before, we will refer to MATLAB where relevant.
+To do this we need to derive the Taylor series for the state matrix and then use the results from the previous two lectures to formally derive the state transmission matrix $\mathbf{\phi}(t)$ from the resolvant matrix 
+
+$$\mathbf{\Phi}(\lambda) = |\lambda\mathbf{I}-\mathbf{A}|.$$ 
+
+This will lead is to a general solution which we will illustrate with examples and compare with the solution developed in the [last section](../5/systrans) and the solution obtained by inverting the system transfer function. As before, we will refer to MATLAB where relevant.
 
 Once we have completed this material, we will be in a position to move on to look at state-space methods for control system design.
 
@@ -257,13 +261,13 @@ $${\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
    4  \\
 \end{array}} \right]$$
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
     w_1 & = & w_{10}e^{-t}-\int_0^t e^{-(t-\tau)} d\tau \\
         & = & -3e^{-t}-\left[e^{-(t-\tau)}\right]_0^t \\
         & = & -3e^{-t}-\left[1 - e^{-t}\right] \\
-        & = & -1 -2e^{-t}\end{eqnarray*}
+        & = & -1 -2e^{-t}\end{eqnarray*}$$
 
-\begin{eqnarray*}
+$$\begin{eqnarray*}
     w_2 & = & w_{20}e^{-2t}+2\int_0^t e^{-2(t-\tau)} d\tau \\
         & = & 4e^{-2t}+2\left[0.5e^{-2(t-\tau)}\right]_0^t \\
         & = & 4e^{-2t}+\left[1 - e^{-2t}\right] \\
@@ -275,7 +279,10 @@ $${\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
 \end{array}} \right]\left[ {\begin{array}{*{20}c}
    { - 1 - 2e^{ - t} }  \\
    {1 + 3e^{ - 2t} }  \\
-\end{array}} \right]$$ Therefore
+\end{array}} \right]$$ 
+
+Therefore
+
 $${\bf{x}} = \left[ {\begin{array}{*{20}c}
    { - 2e^{ - t}  + 3e^{ - 2t} }  \\
    {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
