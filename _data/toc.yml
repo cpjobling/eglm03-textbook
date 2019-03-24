@@ -123,6 +123,8 @@
     url: /homework/digirev/problems
   - title: Homework 7 - Modelling Systems in Statespace
     url: /homework/ss2tf/problems
+  - title: Homework 8 - State Space Modelling
+    url: /homework/ssm/problems
 
 
 - divider: true
