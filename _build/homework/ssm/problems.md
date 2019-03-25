@@ -44,9 +44,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 5.	For each of the systems with transfer functions shown below, construct the state space model in block diagonal (Jordan) form.
     
-        a. $$\frac{d^3 y}{dt^3} + 9\frac{d^2 y}{dt^2} + 24\frac{dy}{dt}+ 16y = 5\frac{du}{dt} + 10u$$
+    a. $$\frac{d^3y}{dt^3} + 9\frac{d^2y}{dt^2} + 24\frac{dy}{dt} + 16y = 5\frac{du}{dt}+ 10u$$
         
-        b. $$\frac{d^3 y}{dt^3} + 10\frac{d^2 y}{dt^2} + 90\frac{dy}{dt}+ 81y = 10\frac{du}{dt} + 20u$$
+    b. $$\frac{d^3 y}{dt^3} + 10\frac{d^2 y}{dt^2} + 90\frac{dy}{dt}+ 81y = 10\frac{du}{dt} + 20u$$
         
 
 6. Determine the system transform matrices that will convert a system in observer canonical form to one in controller canonical form. Demonstrate your result by applying the transform to the solutions to Question 1.
