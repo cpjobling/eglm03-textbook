@@ -142,7 +142,7 @@ G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
 a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.\end{equation}$$ 
 
 The state variables in this model are the so-called "*phase variables*" $x_1 = y$,
-$x_2 = dy/dt$, $\ldots$ $x_n = d^n/dt^n$.
+$x_2 = dy/dt$, $\ldots$ $x_n = dy^{n-1}/dt^{n-1}$.
 
 ### Companion Form
 
@@ -176,6 +176,7 @@ Now let us consider the case of a system that has derivatives of the
 input.
 
 A strictly proper system has transfer function
+
 $$G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
 b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
 a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$ 
@@ -1057,19 +1058,19 @@ u\end{eqnarray*}$$
 
 Notice that in the case of a system defined in *normal form*, because the $\mathbf{A}$ matrix is diagonal, the state equations are decoupled from each other and can be solved independently. This canonical form is useful for the solution of the state equations. 
 
-Given initial states $x_1(t)=x_{10}$, $x_2(t)=x_{20}$, etc at $t=0$
+Given initial states $x_1(t)=x_{1}(0)$, $x_2(t)=x_2(0)$, etc at $t=0$
 
 $$\begin{eqnarray*}
-     sX_1 (s) - x_{10}  & = & p_1 X_1 (s) + r_1 U(s) \\
-     (s - p_1 )X_1 (s) & = & x_{10}  + r_1 U(s) \\
-     X_1 (s) & = & \frac{x_{10}}{s - p_1 } + \frac{r_1 }{s - p_1 }U(s)
+     sX_1 (s) - x_{1}(0)  & = & p_1 X_1 (s) + r_1 U(s) \\
+     (s - p_1 )X_1 (s) & = & x_{1}(0)  + r_1 U(s) \\
+     X_1 (s) & = & \frac{x_{1}(0)}{s - p_1 } + \frac{r_1 }{s - p_1 }U(s)
     \end{eqnarray*}$$ 
     
     
 
 Taking inverse Laplace transforms:
 
-$$x_1 = x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ 
+$$x_1 = x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$ 
 
 Repeated for the other states.
 
@@ -1084,10 +1085,10 @@ Combine state responses through the output equation
 $$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$ 
 
 $$\begin{eqnarray*}
-	y(t) & = & x_{10}e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
-         & + &	x_{20}e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
+	y(t) & = & x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
+         & + &	x_{2}(0)e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
 	     & \vdots & \\
-	     & + & x_{n0}e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{eqnarray*}$$
+	     & + & x_{n}(0)e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{eqnarray*}$$
          
 
 ## Jordan Forms
@@ -1096,7 +1097,7 @@ Are needed for the special cases of
 
 -   Systems with repeated poles
 
--   Systems wih complex poles
+-   Systems with complex poles
 
 These are discussed in the notes but will not be examined!
 

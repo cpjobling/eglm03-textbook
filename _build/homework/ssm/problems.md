@@ -51,7 +51,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 6. Determine the system transform matrices that will convert a system in observer canonical form to one in controller canonical form. Demonstrate your result by applying the transform to the solutions to Question 1.
 
-7. For the controller canonical forms of the system shown in Question 1(c) calculate the system response for $u=1$ $t\ge 0$, with initial conditions  $X_1(0)=x_2(0) = 1$. 
+7. For the controller canonical forms of the system shown in Question 1(c) calculate the system response for $u=1$, $t\ge 0$, with initial conditions  $X_1(0)=x_2(0) = 1$. 
 
     Use
 
