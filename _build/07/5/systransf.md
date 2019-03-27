@@ -14,7 +14,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Transformation of States and System Diagonalization
 
-The canonical forms described in the last [section](https://cpjobling.github.io/eglm03-textbook/07/4/canon) give different descriptions of the same transfer function (TF) and are therefore equivalent in their overall input-output relationship. This means that it should be possible to convert one canonical form into another by theoperation of simple matrix operations. Furthermore, by transforming a system to the *normal form*, determining the response and mapping back, it is possible to determine the total system response of any state space system.
+The canonical forms described in the last [section](https://cpjobling.github.io/eglm03-textbook/07/4/canon) give different descriptions of the same transfer function (TF) and are therefore equivalent in their overall input-output relationship. This means that it should be possible to convert one canonical form into another by the operation of simple matrix operations. Furthermore, by transforming a system to the *normal form*, determining the response and mapping back, it is possible to determine the total system response of any state space system.
 
 The *eigenvalues* of the state matrix $\mathbf{A}$ have an important influence on the system response and understanding them is key to understanding the general solution of state-space systems.
 
