@@ -79,8 +79,8 @@ Solving for $\mathbf{x}_i$
 
 by premultiplying both sides by $(\lambda_i\mathbf{I}-\mathbf{A})^{-1}$ yields
 
-$$\mathbf{x}_i = (\lambda_i\mathbf{I}-\mathbf{A})^{-1}\mathbf{0} =
-           \frac{\textrm{adj}(\lambda_i\mathbf{I}-\mathbf{A})^{-1}}{\det(\lambda_i\mathbf{I}-\mathbf{A})^{-1}}\mathbf{0}$$
+$$\mathbf{x}_i = (\lambda_i\mathbf{I}-\mathbf{A})^{-1} =
+           \frac{\textrm{adj}(\lambda_i\mathbf{I}-\mathbf{A})^{-1}}{\det(\lambda_i\mathbf{I}-\mathbf{A})^{-1}} = \mathbf{0}$$
            
 
 Since $\mathbf{x}_i\ne \mathbf{0}$, 
