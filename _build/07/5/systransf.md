@@ -419,7 +419,7 @@ $$\begin{array}{l}
 Given the system shown below, find the diagonal (normal form) system that is similar. 
 
 $$\begin{eqnarray*}
-  {\mathbf{\dot x}} $=$ \left[ {\begin{array}{*{20}{c}}
+  {\mathbf{\dot x}} &=& \left[ {\begin{array}{*{20}{c}}
   { - 3}&1 \\ 
   1&{ - 3} 
 \end{array}} \right]{\mathbf{x}} + \left[ {\begin{array}{*{20}{c}}

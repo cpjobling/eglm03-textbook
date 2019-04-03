@@ -7,8 +7,8 @@ prev_page:
   url: /07/5/systransf
   title: 'Transformation of States and System Diagonalization'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /08/index
+  title: 'State Space Control'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
@@ -235,7 +235,7 @@ $$\frac{d\mathbf{w}}{t}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u.$$
 
 Using the transformation to normal canonical form:
 
-$$\frac{d\mathbf{w}}{t}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u$$
+$$\frac{d\mathbf{w}}{dt}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u$$
 
 $$\frac{d{\bf{w}}}{dt} = \left[ {\begin{array}{*{20}c}
    { - 1} & 0  \\
