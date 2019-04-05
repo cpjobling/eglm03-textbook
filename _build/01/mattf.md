@@ -4,8 +4,8 @@ redirect_from:
 interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
-  url: /08/index
-  title: 'State-Feedback Control'
+  url: /08/4/observer_controller
+  title: 'Combined Observer and Controller'
 next_page:
   url: /homework/index
   title: 'Homework Problems'

@@ -6,8 +6,8 @@ prev_page:
   url: /07/6/gensolution
   title: 'The General Solution of LTI Systems'
 next_page:
-  url: /01/mattf
-  title: 'Appendix A Defining Transfer Functions in MATLAB'
+  url: /08/1/obsv_ctrl
+  title: 'Controllability and Observability'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 # State Space Design of Control Systems

@@ -51,6 +51,7 @@
     url: /03/5/analrloc
   - title: Lag compensation
     url: /03/6/lagc
+
 - title: PID Compensation
   url: /04/pid
   sections:
@@ -64,6 +65,7 @@
     url: /04/3/analpid 
   - title: PID Autotuning in MATLAB
     url: /04/4/autotune
+
 - title: Frequency Response Design
   url: /05/freqresp
   sections:
@@ -71,6 +73,7 @@
     url: /05/1/freqlead
   - title: Frequency Response Design of a Lag Compensator
     url: /05/2/freqlag
+
 - title: Digital Control Systems
   url: /06/digital
   sections:
@@ -82,6 +85,7 @@
     url: 06/3/cse
   - title: Introduction to Digital Control
     url: 06/4/digictrl
+    
 - title: Modelling Systems in State-Space
   url: /07/index
   sections:
@@ -97,26 +101,25 @@
     url: /07/5/systransf
   - title: The General Solution of LTI Systems
     url: /07/6/gensolution
+
 - title: State-Feedback Control
   url: /08/index
   sections:
   - title: Controllability and Observability
-  - url: /08/1/obsv_ctrl
-  - title: State Feedback Control
-  - url: /08/2/sfcontrol
+    url: /08/1/obsv_ctrl
+  - title: State-Feedback Control
+    url: /08/2/sfcontrol
   - title: State Observers
-  - url: /08/3/sfcontrol
-  - title: Combined Observer and Control
-  - url: /08/4/sfcontrol
+    url: /08/3/observers
+  - title: Combined Observer and Controller
+    url: /08/4/observer_controller
 
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
   not_numbered: true
   sections:
-
 - divider: true
 - header: Homework
-
 - title: Homework Problems
   url: /homework/index
   not_numbered: true
@@ -137,11 +140,9 @@
     url: /homework/ss2tf/problems
   - title: Homework 8 - State Space Modelling
     url: /homework/ssm/problems
-
-
+    
 - divider: true
 - header: Handouts
-
 - title: Control System Design Methods
   url: /handouts/csd/index
   not_numbered: true
@@ -160,9 +161,6 @@
       url: /handouts/csd/ack
     - title: Appendix -- Transfer Function Plots for Typical Transfer Functions
       url: /handouts/csd/appendix
-
-
-
 
 - divider: true
 - header: Jupyter books
