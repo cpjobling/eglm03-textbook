@@ -97,17 +97,17 @@
     url: /07/5/systransf
   - title: The General Solution of LTI Systems
     url: /07/6/gensolution
-  - title: State-Feedback Control
-    url: /08/index
-    sections:
-    - title: Controllability and Observability
-    - url: /08/1/obsv_ctrl
-    - title: State Feedback Control
-    - url: /08/2/sfcontrol
-    - title: State Observers
-    - url: /08/3/sfcontrol
-    - title: Combined Observer and Control
-    - url: /08/4/sfcontrol
+- title: State-Feedback Control
+  url: /08/index
+  sections:
+  - title: Controllability and Observability
+  - url: /08/1/obsv_ctrl
+  - title: State Feedback Control
+  - url: /08/2/sfcontrol
+  - title: State Observers
+  - url: /08/3/sfcontrol
+  - title: Combined Observer and Control
+  - url: /08/4/sfcontrol
 
 - title: Appendix A Defining Transfer Functions in MATLAB
   url: /01/mattf
