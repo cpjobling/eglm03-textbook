@@ -7,8 +7,8 @@ prev_page:
   url: /homework/ss2tf/problems
   title: 'Homework 7 - Modelling Systems in Statespace'
 next_page:
-  url: /handouts/csd/index
-  title: 'Control System Design Methods'
+  url: /homework/ppo/problems
+  title: 'Homework 9 - Pole Placement and Observers'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

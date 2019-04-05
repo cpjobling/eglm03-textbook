@@ -3,8 +3,8 @@ redirect_from:
   - "/handouts/csd/index"
 title: 'Control System Design Methods'
 prev_page:
-  url: /homework/ssm/problems
-  title: 'Homework 8 - State Space Modelling'
+  url: /homework/ppo/problems
+  title: 'Homework 9 - Pole Placement and Observers'
 next_page:
   url: /handouts/csd/1
   title: '1. Aims of Control Systems Analysis and Design'
