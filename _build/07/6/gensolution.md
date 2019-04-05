@@ -8,7 +8,7 @@ prev_page:
   title: 'Transformation of States and System Diagonalization'
 next_page:
   url: /08/index
-  title: 'State Space Control'
+  title: 'State-Feedback Control'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 

@@ -5,7 +5,7 @@ interact_link: content/01/mattf.ipynb
 title: 'Appendix A Defining Transfer Functions in MATLAB'
 prev_page:
   url: /08/index
-  title: 'State Space Control'
+  title: 'State-Feedback Control'
 next_page:
   url: /homework/index
   title: 'Homework Problems'

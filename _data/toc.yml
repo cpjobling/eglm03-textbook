@@ -97,7 +97,7 @@
     url: /07/5/systransf
   - title: The General Solution of LTI Systems
     url: /07/6/gensolution
-  - title: State Space Control
+  - title: State-Feedback Control
     url: /08/index
     sections:
     - title: Controllability and Observability
