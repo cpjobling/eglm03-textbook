@@ -140,6 +140,8 @@
     url: /homework/ss2tf/problems
   - title: Homework 8 - State Space Modelling
     url: /homework/ssm/problems
+  - title: Homework 9 - Pole Placement and Observers
+    url: /homework/ppo/problems
     
 - divider: true
 - header: Handouts
