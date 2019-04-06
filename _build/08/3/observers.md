@@ -211,7 +211,7 @@ this system.
 
 In MATLAB we could evaluate the $\mathbf{L}$ matrix using:
 
-        L=(acker(A',C',p))'
+        L=acker(A',C',p)'
 
 where `p` is a vector of desired observer poles.
 

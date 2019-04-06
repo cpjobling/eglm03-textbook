@@ -92,8 +92,6 @@ This leads to a set of linear equations in the $k$'s which can always be solved 
 
 Finally, we need to find the $k$ coefficients in $\mathbf{K}$ such that the polynomials in equations (1) and (2) above have matching coefficients in each power of $s$.
 
-This leads to a set of linear equations in the $k$'s which can always be solved to give the required feedback control law, for whatever closed loop pole locations are given.
-
 ### Example 1
 
 Will be done in class.
@@ -186,6 +184,7 @@ Form*.
 ## State Feedback in the Case of the Control Canonical Form
 
 In the control canonical form we have matrices:
+
 $${\bf{A}} = \left[ {\begin{array}{*{20}c}
    { - a_1 } & { - a_2 } &  \cdots  & { - a_n }  \\
    1 & 0 &  \cdots  & 0  \\
@@ -196,7 +195,9 @@ $${\bf{A}} = \left[ {\begin{array}{*{20}c}
    0  \\
     \vdots   \\
    0  \\
-\end{array}} \right]$$ with open loop CE:
+\end{array}} \right]$$ 
+
+with open loop CE:
 
 $$\det(s\mathbf{I}-\mathbf{A})=s^n+a_1s^{n-1}+\cdots+a_n=0.$$
 

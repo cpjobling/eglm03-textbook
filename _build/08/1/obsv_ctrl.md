@@ -247,7 +247,7 @@ use as it is numerically unstable.
 {:.input_area}
 ```matlab
 A = [-6 -5; 1 0];
-B = [1; 0]
+C = [3 1]
 OM = obsv(A, C)
 rank(CM) % should be 2.
 ```
@@ -256,10 +256,9 @@ rank(CM) % should be 2.
 {:.output_stream}
 ```
 
-B =
+C =
 
-     1
-     0
+     3     1
 
 
 OM =
@@ -286,8 +285,6 @@ use as it is numerically unstable.
 
 {:.input_area}
 ```matlab
-A = [-6 -5; 1 0]; B = [1; 0];
-C = [3 1];
 sys = ss(A, B, C, [0]);
 OM = obsv(sys);
 CM = ctrb(sys);
