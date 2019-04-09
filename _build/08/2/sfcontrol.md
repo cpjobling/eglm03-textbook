@@ -181,7 +181,7 @@ $$u = r - \left[ {\begin{array}{*{20}c}
 is tedious for $n>3$, **EXCEPT** in the case of the *Control Canonical
 Form*.
 
-## State Feedback in the Case of the Control Canonical Form
+## State Feedback in the Case of the Controller Canonical Form
 
 In the control canonical form we have matrices:
 

@@ -157,7 +157,7 @@ $${\bf{B}} = \left[ {\begin{array}{*{20}c}
 \end{array}} \right];\quad {\bf{AB}} = \left[ {\begin{array}{*{20}c}
    { - 6} & { - 5}  \\
    1 & 0  \\
-\end{array}} \right]\left[ {\begin{array}{*{20}c}
+\end{array}} \right]\left[ {\begin{array}{*{20}c}§
    1  \\
    0  \\
 \end{array}} \right] = \left[ {\begin{array}{*{20}c}

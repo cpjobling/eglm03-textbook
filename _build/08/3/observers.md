@@ -17,7 +17,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 -   In many practical cases it is not possible to measure all the states
     of a system.
 
--   That is we cannot form $u=r-\mathbf{Kx}$ for the purposes of
+-   That is we cannot form $u=r-\mathbf{Kx}$  for the purposes of
     feedback control because we do not have access to $\mathbf{x}$.
 
 -   If we know $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$, and

@@ -33,6 +33,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
     2.   Equivalent classical controller
 
+
 -   Introducing the reference input
 
     1.  The normal position
@@ -386,6 +387,7 @@ $$\begin{eqnarray*}
     1.   Separation principle
 
     2.  Equivalent classical controller
+
 
 -   Introducing the reference input
 
