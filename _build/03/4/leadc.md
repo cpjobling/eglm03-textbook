@@ -51,7 +51,9 @@ is the so-called "lead compensator"
 
 $$D_{\rm{lead}}(s) = {K_c}\left( \frac{s - z_0}{s - p_0}\right)$$
 
-where  $$|p_0| > |z_0|.$$
+where  
+
+$$|p_0| > |z_0|.$$
 
 Considering the frequency response of $D_{\mathrm{lead}}$  
 
