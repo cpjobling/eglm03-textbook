@@ -1,0 +1,754 @@
+---
+interact_link: content/01/modsim.ipynb
+kernel_name: matlab
+kernel_path: content/01
+has_widgets: false
+title: |-
+  Systems Modelling and Simulation
+pagenum: 5
+prev_page:
+  url: /intro.html
+next_page:
+  url: /02/ssntr.html
+suffix: .ipynb
+search: x dot s differential eqnarray begin f end frac system integral models images png m b array equations model smd t simulink state linear left right simulation transfer space diagram equation mathbf matlab ddot mathrm lti l order form int dt c systems eglm en wikibooks org wiki controlsystems functions using such domain kx transform invariant mathcal k block results com background ordinary called laws spring mass damper electrical laplace let function non varying high solve fact any general u d comparison multi input output single feedback teams week twitter hashtag topics lecturer set modelling contents used wide variety lumped
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Systems Modelling and Simulation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">clear all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ans =
+    &#39;/Users/eechris/dev/eglm03-textbook/content/01/matlab&#39;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="System-Modelling-and-Simulation">System Modelling and Simulation<a class="anchor-link" href="#System-Modelling-and-Simulation"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Contents">Contents<a class="anchor-link" href="#Contents"> </a></h2><ul>
+<li>Ordinary differential equations</li>
+<li>Transfer functions</li>
+<li>Integral models</li>
+<li>Using Simulink</li>
+<li>State-space models</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Ordinary-Differential-Equations">Ordinary Differential Equations<a class="anchor-link" href="#Ordinary-Differential-Equations"> </a></h2><ul>
+<li>Used to model a wide variety of so-called “lumped parameter” problems in engineering and technology.</li>
+<li>Based on the fundamental laws of nature such as Ohm’s law, Newton’s laws of motion, thermodynamics, chemistry etc.</li>
+<li>We will assume that you have or can derive such a model in your domain of interest.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-Example">An Example<a class="anchor-link" href="#An-Example"> </a></h3><p>Spring Mass Damper System</p>
+<p><img src="images/smd.png" alt="Spring Mass Damper System (SMD)"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Free-body-diagram">Free body diagram<a class="anchor-link" href="#Free-body-diagram"> </a></h3><p><img src="images/freeb.png" alt="Freebody diagram"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differential-equation">Differential equation<a class="anchor-link" href="#Differential-equation"> </a></h3>$$\begin{eqnarray*}
+m\ddot x &amp;=&amp; \sum \mathrm{forces} \;\mathrm{in}\;\mathrm{the}\;x\;\mathrm{direction}\\
+ &amp;=&amp; F - kx - b\dot x\\
+F &amp;=&amp; m\ddot x + kx + b\dot x
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Challenge-for-Electrical-Engineers">Challenge for Electrical Engineers<a class="anchor-link" href="#Challenge-for-Electrical-Engineers"> </a></h3><p>Can you think of a simple electrical circuit that has a similar differential equation?</p>
+<p><em>Clue</em>: it would have 1 resistor 1 capacitor and 1 inductor.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transfer-functions">Transfer functions<a class="anchor-link" href="#Transfer-functions"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Laplace-transform">Laplace transform<a class="anchor-link" href="#Laplace-transform"> </a></h3><ul>
+<li>Allows us to represent a the differential equation representing a linear-time invariant (LTI) system as a rational polynomial in $s$.</li>
+<li>This can be solved for $t$ using the inverse-Laplace transform (time domain).</li>
+<li>Can substitute $s=j\omega$ to determine the response to sinusoidal inputs (frequency domain).</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transform-version-of-the-SMD">Transform version of the SMD<a class="anchor-link" href="#Transform-version-of-the-SMD"> </a></h3><p>Let:</p>
+$$\begin{eqnarray*}
+X(s) &amp;=&amp; \mathcal{L}x(t)\\
+F(s) &amp;=&amp; \mathcal{L}F(t)
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>then</p>
+$$F(s) = ms^2X(s) + bsX(s) + bX(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transfer-function">Transfer function<a class="anchor-link" href="#Transfer-function"> </a></h3>$$X(s) = \frac{1}{ms^2 + bs + k}F(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Block-diagram">Block diagram<a class="anchor-link" href="#Block-diagram"> </a></h3><p><img src="images/bd.png" alt="Block diagram"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-LTI-Object">MATLAB LTI Object<a class="anchor-link" href="#MATLAB-LTI-Object"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%%file matlab/smd_params.m</span>
+<span class="c">%% SMD_PARAMS - define parameters for Spring Mass Damper (SMD) model</span>
+<span class="n">m</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c">% kg</span>
+<span class="n">b</span> <span class="p">=</span> <span class="mf">0.6</span><span class="p">;</span> <span class="c">% Ns/m</span>
+<span class="n">k</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c">% N/m</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Created file &#39;/Users/eechris/dev/eglm03-textbook/content/01/matlab/smd_params.m&#39;.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd_params</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd_tf</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">m</span> <span class="n">b</span> <span class="n">k</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+smd_tf =
+ 
+         1
+  ---------------
+  s^2 + 0.6 s + 5
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">smd_tf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/modsim_19_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Integral-Models">Integral Models<a class="anchor-link" href="#Integral-Models"> </a></h2><ul>
+<li>If system is non-linear, time-varying or very high order, we may not be able to solve the differential system directly.</li>
+<li>We typically resort to simulation</li>
+<li>MATLAB has a system simulation tool called <em>Simulink</em>.</li>
+<li>We first need to convert the differential equation to integral form.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integral-form">Integral form<a class="anchor-link" href="#Integral-form"> </a></h3><ul>
+<li>Makes use of the fact that for any differential term:</li>
+</ul>
+$$x(t)=\int_{0}^{t}\,\dot{x}(t)\,dt$$<ul>
+<li>We can use this fact to rearrange any <em>n</em><sup>th</sup>-order differential equation into n first-order integral equations.</li>
+<li>Using a numerical integration algorithm, we can solve such equations.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integral-form-of-SMD-equations">Integral form of SMD equations<a class="anchor-link" href="#Integral-form-of-SMD-equations"> </a></h3>$$\begin{eqnarray*}
+\ddot{x}&amp;=&amp;\frac{1}{m}\left(F-b\dot{x}-kx\right)\\
+\dot{x}&amp;=&amp;\int\ddot{x}\,dt\\
+x&amp;=&amp;\int\dot{x}\,dt
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Block-diagram">Block diagram<a class="anchor-link" href="#Block-diagram"> </a></h3><p><img src="images/intgm.png" alt="Integral model of SMD"></p>
+<p><strong>Note</strong></p>
+$$\mathcal{L}\left(\int x(t)\,dt\right) = \frac{1}{s}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Simulink-model">Simulink model<a class="anchor-link" href="#Simulink-model"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/simulink.png" alt="Simulink model of SMD system"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results-of-simulation">Results of simulation<a class="anchor-link" href="#Results-of-simulation"> </a></h3><p><img src="images/result.png" alt="Results of simulation"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="State-space-models">State-space models<a class="anchor-link" href="#State-space-models"> </a></h2><p>Let $x_1 = x$ and $x_2 = \dot{x}$ then</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{eqnarray*}
+\dot{x}_1&amp;=&amp;x_2\\
+\dot{x}_2&amp;=&amp;-\frac{k}{b}x_2-\frac{b}{m}x_1+\frac{F}{m}
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In matrix form</p>
+$$\left[ {\begin{array}{*{20}{c}}
+  {\dot {x}_1} \\ 
+  {\dot {x}_2} 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+  0&amp;1 \\ 
+  { - \frac{b}{m}}&amp;{ - \frac{k}{m}} 
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+  {{x_1}} \\ 
+  {{x_2}} 
+\end{array}} \right] + \left[ {\begin{array}{*{20}{c}}
+  0 \\ 
+  {\frac{1}{m}} 
+\end{array}} \right]F$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="General-state-space-model">General state-space model<a class="anchor-link" href="#General-state-space-model"> </a></h3>$$\begin{eqnarray*}
+\mathbf{\dot x} &amp;=&amp; {\mathbf{Ax}} + {\mathbf{B}}u\\
+y &amp;=&amp; {\mathbf{Cx}} + {\mathbf{D}}u
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-LTI-Model">MATLAB LTI Model<a class="anchor-link" href="#MATLAB-LTI-Model"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="n">k</span><span class="o">/</span><span class="n">m</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">];</span> <span class="c">% state matrix</span>
+<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">];</span> <span class="c">% input matrix</span>
+<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">];</span> <span class="c">% Output matrix - output y = x1</span>
+<span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd_ss</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+smd_ss =
+ 
+  A = 
+         x1    x2
+   x1     0     1
+   x2    -5  -0.6
+ 
+  B = 
+       u1
+   x1   0
+   x2   1
+ 
+  C = 
+       x1  x2
+   y1   1   0
+ 
+  D = 
+       u1
+   y1   0
+ 
+Continuous-time state-space model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">smd_ss</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/modsim_35_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Comparison">Comparison<a class="anchor-link" href="#Comparison"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/smdcompare.png" alt="Comparing models in Simulink"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smdcompare</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results"> </a></h3><p><img src="images/smdresults.png" alt="SMD Comparison"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Models-and-their-uses">Models and their uses<a class="anchor-link" href="#Models-and-their-uses"> </a></h2><ul>
+<li>Integral models for general solution of high-order, linear and non-linear differential equations.</li>
+<li>State-space models for <em>linear</em> time-invariant, time-varying and multi-input multi-output (<strong>MIMO</strong>) systems.</li>
+<li>Transfer function for linear time-invariant (<strong>LTI</strong>), single-input single output (<strong>SISO</strong>) systems</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Feedback-and-suggestions">Feedback and suggestions<a class="anchor-link" href="#Feedback-and-suggestions"> </a></h2><p>"<strong>Which bit of this session did you find the most difficult to understand</strong>”</p>
+<p>Use the Teams <a href="https://teams.microsoft.com/l/channel/19%3aa25f34ac58624f56b6a73358b97d2b42%40thread.skype/Week%25201?groupId=8831ec02-d0cc-4627-b070-40b1bff6a4e4&amp;tenantId=bbcab52e-9fbe-43d6-a2f3-9f66c43df268">week 1 discussion</a> to post feedback.</p>
+<p>Or tweet @<a href="https://twitter.com/eglm03">eglm03</a> hashtag #<a href="https://twitter.com/hashtag/eglm03">eglm03</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Additional-Background-Material">Additional Background Material<a class="anchor-link" href="#Additional-Background-Material"> </a></h2><p>Background is extra topics, usually references to the recommended text or links to web resources, that are provided to amplify topics that are introduced in the other activities. You are expected to access these materials in your own time. For this chapter, the background reading is all from the <a href="https://en.wikibooks.org/wiki/Control_Systems">Control Systems Wikibook</a>.</p>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Control_Systems/System_Modeling">Systems modeling</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Control_Systems/Transfer_Functions">Transfer functions</a></li>
+<li><a href="http://en.wikibooks.org/wiki/Control_Systems/State-Space_Equations">State-space equations</a> </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

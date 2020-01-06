@@ -9,10 +9,10 @@
  *
  */
 
-$color-interact-button: #477dca !default;
+$color-interact-button: #5a5a5a !default;
 
 %interact-button {
-  @include inuit-font-size(16px);
+  @include inuit-font-size(14px);
   background-color: $color-interact-button;
   border-radius: 3px;
   border: none;
@@ -28,6 +28,12 @@ $color-interact-button: #477dca !default;
   &:focus {
     text-decoration: none;
   }
+}
+
+.interact-button-logo {
+  height: 1.35em;
+  padding-right: 10px;
+  margin-left: -5px;
 }
 
 .buttons {
@@ -51,5 +57,4 @@ $color-interact-button: #477dca !default;
 div.interact-context {
   display: inline;
   padding-left: 1em;
-  font-weight: 600;
 }

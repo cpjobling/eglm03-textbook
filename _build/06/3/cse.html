@@ -1,0 +1,1765 @@
+---
+interact_link: content/06/3/cse.ipynb
+kernel_name: matlab
+kernel_path: content/06/3
+has_widgets: false
+title: |-
+  Continuous Systems Equivalence
+pagenum: 26
+prev_page:
+  url: /06/2/dsm.html
+next_page:
+  url: /06/4/digictrl.html
+suffix: .ipynb
+search: z t frac s e st y k left right zero u equivalent d n function approximation transfer continuous end digital begin equation system hold eqnarray nt order pictures png vk signal zeros h matched sampling b pole integration bt sample epsilon example matlab poles transform result v kt lti integral computation relationship bilinear fig cse value next sa numerical int dt rectangular trapezoidal mpz implementation sampled period infinite shown slide sum ts solution cd cdots method dc gain et equivalence same tustin modified obtained step infty previous mathcal used let only forward backward aligned m g into class delay
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Continuous Systems Equivalence</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Continuous-System-Equivalence">Continuous System Equivalence<a class="anchor-link" href="#Continuous-System-Equivalence"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h2><p>In many cases, e.g. signal processing, control systems, etc., we want to
+design a digital system so that it behaves (dynamically and in
+steady-state) the same as a continuous system. A digital system that has
+the same input-behaviour as a (sampled) continuous system is called a
+<em>continuous equivalent</em>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Agenda">Agenda<a class="anchor-link" href="#Agenda"> </a></h2><p>In the pre-lecture presentation we will start by discussing the
+relationship of $s$ to $z$. We will then present four ways to convert a
+transfer function $H(s)$ into its digital equivalent $H(z)$. These are:</p>
+<ul>
+<li><p>The zero-order hold equivalent</p>
+</li>
+<li><p>The Tustin bilinear transform equivalent</p>
+</li>
+<li><p>Matched pole zero equivalent</p>
+</li>
+<li><p>Modified matched pole-zero equivalent</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples">Examples<a class="anchor-link" href="#Examples"> </a></h2><p>Will be done in class</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before we can describe what we might mean by a continuous equivalent system, it is necessary to establish the
+relationship between digital operations, such as the shift, and
+continuous operations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Equivalence-of-s-and-z">Equivalence of s and z<a class="anchor-link" href="#Equivalence-of-s-and-z"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Sampling-a-Delayed-Signal">Sampling a Delayed Signal<a class="anchor-link" href="#Sampling-a-Delayed-Signal"> </a></h3><p>Consider a simple operation of sampling with a delay</p>
+<p><img src="pictures/cse1.png" alt="fig 1"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This can be represented in transform as</p>
+<p><img src="pictures/cse2.png" alt="fig 2"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Delaying-a-Sampled-Signal">Delaying a Sampled Signal<a class="anchor-link" href="#Delaying-a-Sampled-Signal"> </a></h3><p>The same result could be obtained by delaying the continuous signal and then sampling.</p>
+<p><img src="pictures/cse3.png" alt="fig 3"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Which can be represented in transform as</p>
+<p><img src="pictures/cse4.png" alt="fig 4"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Relationship-of-z-to-s">Relationship of z to s<a class="anchor-link" href="#Relationship-of-z-to-s"> </a></h3><p>From the preceding arguments</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{equation}
+z^{-1} = e^{-sT}
+\end{equation}$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That is $$\begin{equation}
+    z=e^{sT}\end{equation}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or $$\begin{equation}
+  s=\frac{1}{T}\ln z\end{equation}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the fundamental relationship of equivalence. Before using it, we
+must see how a continuous signal is reconstructed from a digital signal.
+This is accomplished by means of a "<em>Digital-to-Analogue Converter</em>"</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Digital-to-Analogue-Converter">Digital-to-Analogue Converter<a class="anchor-link" href="#Digital-to-Analogue-Converter"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Modelling-a-DAC-with-a-Zero-Order-Hold">Modelling a DAC with a Zero-Order Hold<a class="anchor-link" href="#Modelling-a-DAC-with-a-Zero-Order-Hold"> </a></h3><p>The simplest converter is a "<em>Zero-Order Hold</em>" (see Fig. 1). This acts the opposite way to a sampler.</p>
+<p><img src="pictures/zoh.png" alt="Zero-Order Hold">
+<strong>Figure 1: zero-order Hold</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Operation-of-the-Zero-order-Hold">Operation of the Zero-order Hold<a class="anchor-link" href="#Operation-of-the-Zero-order-Hold"> </a></h3><p>During each sample period, the device holds
+the output $v(t)$ constant at the current value of the digital signal
+$v_k$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That is $$\begin{equation}
+  v(t) = v_k\ \mathrm{for}\ kT \le t &lt; (k+1)T\end{equation}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This generates a
+stepwise continuous signal $v(t)$ which at the sampling instants is
+equal to the continuous signal from which the digital signal ${v_k}$ was
+generated.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The signal may be considered as an infinite number of pulses of which
+the $k$-th is that shown in the next slide.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Modelling-the-ZOH-Mathematically">Modelling the ZOH Mathematically<a class="anchor-link" href="#Modelling-the-ZOH-Mathematically"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Step-wise-continuous-signal">Step-wise continuous signal<a class="anchor-link" href="#Step-wise-continuous-signal"> </a></h4><p>This represents the output of the zero-order hold $v(t) = v_k$ for $kT \le t &lt; (k+1)T$.</p>
+<p><img src="pictures/pulse.png" alt="Pulse"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To model such a signal we use the
+so-called "<em>gating</em>" property of the time-delayed unit-step function
+$\epsilon(t)$ illustrated in the next slide.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="The-Gating-Function">The Gating Function<a class="anchor-link" href="#The-Gating-Function"> </a></h4><p><img src="pictures/gate.png" alt="Gating function"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The opening "gate" is given by $v_k \epsilon (t-kT)$, a step of height
+$v_k$, which is activated at $t=kT$ seconds. The gate is "closed" by a
+negative going unit step, also of height $v_k$, which is activated at
+$t=\{k+1\}T$ seconds.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The sum of these two signals is $$\begin{eqnarray*}
+  p(t) &amp;=&amp; v_k \epsilon(t - kT) - v_k \epsilon(t - \{k+1\}T)\\
+       &amp;=&amp; v_k\left[\epsilon(t - kT) - \epsilon(t - \{k+1\}T)\right]\end{eqnarray*}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So for the sequence: $$\begin{equation}
+  v(t) = \sum_{k=0}^{\infty} v_k\left[\epsilon(t - kT) - \epsilon(t - \{k+1\}T)\right]\end{equation}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In transform form this is $$\begin{eqnarray*}
+  V(s) &amp;=&amp; \sum_{k=0}^{\infty} v_k\left(\frac{1}{s}e^{-kTs} -
+  \frac{1}{s}e^{-\left\{k+1\right\}Ts}\right)\\
+       &amp;=&amp; \frac{1}{s}\left(1-e^{-Ts}\right) \sum_{k=0}^{\infty} v_k
+  e^{-kTs}\\
+       &amp;=&amp; \frac{1}{s}\left(1-z^{-1}\right) \sum_{k=0}^{\infty} v_k
+  z^{-k}\\
+       &amp;=&amp; \frac{1}{s}\,\frac{z-1}{z}\,V(z)\end{eqnarray*}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So the zero-order hold is represented by the mixed transfer function
+$$\begin{equation}
+  G_{\mathrm{zoh}}=\frac{1}{s}\,\frac{z-1}{z}\end{equation}$$ as shown in
+Fig. 2.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/zohtf.png" alt="Transfer Function of the Zero-Order Hold">
+<strong>Figure 2: Transfer Function of the Zero-Order Hold</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now design a 'hold-equivalent' digital system.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Hold-Equivalent-Digital-System">Hold-Equivalent Digital System<a class="anchor-link" href="#Hold-Equivalent-Digital-System"> </a></h4><p><img src="pictures/holdequiv.png" alt="Hold-Equivalent Digital System"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From the diagram in the previous slide.</p>
+$$\begin{eqnarray*}
+  Y(z) &amp;=&amp; H(z) U(z)\\
+  Y(z) &amp;=&amp; \mathcal{Z} Y(s)\\
+       &amp;=&amp; \mathcal{Z} \frac{1}{s} H(s) \frac{z-1}{z} U(z)\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>so $$\begin{equation}
+  H(z) = \frac{z-1}{z} \mathcal{Z} \frac{H(s)}{s}\end{equation}$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="&#160;Example-1">&#160;Example 1<a class="anchor-link" href="#&#160;Example-1"> </a></h4><p>If</p>
+$$H(s) = \frac{a}{s+a}$$<p></p>
+<p>then find the Zero-Order Hold Equivalent $H(z)$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h5>$$\begin{eqnarray*}
+  H(z) &amp;=&amp; \frac{z-1}{z}\mathcal{Z} \frac{a}{s(s+a)}\\
+       &amp;=&amp; \frac{z-1}{z} \frac{z(1-e^{-aT})}{(z-1)(z-e^{-aT})}\\
+       &amp;=&amp; \frac{1-e^{-aT}}{z-e^{-aT}}.\end{eqnarray*}$$<p><strong>Malab note</strong>: the zero-order-hold equivalent is the default system
+used for continuous system equivalence in <em>MATLAB</em>. To convert a
+continous system in any <em>lti</em> format<sup>1</sup> use:</p>
+
+<pre><code>lti_d = c2d(lti, Ts); % You must provide a sampling time or use -1 if undefined</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Other-Continuous-System-Equivalences">Other Continuous System Equivalences<a class="anchor-link" href="#Other-Continuous-System-Equivalences"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Approximation-based-on-numerical-integration">Approximation based on numerical integration<a class="anchor-link" href="#Approximation-based-on-numerical-integration"> </a></h3><p>An alternative approach is to use the relationship</p>
+$$s  = \frac{1}{T}
+\ln z.$$<p></p>
+<p>This cannot be substituted into a transfer function directly as
+the result is not rational, but an approximation may be used.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Approximation-by-Numerical-Integration">Approximation by Numerical Integration<a class="anchor-link" href="#Approximation-by-Numerical-Integration"> </a></h4><p>We wish to find a transfer function $T(z)$ that is equivalent to $T(s)=s$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let us instead seek a transfer function $D(z)$ that is equivalent to $D(s) = 1/s$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/s-to-z.png" alt="s-to-z"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Thus, the transfer function we are seeking will in fact be an approximation of the integral $y(t)=\int u(t) dt$. We can illustrate this as shown in the next slide.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Model-of-Integration">Model of Integration<a class="anchor-link" href="#Model-of-Integration"> </a></h4><p><img src="pictures/integral1.png" alt="integral1"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we sample the curve $u(t)$ and consider the situation at the $n$-th sampling instant, we will have</p>
+$$y(nT) = \int_{0}^{nT} u(t) dt$$<p>We can rewrite this as $$y(nT)= \int_{0}^{nT-T} u(t) dt + \int_{nT-T}^{nT} u(t) dt$$</p>
+<p>where the second integral term is the shaded area shown in the next slide,</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Sampled-Model-of-Integration">Sampled Model of Integration<a class="anchor-link" href="#Sampled-Model-of-Integration"> </a></h4><p><img src="pictures/integral2.png" alt="integral2"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now if we assume that the first integral term was approximated by the digital integrator in the previous sampling
+instant, then $y(nT-T) = \int_{0}^{nT-T} u(t) dt$ is known, and consequently we have</p>
+$$y(nT) = y(nT-T) + \int_{nT-T}^{nT} u(t) dt$$<p>and we only need to determine the area of the shaded region to approximate $y(nT)$.</p>
+<p>The most obvious approximations are illustrated in the next three slides.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Forward-Rectangular-Approximation">Forward Rectangular Approximation<a class="anchor-link" href="#Forward-Rectangular-Approximation"> </a></h4><p><img src="pictures/backward-rect.png" alt="backward rectangular approxation"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Backward-Rectangular-Approximation">Backward Rectangular Approximation<a class="anchor-link" href="#Backward-Rectangular-Approximation"> </a></h4><p><img src="pictures/forward-rect.png" alt="Forward rectangular approximation"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Trapezoidal-Approximation">Trapezoidal Approximation<a class="anchor-link" href="#Trapezoidal-Approximation"> </a></h4><p><img src="pictures/trapezoidal.png" alt="Trapezoidal approximation"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is clear that if we are to disallow any further subdivision of the shaded area, the <em>trapezoidal approximation</em> will provide the most accurate result.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="z-transform-of-trapezoidal-approximation">z-transform of trapezoidal approximation<a class="anchor-link" href="#z-transform-of-trapezoidal-approximation"> </a></h4><p>Completing the analysis, we can show that</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$y(nT)\approx y(nT-T) + \frac{T}{2}\{u(nT-T)+u(T)\}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which on taking z-transforms gives</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$Y(z)=z^{-1}Y(z)+\frac{T}{2}\{z^{-1}U(z)+U(z)\}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>thus</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\frac{Y(z)}{U(z)}=D(z)=\frac{T}{2}\left\{ {\frac{1 + {z^{ - 1}}}{1 - {z^{ - 1}}}} \right\}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Approximation-of-s-by-numerical-integration">Approximation of s by numerical integration<a class="anchor-link" href="#Approximation-of-s-by-numerical-integration"> </a></h4><p>By comparison with continuous integration $Y(s)/U(s)=1/s$, this result, obtained by <em>numerical integration</em> allows us to say that</p>
+$$s \approx \frac{2}{T}\left\{\frac{1-z^{-1}}{1+z^{-1}}\right\}.$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These results are summarised in the next few slides.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary-of-Numerical-Integration-Methods">Summary of Numerical Integration Methods<a class="anchor-link" href="#Summary-of-Numerical-Integration-Methods"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Trapezoidal-approximation">Trapezoidal approximation<a class="anchor-link" href="#Trapezoidal-approximation"> </a></h4>$$\begin{eqnarray*}
+     s &amp;=&amp; \frac{2}{T}\, \frac{z-1}{z+1} \\
+     z &amp;=&amp; \frac{1 + 1/2 sT}{1 - 1/2 sT}
+  \end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>compare expansion</p>
+$$z=(1+ (1/2) sT)(1- (1/2) sT)^{-1} = 1 + sT + (1/2) s^2T^2 + (1/4) s^3T^3 + \cdots$$<p></p>
+<p>with</p>
+$$z = e^{sT} = 1 + sT + (1/2) s^2T^2 + (1/6) s^3T^3 + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This approximation is known as "<em>Tustin's Bilinear Transformation</em>".</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Forward-rectangular-approximation">Forward rectangular approximation<a class="anchor-link" href="#Forward-rectangular-approximation"> </a></h4>$$\begin{aligned}
+     s &amp;=&amp; \frac{z-1}{T} \\
+     z &amp;=&amp; 1 + sT
+  \end{aligned}$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>compare with</p>
+$$z = e^{sT} = 1 + sT + (1/2) s^2T^2 + (1/6) s^3T^3 + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Backward-rectangular-approximation">Backward rectangular approximation<a class="anchor-link" href="#Backward-rectangular-approximation"> </a></h4>$$\begin{aligned}
+     s &amp;=&amp; \frac{z-1}{Tz} \\
+     z &amp;=&amp; \frac{1}{1 + sT}
+  \end{aligned}$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>compare expansion</p>
+$$z=(1-sT)^{-1} = 1 + sT + s^2T^2 + s^3T^3 + \cdots$$<p></p>
+<p>with</p>
+$$z = e^{sT} = 1 + sT + (1/2) s^2T^2 + (1/6) s^3T^3 + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>If</p>
+$$H(s) = \frac{a}{s+a},$$<p></p>
+<p>determine the equivalent $H(z)$ using Tustin's bilinear transformation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h4><p>Tustin's bilinear transformation gives a digital system with transfer
+function</p>
+$$\begin{eqnarray*}
+   H(z)&amp;=&amp; \frac{a}{\frac{2}{T}\,\frac{z-1}{z+1}+a} \\
+       &amp;=&amp; \frac{\left(\frac{(aT)/2}{1+(aT)/2}\right)(z+1)}{z-\left(\frac{1-(aT)/2}{1+(aT)/2}\right)}.
+ \end{eqnarray*}$$<p><strong>Malab note</strong>: the bilinear transform equivalent is obtained by passing
+the argument <code>'tustin'</code> to the <em>c2d</em> method:</p>
+
+<pre><code>lti_d = c2d(lti, Ts, 'tustin');</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Matched-pole-zero-approximations">Matched pole-zero approximations<a class="anchor-link" href="#Matched-pole-zero-approximations"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another way to obtain a digital approximation of a continuous transfer function is to use the relationship $z = e^{sT}$ to map poles and zeros of the continuous transfer function into poles and zeros in the z-transfer function.</p>
+<p>Since continuous transfer functions often have more poles than zeros, that is $n-m$ zeros at infinity, zeros at infinity are replaced in the z-transfer function by zeros at $z = -1$ which is equivalent to half the sampling frequency $\omega_s/2$ (i.e. the highest frequency possible in the z-domain). Thus if $n-m =1$ we add $(1+z^{-1})$, if $n-m=2$, $(1+z^{-1})^2$, etc.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Matched-Pole-Zero-method">Matched-Pole Zero method<a class="anchor-link" href="#Matched-Pole-Zero-method"> </a></h4><p>Idea is that all poles and zeros of continuous transfer function $D(s)$ can become poles and zeros of digital transfer function $D(z)$ if the mapping $z=e^{sT}$ is used.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Method:</p>
+<ol>
+<li>Map finite poles and zeros of $D(s)$ to poles and zeros of $D(z)$
+according to $z=e^{sT}$.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Add zeros at $z=-1$ for each infinite zero in $D(s)$.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Match DC or low-frequency gain.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Example-3">Example 3<a class="anchor-link" href="#Example-3"> </a></h4><p>Use the Matched-Pole-Zero (MPZ) approximation to give the z-transfer function equivalent to</p>
+$$D(s)=\frac{s+a}{s+b}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h5><p>Order of numerator and denominator are equal so there are no infinite
+zeros and by matching poles and zeros</p>
+$$D(z)=k\left(\frac{1-e^{-aT}z^{-1}}{1 - e^{-bT}z^{-1}}\right).$$<p>For $D(s)$ the DC gain is $D(s)|_{s=0} = a/b$.</p>
+<p>The DC gain for $D(z)$ is</p>
+$$\left.D(z)\right|_{z=1}$$<p></p>
+<p>(from final value theorem) that is</p>
+$$k\left(\frac{1-e^{-aT}}{1-e^{-bT}}\right) = \frac{a}{b}.$$<p>We choose $k$ so that the DC gains match, i.e.</p>
+$$k=\frac{a}{b}\left(\frac{1-e^{-bT}}{1-e^{-aT}}\right).$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Example-4">Example 4<a class="anchor-link" href="#Example-4"> </a></h4><p>Use the Matched-Pole-Zero (MPZ) approximation to give the z-transfer
+function equivalent to</p>
+$$D(s)=\frac{s+a}{s(s+b)}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h5><p>Here, the order of the denominator is one greater than the numerator so there is $n-m = 2 - 1 = 1$ infinite zero. Placing this zero at $z = -1$ makes the MPZ transfer function</p>
+$$D(z)=k\left(\frac{(1+z^{-1})(1-e^{-aT}z^{-1})}{(1-z^{-1})(1 - e^{-bT}z^{-1})}\right).$$<p>As $D(s)$ is type 1, we can't use the value of $D(0)$ to compute the DC
+gain. Instead, let us compute the gain at $s = -1$:</p>
+$$\begin{eqnarray*}
+  D( - 1) &amp;=&amp; \left. \frac{s + a}{s(s + b)} \right|_{s =  - 1} \\
+   &amp;=&amp; \frac{-1 + a}{( - 1)(-1 + b)} = \frac{a - 1}{(1 - b)} \\\end{eqnarray*}$$<p>The equivalent value $s=-1$ in the $z$-plane is $z=e^{-T}$.</p>
+$$\begin{eqnarray*}
+  k\left.\frac{(1 + z^{-1})(1 - e^{-aT}z^{-1})}{(1 - e^{-bT}z^{-1})} \right|_{z = k} &amp;=&amp; \frac{(1 + {e^T})(1 - e^{-aT}e^T)}{(1 - e^{-bT}e^T)} \hfill \\
+   &amp;=&amp; k\frac{\left( 1 + {e^T} \right)\left( 1 - e^{- (1 - a)T} \right)}{\left( 1 - e^{-(1-b)T} \right)} \hfill \\
+\end{eqnarray*}$$<p>Again, we choose $k$ so that the equivalent gains match, i.e.</p>
+$$k =  \left( \frac{1 - b}{a - 1} \right)\frac{\left( 1 - e^{-(1-b)T} \right)}{\left( 1 + {e^T} \right)\left( 1 - e^{ - (1 - a)T}\right)}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We would implement $D(z)$ as a <em>difference equation</em> defined in terms of the sampled inputs and outputs as shown
+for Example 3.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Implementation-of-an-MPZ-Approximation">Implementation of an MPZ Approximation<a class="anchor-link" href="#Implementation-of-an-MPZ-Approximation"> </a></h4><p>If</p>
+$$\frac{Y(z)}{U(z)}=D(z)=k\frac{1-\alpha z^{-1}}{1-\beta z^{-1}}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>then the digital implementation will be</p>
+$$y(n)=\beta y(n-1)+k(u(n)-\alpha u(n-1))$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$y(n)$ is the current calculated value, $y(n-1)$ is previous calculated value, $u(n)$ is current sample, and $u(n-1)$ is previous sample.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Implementation only works if computation rate $&lt;&lt;$ significant dynamics of the sampled system and a small fraction of sampling time $T$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the implementation, you should notice that it is actually physically impossible to sample $u(t)$, compute $y(n)$ and output $y(n)$ all at the same instant of time. Hence the equation is actually impossible to implement. However, if the computation is sufficiently fast, the delay between sampling $u(t)$ and outputting $y(t)$ will be small and can often be neglected. A rule of thumb has computation delay $&lt; t_r/20$ of the dominant pole. It should certainly be a small fraction of the sampling period $T$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Modified-MPZ">Modified MPZ<a class="anchor-link" href="#Modified-MPZ"> </a></h4><p>Used if constraint on computation time cannot be met<sup>2</sup>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Allow a zero at infinity in $D(z)$ so that order of numerator is one less than denominator.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This ensures that only past values of $u$ and $y$ appear in the implementation equation and a whole sample period is available for computation</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Example-5">Example 5<a class="anchor-link" href="#Example-5"> </a></h4><p>Re-implement Example 3 using the Modified MPZ method.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h5><p>If we allow an infinite zero</p>
+$$D(s)=\frac{s+a}{s(s+b)}$$<p>becomes</p>
+$$D(z)=k\frac{(1-e^{-aT}z^{-1})}{(1-z^{-1})(1-e^{-bT}z^{-1})}$$<p>and</p>
+$$k = \left( \frac{1 - b}{a - 1} \right)\frac{\left( 1 - e^{ - (1 - b)T} \right)}{\left( 1 - e^{ - (1 - a)T} \right)}.$$<p>The implementation is now</p>
+$$y(n) = (1 - e^{-bT})y(n-1)-e^{-bT}y(n-2)+k(u(n-1)-e^{-aT}u(n-2))$$<p>and now the computation for $y(n)$ is performed only on past values of $u(n)$ and $y(n)$ and a whole sample period is available for computation.</p>
+<p><strong>Matlab note</strong>: the matched-pole zero equivalent of an LTI system is
+obtained by passing <code>'matched'</code> as the third argument to <em>c2d</em>:</p>
+
+<pre><code>lti_d = c2d(lti, Ts, 'matched')
+
+</code></pre>
+<p>There isn't a built-in method that returns the <em>modified</em>-matched-pole
+zero equivalent.</p>
+<h2 id="Footnotes">Footnotes<a class="anchor-link" href="#Footnotes"> </a></h2><p>1: The LTI functions are <code>tf</code>, <code>ss</code>, and <code>zpk</code>. For more information,
+    type <code>help lti</code> inside <em>MATLAB</em>.</p>
+<p>2: Which these days is unlikely</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="End-of-Pre-Class-Presentation">End of Pre-Class Presentation<a class="anchor-link" href="#End-of-Pre-Class-Presentation"> </a></h2><p>In class we will do the examples and conclude with a MATLAB demo.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="MATLAB-example">MATLAB example<a class="anchor-link" href="#MATLAB-example"> </a></h2><p>Available as a MATLAB Live Script file <a href="matlab/cse.mlx">cse.mlx</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let</p>
+$$G(s) = \frac{a}{s + a}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">format compact</span><span class="p"></span>
+<span class="n">clear </span><span class="s">all</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+    &#39;/Users/eechris/dev/eglm03-textbook/content/06/3/matlab&#39;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let $a = 1$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">a</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gs</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="n">a</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gs =
+ 
+    1
+  -----
+  s + 1
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sample period</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span> <span class="c">% seconds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hold-equivalent">Hold equivalent<a class="anchor-link" href="#Hold-equivalent"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gz_zoh</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gz_zoh =
+ 
+   0.09516
+  ----------
+  z - 0.9048
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is also default</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gz_zoh</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gz_zoh =
+ 
+   0.09516
+  ----------
+  z - 0.9048
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plot Result</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span><span class="s">&#39;-&#39;</span><span class="p">,</span><span class="n">Gz_zoh</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/06/3/cse_106_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Approximation-by-numerical-integration">Approximation by numerical-integration<a class="anchor-link" href="#Approximation-by-numerical-integration"> </a></h3><p>Also known as the <em>bilinear transform</em> or <em>Tustin equivalent</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gz_tustin</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;tustin&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gz_tustin =
+ 
+  0.04762 z + 0.04762
+  -------------------
+      z - 0.9048
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plot Result</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span><span class="s">&#39;-&#39;</span><span class="p">,</span><span class="n">Gz_tustin</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/06/3/cse_110_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Matched-pole-zero-mapping">Matched pole-zero mapping<a class="anchor-link" href="#Matched-pole-zero-mapping"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gz_mpz</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;matched&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gz_mpz =
+ 
+   0.09516
+  ----------
+  z - 0.9048
+ 
+Sample time: 0.1 seconds
+Discrete-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plot result</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Gs</span><span class="p">,</span><span class="s">&#39;-&#39;</span><span class="p">,</span><span class="n">Gz_mpz</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/06/3/cse_114_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Other-supported-equivalents?">Other supported equivalents?<a class="anchor-link" href="#Other-supported-equivalents?"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">help </span><span class="s">c2d</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> C2D  Converts continuous-time dynamic system to discrete time.
+ 
+    SYSD = C2D(SYSC,TS,METHOD) computes a discrete-time model SYSD with 
+    sample time TS that approximates the continuous-time model SYSC.
+    The string METHOD selects the discretization method among the following:
+       &#39;zoh&#39;           Zero-order hold on the inputs
+       &#39;foh&#39;           Linear interpolation of inputs
+       &#39;impulse&#39;       Impulse-invariant discretization
+       &#39;tustin&#39;        Bilinear (Tustin) approximation.
+       &#39;matched&#39;       Matched pole-zero method (for SISO systems only).
+       &#39;least-squares&#39; Least-squares minimization of the error between
+                       frequency responses of the continuous and discrete 
+                       systems (for SISO systems only).
+    The default is &#39;zoh&#39; when METHOD is omitted. The sample time TS should 
+    be specified in the time units of SYSC (see &#34;TimeUnit&#34; property).
+ 
+    C2D(SYSC,TS,OPTIONS) gives access to additional discretization options. 
+    Use C2DOPTIONS to create and configure the option set OPTIONS. For 
+    example, you can specify a prewarping frequency for the Tustin method by:
+       opt = c2dOptions(&#39;Method&#39;,&#39;tustin&#39;,&#39;PrewarpFrequency&#39;,.5);
+       sysd = c2d(sysc,.1,opt);
+ 
+    For state-space models,
+       [SYSD,G] = C2D(SYSC,Ts,METHOD)
+    also returns the matrix G mapping the states xc(t) of SYSC to the states 
+    xd[k] of SYSD:
+       xd[k] = G * [xc(k*Ts) ; u[k]]
+    Given an initial condition x0 for SYSC and an initial input value u0=u(0), 
+    the equivalent initial condition for SYSD is (assuming u(t)=0 for t&lt;0):
+       xd[0] = G * [x0;u0] .
+ 
+    See also C2DOPTIONS, D2C, D2D, DYNAMICSYSTEM.
+
+    Reference page in Doc Center
+       doc c2d
+
+    Other functions named c2d
+
+       DynamicSystem/c2d     ltipack.tfdata/c2d    ltipack.zpkdata/c2d
+       ltipack.ssdata/c2d
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

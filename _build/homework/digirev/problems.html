@@ -1,0 +1,68 @@
+---
+interact_link: content/homework/digirev/problems.ipynb
+kernel_name: matlab
+kernel_path: content/homework/digirev
+has_widgets: false
+title: |-
+  Homework 6 - Digital Systems Revision
+pagenum: 47
+prev_page:
+  url: /homework/freqresp/problems.html
+next_page:
+  url: /homework/ss2tf/problems.html
+suffix: .ipynb
+search: z domain s system e t g determine frac digital given onto right control where sampling map c lines constant poles discrete function nt rightarrow left type systems sigma pm omegas real axis b unit circle centred frequency derive equations transform f value infty lim x swansea university college engineering eglm modern homework revision problems st angle omega period show points frequencies rate pi negative imaginary maps leftz concentric circles d radial curves second order damping ratio zeta natural omegan comment effect high rates hint transfer division inverse unity gain feedback r thus version final theorem n formulae steady state
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Homework 6 - Digital Systems Revision</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Swansea-University">Swansea University<a class="anchor-link" href="#Swansea-University"> </a></h4><h4 id="College-of-Engineering">College of Engineering<a class="anchor-link" href="#College-of-Engineering"> </a></h4><h2 id="EGLM03-Modern-Control-Systems">EGLM03 Modern Control Systems<a class="anchor-link" href="#EGLM03-Modern-Control-Systems"> </a></h2><h1 id="Homework-6:-Digital-Systems-Revision">Homework 6: Digital Systems Revision<a class="anchor-link" href="#Homework-6:-Digital-Systems-Revision"> </a></h1><h2 id="Problems">Problems<a class="anchor-link" href="#Problems"> </a></h2><ol>
+<li><p>Given that $z = e^{sT} = e^{\sigma T} \angle \pm \omega T$, where $T$ is the sampling period of a digital system, show that</p>
+<p>a. points with frequencies of $\pm\omega_s/2$ (where $\omega_s$ is the sampling rate $2\pi/T$) in the s-domain map
+onto the negative real axis in the z-domain.</p>
+<p>b. the imaginary axis in the s-domain maps onto the unit circle $$\left|z\right| = 1$$ in the z-domain</p>
+<p>c. lines of constant $\sigma$ in the s-domain map onto concentric circles centred at $z = 0$ in the
+z-domain</p>
+<p>d. lines of constant frequency in the s-domain map onto radial lines centred at $z = 0$ in the
+z-domain.</p>
+<p>Derive equations for curves of constant second-order damping ratio $\zeta$ and natural frequency $\omega_n$
+in the z-domain. Comment on the effect of high sampling rates on the poles of a discrete system.</p>
+</li>
+<li><p>Determine the z-transform of the function $f(t) = e^{-at}$, where $a$ is real $&gt; 0$.</p>
+</li>
+<li><p>Given that $$G(s) = \frac{s+4}{(s+1)(s+3)},$$ determine $G(z)$. [<em>Hint</em>: determine $g(t)$ first.]</p>
+</li>
+<li><p>A discrete transfer function $G(z)$ is given by $$G(z) = \frac{0.387z^2}{(z-1)(z^2 - 2.37z + 025)}.$$
+Determine the value of $g(nT)$ as $nT \rightarrow \infty$.</p>
+</li>
+<li><p>Use long division to find the inverse z-transform of $$F(z)=\frac{\left(1-e^{-aT}\right)z}{z^2 - \left(1-e^{-aT}\right)z + e^{-aT}}$$.</p>
+</li>
+<li><p>The system type of a unity gain feedback digital control system $$\frac{C(z)}{R(z)} = \frac{G_o(z)}{1 + G_o(z)}$$ is given by the number of poles at $z = 1$. Thus a Type 0 system has no poles at $z = 1$, a Type
+1 system has one, and so on. Use the discrete version of the final value theorem
+$$\lim_{n\rightarrow \infty} x(nT) = \lim_{z \rightarrow 1}\left(1-z^{-1}\right)X(z)$$ to derive formulae for the steady-state error of a digital control system to step, ramp and parabolic inputs.</p>
+</li>
+<li><p>(not examinable) Apply Jury's test (MATLAB function <code>jury</code>) to determine if the following characteristic
+equations have any roots outside the unit circle:</p>
+<p>a. $z^2 + 0.25 = 0$</p>
+<p>b. $z^3 - 1.1z^2 + 0.01z + 0.405 = 0$</p>
+<p>c. $z^3 - 3.6z^2 + 4z - 1.6 = 0$.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

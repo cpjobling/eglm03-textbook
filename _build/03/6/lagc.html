@@ -1,0 +1,1195 @@
+---
+interact_link: content/03/6/lagc.ipynb
+kernel_name: matlab
+kernel_path: content/03/6
+has_widgets: false
+title: |-
+  Lag compensation
+pagenum: 13
+prev_page:
+  url: /03/5/analrloc.html
+next_page:
+  url: /04/pid.html
+suffix: .ipynb
+search: s lag gain compensator frac k kc z right left closed loop p system frequency d mathrm omega error response steady state j zero h matlab compensation low contribution compensated transient effect high angle poles design pole lead ensure reduce type needed requirements figure g root locus required choose velocity responses settling used also pid increase because acts frequencies gains values dynamic transfer function characteristic designed performance zp plane phic negative small close dc unity equation dominant chosen cong satisfy desired calculate plant determine step static need let compare overshoot effects ramp still cclag mlx lagsim slx params lecturer set
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Lag compensation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">clear all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+    &#39;/Users/eechris/dev/eglm03-textbook/content/03/6/matlab&#39;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Lag-Compensation">Lag Compensation<a class="anchor-link" href="#Lag-Compensation"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h1><p>Lead compensation is used to improved the transient response of a closed-loop control system.</p>
+<p>In most cases it is also important to ensure that the steady-state accuracy of the closed-loop system is controlled.</p>
+<p>In order to reduce the steady-state errors in a system we can use integral action (see <a href="../4/pid">PID compensation</a>) which has the affect of increasing the system type number by 1 or increase the system gain.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unfortunately gain compensation, because it acts at all frequencies, usually has the effect of reducing stability.</p>
+<p>What is needed is a form of compensation that acts in a frequency dependent way: adding gain at low frequencies while maintaining mid-to-high frequency gains at the values needed to guarantee stable transient behaviour.</p>
+<p>A dynamic compensator that has this effect is the "<strong>lag compensator</strong>".</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The lag compensator has the transfer function:</p>
+$$D_{\mathrm{lag}}(s)=K_c\left(\frac{s-z_0}{s-p_0}\right)$$<p>where $$|z_0| &gt; |p_0|.$$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Considering the frequency response of $D_{\mathrm{lag}}(s)$</p>
+$$D_{\mathrm{lag}}(j\omega)=K_c\left(\frac{j\omega-z_0}{j\omega-p_0}\right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The low and high-frequency gains are:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\left.D_{\mathrm{lag}}(j\omega)\right|_{\omega\to 0} = K_c\left(\frac{z_0}{p_0}\right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\left.D_{\mathrm{lag}}(j\omega)\right|_{\omega\to \infty} = K_c$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Because the low frequency gain is higher than the high frequency gain (the compensator has a low-pass characteristic). If the high frequency gain is designed to match the gain needed for transient performance, the low frequency gain can be independently designed to achieve steady-state performance requirements.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Properties-of-the-Cascade-Lag-Compensator">Properties of the Cascade Lag Compensator<a class="anchor-link" href="#Properties-of-the-Cascade-Lag-Compensator"> </a></h2><p>As $|z_0|&gt;|p_0|$ (a ratio of $z_0/p_0\le 10$ is usual), the angle contributed 
+by the compensator to some arbitrary point $s_1$ at on the s-plane, is illustrated 
+in Figure 1.</p>
+<p><img src="images/fig1.png" alt="Figure 1 Angle contribution of a lag compensator">
+<strong>Figure 1 Angle contribution of a lag compensator</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The net contribution is</p>
+$$\phi_c = -\theta_p+\theta_z &lt; 0$$<p>so that the lead compensator always makes a negative contribution to the 
+angle criterion.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This has the effect of allowing the closed-loop poles to move to the right in the <em>s</em>-plane.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The design approach seeks to keep this negative contribution as small as possible so that the pole must be placed physically close to the zero. Typically $|\phi_c| &lt; 2^\circ$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For convenience, the DC gain of the lag compensator is made unity:</p>
+$$\left.D_{\mathrm{lag}}(s)\right|_{s = 0} = K_c\left(\frac{z_0}{p_0}\right) 
+= 1$$<p>Since $|z_0|&gt;|p_0|$ then</p>
+$$K_c = \frac{p_0}{z_0} &lt; 1.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, the uncompensated (or lead-compensated) closed-loop characteristic equation is</p>
+$$1+K_0G(s)H(s) = 0$$<p>so</p>
+$$K_0 = -\frac{1}{G(s)H(s)}.$$<p>The gain $K_0$ is the root-locus gain required to place the required dominant closed-loop poles at  $s=s_1$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The values of the zero and pole are chosen such that</p>
+$$\left.D_{\mathrm{lag}}(s)\right|_{s = s_1} = K_c\left(\frac{s - z_0}{s 
+- p_0}\right) \cong K_c.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This equation requires that the pole and zero be close together and also that</p>
+$$z_0 \ll |s_1|.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the lag compensated system, the new root-locus gain will be</p>
+$$K=-\frac{1}{D(s)G(s)H(s)}\ \cong - \frac{1}{K_cG(s)H(s)} =\frac{K_0}{K_c}.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The gain $K$ is chosen to satisfy the steady-state error requirements and the compensator gain $K_c$ is used to ensure that the effective gain at $s=s_1$ is unchanged.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Design-Procedure">Design Procedure<a class="anchor-link" href="#Design-Procedure"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Choose $K_0$ to ensure that the desired dominant closed-loop poles satisfy the transient response requirements. </li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Calculate the gain <em>K</em> required to give the desired steady-state error. </li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Assuming that the lag compensator has unity DC gain choose $K_c = K_0/K$.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Choose $|z_0|$ small with respect to $|s_1|$. </li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A value of $z_0=|s_1|/10$ is often taken as a reasonable first approximation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The lag compensator pole is then  $p_0 = K_c z_0$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plant (type 1)</p>
+$$G(s) = \frac{1}{s(s + 4)}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The feedback is</p>
+$$H(s) = 1$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>hence</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">s</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="n">G</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">4</span><span class="p">));</span>
+<span class="n">H</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>root-locus</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">GH</span> <span class="p">=</span> <span class="n">series</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">H</span><span class="p">);</span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">GH</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/03/6/lagc_34_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In common with previous examples, we chose closed-loop poles at $s=-2\pm 
+j2$ and determine $K_0$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">s1</span> <span class="p">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">+</span>2<span class="nb">j</span><span class="p">;</span>
+<span class="n">K0</span> <span class="p">=</span> <span class="n">rlocfind</span><span class="p">(</span><span class="n">GH</span><span class="p">,</span><span class="n">s1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>K0 =
+     8
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As an aside, we calculate the step response for comparison later:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc1</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">K0</span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="n">H</span><span class="p">);</span>
+<span class="p">[</span><span class="n">y1</span><span class="p">,</span><span class="n">t1</span><span class="p">]=</span><span class="n">step</span><span class="p">(</span><span class="n">Gc1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The system is type 1 so that the static velocity error</p>
+$$K_v = \left.sG(s)H(s)\right|_{s=0}=\left.s\frac{K_0}{s(s+4)}\right|_{s=0} 
+=\frac{K_0}{4}=2.$$<p>We would, for the purposes of illustration, like to increase the static 
+velocity error to 10 which will make the steady-state velocity error equal to 
+10%.</p>
+<p>Thus we need $K = 40$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">K</span><span class="p">=</span><span class="mi">40</span><span class="p">;</span>
+<span class="n">Kc</span> <span class="p">=</span> <span class="n">K0</span><span class="o">/</span><span class="n">K</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Kc =
+    0.2000
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ans =
+    2.8284
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>so let the zero be</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">z0</span> <span class="p">=</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">10</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>z0 =
+   -0.3000
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">p0</span> <span class="p">=</span> <span class="n">Kc</span><span class="o">*</span><span class="n">z0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>p0 =
+   -0.0600
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>so</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Dlag</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">([</span><span class="n">z0</span><span class="p">],[</span><span class="n">p0</span><span class="p">],</span><span class="n">Kc</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Dlag =
+ 
+  0.2 (s+0.3)
+  -----------
+   (s+0.06)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let us see how we have done.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Go2</span> <span class="p">=</span> <span class="n">Dlag</span><span class="o">*</span><span class="n">GH</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Go2 =
+ 
+    0.2 (s+0.3)
+  ----------------
+  s (s+0.06) (s+4)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">poles</span><span class="p">]</span> <span class="p">=</span> <span class="n">rlocus</span><span class="p">(</span><span class="n">Go2</span><span class="p">,</span><span class="n">K</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>poles =
+  -1.8576 + 1.8730i
+  -1.8576 - 1.8730i
+  -0.3449 + 0.0000i
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">rlocus</span><span class="p">(</span><span class="n">Go2</span><span class="p">),</span><span class="n">hold</span> <span class="n">on</span><span class="p">,</span><span class="n">plot</span><span class="p">(</span><span class="n">poles</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">),</span><span class="c">...</span>
+    <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag compensated design&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">    hold </span><span class="s">off</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/03/6/lagc_52_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The closed-loop system:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc2</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">Dlag</span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="n">H</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gc2 =
+ 
+              8 (s+0.3)
+  ---------------------------------
+  (s+0.3449) (s^2 + 3.715s + 6.959)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>has step response</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">y2</span><span class="p">,</span><span class="n">t2</span><span class="p">]=</span><span class="n">step</span><span class="p">(</span><span class="n">Gc2</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally we compare the lag-compensated and gain compensated responses:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="n">y2</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag compensated response&#39;</span><span class="p">),</span><span class="c">...</span>
+    <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Transient design&#39;</span><span class="p">,</span><span class="s">&#39;Lag compensated&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/03/6/lagc_58_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Comments">Comments<a class="anchor-link" href="#Comments"> </a></h2><p>The lag compensator has a significantly longer settling time and a raised overshoot. These effects can be explained by examination of the closed-loop transfer function.</p>
+<p>The benefits of the lag compensated repsonse can only be really seen when we compare the ramp responses. To determine the ramp response, we need to add an integrator to the plant and find the error responses:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Ge1</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">K0</span><span class="o">*</span><span class="n">G</span><span class="o">*</span><span class="n">H</span><span class="p">);</span>
+<span class="p">[</span><span class="n">y3</span><span class="p">,</span><span class="n">t3</span><span class="p">]=</span><span class="n">step</span><span class="p">(</span><span class="n">Ge1</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Ge2</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">K</span><span class="o">*</span><span class="n">Dlag</span><span class="o">*</span><span class="n">G</span><span class="o">*</span><span class="n">H</span><span class="p">);</span>
+<span class="p">[</span><span class="n">y4</span><span class="p">,</span><span class="n">t4</span><span class="p">]=</span><span class="n">step</span><span class="p">(</span><span class="n">Ge2</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span><span class="n">t4</span><span class="p">,</span><span class="n">y4</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag compensated: ramp response&#39;</span><span class="p">),</span><span class="c">...</span>
+    <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Transient design&#39;</span><span class="p">,</span><span class="s">&#39;Lag compensated&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/03/6/lagc_62_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The error is certainly reduced, but the settling time is rather long. To improve the design, a strategy would be to reduce the size of the lag zero to reduce still further the dynamic effects of the compensator on the settling 
+time. However, the zero will still have an effect on the overshoot.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">Resources<a class="anchor-link" href="#Resources"> </a></h2><p>An executable version of this document is available to download as a MATLAB Live Script file <a href="matlab/cclag.mlx">cclag.mlx</a>.</p>
+<p>You can simulate this design after defining the parameters:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%%file params.m</span>
+<span class="c">% PARAMS - parameters for Lag Compensator Simulation</span>
+<span class="n">K0</span> <span class="p">=</span> <span class="mi">8</span>
+<span class="n">Kc</span> <span class="p">=</span> <span class="mi">8</span><span class="o">/</span><span class="mi">40</span>
+<span class="n">K</span> <span class="p">=</span> <span class="mi">8</span><span class="o">/</span><span class="n">Kc</span>
+
+<span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">conv</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="n">Clag</span> <span class="p">=</span> <span class="n">Kc</span><span class="o">*</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">])</span>
+
+<span class="n">H</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">F</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>using this Simulink model <a href="matlab/lag_sim.slx">lag_sim.slx</a> [<a href="matlab/params.c">params.m</a>].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

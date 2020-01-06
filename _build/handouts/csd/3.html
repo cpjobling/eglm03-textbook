@@ -1,0 +1,41 @@
+---
+title: |-
+  3. Design Strategies
+pagenum: 54
+prev_page:
+  url: /handouts/csd/2.html
+next_page:
+  url: /handouts/csd/4.html
+suffix: .md
+search: phase gain lag used frequency compensation compensator reduce lead loop alpha s proportional high errors stability k control compliance ppi frequencies cross omega should measurement forward low sensitivity frac tgs integral ti increase higher around circ any case destabilising influence below unity controller its tl without bandwidth also possible not noise effect parallel velocity feedback little feed disturbances measured design strategies simple systems often chosen enough give acceptably small section adequate speed response yet good specifications cannot satisfied simultaneously sophisticated strategy required plus either specifically region pi band width improve action preferred former increases system type eliminates steady state latter
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">3. Design Strategies</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.----Design-Strategies">3.    Design Strategies<a class="anchor-link" href="#3.----Design-Strategies"> </a></h1><h2 id="3.1--Proportional-Control">3.1  Proportional Control<a class="anchor-link" href="#3.1--Proportional-Control"> </a></h2><p>For simple systems, a loop gain can often be chosen which is high enough to give acceptably small errors, low sensitivity and compliance (see Section 4.1.4) an adequate speed of response and yet good stability. When these specifications cannot be satisfied simultaneously a more sophisticated strategy is required.</p>
+<h2 id="3.2--Phase-Lag-Compensation">3.2  Phase Lag Compensation<a class="anchor-link" href="#3.2--Phase-Lag-Compensation"> </a></h2><p>The lag compensator</p>
+$$\frac{K(1+T_Gs)}{1+\alpha T_gs},\;\alpha&gt;1$$<p>and proportional-plus-integral (PPI) compensator</p>
+$$K(1+1/(T_I s))$$<p>are used either to increase the loop gain at low frequencies, and so reduce the errors and the sensitivity, or to reduce the loop gain at higher frequencies (specifically around the region of $180^\circ$ phase lag (phase cross-over frequency $\omega_\pi$ ) to reduce the band-width and improve stability. PPI action may be preferred for the former (it increases system type number by 1 and so eliminates steady state-errors) and a lag compensator for the latter. In any case the phase lag is incidental and since it is a destabilising influence it should be used well below the unity loop gain frequency (gain cross-over frequency $\omega_1$). When there is nothing else to choose between the two, the smaller phase lag of the lag controller (PPI is always $90^\circ$ at zero frequency) and its freedom from ‘warm-up’ problems will lead to its use.</p>
+<h2 id="3.3--Phase-Lead-Compensation">3.3  Phase Lead Compensation<a class="anchor-link" href="#3.3--Phase-Lead-Compensation"> </a></h2><p>The lead compensator</p>
+$$\frac{K(1+T_L s)}{1+\alpha T_L s},\; \alpha &lt; 1$$<p>is used to reduce the phase lag around the gain cross-over frequency (unity loop gain frequency) $\omega_1$. It is therefore used to increase stability without reducing bandwidth. Naturally it may also permit the use of a higher proportional gain than would otherwise be possible. The gain of the lead compensator at high frequencies is a destabilising influence so that it should be used at the highest effective frequency and $\alpha$ should not be reduced below $0.1$. The high gain will also amplify any noise in the measurement sensor, which may be a problem.</p>
+<h2 id="3.4--The-Three-Term-Controller">3.4  The Three-Term Controller<a class="anchor-link" href="#3.4--The-Three-Term-Controller"> </a></h2><p>This combines the effect of both phase lag and phase lead compensation. A special case is the proportional + integral + derivative (PID) compensator</p>
+$$K(1 + T_D s + 1/(T_I s))$$<h2 id="3.5--Parallel-Compensation">3.5  Parallel Compensation<a class="anchor-link" href="#3.5--Parallel-Compensation"> </a></h2><p>Parallel compensation (seen in this course as velocity feedback) can be used to produce the same stabilising effect as phase lead compensation without amplifying the measurement noise. For this reason it may be possible to introduce a little more phase advance. Note that velocity feedback will reduce the bandwidth a little.</p>
+<h2 id="3.6--Feed-forward-Control">3.6  Feed-forward Control<a class="anchor-link" href="#3.6--Feed-forward-Control"> </a></h2><p>Feed-forward control is used when the compliance is too high but when the disturbances can be measured. If the load disturbances can be measured, feeding the measurement 'forward' to the error comparator can reduce compliance errors. It does not affect the stability.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

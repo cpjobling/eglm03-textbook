@@ -1,0 +1,654 @@
+---
+interact_link: content/03/3/pplusd.ipynb
+kernel_name: matlab
+kernel_path: content/03/3
+has_widgets: false
+title: |-
+  Proportional plus derivative compensation
+pagenum: 10
+prev_page:
+  url: /03/2/velfb.html
+next_page:
+  url: /03/4/leadc.html
+suffix: .ipynb
+search: s compensator pd frac figure satellite control feedback system closed loop function cascade d matlab derivative compensation attitude velocity root locus transfer plus design plant g equation kt where kc poles same k t proportional example images png document ldots zeros added previous z let us gives results u mathrm prop e proportion error pplusd mlx slx lecturer set introduction h shown fig kkt left right parameters calculated characteristic illustrate implement silimilar law using alternative architecture illustrated series general sz szr sp spq simply wish achieve must verify gain point located j add analysis reveals type known output form kdse
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Proportional plus derivative compensation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">clear all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+    &#39;/Users/eechris/dev/eglm03-textbook/content/03/3/matlab&#39;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Proportional-Plus-Derivative-Compensation">Proportional Plus Derivative Compensation<a class="anchor-link" href="#Proportional-Plus-Derivative-Compensation"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h2><p>First design example (Satellite Attitude Control).</p>
+<p>Plant:  $$G(s) = \frac{1}{s^2}$$</p>
+<p>Feedback:</p>
+$$H(s) = 1$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With velocity feedback the system is as shown in Figure 1.</p>
+<p><img src="images/fig1.png" alt="Figure 1 Satellite Attitude Control with Velocity Feedback">
+<strong>Figure 1 Satellite Attitude Control with Velocity Feedback</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this system, the root locus equation is</p>
+$$1+\frac{KK_T \left(s+\frac{1}{K_T }\right)}{s^2 }$$<p>and the design parameters where calculated to be</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Kt</span> <span class="p">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">K</span> <span class="p">=</span> <span class="mi">8</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The closed-loop characteristic equation is</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clce1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">Kt</span><span class="p">,</span> <span class="n">K</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The closed-loop transfer function is then:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc1</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">clce1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gc1 =
+ 
+        8
+  -------------
+  s^2 + 4 s + 8
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this document we illustrate how we may implement a silimilar control 
+law using cascade compensation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Cascade-compensator">Cascade compensator<a class="anchor-link" href="#Cascade-compensator"> </a></h2><p>An alternative compensation architecture is the cascade compensator illustrated in Figure 2.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/pd.png" alt="Figure 2 The cascade compensator">
+<strong>Figure 2 The cascade compensator</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The compensator is in series with the plant so that, in general, if the compensator transfer function is</p>
+$$D(s)=\frac{K_c(s+z_1)\ldots(s+z_r)}{(s+p_1)\ldots(s+p_q)}$$<p>and the compensator poles and zeros are simply added to the poles and zeros of the plant.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we wish to achieve the same root-locus equation as the previous design (1) then the compensator must have transfer function</p>
+$$D(s) = K_c(s + z_1)$$<p>where</p>
+$$K_c = K K_t = 4$$$$z_1 = 1/K_t = 2$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let us verify that this gives the same results as the previous example:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">z1</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Kt</span><span class="p">;</span>
+<span class="n">Go</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z1</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span> <span class="c">% root locus gain initially set to unity</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Go =
+ 
+  (s+2)
+  -----
+   s^2
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">rlocus</span><span class="p">(</span><span class="n">Go</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Root locus for cascade compensated system&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/03/3/pplusd_18_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Find the root locus gain at the point on the root locus where the poles are located at $s=-2+j2$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Kc</span> <span class="p">=</span> <span class="n">rlocfind</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="o">+</span>2<span class="nb">j</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Kc =
+     4
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now add this to the compensator</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">D</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Kc</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="n">z1</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+D =
+ 
+  4 s + 8
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$D(s) = 4s + 8$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Analysis of this compensator reveals that it is of a type known as "<em>proportional 
+plus derivative</em>" (P+D). The output of the compensator is of the form</p>
+$$U(s) = K_DsE(s)+K_{\mathrm{prop}}E(s)$$$$u(t) = K_d\frac{de(t)}{dt}+K_{\mathrm{prop}}e(t)$$<p>and is made up of a "proportion" of the error plus a proportion of the 
+rate-of-change (or derivative) of the error. It is the derivative term that 
+gives the dampening effect required to allow the frictionless system to come 
+to rest.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Closed-loop-response">Closed-loop response<a class="anchor-link" href="#Closed-loop-response"> </a></h2><p>The closed-loop tranfer function is given by</p>
+$$G_c(s) = \frac{D(s)G(s)}{1+D(s)G(s)}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G</span><span class="p">=</span><span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G =
+ 
+   1
+  ---
+  s^2
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc2</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">D</span><span class="o">*</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gc2 =
+ 
+     4 s + 8
+  -------------
+  s^2 + 4 s + 8
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let us plot and compare the step responses of the P+D and velocity feedback 
+results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">y1</span><span class="p">,</span><span class="n">t1</span><span class="p">]=</span><span class="n">step</span><span class="p">(</span><span class="n">Gc1</span><span class="p">);</span>
+<span class="p">[</span><span class="n">y2</span><span class="p">,</span><span class="n">t2</span><span class="p">]=</span><span class="n">step</span><span class="p">(</span><span class="n">Gc2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="n">y2</span><span class="p">),</span><span class="c">...</span>
+ <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Velocity fb&#39;</span><span class="p">,</span><span class="s">&#39;P+D&#39;</span><span class="p">),</span><span class="c">...</span>
+ <span class="n">title</span><span class="p">(</span><span class="s">&#39;Step response: closed-loop compensated system&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/03/3/pplusd_29_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes">Notes<a class="anchor-link" href="#Notes"> </a></h2><p>Notice that, although the settling time is about the same in both designs, 
+the overshoot is considerably larger in the P+D compensated system. This is 
+because the zero added by the P+D compensator appears in the numerator of the 
+closed-loop transfer function. (refer back to Contact Hour 2 for an explanation).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">Resources<a class="anchor-link" href="#Resources"> </a></h2><p>An executable version of this document is available to download as a MATLAB Live Script file <a href="matlab/pplusd.mlx">pplusd.mlx</a>.</p>
+<p>The Simulink model of the satellite attitude control system with P+D compensation is <a href="matlab/pd.slx">satellite.slx</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

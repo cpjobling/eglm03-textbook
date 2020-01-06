@@ -1,0 +1,97 @@
+---
+interact_link: content/homework/ss2tf/problems.ipynb
+kernel_name: matlab
+kernel_path: content/homework/ss2tf
+has_widgets: false
+title: |-
+  Homework 7 - Modelling Systems in Statespace
+pagenum: 48
+prev_page:
+  url: /homework/digirev/problems.html
+next_page:
+  url: /homework/ssm/problems.html
+suffix: .ipynb
+search: mathbf t state array begin end eqnarray left right output response c transfer function zero input y u x systems space l matrix v given frac dt system g mathcal phi s d section voltage across transition initial current total dy dot cc same equations swansea university college engineering eglm modern control homework modelling statespace problems prove impulse model b consider circuit example introduced tfss converted into form intross mh muf r omega taken resistor determine following capacitor assuming inductor initially variable responses e methods solution differential equation conditions epsilon show models times relationship construct both observe modes represented compare
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Homework 7 - Modelling Systems in Statespace</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Swansea-University">Swansea University<a class="anchor-link" href="#Swansea-University"> </a></h4><h4 id="College-of-Engineering">College of Engineering<a class="anchor-link" href="#College-of-Engineering"> </a></h4><h2 id="EGLM03-Modern-Control-Systems">EGLM03 Modern Control Systems<a class="anchor-link" href="#EGLM03-Modern-Control-Systems"> </a></h2><h1 id="Homework-7:-Modelling-Systems-in-Statespace">Homework 7: Modelling Systems in Statespace<a class="anchor-link" href="#Homework-7:-Modelling-Systems-in-Statespace"> </a></h1><h2 id="Problems">Problems<a class="anchor-link" href="#Problems"> </a></h2><ol>
+<li><p>Prove that the impulse response of a state-space model is</p>
+<p>$$\begin{eqnarray*}
+ \mathbf{g}(t)&amp;=&amp;\mathcal{L}^{-1}\left\{\mathbf{C}\Phi(s)\mathbf{B}+\mathbf{D}\right\}\\
+ &amp;=&amp;\mathcal{L}^{-1}\left\{\mathbf{G}(s)\right\}\end{eqnarray*}$$</p>
+</li>
+<li><p>Consider the circuit example introduced in
+<a href="../../07/2/tf4ss">Section 7.1</a> and converted into transfer function matrix form in <a href="../../07/2/intro2ss">Section 7.2</a>.</p>
+<p>If $L=100$ mH, $C=1000$ $\mu$F and $R=20$ $\Omega$, and
+the output is taken to be the voltage $v_{21}(t)$ across the
+resistor, determine the following:</p>
+<ol>
+<li><p>The state transition matrix.</p>
+</li>
+<li><p>The zero input response given an initial voltage across the
+capacitor $v_{32}(0)=10$ V and assuming the current in the
+inductor is initially $0$ A.</p>
+</li>
+<li><p>The zero state output and state variable responses given an
+input current of $i=0.5e^{-t}$.</p>
+</li>
+<li><p>The total output response,</p>
+</li>
+</ol>
+</li>
+<li><p>Use state-space methods to find the total solution to the
+differential equation</p>
+<p>$$\frac{d^2(t)}{dt^2}+20\frac{dy(t)}{dt}+10y(t) = 16u(t)$$</p>
+<p>given the
+initial conditions $\frac{dy(0)}{dt}=1$ and $y(0)=0$ and
+$u(t)=\epsilon(t)$.</p>
+</li>
+<li><p>Show that the state space models</p>
+<p>$$\begin{eqnarray*}
+\dot{\mathbf{x}}&amp;=&amp;\left[\begin{array}{cc}
+  0 &amp; 1 \\
+  -100 &amp; -200
+\end{array}\right]+\left[\begin{array}{c}
+  0 \\
+  200000
+\end{array}\right]u\\ y&amp;=&amp;[1, 0]\mathbf{x}\end{eqnarray*}$$</p>
+<p>and</p>
+<p>$$\begin{eqnarray*}
+\dot{\mathbf{x}}&amp;=&amp;\left[\begin{array}{cc}
+  -0.50126 &amp; 0 \\
+  0 &amp; -199.5
+\end{array}\right]+\left[\begin{array}{c}
+  1124.2 \\
+  2.0051\times 10^{5}
+\end{array}\right]u\\ y&amp;=&amp;[0.89398   -0.0050125]\mathbf{x}\end{eqnarray*}$$</p>
+<p>have the same input-output relationship (transfer function).</p>
+<p>Construct the state transition matrix $\mathbf{\phi}(t)$ and the zero state and
+zero input output response equations for both systems and observe
+how the modes of the system are represented in the system output
+equations.</p>
+<p>Compare the result with that of
+question 1 which has the same transfer function!</p>
+<p>What does this tell you about
+the transfer function as a representation of a system?</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

@@ -1,0 +1,1048 @@
+---
+interact_link: content/05/2/freqlag.ipynb
+kernel_name: matlab
+kernel_path: content/05/2
+has_widgets: false
+title: |-
+  Frequency Response Design of a Lag Compensator
+pagenum: 22
+prev_page:
+  url: /05/1/freqlead.html
+next_page:
+  url: /06/digital.html
+suffix: .ipynb
+search: frequency lag gain omega phase s response compensator left right alpha matlab system low kc frac d bode function closed loop margin cut off j design compensated error asymptotic asymp magnitude m diagrams plant lead compensation want need plots kv high increase responses set live script using analysis transfer unity velocity circ same commands before data state approx rad phim thus performance ts tj infty let us avoid any sup zero examine notice peak step ramp freqlag mlx lecturer examines cascade compensators type servomechanism g feedback static constant defining part went through case freqlead repeat code workspace consistent should refer
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Frequency Response Design of a Lag Compensator</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">clear all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+    &#39;/Users/eechris/dev/eglm03-textbook/content/05/2/matlab&#39;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Frequency-Response-Design-of-a-Lag-Compensator">Frequency Response Design of a Lag Compensator<a class="anchor-link" href="#Frequency-Response-Design-of-a-Lag-Compensator"> </a></h1><p>This MATLAB Live Script examines the design of phase-lag cascade compensators 
+using Bode diagrams.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis"> </a></h2><p>The plant is a type 1 servomechanism with transfer function:</p>
+$$G(s) = \frac{1}{s(s+1)}.$$<p>The system has unity gain feedback and the compensated closed-loop system is to have a static velocity error constant of 10 and a phase margin of ${45}^{\circ }$.</p>
+<p>Defining the system in Matlab</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">nG</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">dG</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">nG</span><span class="p">,</span><span class="n">dG</span><span class="p">);</span>
+<span class="n">H</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Go</span> <span class="p">=</span> <span class="n">G</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first part of the analysis is the same as we went through for the <a href="../1/freqlead">Lead Compensation case</a> but we repeat the commands so that the code in the MATLAB workspace will be consistent. You should refer to the otherdocument for the detail.</p>
+<p>As before, I want to show the uncompensated frequency response diagrams plotted with the asymptotic bode curves and again we use the function |asymp| to achieve this.</p>
+<p>We predefine the frequency values that we want:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="nb">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we calculate the magnitude and phase</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">m0</span><span class="p">,</span><span class="n">p0</span><span class="p">]</span> <span class="p">=</span> <span class="n">bode</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result of <code>|[m0,p0] = bode(Go,w)|</code> produces a data structure. We need to convert the magnitude to decibels and extract the data into column vectors for plotting.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">m0dB</span> <span class="p">=</span> <span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">m0</span><span class="p">);</span>
+<span class="n">m0dB</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">m0dB</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">p0</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the asymptotic magnitude. We need the state space matrices:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">Ao</span><span class="p">,</span><span class="n">Bo</span><span class="p">,</span><span class="n">Co</span><span class="p">,</span><span class="n">Do</span><span class="p">]=</span><span class="n">ssdata</span><span class="p">(</span><span class="n">Go</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and then the asymptotic response is computed using the function |asymp|:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">am0dB</span> <span class="p">=</span> <span class="n">asymp</span><span class="p">(</span><span class="n">Ao</span><span class="p">,</span><span class="n">Bo</span><span class="p">,</span><span class="n">Co</span><span class="p">,</span><span class="n">Do</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">subplot(211)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">m0dB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">am0dB</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">axis</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag Compensation Example - Uncompensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">,</span><span class="s">&#39;Asymptote&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude Go(jw) (dB)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+<span class="s">subplot(212)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">p0</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag Compensation Example - Uncompensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Angle Go(jw)&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase Go(jw) (degrees)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_16_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The gain cut-off frequency  $\omega_m\approx 1$ rad/s and the phase margin $\phi_m\approx 45^\circ$. Thus the transient performance requirements are already satisfied.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lag-Compensation-for-Steady-State-Performance">Lag Compensation for Steady-State Performance<a class="anchor-link" href="#Lag-Compensation-for-Steady-State-Performance"> </a></h2><p>For this system:</p>
+$$K_v=\left.sG_o(s)\right|_{s=0}=\left.\frac{1}{s(s+1)}\right|_{s=0}=1$$
+<pre><code> 
+
+</code></pre>
+<p>We want $K_v=10$ so, lag compensation is needed to raise the low frequency gain to 10. The lag compensator has transfer function</p>
+<p>$D(s)=K_c\left(\frac{1+Ts}{1+\alpha Ts}\right),\;\alpha&gt;1.$</p>
+<p>Examining the frequency response of this compensator we see that</p>
+<p>$D(j\omega)=K_c\left(\frac{1+Tj\omega}{1+\alpha Tj\omega}\right).$</p>
+<p>The low frequency response is</p>
+$$\left.D(j\omega)\right|_{\omega=0}=K_c,$$<p>and the high frequency response is</p>
+$$\left.D(j\omega)\right|_{\omega=\infty}=\frac{K_c}{\alpha}.$$<p>Since $\alpha &gt;1$, the low frequency gain is higher than the high frequency gain. The problem with a lag compensator is that the price we pay for this increase in the low frequency gain is a phase-lag. To illustrate this, let us take an example system:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Kc</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">alpha</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">T</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">Deg</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Kc</span><span class="o">*</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="n">alpha</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  
+<span class="n">clf</span>
+<span class="s">bode(Deg)</span><span class="p"></span>
+<span class="n">grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Deg =
+ 
+  5 s + 5
+  -------
+  3 s + 1
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_19_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is a significant phase lag at the centre frequency. We must avoid adding any affects of this lag to the plant transfer<sup>[1]</sup> function at the gain cut-off frequency as this would reduce the phase margin and hence stability. So, we arrange the lag compensator as follows.</p>
+<p>The compensator is designed to have unity high frequency gain.</p>
+$$\left.D(j\omega)\right|_{\omega=\infty}=\frac{K_c}{\alpha}=1.$$$$K_c =\alpha.$$<p>This will avoid any change in the gain cut-off frequency $\omega_1$. The low frequency gain is thus given by</p>
+$$\left.D(j\omega)\right|_{\omega=0}=K_c=\alpha.$$<p>We also ensure that the lag effect is restricted to the low frequency region: so we make sure that the break-frequency of the zero ($\omega_z = 1/T$) is located at least a decade lower than the gain cut-off frquency $\omega_1$<sup>[2]</sup>.</p>
+<p>Let us set up a lag compensator with these considerations in place.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Kv</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">w1</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c">% rad/s</span>
+<span class="n">alpha</span> <span class="p">=</span> <span class="n">Kv</span><span class="p">;</span> <span class="c">% low frequency gain required</span>
+<span class="n">Kc</span> <span class="p">=</span> <span class="n">alpha</span><span class="p">;</span> <span class="c">% compensator gain</span>
+<span class="n">wz</span> <span class="p">=</span> <span class="n">w1</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span> <span class="c">% 1 decade below gain cut-off</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">wz</span><span class="p">;</span>   <span class="c">% zero value</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Kc</span><span class="o">*</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="n">alpha</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+D =
+ 
+  100 s + 10
+  ----------
+  100 s + 1
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We produce a new Bode diagram for the gain compensated system. The same commands are issued as before.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">DGo</span> <span class="p">=</span> <span class="n">series</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">Go</span><span class="p">);</span>
+<span class="p">[</span><span class="n">m1</span><span class="p">,</span><span class="n">p1</span><span class="p">]</span> <span class="p">=</span> <span class="n">bode</span><span class="p">(</span><span class="n">DGo</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="n">m1dB</span> <span class="p">=</span> <span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">m1</span><span class="p">);</span>
+<span class="n">m1dB</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">m1dB</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">p1</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Asymptotic magnitude</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">A1</span><span class="p">,</span><span class="n">B1</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">D1</span><span class="p">]=</span><span class="n">ssdata</span><span class="p">(</span><span class="n">DGo</span><span class="p">);</span>
+<span class="n">am1dB</span> <span class="p">=</span> <span class="n">asymp</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">B1</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">D1</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">subplot(211)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">m1dB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">am1dB</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">axis</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag Compensation Example - Lag Compensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;|DGo(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;Asym. |DGo(jw)|&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_27_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Phase is unchanged</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">p1</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lag Compensation Example - Lag Compensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;DGo(jw)&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase DGo(jw) (degrees)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_29_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How have we done? The low frequency gain has certainly increased by 20 dB (10). What about the phase margin?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">margin(DGo)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_31_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The phase margin is $\phi_m$  and $\omega_1 = 0.79$ rad/s.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Evaluation-of-the-Design">Evaluation of the Design<a class="anchor-link" href="#Evaluation-of-the-Design"> </a></h2><p>We now put everything together to evaluate the design.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#160;Bode-Plots">&#160;Bode Plots<a class="anchor-link" href="#&#160;Bode-Plots"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Bode</span>
+<span class="c">%  blue - Uncompensated Go(jw)</span>
+<span class="c">%  green - Lag Compensator D(jw)</span>
+<span class="c">%  red - Lag compensated DGo(jw)</span>
+<span class="n">bode</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">DGo</span><span class="p">,</span><span class="n">w</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Bode Diagrams: Lag Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_35_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nyquist-Diagrams">Nyquist Diagrams<a class="anchor-link" href="#Nyquist-Diagrams"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Nyquist</span>
+<span class="c">% blue - Uncompensated Go(jw)</span>
+<span class="c">% green - Lag Compensator D(jw)</span>
+<span class="c">% red - Lag compensated DGo(jw)</span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">DGo</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Nyquist Diagrams: Lag Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_37_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nichols-Charts">Nichols Charts<a class="anchor-link" href="#Nichols-Charts"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Nichols</span>
+<span class="c">% blue - Uncompensated Go(jw)</span>
+<span class="c">% green - Lag Compensator D(jw)</span>
+<span class="c">% red - Lag compensated DGo(jw)</span>
+<span class="n">nichols</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">DGo</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Nichols Charts: Lag Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_39_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Closed-Loop-Frequency-Response">Closed-Loop Frequency Response<a class="anchor-link" href="#Closed-Loop-Frequency-Response"> </a></h3><p>Now we examine the closed-loop frequency responses. Notice the slight increase in peak magnification $M_{\mathrm{max}}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc0</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Gc1</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">DGo</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="n">mc0</span><span class="p">,</span><span class="n">pc0</span><span class="p">]=</span><span class="n">bode</span><span class="p">(</span><span class="n">Gc0</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="p">[</span><span class="n">mc1</span><span class="p">,</span><span class="n">pc1</span><span class="p">]=</span><span class="n">bode</span><span class="p">(</span><span class="n">Gc1</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="n">mc0</span> <span class="p">=</span> <span class="mf">20.</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">reshape</span><span class="p">(</span><span class="n">mc0</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">mc1</span> <span class="p">=</span> <span class="mf">20.</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">reshape</span><span class="p">(</span><span class="n">mc1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">mc0</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">mc1</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">grid</span><span class="p">,</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Closed-loop Frequency Response for Lag Compensated System&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;|Go(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;|DGo(jw)|&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_41_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Closed-Loop-Step-Responses">Closed-Loop Step Responses<a class="anchor-link" href="#Closed-Loop-Step-Responses"> </a></h3><p>First we examine the closed-loop step responses. Notice the increase in peak overshoot %OS and the slighly longer settling time.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Blue - uncompensated</span>
+<span class="c">% Green - Lag compensated</span>
+<span class="n">clf</span>
+<span class="s">step(Gc0,Gc1),title(&#39;Closed-Loop Step Response&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_43_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To compute the ramp error response we need to add an integrator to the error reponse:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">integ</span><span class="p">=</span><span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]);</span>
+<span class="n">re0</span> <span class="p">=</span> <span class="n">integ</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Go</span><span class="p">));</span>
+<span class="n">re1</span> <span class="p">=</span> <span class="n">integ</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span><span class="n">DGo</span><span class="p">));</span><span class="n"></span>
+<span class="n">clf</span>
+<span class="s">step(re0,re1), title(&#39;Velocity Error Response&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/2/freqlag_45_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The velocity error is reduced to 10% from 100% showing that $K_v$ is indeed 10. However, note the considerable time taken to reach the final value. This is quite typical of a ramp response response for a lag compensator.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Footnotes">Footnotes<a class="anchor-link" href="#Footnotes"> </a></h2><p>[1] Or lead compensated plant in a lag-lead compensated system.</p>
+<p>[2] The phase lag will then be close to zero at the gain cut-off frequency.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">Resources<a class="anchor-link" href="#Resources"> </a></h2><p>An executable version of this document is available to download as a MATLAB Live Script file <a href="matlab/freqlag.mlx">freqlag.mlx</a> [<a href="matlab/asymp.m">asymp.m</a>].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

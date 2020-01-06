@@ -1,0 +1,392 @@
+---
+interact_link: content/04/4/autotune.ipynb
+kernel_name: matlab
+kernel_path: content/04/4
+has_widgets: false
+title: |-
+  PID Autotuning in MATLAB
+pagenum: 19
+prev_page:
+  url: /04/3/analpid.html
+next_page:
+  url: /05/freqresp.html
+suffix: .ipynb
+search: pid s block mathrm frac d matlab left right n k prop autotuning simulink pictures png p ti td pole tutorial systems ctms example introduced used parameters continuous gain term tuning retuned section yet written meantime please review detailed control engin umich edu index php introductionsection controlpid matlabs either command line within benefit autotune compensator loop found library diagram shown below internals bd transfer function reduces sn comparison standard rm tds where nd extra limit high frequency proportionalderivative addition origin integral proportional zeros additional thus four adjusted give range possible structures let us repeat previous manual here g ended ts
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">PID Autotuning in MATLAB</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="PID-Autotuning-in-MATLAB">PID Autotuning in MATLAB<a class="anchor-link" href="#PID-Autotuning-in-MATLAB"> </a></h1><p>This section is yet to be written. In the meantime, please review this detailed tutorial from the <a href="http://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&amp;section=ControlPID">Control Systems Tutorial in MATLAB and Simulink</a>.</p>
+<h2 id="MATLAB's-PID-Block">MATLAB's PID Block<a class="anchor-link" href="#MATLAB's-PID-Block"> </a></h2><p>MATLAB has introduced a PID block that can be used either from the command-line or within Simulink. The benefit of this block is that it can be used to autotune the PID compensator parameters in-loop.</p>
+<p><img src="pictures/pid-block.png" alt="PID block"></p>
+<p>The continuous-time PID block is to be found in the <strong>Continuous Systems</strong> library in Simulink. The block diagram is as shown below.</p>
+<p><img src="pictures/pid-bd.png" alt="PID internals"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The transfer function of the PID is</p>
+$$D_\mathrm{PID} = P\left(1 + I\frac{1}{s} + D \frac{N}{1 + N\frac{1}{s}}\right)$$<p>which reduces to</p>
+$$D_\mathrm{PID} = P\left(1 + I\frac{1}{s} + D \frac{sN}{s + N}\right)$$<p>By comparison with the standard PID</p>
+$$D_\mathrm{PID}(s) = K_{\rm{prop}}\left(1 + T_Ds + 1/\left( T_I s\right)\right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>where $$P = K_\mathrm{prop}$$</p>
+$$T_D = ND$$$$T_I = 1/I$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is an extra pole at $s = -N$ which is there to limit the high-frequency gain of the Proportional+Derivative term.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In addition to the pole at the origin which is introduced by the integral term, The MATLAB PID has a proportional gain, two zeros, and an additional pole. Thus there are four parameters which can be adjusted to give a range of possible structures.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Autotuning-the-PID">Autotuning the PID<a class="anchor-link" href="#Autotuning-the-PID"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let us repeat the previous example (<a href="../2/tuning">See 4.2 Manual Tuning</a>).</p>
+<p>Here we have:</p>
+$$G(s) = \frac{1}{5s^2 + 6s + 1}$$<p>and we ended up with</p>
+$$D_{\mathrm{PID}}= K_{\mathrm{prop}} \left(1 + T_D s + \frac{1}{T_s} \right)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>with $K_{\mathrm{prop}} = 19$, $T_D = 4/19$, $T_I = 2$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Setting the PID with the equivalent values</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">P</span> <span class="p">=</span> <span class="mi">19</span><span class="p">;</span> <span class="n">D</span> <span class="p">=</span> <span class="mi">4</span><span class="o">/</span><span class="mi">19</span><span class="p">;</span> <span class="n">I</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">pidstd</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+D =
+ 
+             1      1          
+  Kp * (1 + ---- * --- + Td * s)
+             Ti     s          
+
+  with Kp = 19, Ti = 2, Td = 0.211
+ 
+Continuous-time PID controller in standard form
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In MATLAB we use</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">s</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="n">G</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G =
+ 
+         1
+  ---------------
+  5 s^2 + 6 s + 1
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Go</span> <span class="p">=</span> <span class="n">series</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Go =
+ 
+  4 s^2 + 19 s + 9.5
+  ------------------
+  5 s^3 + 6 s^2 + s
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gc =
+ 
+      4 s^2 + 19 s + 9.5
+  ---------------------------
+  5 s^3 + 10 s^2 + 20 s + 9.5
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/04/4/autotune_14_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now use this design as a baseline for autotuning the PID</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">pidTuner</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Results are:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pictures/retuned.png" alt="Retuned PID"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

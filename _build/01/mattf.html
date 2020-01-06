@@ -1,0 +1,1305 @@
+---
+interact_link: content/01/mattf.ipynb
+kernel_name: matlab
+kernel_path: content/01
+has_widgets: false
+title: |-
+  Appendix A Defining Transfer Functions in MATLAB
+pagenum: 40
+prev_page:
+  url: /08/4/observer_controller.html
+next_page:
+  url: /homework/index.html
+suffix: .ipynb
+search: s lti system transfer function frac objects g form matlab object step example command expanded c polynomial b zero used poles mathworks tools div representation entered functions zeros analysis gain k called linear control using also documentation help feedback provides partial fraction t forms where coefficients r factored pole version extracted uk com html fn sup convert work response cdots id systems obvious must ss numerator denominator inspection column vector invariant starting data state space single combined create following obtained created numerous available suppose represents information such please set ref get transformations easy note connection closed loop h interactive graphical
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Appendix A Defining Transfer Functions in MATLAB</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Defining-Transfer-Systems-in-MATLAB">Defining Transfer Systems in MATLAB<a class="anchor-link" href="#Defining-Transfer-Systems-in-MATLAB"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are two forms of transfer function representation in MATLAB. The most obvious is the polynomial form where</p>
+$$G(s) = \frac{b(s)}{a(s)} = \frac{s^2 + 2 s + 3}{s^3 + 4 s^2 + 5 s + 6}$$<p>is entered as two row vectors with the polynomial coefficients entered in the order of descending powers of $s$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="n">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Missing coefficients, must be entered as zero: so $q(s)=s^2+2s$ and $r(s)=s^4+s^2+1$ are entered as</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">q</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">r</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An alternative form of representation for transfer functions is the <em>factored polynomial</em>, for example</p>
+$$G(s) = \frac{(s + 1)(s + 3)}{s(s + 2)(s + 4)}$$<p></p>
+<p>The advantage of this formulation is that the <em>zeros</em> of the numerator and denominator polynomials are obvious by inspection. So it is often used in the preliminary analysis of the performance of a dynamic system. The <em>poles</em> of this transfer function are $s = 0,\;−2,\;−4$ and the <em>zeros</em> are $s = −1,\;−3$.</p>
+<p>In MATLAB, this form of transfer function is specified by a column vector of the zeros and a column vector of the poles:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">z</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">p</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="o">-</span><span class="mi">4</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A third parameter, the overall gain $K$, completes the definition of the so called <em>pole-zero-gain</em> form of transfer function. In this case $K =1$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">K</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Linear-Time-Invariant-System-Object">The Linear Time Invariant System Object<a class="anchor-link" href="#The-Linear-Time-Invariant-System-Object"> </a></h2><p>Starting from version 4 of the <em>Control System Toolbox</em> (distributed with MATLAB version 5), the Mathworks introduced a new data object for the creation and manipulation of system transfer functions. This object is called the <em>Linear Time Invariant (LTI) System Object</em>. It is used to gather the components of a transfer function (or state-space model) into a single variable which can then easily be combined with other LTI system objects.</p>
+<p>To create a LTI system object representing a factored transfer function the following command is issued:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">K</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G =
+ 
+   (s+1) (s+3)
+  -------------
+  s (s+2) (s+4)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The expanded numerator and denominator form of the transfer function is readily obtained by using a “data extraction” function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">]=</span><span class="n">tfdata</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s">&#39;v&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+num =
+
+     0     1     4     3
+
+
+den =
+
+     1     6     8     0
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>LTI system objects can also be created from the expanded form of a transfer function directly:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G2</span><span class="p">=</span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G2 =
+ 
+    s^2 + 4 s + 3
+  -----------------
+  s^3 + 6 s^2 + 8 s
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and the zeros and poles similarly extracted:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="nb">zeros</span><span class="p">,</span><span class="n">poles</span><span class="p">,</span><span class="n">gain</span><span class="p">]=</span><span class="n">zpkdata</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="s">&#39;v&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+zeros =
+
+    -3
+    -1
+
+
+poles =
+
+     0
+    -4
+    -2
+
+
+gain =
+
+     1
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setting-LTI-Properties">Setting LTI Properties<a class="anchor-link" href="#Setting-LTI-Properties"> </a></h2><p>Numerous options are available to document the LTI system objects that you create. For example, suppose the transfer function $G$ represents a servomechanism with input <code>'Voltage'</code> and output <code>'Angular Position'</code>. We can add this information to the LTI system as follows:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">set</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s">&#39;inputname&#39;</span><span class="p">,</span><span class="s">&#39;Voltage&#39;</span><span class="p">,</span><span class="s">&#39;outputname&#39;</span><span class="p">,</span><span class="s">&#39;Angular Position&#39;</span><span class="p">);</span><span class="n"></span>
+<span class="n">G</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G =
+ 
+  From input &#34;Voltage&#34; to output &#34;Angular Position&#34;:
+   (s+1) (s+3)
+  -------------
+  s (s+2) (s+4)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Such documentary information is probably best added when the LTI system object is created, for example as:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G3</span><span class="p">=</span><span class="n">zpk</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="s">&#39;inputname&#39;</span><span class="p">,</span><span class="s">&#39;Armature Voltage (V)&#39;</span><span class="p">,</span><span class="c">... </span>
+<span class="s">&#39;outputname&#39;</span><span class="p">,</span><span class="s">&#39;Load Shaft Position (rad)&#39;</span><span class="p">,</span><span class="c">... </span>
+<span class="s">&#39;notes&#39;</span><span class="p">,</span><span class="s">&#39;An armature voltage controlled servomechanism&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G3 =
+ 
+  From input &#34;Armature Voltage (V)&#34; to output &#34;Load Shaft Position (rad)&#34;:
+   (s+1) (s+3)
+  -------------
+  s (s+2) (s+4)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once the LTI object has been documented, the documentation can be extracted using commands like:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">get</span><span class="p">(</span><span class="n">G3</span><span class="p">,</span><span class="s">&#39;notes&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+  1x1 cell array
+
+    {&#39;An armature voltage controlled servomechanism&#39;}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All the documentation available on an LTI system object may be extracted with a single command:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">get</span><span class="p">(</span><span class="n">G3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                Z: {[2x1 double]}
+                P: {[3x1 double]}
+                K: 1
+    DisplayFormat: &#39;roots&#39;
+         Variable: &#39;s&#39;
+          IODelay: 0
+       InputDelay: 0
+      OutputDelay: 0
+               Ts: 0
+         TimeUnit: &#39;seconds&#39;
+        InputName: {&#39;Armature Voltage (V)&#39;}
+        InputUnit: {&#39;&#39;}
+       InputGroup: [1x1 struct]
+       OutputName: {&#39;Load Shaft Position (rad)&#39;}
+       OutputUnit: {&#39;&#39;}
+      OutputGroup: [1x1 struct]
+            Notes: {&#39;An armature voltage controlled servomechanism&#39;}
+         UserData: []
+             Name: &#39;&#39;
+     SamplingGrid: [1x1 struct]
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are numerous other documentation features provided for LTI system objects. Please consult the on-line help for <a href="https://uk.mathworks.com/help/control/ref/set.html">set</a> and <a href="https://uk.mathworks.com/help/control/ref/get.html">get</a> for full details.</p>
+<h2 id="System-Transformations">System Transformations<a class="anchor-link" href="#System-Transformations"> </a></h2><p>MATLAB supports the easy transformation of LTI system objects between expanded and factored forms<sup>[1](#fn2)</sup>. For example to convert a transfer function from 'expanded' form to pole-zero-gain form the following command is used:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G4</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G4 =
+ 
+   (s+3) (s+1)
+  -------------
+  s (s+4) (s+2)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To convert from zero-pole-gain form to expanded form we use the function <code>tf</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G5</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+G5 =
+ 
+  From input &#34;Voltage&#34; to output &#34;Angular Position&#34;:
+    s^2 + 4 s + 3
+  -----------------
+  s^3 + 6 s^2 + 8 s
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Please note that these transformations are merely a convenience that allow you to work with your preferred form of representation. Most of the tools that deal with LTI system objects will work with any form<sup>[2](#fn1)</sup>.</p>
+<h2 id="Combining-LTI-System-Objects">Combining LTI System Objects<a class="anchor-link" href="#Combining-LTI-System-Objects"> </a></h2><p>A powerful feature of the LTI system object representation is the ease with which LTI objects can be combined. For example, suppose we have two transfer functions</p>
+$$G_1(s)=\frac{s+1}{s+3}$$<p>and</p>
+$$G_2(s)=\frac{10}{s(s+2)}$$<p>then the series combination of the two transfer functions $G_s(s) = G_1(s)G_2(s)$ is obtained using the "<code>*</code>" (multiplication) operator:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G1</span><span class="p">=</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="n">G2</span><span class="p">=</span><span class="n">tf</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">conv</span><span class="p">([</span><span class="mi">1</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">]));</span> <span class="c">% conv is polynomial multiplication</span>
+<span class="n">Gs</span><span class="p">=</span><span class="n">G1</span><span class="o">*</span><span class="n">G2</span> <span class="c">% series connection of two sys objects</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gs =
+ 
+      10 s + 10
+  -----------------
+  s^3 + 5 s^2 + 6 s
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The parallel connection of two LTI system objects corresponds to addition $G_p=G_1(s)+G_2(s)$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gp</span> <span class="p">=</span> <span class="n">G1</span> <span class="o">+</span> <span class="n">G2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gp =
+ 
+  s^3 + 3 s^2 + 12 s + 30
+  -----------------------
+     s^3 + 5 s^2 + 6 s
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The feedback connection of two LTI system objects is also supported. The function <code>feedback</code> is used for this.</p>
+<p>Let</p>
+$$G(s)=\frac{2s^2 + 5s + 1}{s^2 + 2s + 3}$$<p></p>
+<p>be the forward transfer function of a closed-loop system and</p>
+$$H(s) = \frac{5(s+2)}{(s+10)}$$<p>be the feedback network. Then the closed-loop transfer function<sup>[3](#fn3)</sup> is</p>
+$$G_{c}(s)=\frac{G(s)}{1 + G(s)H(s)}.$$<p>In MATLAB:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">],</span><span class="s">&#39;inputname&#39;</span><span class="p">,</span><span class="s">&#39;torque&#39;</span><span class="p">,</span><span class="c">...</span>
+<span class="s">&#39;outputname&#39;</span><span class="p">,</span><span class="s">&#39;velocity&#39;</span><span class="p">);</span>
+<span class="n">H</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">Gc</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">H</span><span class="p">)</span> <span class="c">% negative feedback assumed</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Gc =
+ 
+  From input &#34;torque&#34; to output &#34;velocity&#34;:
+  0.18182 (s+10) (s+2.281) (s+0.2192)
+  -----------------------------------
+   (s+3.419) (s^2 + 1.763s + 1.064)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Analysis-of-LTI-System-Objects">The Analysis of LTI System Objects<a class="anchor-link" href="#The-Analysis-of-LTI-System-Objects"> </a></h2><p>MATLAB uses the LTI system objects as parameters for the analysis tools such as <code>impulse</code>, <code>step</code>, <code>nyquist</code>, <code>bode</code>, <code>nichols</code> and <code>rlocus</code>.</p>
+<p>As an example of their use try:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">rlocus</span><span class="p">(</span><span class="n">G</span><span class="o">*</span><span class="n">H</span><span class="p">)</span> <span class="c">% root locus</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/mattf_36_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="o">*</span><span class="n">H</span><span class="p">)</span><span class="c">% open-loop frequency response</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/mattf_37_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">)</span> <span class="c">% closed-loop step response</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/mattf_38_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">Gc</span><span class="p">)</span> <span class="c">% closed-loop frequency response</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/mattf_39_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Matlab also provides two interactive graphical tools that work with LTI system objects.</p>
+<ul>
+<li><code>linearSystemAnalyzer</code> is a graphical tool that can be used to analyze
+systems defined by LTI objects. It provides easy access to LTI objects
+and time and frequency response analysis tools.</li>
+<li><code>controlSystemDesigner</code> is an interactive tool for designing controllers.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You are encouraged to experiment with these tools.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Partial-Fraction-Expansions">Partial Fraction Expansions<a class="anchor-link" href="#Partial-Fraction-Expansions"> </a></h2><p>MATLAB provides a command called <code>residue</code> that returns the partial fraction expansion of a transfer function. That is, given</p>
+$$G(s) = \frac{s^m + b_{m–1}s^{m–1} + \cdots + b_1 s + b_0}{s^n + a_{n–1}s^{n–1} + \cdots + a_1 s + a_0}$$<p>it returns</p>
+$$\frac{R_1}{s + p_1} + \frac{R_2}{s + p_2} + \cdots \frac{R_n}{s + p_n} + K(s)$$<p>where $p_i$ are the poles of the transfer function, $r_i$ are the coefficients of the partial fraction terms (called the <em>residues</em> of the poles) and $K(s)$ is a remainder polynomial which is usually empty.</p>
+<p>To use this, the starting point must (rather perversely) be the expanded form of the transfer function in polynomial form. Thus given</p>
+$$C(s) = \frac{5(s + 2)}{s(s + 3)(s + 10)}$$<p></p>
+<p>we obtain the partial fraction expansion using the MATLAB command sequence:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">k</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">z</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">];</span> <span class="n">p</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="o">-</span><span class="mi">3</span><span class="p">;</span> <span class="o">-</span><span class="mi">10</span><span class="p">];</span> <span class="c">% zero-pole-gain form </span>
+<span class="n">C</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">);</span> 
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">]</span> <span class="p">=</span> <span class="n">tfdata</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="s">&#39;v&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+num =
+
+     0     0     5    10
+
+
+den =
+
+     1    13    30     0
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(Note that the leading terms in <code>num</code> <em>are</em> zero).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="p">=</span> <span class="n">residue</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+r =
+
+   -0.5714
+    0.2381
+    0.3333
+
+
+p =
+
+   -10
+    -3
+     0
+
+
+k =
+
+     []
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which we interpret to mean</p>
+$$C(s) = \frac{0.3333}{s} + \frac{0.2381}{s + 3} - \frac{0.5714}{s + 5}.$$<p>If $C(s)$ represents the step response of the system</p>
+$$G(s) = \frac{5(s + 2)}{(s + 3)(s + 10)}$$<p>then the step response is, by inspection,</p>
+$$c(t) = 0.3333\epsilon(t) + 0.2381 e^{-3t} - 0.5714 e^{-10t}.$$<p>You can check this with the command:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">newC</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">step</span><span class="p">(</span><span class="n">newC</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+newC =
+ 
+     5 s + 10
+  ---------------
+  s^2 + 13 s + 30
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/mattf_47_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(where the $1/s$ term has been eliminated because <code>step</code> provides the forcing function itself). This should give exactly the same results as:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mf">.05</span><span class="p">:</span><span class="mf">1.5</span><span class="p">;</span> <span class="c">% time vector </span>
+<span class="n">c</span> <span class="p">=</span> <span class="mf">0.3333</span> <span class="o">+</span> <span class="mf">0.2381</span> <span class="o">*</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5714</span> <span class="o">*</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="n">t</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c</span><span class="p">),</span><span class="c">...</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Step response&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time (seconds)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Amplitude&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/mattf_49_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Read-More">Read More<a class="anchor-link" href="#Read-More"> </a></h2><p>The Mathworks official documentation on LTI Objects is <a href="https://uk.mathworks.com/help/control/getstart/linear-lti-models.html">Linear (LTI) Models</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Footnotes">Footnotes<a class="anchor-link" href="#Footnotes"> </a></h2><ol>
+<li><div id="fb2">You can also convert to and from state-space forms.</div></li>
+<li><div id="fn1">This is the most significant change from version 4 of MATLAB. There were, for example several forms of the function for obtaining step-responses (<code>step(num,den)</code>, <code>step(A,B,C,D)</code>) now there is just one <code>step(sys)</code>. </li>
+<li><div id="fn3">Assuming negative feedback.</div></li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

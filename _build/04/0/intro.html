@@ -1,0 +1,155 @@
+---
+interact_link: content/04/0/intro.ipynb
+kernel_name: matlab
+kernel_path: content/04/0
+has_widgets: false
+title: |-
+  Introduction to PID Compensation
+pagenum: 15
+prev_page:
+  url: /04/pid.html
+next_page:
+  url: /04/1/zeigler.html
+suffix: .ipynb
+search: s mathrm k prop pid equation proportional left frac right used system e begin ti end integral derivative steady state d type t gain compensator zero response sub reset rate td also increase eqnarray action compensation u std common achieve transient performance plus stability effect tuning increasing compensators control signal tsubi setting parameters only required reduce rise size overshoots pd adds settling alone pi however raises pole loop zeros improve zeigler error tune summarised choose speed increases reduces introduction very widely industry particularly process applications given feedback compensated int tau tautd de dt where comment ksubprop repeat tsubd laplace transform
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Introduction to PID Compensation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction-to-PID-Compensation">Introduction to PID Compensation<a class="anchor-link" href="#Introduction-to-PID-Compensation"> </a></h1><p>PID compensators are very widely used in industry, particularly for process 
+control applications. Given a system with feedback signal $e(t)$, the PID 
+compensated control signal is</p>
+$$\begin{equation}
+u(t)=K_{\mathrm{prop}}\left(e(t)+\frac{1}{T_I}\,\int_{0}^{t}e(\tau)d\tau+T_D\,\frac{de(t)}{dt}\right)
+\end{equation}$$
+<pre><code>                                                                                        
+
+</code></pre>
+<p>where</p>
+<table>
+<thead><tr>
+<th>Gain</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>K</em><sub>prop</sub></td>
+<td>proportional gain</td>
+</tr>
+<tr>
+<td><em>T<sub>I</sub></em></td>
+<td>integral time (s)</td>
+</tr>
+<tr>
+<td>1/<em>T<sub>I</sub></em></td>
+<td>reset rate (repeat/s)</td>
+</tr>
+<tr>
+<td><em>T<sub>D</sub></em></td>
+<td>derivative time (s)</td>
+</tr>
+</tbody>
+</table>
+<p>The Laplace transform of the PID equation is:</p>
+$$\begin{equation}
+U(s)=K_{\mathrm{prop}}\left(E(s)+\frac{1}{T_I s}\,E(s)+sT_D\,E(s)\right)
+\end{equation}$$<p></p>
+<p>so that</p>
+$$\begin{equation}
+D_{\mathrm{PID}}(s)=\frac{U(s)}{E(s)}=K_{\mathrm{prop}}\left(1+\frac{1}{T_I 
+s}+sT_D\right)
+\end{equation}$$<p></p>
+<p>Commercial compensators are provided with setting controls for each of 
+the three parameters $K_{\mathrm{prop}$, $T_I$and $T_D$. They can also be used 
+with and without the integral and derivative terms. The common configurations 
+for the PID compensator are:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Proportional-only">Proportional only<a class="anchor-link" href="#Proportional-only"> </a></h3>$$\begin{equation}D_{\mathrm{P}}(s)=K_{\mathrm{prop}}\end{equation}$$
+<pre><code>                                                        
+</code></pre>
+<p>This type of compensation can be used when dynamic compensation is not 
+needed to achieve the required steady-state acuracy and transient performance. 
+In general, larger values of poportional gain reduce steady-state errors and 
+rise times but tend to increase the size and number of overshoots and setting 
+time.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Proportional-plus-Derivative-(P+D)">Proportional plus Derivative (P+D)<a class="anchor-link" href="#Proportional-plus-Derivative-(P+D)"> </a></h3>$$\begin{eqnarray}D_{\mathrm{P+D}}(s) &amp;=&amp; K_{\mathrm{prop}}\left(1+sT_D\right)\\
+&amp;=&amp; K_{\mathrm{prop}}T_D\,\left(s+1/T_D\right)\end{eqnarray}$$<p>This configuration adds a zero to the proportional only compensator. This zero is used to increase the system damping thereby improving stability and reducing settling time. The cascade zero may cause a small reduction in rise 
+time and an increase in the size of the first overshoot. Note that derivative action is <em>never</em>used alone!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Proportional-plus-Integral-(P+I)">Proportional plus Integral (P+I)<a class="anchor-link" href="#Proportional-plus-Integral-(P+I)"> </a></h3><p>Integral action may be used alone and its effect is to increase the system type number by 1. That is it makes a type 0 system type 1 and eliminates steady-state step errors<sup>1</sup>. However, it is more common to the integral action added with proportional gain in the proportional plus integral confuguration:</p>
+$$\begin{eqnarray}D_{\mathrm{P+I}}(s) &amp;=&amp; K_{\mathrm{prop}}\left(1+\frac{1}{T_I s}\right)\\
+&amp;=&amp; K_{\mathrm{prop}}\left(\frac{s+1/T_I}{s}\right)\end{eqnarray}$$<p></p>
+<p>This raises the system type number by 1 and also adds a zero which can 
+offset the destabilising effect of the additional pole. A typical use of this 
+zero would be to cancel the lowest-frequency system pole to allow a faster closed-loop 
+response.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Full-Proportional-Integral-Derivative-(PID)">Full Proportional-Integral-Derivative (PID)<a class="anchor-link" href="#Full-Proportional-Integral-Derivative-(PID)"> </a></h3>$$\begin{equation}D_{\mathrm{PID}}(s)=K_{\mathrm{prop}}\left(\frac{T_D\,s^2+s+1/T_I}{s}\right)\end{equation}$$<p>The PID compensator raises the system type number by 1. It also introduces two zeros which can be used to improve the transient response. Root locus methods can be used to locate these zeros in order to satisfy the steady-state and transient response requirements of a design. We shall illustrate the <a href="../1/zeigler">Zeigler-Nichols method</a> next. There is also an <a href="../3/analpid">analytical technique</a> for achieving a specified steady-state error performance and defined dominant poles. In industrial practice, however, it is quite common to tune a PID compensator "in the loop" and this is discussed in a companion document (<a href="../2/tuning">Tuning a PID Compensator</a>). The tuning rules are essentially summarised 
+as:</p>
+<ol>
+<li>Choose $K_{\mathrm{prop}}$ to achieve the required speed of response.</li>
+<li>Choose the reset rate $1/T_I$ to achieve desired steady-state performance (may need to re-tune $K_{\mathrm{prop}}$)</li>
+<li>Add derivative action to reduce overshoots and improve settling time.</li>
+</ol>
+<p>The effect of the parameters may be summarised as</p>
+<ol>
+<li>Increasing reset rate and proportional gain increases the speed of response and reduces the steady-state error.</li>
+<li>Increasing reset rate reduces stability.</li>
+<li>Increasing derivative time increases stability.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

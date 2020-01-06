@@ -1,0 +1,463 @@
+---
+interact_link: content/07/6/gensolution.ipynb
+kernel_name: matlab
+kernel_path: content/07/6
+has_widgets: false
+title: |-
+  The General Solution of LTI Systems
+pagenum: 34
+prev_page:
+  url: /07/5/systransf.html
+next_page:
+  url: /08/index.html
+suffix: .ipynb
+search: t mathbf e array left right end begin s c x tau bf lambda f frac eqnarray d matrix w solution state taylor cdots term series u function mathrm intt dt example using phi transformation tn therefore b section form fn ntn given laplace taking general space system where ldots transition transforms rm lti systems method solve approach trss derive matlab en wikipedia org wiki terms approximate ft corresponding similarity equation n diagonal lambdait lambdai ax initial forced bu class alternatives transform inverse alternative normal canonical dw conclude our introduction developing used any linear invariant model put formal mathematical footing
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">The General Solution of LTI Systems</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-General-Solution-of-LTI-Systems">The General Solution of LTI Systems<a class="anchor-link" href="#The-General-Solution-of-LTI-Systems"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this section we conclude our introduction to state space systems by developing a method that can be used to solve any linear time invariant (LTI) system using the state space model. This will put on a formal mathematical footing the approach described in <a href="../3/tr4ss">Section 7.3</a>.</p>
+<p>To do this we need to derive the Taylor series for the state matrix and then use the results from the previous two lectures to formally derive the state transmission matrix $\mathbf{\phi}(t)$ from the resolvant matrix</p>
+$$\mathbf{\Phi}(\lambda) = |\lambda\mathbf{I}-\mathbf{A}|.$$<p></p>
+<p>This will lead is to a general solution which we will illustrate with examples and compare with the solution developed in the <a href="../5/systrans">last section</a> and the solution obtained by inverting the system transfer function. As before, we will refer to MATLAB where relevant.</p>
+<p>Once we have completed this material, we will be in a position to move on to look at state-space methods for control system design.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Matrix-Exponential-Function">The Matrix Exponential Function<a class="anchor-link" href="#The-Matrix-Exponential-Function"> </a></h2><p>In mathematics, the <a href="https://en.wikipedia.org/wiki/Taylor_series">Taylor series</a> is a representation of a function as an infinite sum of terms calculated from the values of its derivatives at a single point. It is named after the English mathematician <a href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a>. It is common practice to use a finite number of terms of the series to approximate a function. The Taylor series may be regarded as the limit of the Taylor polynomials.</p>
+<p>We use Taylor series to approximate general functions, and here we adapt the Taylor series to discover the form of a function of a matrix.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Taylor-series">Taylor series<a class="anchor-link" href="#Taylor-series"> </a></h3><p>If a function $f(t)$ has Taylor series:</p>
+$$f(t)=f_0 + f_1t + f_2t^2 + \cdots + f_nt^n + \cdots$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then the corresponding matrix function is defined as:</p>
+$$f(\mathbf{A}t)=f_0\mathbf{I} + f_1\mathbf{A}t + f_2\mathbf{A}^2t^2 + \cdots + f_n\mathbf{A}^nt^n + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-the-Similarity-Transformation">Using the Similarity Transformation<a class="anchor-link" href="#Using-the-Similarity-Transformation"> </a></h3><p>Given the transformation $\mathbf{T}^{-1}\mathbf{AT}=\mathbf{\Lambda}$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{equation*}
+    \mathbf{A}t = (\mathbf{T\Lambda T}^{-1}) t
+\end{equation*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{eqnarray*}
+\mathbf{A}^nt^n &amp; = &amp; (\mathbf{T\Lambda T}^{-1})(\mathbf{T\Lambda T}^{-1})\ldots(\mathbf{T\Lambda T}^{-1})t^n \\
+                    &amp; = &amp; \mathbf{T\Lambda T}^{-1}\mathbf{T\Lambda T}^{-1}\ldots\mathbf{T\Lambda T}^{-1}t^n \end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{eqnarray*} \mathbf{A}^nt^n &amp; = &amp; \mathbf{T\Lambda}\mathbf{I}\mathbf{\Lambda I}\ldots\mathbf{I\Lambda T}^{-1}t^n \\
+                  &amp; = &amp; \mathbf{T\Lambda}^n\mathbf{T}^{-1}t^n \\\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The matrix function becomes:</p>
+$$\begin{eqnarray*}
+    f(\mathbf{A}t) &amp; = &amp; f_0\mathbf{TIT}^{-1} + f_1\mathbf{T\Lambda T}^{-1}t + f_2\mathbf{T\Lambda}^2\mathbf{T}^{-1}t^2 + \cdots + f_n\mathbf{T\Lambda}^n\mathbf{T}^{-1}t^n + \cdots \\
+    f(\mathbf{A}t) &amp; = &amp; \mathbf{T}\left(f_0\mathbf{I} + f_1\mathbf{\Lambda}t + f_2\mathbf{\Lambda}^2t^2 + \cdots + f_n\mathbf{\Lambda}^nt^n + \cdots \right)\mathbf{T}^{-1}\\
+                   &amp; = &amp; \mathbf{T}f(\mathbf{\Lambda}t)\mathbf{T}^{-1}\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The term inside the brackets on the rhs is a diagonal matrix and the
+$i^\mathrm{th}$ diagonal element is:</p>
+$$f_0+f_1\lambda_it + f_2\lambda_i^2t^2 + \cdots + f_n\lambda_i^nt^ + \cdots$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From the Taylor series this must be $f(\lambda_i t)$:</p>
+$$f(\mathbf{A} t)=\mathbf{T} f(\mathbf{\Lambda} t) \mathbf{T}^{-1}$$<p>where $f(\mathbf{\Lambda} t)=\mathrm{diag}\left(f(\lambda_i t)\right)$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transition-Matrix">Transition Matrix<a class="anchor-link" href="#Transition-Matrix"> </a></h3><p>In particular, the solution of:</p>
+$$\frac{d\mathbf{x}}{dt}=\mathbf{Ax}$$<p>given $\mathbf{x}=\mathbf{x}_0$ at $t=0$ is:</p>
+$$\mathbf{x}=e^{\mathbf{A}t}\mathbf{x}_0$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The term $\mathbf{\phi}(t) = e^{\mathbf{A}t}$ is known as the state transition matrix because it shows how time, $t$, transforms the initial state vector into the present one.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Forced-solution">Forced solution<a class="anchor-link" href="#Forced-solution"> </a></h3><p>Furthermore, the solution of:</p>
+$$\frac{d\mathbf{x}}{dt}=\mathbf{Ax} + \mathbf{Bu}$$<p></p>
+<p>given $\mathbf{x}=\mathbf{x}_0$ at $t=0$ is:</p>
+$$\mathbf{x}=e^{\mathbf{A}t}\mathbf{x}_0 + \int_0^t e^{\mathbf{A}(t-\tau)}\mathbf{Bu}(\tau)d\tau.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="End-of-Pre-Class-Presentation">End of Pre-Class Presentation<a class="anchor-link" href="#End-of-Pre-Class-Presentation"> </a></h3><p>In the class we will work through a worked example of this approach and contrast it with two alternatives -- diagonalization by similarity transform and Laplace.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example"> </a></h2><p>Find the solution of:</p>
+$$\frac{d\mathbf{x}}{dt} = \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; { - 2}  \\
+   1 &amp; 0  \\
+\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]u$$<p></p>
+<p>given $\mathbf{x}_0=[1,\ 1]^T$, and $u = 1$ for $t\ge 0$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Note</strong>: The solutions to this example and the remaining alternatives are available in the form of MATLAB scripts and as Pencasts in OneNote.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solution">Solution<a class="anchor-link" href="#Solution"> </a></h3><p>The state matrix $\mathbf{A}$ is the same as Example 4 from <a href="https://cpjobling.github.io/eglm03-textbook/07/3/tr4ss">Section 7.3</a>, so the transformation matrix is:</p>
+$${\bf{T}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   { - 1} &amp; { - 0.5}  \\
+\end{array}} \right]$$<p>with an inverse:</p>
+$${\bf{T}}^{ - 1}  = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]$$<p>and with corresponding eigenvalues $\lambda_1=-1$ and $\lambda_2=-2$.</p>
+<p>Therefore the state transition matrix is:</p>
+$$\begin{eqnarray*}
+\mathbf{\phi}(t) &amp; = &amp; e^{\mathbf{A}t}=\mathbf{T}e^{\mathbf{\Lambda}t}\mathbf{T}^{-1} \\
+                 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       1 &amp; 1  \\
+       { - 1} &amp; { - 0.5}  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       {e^{ - t} } &amp; 0  \\
+       0 &amp; {e^{ - 2t} }  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       { - 1} &amp; { - 2}  \\
+       2 &amp; 2  \\
+    \end{array}} \right] \\
+                 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       1 &amp; 1  \\
+       { - 1} &amp; { - 0.5}  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       {-e^{ - t} } &amp; {-2e^{ - t} }  \\
+       {2e^{ - 2t} } &amp; {2e^{ - 2t} }  \\
+    \end{array}} \right] \\
+                 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       \left\{ {-e^{ - t} + 2e^{-2t}} \right\} &amp; \left\{ {-2e^{ - t} + 2e^{-2t}} \right\}  \\
+       \left\{ {e^{ - t} - e^{-2t}} \right\} &amp; \left\{ {2e^{ - t} - e^{-2t}} \right\}  \\
+    \end{array}} \right] \\
+\end{eqnarray*}$$<p>The solution is:</p>
+$$\mathbf{x}(t) = \mathrm{term}_1+\int_0^t\mathrm{term}_2 d\tau.$$<p></p>
+<p>where $\mathrm{term}_1=\mathbf{\phi}(t)\mathbf{x}_0=e^{\mathbf{A}t}\mathbf{x}_0$.</p>
+$$\begin{eqnarray*}
+\mathrm{term}_1 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       \left\{ {-e^{ - t} + 2e^{-2t}} \right\} &amp; \left\{ {-2e^{ - t} + 2e^{-2t}} \right\}  \\
+       \left\{ {e^{ - t} - e^{-2t}} \right\} &amp; \left\{ {2e^{ - t} - e^{-2t}} \right\}  \\
+    \end{array}} \right] \left[ {\begin{array}{*{20}c}
+       1  \\
+       1  \\
+    \end{array}} \right] \\
+    &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       {\left\{ {\left. { - 3e^{ - t}  + 4e^{ - 2t} } \right\}} \right.}  \\
+       {\left\{ {\left. {3e^{ - t}  - 2e^{ - 2t} } \right\}} \right.}  \\
+    \end{array}} \right]\end{eqnarray*}$$<p>and</p>
+$$\begin{eqnarray*}
+    {\rm{term}}_2  &amp; = &amp; e^{\bf{A}(t - \tau )} {\bf{B}}u = e^{\bf{A}(t - \tau )} \left[ {\begin{array}{*{20}c}
+       1  \\
+       0  \\
+    \end{array}} \right] \times 1 \\
+ &amp; = &amp; \left[ {\begin{array}{*{20}c}
+   {\left. {\left\{ { - e^{ - (t - \tau )}  + 2e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+   {\left. {\left\{ {e^{ - (t - \tau )}  - e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+\end{array}} \right]\end{eqnarray*}$$$$\begin{eqnarray*}
+    \int_0^t {\rm{term}_2 d\tau }  &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       {\int_0^t {\left. {\left\{ { - e^{ - (t - \tau )}  + 2e^{ - 2(t - \tau )} } \right.} \right\}d\tau } }  \\
+       {\int_0^t {\left. {\left\{ {e^{ - (t - \tau )}  - e^{ - 2(t - \tau )} } \right.} \right\}d\tau } }  \\
+    \end{array}} \right] \\
+    &amp; = &amp;
+      \left[ {\begin{array}{*{20}c}
+       {\left. {\left\{ { - e^{ - (t - \tau )}  + e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+       {\left. {\left\{ {e^{ - (t - \tau )}  - 0.5e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+    \end{array}} \right]_{\tau  = 0}^t  \\
+     &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       { - 1 + e^{ - t}  + 1 - e^{ - 2t} }  \\
+       { 1 - e^{ - t}  - 0.5 + 0.5e^{ - 2t} }  \\
+    \end{array}} \right] \\
+     &amp;  = &amp; \left[ {\begin{array}{*{20}c}
+       {e^{ - t}  - e^{ - 2t} }  \\
+       {0.5 - e^{ - t}  + 0.5e^{ - 2t} }  \\
+    \end{array}} \right]\end{eqnarray*}$$<p>Combining $\mathrm{term}_1$ and $\int_0^t \mathrm{term}_2 d\tau$ we find the total, forced, response:</p>
+$${\bf{x}}(t) = \left[ {\begin{array}{*{20}c}
+   { - 3e^{ - t}  + 4e^{ - 2t} }  \\
+   {3e^{ - t}  - 2e^{ - 2t} }  \\
+\end{array}} \right] + \left[ {\begin{array}{*{20}c}
+   {e^{ - t}  - e^{ - 2t} }  \\
+   {0.5 - e^{ - t}  + 0.5e^{ - 2t} }  \\
+\end{array}} \right]$$<p>Therefore:</p>
+$${\bf{x}}(t) = \left[ {\begin{array}{*{20}c}
+   { - 2e^{ - t}  + 3e^{ - 2t} }  \\
+   {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
+\end{array}} \right].$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Alternative-solution-1">Alternative solution 1<a class="anchor-link" href="#Alternative-solution-1"> </a></h3><p>Repeat Example 1 using the transformation to normal canonical form:</p>
+$$\frac{d\mathbf{w}}{t}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u.$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using the transformation to normal canonical form:</p>
+$$\frac{d\mathbf{w}}{dt}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u$$$$\frac{d{\bf{w}}}{dt} = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; 0  \\
+   0 &amp; { - 2}  \\
+\end{array}} \right]{\bf{w}} + \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]u;\quad u = 1$$$$\frac{dw_1}{dt}=-w_1-1\ \textrm{and}\ \frac{dw_2}{dt}=-2w_2 + 2$$$${\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   1  \\
+   1  \\
+\end{array}} \right] = \left[ {\begin{array}{*{20}c}
+   { - 3}  \\
+   4  \\
+\end{array}} \right]$$$$\begin{eqnarray*}
+    w_1 &amp; = &amp; w_{10}e^{-t}-\int_0^t e^{-(t-\tau)} d\tau \\
+        &amp; = &amp; -3e^{-t}-\left[e^{-(t-\tau)}\right]_0^t \\
+        &amp; = &amp; -3e^{-t}-\left[1 - e^{-t}\right] \\
+        &amp; = &amp; -1 -2e^{-t}\end{eqnarray*}$$$$\begin{eqnarray*}
+    w_2 &amp; = &amp; w_{20}e^{-2t}+2\int_0^t e^{-2(t-\tau)} d\tau \\
+        &amp; = &amp; 4e^{-2t}+2\left[0.5e^{-2(t-\tau)}\right]_0^t \\
+        &amp; = &amp; 4e^{-2t}+\left[1 - e^{-2t}\right] \\
+        &amp; = &amp; 1 + 3e^{-2t}\end{eqnarray*}$$$${\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   { - 1} &amp; { - 0.5}  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   { - 1 - 2e^{ - t} }  \\
+   {1 + 3e^{ - 2t} }  \\
+\end{array}} \right]$$<p></p>
+<p>Therefore</p>
+$${\bf{x}} = \left[ {\begin{array}{*{20}c}
+   { - 2e^{ - t}  + 3e^{ - 2t} }  \\
+   {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
+\end{array}} \right]$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Alternative-solution-2">Alternative solution 2<a class="anchor-link" href="#Alternative-solution-2"> </a></h3><p>Solve the problem of example 1 using the Laplace transform method.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Taking Laplace transforms of the state equations, taking account of the
+initial conditions:</p>
+$$s\mathbf{X}(s)-\mathbf{x}_0=\mathbf{A}\mathbf{X}(s)+\mathbf{B}U(s)$$$$(s{\bf{I}} - {\bf{A}}){\bf{X}}(s) = {\bf{x}}_0  + {\bf{B}}U(s) = \left[ {\begin{array}{*{20}c}
+   1  \\
+   1  \\
+\end{array}} \right] + \left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]\frac{1}{s}$$<p>Therefore</p>
+$${\bf{X}}(s) = (s{\bf{I}} - {\bf{A}})^{ - 1} \left[ {\begin{array}{*{20}c}
+   {1 + \frac{1}{s}}  \\
+   1  \\
+\end{array}} \right]$$$${\rm{Now }}(s{\bf{I}} - {\bf{A}})^{ - 1}  = \left[ {\begin{array}{*{20}c}
+   {s + 3} &amp; 2  \\
+   { - 1} &amp; s  \\
+\end{array}} \right]^{ - 1}  = \frac{1}{(s + 3)s + 2}\left[ {\begin{array}{*{20}c}
+   s &amp; { - 2}  \\
+   1 &amp; {s + 3}  \\
+\end{array}} \right]$$<p>Therefore</p>
+$$\begin{eqnarray*}
+    {\bf{X}}(s) &amp; = &amp; \frac{1}{s^2  + 3s + 2}\left[ {\begin{array}{*{20}c}
+       s &amp; { - 2}  \\
+       1 &amp; {s + 3}  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       {1 + \frac{1}{s}}  \\
+       1  \\
+    \end{array}} \right] \\
+                &amp; = &amp; \frac{1}{(s + 1)(s + 2)}\left[ {\begin{array}{*{20}c}
+       {s - 1}  \\
+       {\frac{s^2  + 4s + 1}{s}}  \\
+    \end{array}} \right] \\
+    &amp;  = &amp; \left[ {\begin{array}{*{20}c}
+       {\frac{s - 1}{(s + 1)(s + 2)}}  \\
+       {\frac{s^2  + 4s + 1}{s(s + 1)(s + 2)}}  \\
+    \end{array}} \right]\end{eqnarray*}$$<p>Taking partial fractions:</p>
+$${\bf{X}}(s) = \left[ {\begin{array}{*{20}c}
+   {\frac{ - 2}{s + 1} + \frac{3}{s + 2}}  \\
+   {\frac{0.5}{s} + \frac{2}{s + 1} + \frac{ - 1.5}{s + 2}}  \\
+\end{array}} \right]$$<p>Finally, taking inverse Laplace transforms:</p>
+$${\bf{x}}(t) = \left[ {\begin{array}{*{20}c}
+   { - 2e^{ - t}  + 3e^{ - 2t} }  \\
+   {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
+\end{array}} \right]$$
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
