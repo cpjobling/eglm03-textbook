@@ -30,6 +30,10 @@
 - divider: true
 
 # Top-level page
+- title: Introduction to this Module
+  url: /intro
+  not_numbered: true
+
 - title: Background
   url: /background/index
   not_numbered: true
@@ -43,10 +47,6 @@
   - title: What are the rules for sketching a root locus?
     url: /background/rlocus/sketching_rules
     not_numbered: true
-
-- title: Introduction to this Module
-  url: /intro
-  not_numbered: true
 
 - title: Systems Modelling and Simulation
   url: /01/modsim
