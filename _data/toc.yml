@@ -136,6 +136,10 @@
   url: /01/mattf
   not_numbered: true
 
+- title: Appendix B Setting up your Computing Environment
+  url: /setup/setup
+  not_numbered: true
+
 - divider: true
 
 - header: Homework
