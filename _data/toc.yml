@@ -136,13 +136,11 @@
   url: /01/mattf
   not_numbered: true
 
-- title: Appendix B Setting up your Computing Environment
-  url: /setup/setup
-  not_numbered: true
 
 - divider: true
 
 - header: Homework
+
 - title: Homework Problems
   url: /homework/index
   not_numbered: true
@@ -167,7 +165,9 @@
     url: /homework/ppo/problems
     
 - divider: true
+
 - header: Handouts
+
 - title: Control System Design Methods
   url: /handouts/csd/index
   not_numbered: true
@@ -186,3 +186,26 @@
       url: /handouts/csd/ack
     - title: Appendix -- Transfer Function Plots for Typical Transfer Functions
       url: /handouts/csd/appendix
+
+- divider: true
+
+- header: Setting up your own version of this book
+
+- title: Setting up your own version of this book
+  url: setup/index
+  not_numbered: true
+  
+  sections: 
+  
+  - title: About Jupyter notebooks
+    url: /setup/jupyter
+    
+  - title: Installing Python
+    url: /setup/python
+
+  - title: Setting up your MATLAB-Jupyter Computing Environment
+    url: /setup/setup
+
+  - title: Setting up jupyter-book
+    url: /setup/jupyter-book
+
