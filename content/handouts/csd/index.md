@@ -1,6 +1,8 @@
-# Control System Design Methods, Compensation Strategies and Design Criteria<sup>1</sup>
+# Control System Design Methods, Compensation Strategies and Design Criteria
 
 Adapted from DiSteffano, Stubberud and Williams, “Feedback and Control Systems”, 2nd Ed., Schaum’s Outline Series, McGraw & Hill, 1989.
+
+This document is available as a single PDF file: [csd.pdf](csd.pdf).
 
 ## Table of Contents
 
