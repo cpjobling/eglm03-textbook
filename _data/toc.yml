@@ -96,13 +96,13 @@
   url: /06/digital
   sections:
   - title: Introduction to Digital Systems
-    url: 06/1/digi_intro   
+    url: /06/1/digi_intro   
   - title: Digital System Models and System Response
-    url: 06/2/dsm
+    url: /06/2/dsm
   - title: Continuous Systems Equivalence
-    url: 06/3/cse
+    url: /06/3/cse
   - title: Introduction to Digital Control
-    url: 06/4/digictrl
+    url: /06/4/digictrl
     
 - title: Modelling Systems in State-Space
   url: /07/index
