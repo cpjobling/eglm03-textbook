@@ -641,7 +641,7 @@ $$y_k = \left\{30(1/2)^k -10(-1/2)^k -16\epsilon_k\right\}.$$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-matlab"><pre><span></span><span class="n">help </span><span class="s">control</span><span class="p"></span>
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">doc </span><span class="s">control</span><span class="p"></span>
 </pre></div>
 
     </div>
@@ -676,6 +676,143 @@ $$y_k = \left\{30(1/2)^k -10(-1/2)^k -16\epsilon_k\right\}.$$
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Control System Toolbox -- Linear models.
+ 
+  Model objects.
+    InputOutputModel - Overview of input/output model objects.
+    DynamicSystem    - Overview of dynamic system objects.
+    lti              - Overview of linear time-invariant system objects.
+    &lt;a href=&#34;matlab:help InputOutputModel/get&#34;&gt;get&lt;/a&gt;              - Access properties of model object.
+    &lt;a href=&#34;matlab:help InputOutputModel/set&#34;&gt;set&lt;/a&gt;              - Set/modify properties of model object.
+ 
+  Numeric LTI models.
+    numlti           - Overview of numeric LTI models.
+    tf               - Create or convert to transfer function model.
+    filt             - Create digital filter.
+    zpk              - Create or convert to zero/pole/gain model.
+    ss               - Create or convert to state-space model.
+    dss              - Create descriptor state-space model.
+    rss              - Create random continuous-time state-space model.
+    drss             - Create random discrete-time state-space model.
+    pid              - Create 1-DOF PID controller in parallel form.
+    pid2             - Create 2-DOF PID controller in parallel form.
+    pidstd           - Create 1-DOF PID controller in standard form.
+    pidstd2          - Create 2-DOF PID controller in standard form.
+    frd              - Create or convert to frequency-response-data model.
+    chgFreqUnit      - Change frequency vector units in FRD model.
+ 
+  Generalized LTI models.
+    genlti           - Overview of generalized LTI models.
+    ControlDesignBlock - Overview of special blocks for analysis/tuning.
+    AnalysisPoint    - Point of interest for analysis/tuning.
+    genmat           - Generalized matrix.
+    genss            - Generalized state-space model.
+    genfrd           - Generalized FRD model.
+    getValue         - Evaluate generalized model.
+    getBlockValue    - Get value of Control Design Block.
+    setBlockValue    - Modify value of Control Design Block.
+    showBlockValue   - Display Control Design Block values.
+    getPoints        - Get analysis point locations.
+    getLoopTransfer  - Compute open-loop transfer function.
+    getIOTransfer    - Compute closed-loop transfer function.
+    getSensitivity   - Compute sensitivity function.
+    getCompSensitivity - Compute complementary sensitivity function.
+    replaceBlock     - Replace block by value or by another block. 
+    sampleBlock      - Sample Control Design Blocks.
+    rsampleBlock     - Randomly sample Control Design Blocks.
+    
+  Time delays.
+    tf/exp           - Create pure continuous-time delays.
+    delayss          - Create state-space models with delayed terms.
+    setDelayModel    - Specify internal delay model (state space only).
+    getDelayModel    - Access internal delay model (state space only).
+    &lt;a href=&#34;matlab:help InputOutputModel/hasdelay&#34;&gt;hasdelay&lt;/a&gt;         - True for models with time delays.
+    totaldelay       - Total delay between each input/output pair.
+    absorbDelay      - Replace delays by poles at z=0 or phase shift.
+    pade             - Pade approximation of continuous-time delays.
+    thiran           - Thiran approximation of fractional delays.
+ 
+  Arrays of models.
+    stack            - Stack models along some array dimension.
+    &lt;a href=&#34;matlab:help InputOutputModel/nmodels&#34;&gt;nmodels&lt;/a&gt;          - Number of models in model array.
+    &lt;a href=&#34;matlab:help InputOutputModel/nmodels&#34;&gt;reshape&lt;/a&gt;          - Reshape model array.
+    &lt;a href=&#34;matlab:help InputOutputModel/nmodels&#34;&gt;permute&lt;/a&gt;          - Permute model array dimensions.
+    voidModel        - Mark missing or irrelevant models in model array.
+ 
+  Data extraction.
+    tfdata           - Extract numerators and denominators.
+    zpkdata          - Extract zero/pole/gain data.
+    ssdata           - Extract state-space matrices.
+    dssdata          - Extract matrices of descriptor state-space model.
+    frdata           - Extract frequency response data.
+    piddata, piddata2        - Extract PID gains in parallel form.
+    pidstddata, pidstddata2  - Extract PID gains in standard form.
+ 
+  Block diagram modeling.
+    append           - Aggregate models by appending inputs and outputs.
+    parallel         - Connect models in parallel.
+    series           - Connect models in series.
+    feedback         - Connect models with a feedback loop.
+    lft              - Generalized feedback interconnection.
+    connect          - Arbitrary block-diagram interconnection.
+    sumblk           - Specify summing junction (for use with CONNECT).
+    strseq           - Builds sequence of indexed strings (for I/O naming).
+ 
+  Model transformation.
+    c2d              - Continuous to discrete conversion.
+    d2c              - Discrete to continuous conversion.
+    d2d              - Resample discrete-time model.
+    upsample         - Upsample discrete-time systems.
+    chgTimeUnit      - Change time units.
+    imp2exp          - Implicit to explicit conversion.
+    augstate         - Augment output by appending states.
+    ss2ss            - State coordinate transformation.
+    canon            - Canonical forms of state-space model.
+    prescale         - Optimal scaling of state-space model.
+    &lt;a href=&#34;matlab:help ss/xperm&#34;&gt;xperm&lt;/a&gt;            - Reorder states in state-space model.
+ 
+  Model simplification.
+    minreal          - Minimal realization and pole/zero cancellation.
+    sminreal         - Structurally minimal state-space realization.
+    hsvd             - Hankel singular values (state contributions)
+    balred           - Reduced-order approximations of linear models.
+    balreal          - Gramian-based input/output balancing.
+    modred           - Model order reduction.
+    modelReducer     - Model reduction app.
+ 
+  Model algebra.
+    &lt;a href=&#34;matlab:help InputOutputModel/plus&#34;&gt;+&lt;/a&gt;, &lt;a href=&#34;matlab:help InputOutputModel/minus&#34;&gt;-&lt;/a&gt;             - Add and subtract models (parallel connection).
+    &lt;a href=&#34;matlab:help InputOutputModel/mtimes&#34;&gt;*&lt;/a&gt;                - Multiply models (series connection).
+    &lt;a href=&#34;matlab:help InputOutputModel/mldivide&#34;&gt;\&lt;/a&gt;                - Left divide -- sys1\sys2 means inv(sys1)*sys2.
+    &lt;a href=&#34;matlab:help InputOutputModel/mrdivide&#34;&gt;/&lt;/a&gt;                - Right divide -- sys1/sys2 means sys1*inv(sys2).
+    &lt;a href=&#34;matlab:help InputOutputModel/mpower&#34;&gt;^&lt;/a&gt;                - Powers of a model.
+    &lt;a href=&#34;matlab:help InputOutputModel/transpose&#34;&gt;.&#39;&lt;/a&gt;               - Transposition of input/output map.
+    &lt;a href=&#34;matlab:help InputOutputModel/ctranspose&#34;&gt;&#39;&lt;/a&gt;                - Pertranspose H(s) to H(-s).&#39; or H(z) to H(1/z).&#39;
+    &lt;a href=&#34;matlab:help DynamicSystem/times&#34;&gt;.*&lt;/a&gt;               - Element-by-element multiplication.
+    &lt;a href=&#34;matlab:help InputOutputModel/horzcat&#34;&gt;[,]&lt;/a&gt;, &lt;a href=&#34;matlab:help InputOutputModel/vertcat&#34;&gt;[;]&lt;/a&gt;         - Concatenate models along inputs or outputs.
+    &lt;a href=&#34;matlab:help InputOutputModel/inv&#34;&gt;inv&lt;/a&gt;              - Inverse of input/output model.
+    &lt;a href=&#34;matlab:help InputOutputModel/conj&#34;&gt;conj&lt;/a&gt;             - Complex conjugation of model coefficients.
+    frd/fcat         - Merge frequency responses.
+    frd/fselect      - Select frequency range or frequency points.
+    frd/abs          - Entrywise magnitude of the frequency response.
+    frd/real         - Real part of the frequency response.
+    frd/imag         - Imaginary part of the frequency response.
+    frd/interp       - Interpolate frequency response data.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -701,6 +838,98 @@ $$y_k = \left\{30(1/2)^k -10(-1/2)^k -16\epsilon_k\right\}.$$
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> TF  Construct transfer function or convert to transfer function.
+ 
+   Construction:
+     SYS = TF(NUM,DEN) creates a continuous-time transfer function SYS with
+     numerator NUM and denominator DEN. SYS is an object of type TF when
+     NUM,DEN are numeric arrays, of type GENSS when NUM,DEN depend on tunable
+     parameters (see REALP and GENMAT), and of type USS when NUM,DEN are
+     uncertain (requires Robust Control Toolbox).
+ 
+     SYS = TF(NUM,DEN,TS) creates a discrete-time transfer function with
+     sample time TS (set TS=-1 if the sample time is undetermined).
+ 
+     S = TF(&#39;s&#39;) specifies the transfer function H(s) = s (Laplace variable).
+     Z = TF(&#39;z&#39;,TS) specifies H(z) = z with sample time TS.
+     You can then specify transfer functions directly as expressions in S
+     or Z, for example,
+        s = tf(&#39;s&#39;);  H = exp(-s)*(s+1)/(s^2+3*s+1)
+ 
+     SYS = TF creates an empty TF object.
+     SYS = TF(M) specifies a static gain matrix M.
+ 
+     You can set additional model properties by using name/value pairs.
+     For example,
+        sys = tf(1,[1 2 5],0.1,&#39;Variable&#39;,&#39;q&#39;,&#39;IODelay&#39;,3)
+     also sets the variable and transport delay. Type &#34;properties(tf)&#34;
+     for a complete list of model properties, and type
+        help tf.&lt;PropertyName&gt;
+     for help on a particular property. For example, &#34;help tf.Variable&#34;
+     provides information about the &#34;Variable&#34; property.
+ 
+     By default, transfer functions are displayed as functions of &#39;s&#39; or &#39;z&#39;.
+     Alternatively, you can use the variable &#39;p&#39; in continuous time and the
+     variables &#39;z^-1&#39;, &#39;q&#39;, or &#39;q^-1&#39; in discrete time by modifying the
+     &#34;Variable&#34; property.
+ 
+   Data format:
+     For SISO models, NUM and DEN are row vectors listing the numerator
+     and denominator coefficients in descending powers of s,p,z,q or in
+     ascending powers of z^-1 (DSP convention). For example,
+        sys = tf([1 2],[1 0 10])
+     specifies the transfer function (s+2)/(s^2+10) while
+        sys = tf([1 2],[1 5 10],0.1,&#39;Variable&#39;,&#39;z^-1&#39;)
+     specifies (1 + 2 z^-1)/(1 + 5 z^-1 + 10 z^-2).
+ 
+     For MIMO models with NY outputs and NU inputs, NUM and DEN are
+     NY-by-NU cell arrays of row vectors where NUM{i,j} and DEN{i,j}
+     specify the transfer function from input j to output i. For example,
+        H = tf( {-5 ; [1 -5 6]} , {[1 -1] ; [1 1 0]})
+     specifies the two-output, one-input transfer function
+        [     -5 /(s-1)      ]
+        [ (s^2-5s+6)/(s^2+s) ]
+ 
+   Arrays of transfer functions:
+     You can create arrays of transfer functions by using ND cell arrays
+     for NUM and DEN above. For example, if NUM and DEN are cell arrays
+     of size [NY NU 3 4], then
+        SYS = TF(NUM,DEN)
+     creates the 3-by-4 array of transfer functions
+        SYS(:,:,k,m) = TF(NUM(:,:,k,m),DEN(:,:,k,m)),  k=1:3,  m=1:4.
+     Each of these transfer functions has NY outputs and NU inputs.
+ 
+     To pre-allocate an array of zero transfer functions with NY outputs
+     and NU inputs, use the syntax
+        SYS = TF(ZEROS([NY NU k1 k2...])) .
+ 
+   Conversion:
+     SYS = TF(SYS) converts any dynamic system SYS to the transfer function
+     representation. The resulting SYS is always of class TF.
+ 
+   See also TF/EXP, FILT, TFDATA, ZPK, SS, FRD, GENSS, USS, DYNAMICSYSTEM.
+
+    Reference page in Doc Center
+       doc tf
+
+    Other functions named tf
+
+       DynamicSystem/tf    StaticModel/tf
+
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
