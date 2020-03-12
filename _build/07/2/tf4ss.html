@@ -764,6 +764,51 @@ the input.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+circ_ss =
+ 
+  A = 
+        v31   i1
+   v31    0   -1
+   i1     1   -1
+ 
+  B = 
+        u
+   v31  1
+   i1   0
+ 
+  C = 
+        v31   i1
+   v31    1    0
+   i1     0    1
+   v32    1   -1
+   v21    0    1
+   i2     0   -1
+ 
+  D = 
+        u
+   v31  0
+   i1   0
+   v32  0
+   v21  0
+   i2   1
+ 
+Continuous-time state-space model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -788,6 +833,24 @@ the input.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/07/2/tf4ss_47_0.png"
+>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -819,6 +882,46 @@ the input.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+circ_tf =
+ 
+  From input &#34;u&#34; to output...
+            s + 1
+   v31:  -----------
+         s^2 + s + 1
+ 
+             1
+   i1:  -----------
+        s^2 + s + 1
+ 
+              s
+   v32:  -----------
+         s^2 + s + 1
+ 
+              1
+   v21:  -----------
+         s^2 + s + 1
+ 
+          s^2 + s
+   i2:  -----------
+        s^2 + s + 1
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -843,6 +946,46 @@ the input.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+circ_zpk =
+ 
+  From input &#34;u&#34; to output...
+             (s+1)
+   v31:  -------------
+         (s^2 + s + 1)
+ 
+              1
+   i1:  -------------
+        (s^2 + s + 1)
+ 
+               s
+   v32:  -------------
+         (s^2 + s + 1)
+ 
+               1
+   v21:  -------------
+         (s^2 + s + 1)
+ 
+           s (s+1)
+   i2:  -------------
+        (s^2 + s + 1)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -875,6 +1018,23 @@ the input.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>phi =
+[ (s + 1)/(s^2 + s + 1), -1/(s^2 + s + 1)]
+[       1/(s^2 + s + 1),  s/(s^2 + s + 1)]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -902,6 +1062,26 @@ the input.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>G =
+                   (s + 1)/(s^2 + s + 1)
+                         1/(s^2 + s + 1)
+ (s + 1)/(s^2 + s + 1) - 1/(s^2 + s + 1)
+                         1/(s^2 + s + 1)
+                     1 - 1/(s^2 + s + 1)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -919,6 +1099,26 @@ the input.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>G =
+ (s + 1)/(s^2 + s + 1)
+       1/(s^2 + s + 1)
+       s/(s^2 + s + 1)
+       1/(s^2 + s + 1)
+   1 - 1/(s^2 + s + 1)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -933,6 +1133,45 @@ the input.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/      s + 1     \
+|   ----------   |
+|    2           |
+|   s  + s + 1   |
+|                |
+|        1       |
+|   ----------   |
+|    2           |
+|   s  + s + 1   |
+|                |
+|        s       |
+|   ----------   |
+|    2           |
+|   s  + s + 1   |
+|                |
+|        1       |
+|   ----------   |
+|    2           |
+|   s  + s + 1   |
+|                |
+|          1     |
+| 1 - ---------- |
+|      2         |
+\     s  + s + 1 /
+
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
