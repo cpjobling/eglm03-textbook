@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Search the site</title>
+  <meta name="description" content="        ">
+
+  <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/search">
+  <link rel="alternate" type="application/rss+xml" title="EGLM03 Modern Control Systems" href="https://cpjobling.github.io/eglm03-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/search" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Search the site" />
+<meta property="og:description" content="        " />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://cpjobling.github.io/eglm03-textbook/search",
+  "headline": "Search the site",
+  "datePublished": "2020-03-19T10:47:14+00:00",
+  "dateModified": "2020-03-19T10:47:14+00:00",
+  "description": "        ",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cpjobling.github.io/eglm03-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cpjobling.github.io/eglm03-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eglm03-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+    // Number LaTeX-style equations
+    "TeX": {
+        equationNumbers: {
+          autoNumber: "all"
+        }
+    }
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eglm03-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eglm03-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eglm03-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eglm03-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eglm03-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eglm03-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eglm03-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eglm03-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "EGLM03 Modern Control Systems"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: ""
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/eglm03-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EGLM03 Modern Control Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+          
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/intro.html"
+        >
+          
+          Introduction to this Module
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/background/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/background/index.html"
+        >
+          
+          Background
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_is_rlocus">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_is_rlocus.html"
+              >
+                
+                What is the root locus?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_does_the_rlocus_represent">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_does_the_rlocus_represent.html"
+              >
+                
+                What does the root locus represent?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/sketching_rules">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/sketching_rules.html"
+              >
+                
+                What are the rules for sketching a root locus?
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/modsim">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/modsim.html"
+        >
+          
+            1.
+          
+          Systems Modelling and Simulation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/02/ssntr">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/02/ssntr.html"
+        >
+          
+            2.
+          
+          Steady-State and Transient Response
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/03/classical">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/03/classical.html"
+        >
+          
+            3.
+          
+          Classical Control Systems Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/1/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/1/intro.html"
+              >
+                
+                  3.1
+                
+                Introducing phase-lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/2/velfb">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/2/velfb.html"
+              >
+                
+                  3.2
+                
+                Introduction to Root Locus Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/3/pplusd">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/3/pplusd.html"
+              >
+                
+                  3.3
+                
+                Proportional plus derivative compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/4/leadc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/4/leadc.html"
+              >
+                
+                  3.4
+                
+                Lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/5/analrloc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/5/analrloc.html"
+              >
+                
+                  3.5
+                
+                Analytical Root-Locus Design of Phase-Lead Compensators
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/6/lagc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/6/lagc.html"
+              >
+                
+                  3.6
+                
+                Lag compensation
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/04/pid">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/04/pid.html"
+        >
+          
+            4.
+          
+          PID Compensation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/0/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/0/intro.html"
+              >
+                
+                  4.1
+                
+                Introduction to PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/1/zeigler">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/1/zeigler.html"
+              >
+                
+                  4.2
+                
+                Zeigler-Nichols Tuning Algorithms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/2/tuning">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/2/tuning.html"
+              >
+                
+                  4.3
+                
+                Manually Tuning a PID compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/3/analpid">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/3/analpid.html"
+              >
+                
+                  4.4
+                
+                Analytical Design of a PID Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/4/autotune">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/4/autotune.html"
+              >
+                
+                  4.5
+                
+                PID Autotuning in MATLAB
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/05/freqresp">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/05/freqresp.html"
+        >
+          
+            5.
+          
+          Frequency Response Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/1/freqlead">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/1/freqlead.html"
+              >
+                
+                  5.1
+                
+                Frequency Response Design of a Lead Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/2/freqlag">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/2/freqlag.html"
+              >
+                
+                  5.2
+                
+                Frequency Response Design of a Lag Compensator
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/06/digital">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/06/digital.html"
+        >
+          
+            6.
+          
+          Digital Control Systems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/1/digi_intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/1/digi_intro.html"
+              >
+                
+                  6.1
+                
+                Introduction to Digital Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/2/dsm">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/2/dsm.html"
+              >
+                
+                  6.2
+                
+                Digital System Models and System Response
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/3/cse">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/3/cse.html"
+              >
+                
+                  6.3
+                
+                Continuous Systems Equivalence
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/4/digictrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/4/digictrl.html"
+              >
+                
+                  6.4
+                
+                Introduction to Digital Control
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/07/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/07/index.html"
+        >
+          
+            7.
+          
+          Modelling Systems in State-Space
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/1/intro2ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/1/intro2ss.html"
+              >
+                
+                  7.1
+                
+                State-Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/2/tf4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/2/tf4ss.html"
+              >
+                
+                  7.2
+                
+                Laplace Transforms of State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/3/tr4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/3/tr4ss.html"
+              >
+                
+                  7.3
+                
+                Time Response for State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/4/canon">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/4/canon.html"
+              >
+                
+                  7.4
+                
+                Canonical Forms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/5/systransf">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/5/systransf.html"
+              >
+                
+                  7.5
+                
+                Transformation of States and System Diagonalization
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/6/gensolution">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/6/gensolution.html"
+              >
+                
+                  7.6
+                
+                The General Solution of LTI Systems
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/08/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/08/index.html"
+        >
+          
+            8.
+          
+          State-Feedback Control
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/1/obsv_ctrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/1/obsv_ctrl.html"
+              >
+                
+                  8.1
+                
+                Controllability and Observability
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/2/sfcontrol">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/2/sfcontrol.html"
+              >
+                
+                  8.2
+                
+                State-Feedback Control
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/3/observers">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/3/observers.html"
+              >
+                
+                  8.3
+                
+                State Observers
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/4/observer_controller">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/4/observer_controller.html"
+              >
+                
+                  8.4
+                
+                Combined Observer and Controller
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/mattf">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/mattf.html"
+        >
+          
+          Appendix A Defining Transfer Functions in MATLAB
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/homework/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/homework/index.html"
+        >
+          
+          Homework Problems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/revision/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/revision/problems.html"
+              >
+                
+                Homework 1 - Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lead_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lead_compensation/problems.html"
+              >
+                
+                Homework 2 - Dominant Poles and Lead Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_compensation/problems.html"
+              >
+                
+                Homework 3 - Lag Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_lead_pid/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_lead_pid/problems.html"
+              >
+                
+                Homework 4 - Lag-Lead and PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/freqresp/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/freqresp/problems.html"
+              >
+                
+                Homework 5 - Frequency Response Cascade Compensator Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/digirev/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/digirev/problems.html"
+              >
+                
+                Homework 6 - Digital Systems Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ss2tf/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ss2tf/problems.html"
+              >
+                
+                Homework 7 - Modelling Systems in Statespace
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ssm/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ssm/problems.html"
+              >
+                
+                Homework 8 - State Space Modelling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ppo/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ppo/problems.html"
+              >
+                
+                Homework 9 - Pole Placement and Observers
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Handouts</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/handouts/csd/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/handouts/csd/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/1">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/1.html"
+              >
+                
+                1. Aims of Control Systems Analysis and Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/2">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/2.html"
+              >
+                
+                2. Design Methods
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/3">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/3.html"
+              >
+                
+                3. Design Strategies
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/4">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/4.html"
+              >
+                
+                4. Design Criteria
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/5">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/5.html"
+              >
+                
+                5. Some Useful Design Curves
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/ack">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/ack.html"
+              >
+                
+                Acknowledgements
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/appendix">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/appendix.html"
+              >
+                
+                Appendix -- Transfer Function Plots for Typical Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="setup/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/setup/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eglm03-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eglm03-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eglm03-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <div class="search-content__inner-wrap">
+    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
+    <div id="results" class="results"></div>
+</div>
+
+<script>
+    // Add the lunr store since we will now search it
+    var store = [{
+        "title": "Appendix A Defining Transfer Functions in MATLAB",
+        
+        "excerpt": "s lti system transfer function frac objects g form matlab object step example command expanded c polynomial b zero used poles mathworks tools div representation entered functions zeros analysis gain k called linear control using also documentation help feedback provides partial fraction t forms where coefficients r factored pole version extracted uk com html fn sup convert work response cdots id systems obvious must ss numerator denominator inspection column vector invariant starting data state space single combined create following obtained created numerous available suppose represents information such please set ref get transformations easy note connection closed loop h interactive graphical",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/01/mattf.html",
+        "teaser":null},{
+        "title": "Systems Modelling and Simulation",
+        
+        "excerpt": "x dot s differential eqnarray begin f end frac system integral models images png m b array equations model smd t simulink state linear left right simulation transfer space diagram equation mathbf matlab ddot mathrm lti l order form int dt c systems eglm en wikibooks org wiki controlsystems functions using such domain kx transform invariant mathcal k block results com background ordinary called laws spring mass damper electrical laplace let function non varying high solve fact any general u d comparison multi input output single feedback teams week twitter hashtag topics lecturer set modelling contents used wide variety lumped",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/01/modsim.html",
+        "teaser":null},{
+        "title": "Steady-State and Transient Response",
+        
+        "excerpt": "s system frac td response order images fig png zeta tr poles pole left right tdtd matlab steady state zero type design r omegan step error nd m omega extra feedback effect n unity gain performance c remove infty transient chapter loop criteria frequency non e style control systems second closed zeros model cases damping run settling related rise overshoot alpha real complex result curves disturbance input width ex mdl handout pm j approx region percentage os times too transfer function g note part demo dominant reduction high file canonical rejection table colspan kp kv ka constant lim its relationship",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/02/ssntr.html",
+        "teaser":null},{
+        "title": "Introducing phase-lead compensation",
+        
+        "excerpt": "s design system root locus angle steady state feedback zero fig k poles damping images png t sup zeta real loop transient need velocity next j axis q theta step circ response satellite attitude control figure torque requirements type line closed performance direction disk equation frac error thetad left settling ts achieve positive gain omegan answer location phase lead compensation characteristic both ok improve plant velfb model moment inertia gas jets shown applied simple criteria e right sqrt part besup unity open origin constant since question because zeros criterion must second order correct actually region intersection value adding corresponding kt",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/1/intro.html",
+        "teaser":null},{
+        "title": "Introduction to Root Locus Design",
+        
+        "excerpt": "s matlab satellite slx root locus system frac k feedback gain velfb kkt velocity control design figure simulink model introduction compensator compensation attitude block diagram shown modulated torque images velfbfig png transfer function h equation closed loop gc available mlx lecturer set section engage short exploration domain simple double integrator serves topic phase lead used improve transient performance relative stability example represented form plant g controller d kg parameter defining problem note implied does not need defined pick off arbitrary ss becomes kt where step response times since running values should give same result resources executable version document download live",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/2/velfb.html",
+        "teaser":null},{
+        "title": "Proportional plus derivative compensation",
+        
+        "excerpt": "s compensator pd frac figure satellite control feedback system closed loop function cascade d matlab derivative compensation attitude velocity root locus transfer plus design plant g equation kt where kc poles same k t proportional example images png document ldots zeros added previous z let us gives results u mathrm prop e proportion error pplusd mlx slx lecturer set introduction h shown fig kkt left right parameters calculated characteristic illustrate implement silimilar law using alternative architecture illustrated series general sz szr sp spq simply wish achieve must verify gain point located j add analysis reveals type known output form kdse",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/3/pplusd.html",
+        "teaser":null},{
+        "title": "Lead compensation",
+        
+        "excerpt": "s lead pole compensator left frac angle zero gain right loop j closed p frequency d z figure desired matlab high g mathrm contribution omega problem system line location method root locus should control design compensation real poles criterion kc type origin step satellite attitude circ feedback cascade derivative pd response low ratio limits point images fig png dazzo houpis cancel example plant graphical drawn using c third not proportional effects such cannot any k infty still plane illustrated phic positive relative closest cancelled following transfer function gives note between given construction locating follows locate through lines axis obtained calculated",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/4/leadc.html",
+        "teaser":null},{
+        "title": "Analytical Root-Locus Design of Phase-Lead Compensators",
+        
+        "excerpt": "s equation h g left right design frac b psi transfer function begin end loop procedure compensator closed sin given beta matlab phase k eqnarray circ root lead script unknowns ka dc value desired pole case change form set analytical locus live phillips harbor feedback systems sup d bs kd satisfied designing places only magnitude must hence arbitrarily values eliminated unknown gain therefore need j equations derived appendix give remaining poles either pm sign applies example analrloc mlx polar range le lecturer compensators presents based section control prentice hall convenient choose such characteristic four including relationships assign easily since assume",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/5/analrloc.html",
+        "teaser":null},{
+        "title": "Lag compensation",
+        
+        "excerpt": "s lag gain compensator frac k kc z right left closed loop p system frequency d mathrm omega error response steady state j zero h matlab compensation low contribution compensated transient effect high angle poles design pole lead ensure reduce type needed requirements figure g root locus required choose velocity responses settling used also pid increase because acts frequencies gains values dynamic transfer function characteristic designed performance zp plane phic negative small close dc unity equation dominant chosen cong satisfy desired calculate plant determine step static need let compare overshoot effects ramp still cclag mlx lagsim slx params lecturer set",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/6/lagc.html",
+        "teaser":null},{
+        "title": "Classical Control Systems Design",
+        
+        "excerpt": "classical control systems design",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/03/classical.html",
+        "teaser":null},{
+        "title": "Introduction to PID Compensation",
+        
+        "excerpt": "s mathrm k prop pid equation proportional left frac right used system e begin ti end integral derivative steady state d type t gain compensator zero response sub reset rate td also increase eqnarray action compensation u std common achieve transient performance plus stability effect tuning increasing compensators control signal tsubi setting parameters only required reduce rise size overshoots pd adds settling alone pi however raises pole loop zeros improve zeigler error tune summarised choose speed increases reduces introduction very widely industry particularly process applications given feedback compensated int tau tautd de dt where comment ksubprop repeat tsubd laplace transform",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/04/0/intro.html",
+        "teaser":null},{
+        "title": "Zeigler-Nichols Tuning Algorithms",
+        
+        "excerpt": "response s loop tuning system pid zeigler step method parameters k closed ultimate nichols equation open control gain sub process type order l table sensitivity root locus ku systems figure tangent t frac begin end poles matlab methods any determine apparent axis mathrm works operation ksubu tsubu transfer let us compensator array algorithms only need responses found applications work overdamped damped shown typical slope given tuned according prop ti td p pi stable constant settling final value thus take indicated well le under however auto crosses point becomes oscillation period frequency kp g h again function range construct examine superimposed",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/04/1/zeigler.html",
+        "teaser":null},{
+        "title": "Manually Tuning a PID compensator",
+        
+        "excerpt": "s k prop pid error tuning frac compensator system left right matlab step d textrm ti proportional add action response transfer function mathrm gain integral g steady state parameters control ki td derivative responses stage reduce overshoot example simple feedback e begin equation end often commercial eqnarray kd nonumber rm called units reset loop plant controller simulate also settling try further adjustments design file pidtuning mlx pidcl slx lecturer set section presents illustrates effects model used figure franklin powell emami naenis dynamic systems nd ed u skd kds ski rearranged into form found implementations tds where percentage equivalent known rate",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/04/2/tuning.html",
+        "teaser":null},{
+        "title": "Analytical Design of a PID Compensator",
+        
+        "excerpt": "s equation frac h design right g transfer function begin end loop left compensator mathrm gain ki closed k prop root psi sin beta pid procedure sup d given leftg steady state change locus system need analytical section phillips harbor feedback ski such desired poles satisfied j equations derived appendix b must response example uncompensated natural frequency rad settling omegan error type polar form matlab analrloc mlx presents based control systems prentice hall assumed kds where proportional kdis derivative integral choose parameters location designing places characteristic proceeds follows express pole position se righte cos since three unknowns only relationships gains",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/04/3/analpid.html",
+        "teaser":null},{
+        "title": "PID Autotuning in MATLAB",
+        
+        "excerpt": "pid s block mathrm frac d matlab left right n k prop autotuning simulink pictures png p ti td pole tutorial systems ctms example introduced used parameters continuous gain term tuning retuned section yet written meantime please review detailed control engin umich edu index php introductionsection controlpid matlabs either command line within benefit autotune compensator loop found library diagram shown below internals bd transfer function reduces sn comparison standard rm tds where nd extra limit high frequency proportionalderivative addition origin integral proportional zeros additional thus four adjusted give range possible structures let us repeat previous manual here g ended ts",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/04/4/autotune.html",
+        "teaser":null},{
+        "title": "PID Compensation",
+        
+        "excerpt": "pid tuning control controller mathworks org wikipedia controllers matlab wikimedia commons pidcontroller wiki webinar made easy design t process value en href sa give example simulink zeigler simple theory tune various uk com compensation important class lead lag compensators widely used industrysup sup upload pidenupdatedfeedback svg fig block diagram feedback loop r desired setpoint sp y measured pv source image arturo urquizo creativecommons licenses cc file piden svgvia chapter using system toolbox detail wish refer below notes further examples including definition intro nichols manual analytic method analpid autotuning compensator present exam expected root locus methods locate poles zeros ubiquitous while",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/04/pid.html",
+        "teaser":null},{
+        "title": "Frequency Response Design of a Lead Compensator",
+        
+        "excerpt": "phase lead s gain alpha matlab function frequency response compensator margin system circ magnitude increase design frac loop want asymptotic right omega mathrm max bode diagrams closed need asymp plots left t phi error examine approx compensation transfer g compensated m note cut off rad ssup sup kv add responses section using plant velocity work commands here built code appendix values calculate p data into phim state performance should plot db three reduction overshoot restore therefore kc between maximum given sqrt formula sin added put together bandwidth achieved compute evaluate notice paid slight peak not directory available freqresp mlx lecturer",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/05/1/freqlead.html",
+        "teaser":null},{
+        "title": "Frequency Response Design of a Lag Compensator",
+        
+        "excerpt": "frequency lag gain omega phase s response compensator left right alpha matlab system low kc frac d bode function closed loop margin cut off j design compensated error asymptotic asymp magnitude m diagrams plant lead compensation want need plots kv high increase responses set live script using analysis transfer unity velocity circ same commands before data state approx rad phim thus performance ts tj infty let us avoid any sup zero examine notice peak step ramp freqlag mlx lecturer examines cascade compensators type servomechanism g feedback static constant defining part went through case freqlead repeat code workspace consistent should refer",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/05/2/freqlag.html",
+        "teaser":null},{
+        "title": "Frequency Response Design",
+        
+        "excerpt": "frequency design response chapter additional material covers repsonse lag lead compensators provided completeness belief useful project not assessed",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/05/freqresp.html",
+        "teaser":null},{
+        "title": "Introduction to Digital Systems",
+        
+        "excerpt": "z v digital signal frac k transform signals analogue t cdots sampling vk triangle operator times systems continuous r shift example value sequence nabla mathcal e adc ldots dac figure forward dt infty inverse begin d comparator end advance delay series lim rightarrow voltage also binary equivalent operators derivative integral sum alpha used converter pictures png vr logic th backward int initial array aligned using into not where shifting realistic transformation obtaining zv final g etc methods model conversion stored give computer outputs input block diagram shown vi counter n disk data generated sequences mathematical same denoted left mathrm gives",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/06/1/digi_intro.html",
+        "teaser":null},{
+        "title": "Digital System Models and System Response",
+        
+        "excerpt": "z response digital frac b equation y system ldots u n k eqnarray transfer function end begin impulse step h bn transform signal operator form difference cdots partial right fraction inverse left sequence c epsilonk model v kn zero expansion deltak plot simulink equivalent differential continuous systems gives given yk delay nabla p class example sum matlab digiresp pfe triangle general terms expressed nablan nonumber az known pole recursive filter zn presentation free determine using delta infty block stem models dt advance trianglen previous lecture integral applying infinite auto regressive moving average forms also pn r pre responses here input",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/06/2/dsm.html",
+        "teaser":null},{
+        "title": "Continuous Systems Equivalence",
+        
+        "excerpt": "z t frac s e st y k left right zero u equivalent d n function approximation transfer continuous end digital begin equation system hold eqnarray nt order pictures png vk signal zeros h matched sampling b pole integration bt sample epsilon example matlab poles transform result v kt lti integral computation relationship bilinear fig cse value next sa numerical int dt rectangular trapezoidal mpz implementation sampled period infinite shown slide sum ts solution cd cdots method dc gain et equivalence same tustin modified obtained step infty previous mathcal used let only forward backward aligned m g into class delay",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/06/3/cse.html",
+        "teaser":null},{
+        "title": "Introduction to Digital Control",
+        
+        "excerpt": "z s e frac d design g n u root locus t equivalent hold aligned left digital zero right system frequency zoh plant sqrt continuous st compensator end sampling function k pictures png begin plane example times matlab transfer kd between discretization mapping omegas omegan methods order mathcal tustin gain alpha control equation since stability unit circle because comparison pole rates discrete used section using need method matched poles let loop lag architecture below boundary j natural damping response closed where dg kp kc gamma pm followed direct cse omega test constant also designed approach given different cd map documentation",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/06/4/digictrl.html",
+        "teaser":null},{
+        "title": "Digital Control Systems",
+        
+        "excerpt": "digital systems control shall chapter introduce idea sampled data z transform called continuous system equivalent models transfer functions design",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/06/digital.html",
+        "teaser":null},{
+        "title": "State-Space Models",
+        
+        "excerpt": "state frac x dt equations system mathbf array n space systems c model end begin left output v u right equation b y d matrix models variables linear block r input label eq dx states vdots example diagram eqnarray t control figure div le vector general cdots differential inputs terms used circuit dot times matlab l blocks dy function order its shown q analysis called also sup physical ldots theory variable s form pictures png style text align centerbfigure through simulink slx such f velocity transfer only dynamic design methods representation elements dv di current should class mass energy m",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/1/intro2ss.html",
+        "teaser":null},{
+        "title": "Laplace Transforms of State Space Models",
+        
+        "excerpt": "mathbf s array left right c begin end l lc r v t equation frac u transfer transform state matrix x bf system function eqnarray example b d vector y cc cdots sr space vdots laplace input equations output det models model zeros transforms responses corresponding mathcal epsilon gives zero th denominator tf poles polynomial convert into give vn transformed variables form obtained states section single resolvent numerator matlab roots class used differential lecture functions elements dt initial conditions therefore reduces element j relates important outputs define values step symbolic ssmodels mlx systems characteristic solutions whose detailed problems homework also",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/2/tf4ss.html",
+        "teaser":null},{
+        "title": "Time Response for State Space Models",
+        
+        "excerpt": "s mathbf frac t array right end begin left x e phi response state system eqnarray c matrix cc y zero n equation input u mathrm b p initial space transform label eq vector characteristic cdots model laplace resolvent modes epsilon d conditions leq lefts transition section given inverse function element values pn linear ss mathcal l condition nonumber adj polynomial called r where combination example zi zs full transformed domain define form functions known vdots transforming leqa output step matlab compute models shall determine last tfss development dot show consider becomes polynomials variables through set order therefore sn eigen",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/3/tr4ss.html",
+        "teaser":null},{
+        "title": "Canonical Forms",
+        
+        "excerpt": "s array end begin n x left right equation frac mathbf form eqnarray vdots y c b canonical state u cdots t system dot d function dt pi transfer space model normal r companion p controller matrix ri block m cc forms ldots figure ccc into diagram j re differential g proper poles tau dy example ccccc ddots observer e equations general class shown pictures png w matrices given output numerator xi im variables called coefficients solution input therefore order bn jordan below controllable repeated rightarrow analysis let xn because obtained sn cdotsasa case strictly illustrated dots observable partial fraction",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/4/canon.html",
+        "teaser":null},{
+        "title": "Transformation of States and System Diagonalization",
+        
+        "excerpt": "mathbf array x begin end c left right t bf system lambda state w eigenvalues matrix eigenvectors equation transformation eqnarray lambdai form states equations space solution using u b example normal transform diagonal det e model d diagonalization ax tw y transformed canonical function response eigenvalue frac eq section transfer therefore general eigenvector where not transformations thus dt similarity solutions l dot canon same output should into transforming class given solving since found atw set solve original examples matlab kern pt cpjobling github io eglm textbook equivalent input possible another determine any show finally sup ne collinear satisfy finding new",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/5/systransf.html",
+        "teaser":null},{
+        "title": "The General Solution of LTI Systems",
+        
+        "excerpt": "t mathbf e array left right end begin s c x tau bf lambda f frac eqnarray d matrix w solution state taylor cdots term series u function mathrm intt dt example using phi transformation tn therefore b section form fn ntn given laplace taking general space system where ldots transition transforms rm lti systems method solve approach trss derive matlab en wikipedia org wiki terms approximate ft corresponding similarity equation n diagonal lambdait lambdai ax initial forced bu class alternatives transform inverse alternative normal canonical dw conclude our introduction developing used any linear invariant model put formal mathematical footing",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/6/gensolution.html",
+        "teaser":null},{
+        "title": "Modelling Systems in State-Space",
+        
+        "excerpt": "state space models systems control also modelling fundamental called modern system design methods key numerical tools provided matlab toolbox chapter shall introduce idea explore properties topics give further insight into integral used simulink",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/07/index.html",
+        "teaser":null},{
+        "title": "Controllability and Observability",
+        
+        "excerpt": "mathbf system array c sub t left right begin end observability state controllability states s matrix inputs bf outputs y previous n control controllable form x eqnarray b therefore vdots systems equations u observable normal partitioning connected connection figure yes canonical dot must mathrm zero not tests determinant design set output completely test transform term involving constitutes link between transformation w every equation linked least th conditions numerically times turn using space measure observe section concept based sets empty conversely those uncontrollable similarly unobservable mathematical work bu tw lambda row containing entries du necessary alternative ab cdots rank e its",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/08/1/obsv_ctrl.html",
+        "teaser":null},{
+        "title": "State-Feedback Control",
+        
+        "excerpt": "s mathbf array k c end begin left right bf feedback x loop control p state closed r u cdots b poles frac n bk equation law eqnarray system form pole det ce alphac y desired zeros canonical formula vdots tf effect gains alpha large design input dot z controller function model ackermanns therefore given quad d mathcal e zero pc place order not response transfer plant required locations coefficients example j kn g using where section good systems kx polynomial such polynomials above matching class problem solution case open mathrm etc gain vector high effort itae omega space observer",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/08/2/sfcontrol.html",
+        "teaser":null},{
+        "title": "State Observers",
+        
+        "excerpt": "mathbf l x observer c s hat array bf state d begin end cdots t b left states frac right u e vdots dt poles not system y eqnarray n noise feedback error design matrix p form equations w errors lc canonical sn desired alphae alphan alpha mathcal o effect sensor v cannot control because pictures png given eigen values well used ln ce equation process physical possible model solution observed decay zero lhp place short tf ddots quad vector roots ldots pn alphas coefficients using ss gives where block diagram choice controller response very large observers practical cases measure",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/08/3/observers.html",
+        "teaser":null},{
+        "title": "Combined Observer and Controller",
+        
+        "excerpt": "mathbf s bf x frac hat left right m u y observer l b alpha det r bk e km controller eqnarray lc k begin end error h combined therefore array poles system c states input tracking tf alphaz reference alphae tilde equivalent plant dynamics f classical driven alphap separation principle normal position closed loop control not compensator dot difference between overall feedback work before desired pictures fig png d dt where taking laplace transforms case lk g here introducing previous matrix alphac set ignoring ics underbrace introduced sense zeros used because does ce square characteristic designed positions using instead",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/08/4/observer_controller.html",
+        "teaser":null},{
+        "title": "State-Feedback Control",
+        
+        "excerpt": "state control observers space design systems turn our attention using techniques idea measure system adjust inputs modify behaviour however implies both observe states section controllers observctrl introduces basic concept observability controllability discuss feedback sfcontrol before concluding structure dynamics combined observer controller observercontroller",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/08/index.html",
+        "teaser":null},{
+        "title": "Background",
+        
+        "excerpt": "system module response second order root locus feedback wiki questions poles does background control systems resources add answers transfer function effected step block diagram gain closed loop characteristic equation error rlocus html basics theory document eglm textbook github also additional natural frequency pole answered unity rules steady state criterion introduction appreciate range experience unfortunately dont cover occasionally assumptions knowledge prove wrong therefore created folder place curate materials welcome help populating very common engineering degree schemes disciplines wealth educational made available world wide web free creators institutions google friend here generated com cpjobling contribute editing adding new explanations peers comments arranged",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/background/index.html",
+        "teaser":null},{
+        "title": "What are the rules for sketching a root locus?",
+        
+        "excerpt": "root locus rules sketching try topic google useful resources reading here control rootlocus swarthmore edu engineering mit lecture hope able create pencast mean asking question www co uk search q whataretherulesforsketchingarootlocusf lot wont learn examples practice makes perfect picked section recommended module theory wikibook en wikibooks org wiki controlsystems making plots lpsa rootlocusreviewrules html eric deever department college usa ocw courses mechanical systems modeling ii fall notes pdf opencourseware dont just stop page links given explore rest sites well additional tip benefit having access matlab easily plot answer should looking help rlocus usage information",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/background/rlocus/sketching_rules.html",
+        "teaser":null},{
+        "title": "What does the root locus represent?",
+        
+        "excerpt": "root locus does represent whatisrlocus html",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/background/rlocus/what_does_the_rlocus_represent.html",
+        "teaser":null},{
+        "title": "What is the root locus?",
+        
+        "excerpt": "root locus closed loop system us solutions characteristic equation often poles plane parameter k achieve answer search simply stated path traced s z digital systems usually gain swept its range infinity such gives complete picture possible allowing pick certain desirable properties also allows add additional zeros compensation attempt desired outcome should not adjustment alone formal try question favourite engine www google co uk q whatistherootlocusf please feel free summarize wiki",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/background/rlocus/what_is_rlocus.html",
+        "teaser":null},{
+        "title": "1. Aims of Control Systems Analysis and Design",
+        
+        "excerpt": "system performance methods response analysis stability diagram domain constraints systems design objectives characteristics steady state accuracy transient determine difficult relative described section frequency specifications criteria aims control determination following degree extent d c differential equations transfer functions component choose suitable representation e g block formulate model connecting components together latter several used direct solution solutions high order study four graphical root locus bode nyquist nichols chart last three meet ways specifying fall into broad classes required prescribed either both forms general define speed allowable error",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/1.html",
+        "teaser":null},{
+        "title": "2. Design Methods",
+        
+        "excerpt": "m loop poles gain n omega nyquist circles plane design right zeros j systems half phase order diagram frequency response bode open appendix real closed stability negative circle methods diagrams used give matlab second also db decade locus dominant figure control simple provided where digital z frac function transfer s root method given available domain criteria usually responses peak mathrm max magnification examples gc constant nichols compensation straightforward simulation above data obtained easily assessed margins theoretical plotted command templates figures often adequate such amplifier lag circ stable either t w functions requires model system example features rules only correlation made",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/2.html",
+        "teaser":null},{
+        "title": "3. Design Strategies",
+        
+        "excerpt": "phase gain lag used frequency compensation compensator reduce lead loop alpha s proportional high errors stability k control compliance ppi frequencies cross omega should measurement forward low sensitivity frac tgs integral ti increase higher around circ any case destabilising influence below unity controller its tl without bandwidth also possible not noise effect parallel velocity feedback little feed disturbances measured design strategies simple systems often chosen enough give acceptably small section adequate speed response yet good specifications cannot satisfied simultaneously sophisticated strategy required plus either specifically region pi band width improve action preferred former increases system type eliminates steady state latter",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/3.html",
+        "teaser":null},{
+        "title": "4. Design Criteria",
+        
+        "excerpt": "s system response figure omega frequency order zeta second ratio damping j gain images image png loop frac value values margin phase design steady state constant error r defined omegan sigma circ db phim given poles mp final pi rise m max criteria control systems c right step input measure usually typical settling type e d left compliance closed mathrm related between stability peak gm determination kp illustrated damped where complex dominant curve relationship normalised angle gh resonant position unity feedback shown open zero velocity kv often domain under percentage pair versus its process vs ts td magnitude cross lim",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/4.html",
+        "teaser":null},{
+        "title": "5. Some Useful Design Curves",
+        
+        "excerpt": "order normalised figure vs zeta images image png omegan frequency second response bode diagram plotted against system phase various values pole zero effect extra overshoot lead omega pr mp zr unit step nd complex pair poles s b rise tr maximum v alpha compensator transient resonant peak margin useful design curves t p z note mr m max",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/5.html",
+        "teaser":null},{
+        "title": "Acknowledgements",
+        
+        "excerpt": "control reproduced figures systems feedback ed addison wesley nd appendix university engineering course notes acknowledgements franklin powell emami naeini dynamic distefano stubberud williams schaums outline series mcgraw hill hostetter savant stefani design holt rinehart winston dorf modern th figure open t handout based part lecture written dr w r moore second year automatic given department electronic hull circa",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/ack.html",
+        "teaser":null},{
+        "title": "Appendix -- Transfer Function Plots for Typical Transfer Functions",
+        
+        "excerpt": "transfer function plots typical functions continued table images image png s omega appendix note error nyquist diagrams terms denominator factor tau real part g j does not necessarily tend zero infty",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/appendix.html",
+        "teaser":null},{
+        "title": "Control System Design Methods",
+        
+        "excerpt": "design control methods pdf strategies criteria systems csd appendix transfer system compensation adapted disteffano stubberud williams feedback nd ed schaums outline series mcgraw hill document available single file table contents aims analysis useful curves acknowledgements ack function plots typical functions",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/handouts/csd/index.html",
+        "teaser":null},{
+        "title": "Homework 6 - Digital Systems Revision",
+        
+        "excerpt": "z domain s system e t g determine frac digital given onto right control where sampling map c lines constant poles discrete function nt rightarrow left type systems sigma pm omegas real axis b unit circle centred frequency derive equations transform f value infty lim x swansea university college engineering eglm modern homework revision problems st angle omega period show points frequencies rate pi negative imaginary maps leftz concentric circles d radial curves second order damping ratio zeta natural omegan comment effect high rates hint transfer division inverse unity gain feedback r thus version final theorem n formulae steady state",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/digirev/problems.html",
+        "teaser":null},{
+        "title": "Homework 5 - Frequency Response Cascade Compensator Design",
+        
+        "excerpt": "s frac compensator design system loop transfer function gain frequency response cascade h lead achieve left right control systems g constant phase margin question open determine using step le peak kp mathrm digital swansea university college engineering eglm modern homework problems uncompensated assuming unity feedback velocity kv lag same constraints compare relative merits approaches position exceed respectively whether specification satisfied not meet specifications also maintain methods rise tr overshoot os error plant estimate closed bandwidth compensated resonant m max type servomechanism show effect stability adding network d pre amplifier repeat w transform method parameters suitable assume sampling omegas omega bw",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/freqresp/problems.html",
+        "teaser":null},{
+        "title": "Homework Problems",
+        
+        "excerpt": "homework problems should attempt",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/index.html",
+        "teaser":null},{
+        "title": "Homework 3 - Lag Compensation",
+        
+        "excerpt": "s control system lag gain required rad design ratio loop transfer function frac low frequency constant input sup compensator plant damping order controlled figure motor accuracy position scrs div swansea university college engineering eglm modern systems homework compensation problems satellite attitude open determine ensure steady state error acceleration ssup give g k velocity kv feedback while zeta dominant second closed poles achieve specification numerical path turret lathe illustrated gear n inertia j kg msup resistance r nm necessary attain thousandths inch cutting tool relative workpiece therefore ramp cascade controller inserted before silicon rectifiers provide step command overshoot less suitable kr",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/lag_compensation/problems.html",
+        "teaser":null},{
+        "title": "Homework 4 - Lag-Lead and PID Compensation",
+        
+        "excerpt": "s loop compensator system error open frac control poles transfer function k lag lead pid compensation dominant position constant kp closed gain zero kv cancellation systems problems design order give d td ti plant required le velocity determine compensated root examine effect value pole stability swansea university college engineering eglm modern homework add question leadcompensation problem sheet process placed cascade unity feedback applied new tune values proportional differential integral rate steady state step rise tr ms peak overshoot os such satisfy zeta omegan rad designed achieve pm j locus technique worst case mismatch due component tolerances cancel raise sketch loci",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/lag_lead_pid/problems.html",
+        "teaser":null},{
+        "title": "Homework 2 - Dominant Poles and Lead Compensation",
+        
+        "excerpt": "s control system function k transfer loop compensator poles frac determine position cascade error dominant lead order less g velocity feedback gain damping le design show contribution pole kt ideal values unity dg following proportional b value required steady state work ratio constant requirements figure meet c div swansea university college engineering eglm modern systems homework compensation problems certain ma tlab location zeros plane residue made hence reduce removing any figures remaining identify pair estimate normalised rise peak overshoot satellite tracking dish open added achieve settling ts root locus technique suitable forward assuming used close satisfy criteria tr mp using",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/lead_compensation/problems.html",
+        "teaser":null},{
+        "title": "Homework 9 - Pole Placement and Observers",
+        
+        "excerpt": "system signal s frac y dt u output dy input design poles j ans mathbf observer transfer function pole placement observers described differential equation du controller closed loop k only measurable generate estimates state variables canonical form l t swansea university college engineering eglm modern control systems homework problems butterworth configuration reduced second order three show differences between actual estimated states decay zero",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/ppo/problems.html",
+        "teaser":null},{
+        "title": "Homework 1 - Revision",
+        
+        "excerpt": "s system loop closed frac le figure h gain control g k div b values root locus damping error mathrm left right fig png style text align centerfigure feedback open transfer function shown poles omegan ratio zeta satisfy constraints rise tr peak overshoot diagram question steady state step type swansea university college engineering eglm modern systems homework revision problems characteristic equation illustrated unity stable natural frequency textrm radssup sup possible following seconds mp adjusting forward only sketch value yields having ideal sqrt st determine its general second order gc suitable parameters provide settling ts os zero ramp",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/revision/problems.html",
+        "teaser":null},{
+        "title": "Homework 7 - Modelling Systems in Statespace",
+        
+        "excerpt": "mathbf t state array begin end eqnarray left right output response c transfer function zero input y u x systems space l matrix v given frac dt system g mathcal phi s d section voltage across transition initial current total dy dot cc same equations swansea university college engineering eglm modern control homework modelling statespace problems prove impulse model b consider circuit example introduced tfss converted into form intross mh muf r omega taken resistor determine following capacitor assuming inductor initially variable responses e methods solution differential equation conditions epsilon show models times relationship construct both observe modes represented compare",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/ss2tf/problems.html",
+        "teaser":null},{
+        "title": "Homework 8 - State Space Modelling",
+        
+        "excerpt": "frac dt y canonical form dy u d question systems state du system transform controller observer normal space shown determine forms b c e derived below model calculate matrices construct similarity converts solution x controllability swansea university college engineering eglm modern control homework modelling problems differential equatons companion eigenvalues eigenvectors answers hence otherwise transfer functions block diagonal jordan convert demonstrate result applying solutions response t ge initial conditions transition matrix transformation inverse laplace observability using appropriate ackermanns equations confirm results",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/homework/ssm/problems.html",
+        "teaser":null},{
+        "title": "Introduction to this Module",
+        
+        "excerpt": "module control systems learning assessment course class p jobling outcomes methods system skills design modern introduction before c swansea ac uk screencast presentation better understanding learn plan support its aims content website applications such state space digital modelling simulation computer aided analysis topics coursework examination blackboard eglm read dr chris mailto intended after watching teaching textbooks introduces ideas should able model domain run simulations analyze linearized models devise strategy based conventional implement controllers transferable performed using industrial standard tools employed mathematical problem solving solve problems made research communication covered modeling z transform individual pairs groups peer cohort managed environment used",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/intro.html",
+        "teaser":null},{
+        "title": "Setting up your own version of this book",
+        
+        "excerpt": "jupyter matlab platform python setting book section develop into user guide explaining own copy textbook provides live coding used class fairly technical process only advise undertake comfortable working command line operating system contents notebooks installing computing environment setup",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/setup/index.html",
+        "teaser":null},{
+        "title": "Setting up jupyter-book",
+        
+        "excerpt": "todo installation instructions eglm modern control systems textbook",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/setup/jupyter-book.html",
+        "teaser":null},{
+        "title": "About Jupyter notebooks",
+        
+        "excerpt": "todo description jupyter notebooks",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/setup/jupyter.html",
+        "teaser":null},{
+        "title": "Installing Python",
+        
+        "excerpt": "anaconda todo installation instructions python platform data analysis www com",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/setup/python.html",
+        "teaser":null},{
+        "title": "Setting up your MATLAB-Jupyter Computing Environment",
+        
+        "excerpt": "matlab jupyter python notebook kernel matlabkernel live install code anaconda github setup calysto com test installation should run notebooks execute need open ipynb cell menu scripts notes using documentation examples html installed blob master command windows type script fig figure used also change both io file start advanced able enter adapted py fangohr available instructions here given mathworks session magic close readme indicator interface not course its teaching computing eglm system provided however fully something user done assuming download eg alternatively navigate note users administrator case sequence commands executed record errors select next whole following soton blog packages tests bridge",
+        "categories": [],
+        "tags": [],
+        "url": "https://cpjobling.github.io/eglm03-textbook/setup/setup.html",
+        "teaser":null},]
+</script>
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">Dr Chris Jobling</a> for <a href="https://www.swansea.ac.uk">Swansea University</a>.</p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Setting up your MATLAB-Jupyter Computing Environment</title>
+  <meta name="description" content="        Setting up your MATLAB-Jupyter Computing Environment    Setting up your Computing Environment I have used Jupyter notebooks for EGLM03 Modern Control...">
+
+  <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/setup/setup.html">
+  <link rel="alternate" type="application/rss+xml" title="EGLM03 Modern Control Systems" href="https://cpjobling.github.io/eglm03-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/setup/setup.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Setting up your MATLAB-Jupyter Computing Environment" />
+<meta property="og:description" content="        Setting up your MATLAB-Jupyter Computing Environment    Setting up your Computing Environment I have used Jupyter notebooks for EGLM03 Modern Control..." />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://cpjobling.github.io/eglm03-textbook/setup/setup.html",
+  "headline": "Setting up your MATLAB-Jupyter Computing Environment",
+  "datePublished": "2020-03-19T10:47:14+00:00",
+  "dateModified": "2020-03-19T10:47:14+00:00",
+  "description": "        Setting up your MATLAB-Jupyter Computing Environment    Setting up your Computing Environment I have used Jupyter notebooks for EGLM03 Modern Control...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cpjobling.github.io/eglm03-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cpjobling.github.io/eglm03-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eglm03-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+    // Number LaTeX-style equations
+    "TeX": {
+        equationNumbers: {
+          autoNumber: "all"
+        }
+    }
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eglm03-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eglm03-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eglm03-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eglm03-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eglm03-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eglm03-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eglm03-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eglm03-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "EGLM03 Modern Control Systems"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: ""
+    },
+    kernelOptions: {
+    kernelName: "matlab",
+    path: "content/setup"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/eglm03-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EGLM03 Modern Control Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+          
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/intro.html"
+        >
+          
+          Introduction to this Module
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/background/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/background/index.html"
+        >
+          
+          Background
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_is_rlocus">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_is_rlocus.html"
+              >
+                
+                What is the root locus?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_does_the_rlocus_represent">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_does_the_rlocus_represent.html"
+              >
+                
+                What does the root locus represent?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/sketching_rules">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/sketching_rules.html"
+              >
+                
+                What are the rules for sketching a root locus?
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/modsim">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/modsim.html"
+        >
+          
+            1.
+          
+          Systems Modelling and Simulation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/02/ssntr">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/02/ssntr.html"
+        >
+          
+            2.
+          
+          Steady-State and Transient Response
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/03/classical">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/03/classical.html"
+        >
+          
+            3.
+          
+          Classical Control Systems Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/1/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/1/intro.html"
+              >
+                
+                  3.1
+                
+                Introducing phase-lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/2/velfb">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/2/velfb.html"
+              >
+                
+                  3.2
+                
+                Introduction to Root Locus Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/3/pplusd">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/3/pplusd.html"
+              >
+                
+                  3.3
+                
+                Proportional plus derivative compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/4/leadc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/4/leadc.html"
+              >
+                
+                  3.4
+                
+                Lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/5/analrloc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/5/analrloc.html"
+              >
+                
+                  3.5
+                
+                Analytical Root-Locus Design of Phase-Lead Compensators
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/6/lagc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/6/lagc.html"
+              >
+                
+                  3.6
+                
+                Lag compensation
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/04/pid">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/04/pid.html"
+        >
+          
+            4.
+          
+          PID Compensation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/0/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/0/intro.html"
+              >
+                
+                  4.1
+                
+                Introduction to PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/1/zeigler">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/1/zeigler.html"
+              >
+                
+                  4.2
+                
+                Zeigler-Nichols Tuning Algorithms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/2/tuning">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/2/tuning.html"
+              >
+                
+                  4.3
+                
+                Manually Tuning a PID compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/3/analpid">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/3/analpid.html"
+              >
+                
+                  4.4
+                
+                Analytical Design of a PID Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/4/autotune">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/4/autotune.html"
+              >
+                
+                  4.5
+                
+                PID Autotuning in MATLAB
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/05/freqresp">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/05/freqresp.html"
+        >
+          
+            5.
+          
+          Frequency Response Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/1/freqlead">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/1/freqlead.html"
+              >
+                
+                  5.1
+                
+                Frequency Response Design of a Lead Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/2/freqlag">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/2/freqlag.html"
+              >
+                
+                  5.2
+                
+                Frequency Response Design of a Lag Compensator
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/06/digital">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/06/digital.html"
+        >
+          
+            6.
+          
+          Digital Control Systems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/1/digi_intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/1/digi_intro.html"
+              >
+                
+                  6.1
+                
+                Introduction to Digital Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/2/dsm">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/2/dsm.html"
+              >
+                
+                  6.2
+                
+                Digital System Models and System Response
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/3/cse">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/3/cse.html"
+              >
+                
+                  6.3
+                
+                Continuous Systems Equivalence
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/4/digictrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/4/digictrl.html"
+              >
+                
+                  6.4
+                
+                Introduction to Digital Control
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/07/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/07/index.html"
+        >
+          
+            7.
+          
+          Modelling Systems in State-Space
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/1/intro2ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/1/intro2ss.html"
+              >
+                
+                  7.1
+                
+                State-Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/2/tf4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/2/tf4ss.html"
+              >
+                
+                  7.2
+                
+                Laplace Transforms of State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/3/tr4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/3/tr4ss.html"
+              >
+                
+                  7.3
+                
+                Time Response for State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/4/canon">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/4/canon.html"
+              >
+                
+                  7.4
+                
+                Canonical Forms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/5/systransf">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/5/systransf.html"
+              >
+                
+                  7.5
+                
+                Transformation of States and System Diagonalization
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/6/gensolution">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/6/gensolution.html"
+              >
+                
+                  7.6
+                
+                The General Solution of LTI Systems
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/08/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/08/index.html"
+        >
+          
+            8.
+          
+          State-Feedback Control
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/1/obsv_ctrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/1/obsv_ctrl.html"
+              >
+                
+                  8.1
+                
+                Controllability and Observability
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/2/sfcontrol">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/2/sfcontrol.html"
+              >
+                
+                  8.2
+                
+                State-Feedback Control
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/3/observers">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/3/observers.html"
+              >
+                
+                  8.3
+                
+                State Observers
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/4/observer_controller">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/4/observer_controller.html"
+              >
+                
+                  8.4
+                
+                Combined Observer and Controller
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/mattf">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/mattf.html"
+        >
+          
+          Appendix A Defining Transfer Functions in MATLAB
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/homework/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/homework/index.html"
+        >
+          
+          Homework Problems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/revision/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/revision/problems.html"
+              >
+                
+                Homework 1 - Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lead_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lead_compensation/problems.html"
+              >
+                
+                Homework 2 - Dominant Poles and Lead Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_compensation/problems.html"
+              >
+                
+                Homework 3 - Lag Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_lead_pid/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_lead_pid/problems.html"
+              >
+                
+                Homework 4 - Lag-Lead and PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/freqresp/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/freqresp/problems.html"
+              >
+                
+                Homework 5 - Frequency Response Cascade Compensator Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/digirev/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/digirev/problems.html"
+              >
+                
+                Homework 6 - Digital Systems Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ss2tf/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ss2tf/problems.html"
+              >
+                
+                Homework 7 - Modelling Systems in Statespace
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ssm/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ssm/problems.html"
+              >
+                
+                Homework 8 - State Space Modelling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ppo/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ppo/problems.html"
+              >
+                
+                Homework 9 - Pole Placement and Observers
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Handouts</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/handouts/csd/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/handouts/csd/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/1">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/1.html"
+              >
+                
+                1. Aims of Control Systems Analysis and Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/2">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/2.html"
+              >
+                
+                2. Design Methods
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/3">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/3.html"
+              >
+                
+                3. Design Strategies
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/4">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/4.html"
+              >
+                
+                4. Design Criteria
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/5">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/5.html"
+              >
+                
+                5. Some Useful Design Curves
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/ack">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/ack.html"
+              >
+                
+                Acknowledgements
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/appendix">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/appendix.html"
+              >
+                
+                Appendix -- Transfer Function Plots for Typical Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="setup/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/setup/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eglm03-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eglm03-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eglm03-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Setting up your MATLAB-Jupyter Computing Environment</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Setting-up-your-Computing-Environment">Setting up your Computing Environment<a class="anchor-link" href="#Setting-up-your-Computing-Environment"> </a></h1><p>I have used Jupyter notebooks for <strong>EGLM03 Modern Control Systems</strong> for a number of reasons:</p>
+<ol>
+<li>I can easily produce maths-rich textbook quality notes using the Markdown system provided for documentation blocks.</li>
+<li>I can generate a slide-show from my notes but also print them as PDF files for your convenience.</li>
+<li>I can interweave live coding examples with my notes and execute and change these examples in a live classroom.</li>
+<li>... more interestingly, you can take the notebooks and experiment with the computing examples yourself!</li>
+</ol>
+<p>However, to fully access all the examples that have been provided as Jupyter notebooks for EGLM03 you will need to install both MATLAB (I used MATLAB 2019a) and Python 3 (I used Anaconda 3) and this is something of a technical challenge.</p>
+<p>The installation of Anaconda 3 (which includes Jupyter Notebook) and MATLAB is <a href="https://conda.io/docs/user-guide/install/index.html#">described elsewhere</a> but must be done before you can open and execute this notebook.</p>
+<p>Assuming that you <em>have</em> installed Anaconda 3, you can <a href="https://github.com/cpjobling/EG-247-Resources/blob/master/setup/setup.ipynb">download</a> and open this notebook using the command:</p>
+
+<pre><code>jupyter notebook setup.ibynb</code></pre>
+<p>Alternatively, you can use the <strong>Anaconda Navigator</strong> to launch a Jupyter Notebook and then navigate to the <code>setup.ipynb</code> file.</p>
+<p><strong>Note</strong> for Windows users, you need to start jupyter as an Administrator.</p>
+<h2 id="Advanced-users">Advanced users<a class="anchor-link" href="#Advanced-users"> </a></h2><p>You may prefer to use the python environments and the command line, in which case, refer to <a href="advanced-setup.md">Advanced Settings</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="About-this-notebook">About this notebook<a class="anchor-link" href="#About-this-notebook"> </a></h2><p>A Jupyter notebook is a combination of documentation and code cells. It is both a sequence of commands (in this case written in Python) that can be executed in sequence and a record of that execution. This notebook documents the process of installing the MATLAB kernel for Jupyter.</p>
+<p>You should be able to run each code cell in turn without errors. To execute code in a Jupyter notebook, select a code cell and press the run button or type <code>Shift-Enter</code>. The next cell will automatically be selected.</p>
+<p>Alternatively you can simply run the whole notebook by selecting the <code>Cell-&gt;Run All</code> command from the menu.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Test-Base-Setup">Test Base Setup<a class="anchor-link" href="#Test-Base-Setup"> </a></h2><p>The following Python code (adapted from the script <a href="https://fangohr.github.io/blog/code/python/soton-test-python-installation.py">soton-test-python-installation.py</a> [1]) can be executed to report whether particular python packages are available on the system.</p>
+<p>First we define some tests.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">import </span><span class="s">math</span><span class="p"></span>
+<span class="n">import </span><span class="s">os</span><span class="p"></span>
+<span class="n">import </span><span class="s">sys</span><span class="p"></span>
+
+
+<span class="n">def </span><span class="s">test_is_python_35():</span><span class="p"></span>
+    <span class="n">major</span> <span class="p">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">version_info</span><span class="p">.</span><span class="n">major</span>
+    <span class="n">minor</span> <span class="p">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">version_info</span><span class="p">.</span><span class="n">minor</span>
+<span class="n">    if </span><span class="s">major == 3:</span><span class="p"></span>
+<span class="n">        pass </span>
+<span class="n">    </span><span class="s">else:</span><span class="p"></span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;You are running Python {}, but we need Python {}.&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Download and install the Anaconda distribution for Python 3.&quot;</span><span class="p">)</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Stopping here.&quot;</span><span class="p">)</span>
+
+        # <span class="n">Let</span><span class="o">&#39;</span><span class="n">s</span> <span class="n">stop</span> <span class="n">here</span>
+        <span class="n">sys</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">        return </span><span class="s">None</span><span class="p"></span>
+        # <span class="n">assert</span> <span class="n">major</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Stopping here - we need Python 3.&quot;</span>
+
+<span class="n">    if </span><span class="s">minor &gt;= 5:</span><span class="p"></span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Testing Python version-&gt; py{}.{} OK&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Warning: You should be running Python 3.5 or newer, &quot;</span> <span class="o">+</span>
+              <span class="s">&quot;you have Python {}.{}.&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">))</span>
+<span class="n">        </span>
+<span class="n">        </span>
+<span class="n">def </span><span class="s">test_numpy():</span><span class="p"></span>
+    <span class="k">try</span><span class="p">:</span>
+<span class="n">        import </span><span class="s">numpy as np</span><span class="p"></span>
+<span class="n">    except </span><span class="s">ImportError:</span><span class="p"></span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Could not import numpy -&gt; numpy failed&quot;</span><span class="p">)</span>
+<span class="n">        return </span><span class="s">None</span><span class="p"></span>
+    # <span class="n">Simple</span> <span class="n">test</span>
+    <span class="n">a</span> <span class="p">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">    assert </span><span class="s">np.sum(a) == sum(a)</span><span class="p"></span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Testing numpy...      -&gt; numpy OK&quot;</span><span class="p">)</span>
+
+
+<span class="n">def </span><span class="s">test_scipy():</span><span class="p"></span>
+    <span class="k">try</span><span class="p">:</span>
+<span class="n">        import </span><span class="s">scipy</span><span class="p"></span>
+<span class="n">    except </span><span class="s">ImportError:</span><span class="p"></span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;scipy&#39; -&gt; scipy failed&quot;</span><span class="p">)</span>
+<span class="n">        return </span><span class="s">None</span><span class="p"></span>
+    # <span class="n">Simple</span> <span class="n">test</span>
+<span class="n">    import </span><span class="s">scipy.integrate</span><span class="p"></span>
+<span class="n">    assert </span><span class="s">abs(scipy.integrate.quad(lambda x: x * x, 0, 6)[0] - 72.0) &lt; 1e-6</span><span class="p"></span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Testing scipy ...     -&gt; scipy OK&quot;</span><span class="p">)</span>
+
+
+<span class="n">def </span><span class="s">test_pylab():</span><span class="p"></span>
+    <span class="s">&quot;&quot;&quot;Actually testing matplotlib, as pylab is part of matplotlib.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+<span class="n">        import </span><span class="s">pylab</span><span class="p"></span>
+<span class="n">    except </span><span class="s">ImportError:</span><span class="p"></span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;matplotlib/pylab&#39; -&gt; failed&quot;</span><span class="p">)</span>
+<span class="n">            return </span><span class="s">None</span><span class="p"></span>
+    # <span class="n">Creata</span> <span class="n">plot</span> <span class="k">for</span> <span class="n">testing</span> <span class="n">purposes</span>
+    <span class="n">xvalues</span> <span class="p">=</span> <span class="p">[</span><span class="nb">i</span> <span class="o">*</span> <span class="mf">0.1</span> <span class="k">for</span> <span class="nb">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+    <span class="n">yvalues</span> <span class="p">=</span> <span class="p">[</span><span class="n">math</span><span class="p">.</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="n">xvalues</span><span class="p">]</span>
+    <span class="n">pylab</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">yvalues</span><span class="p">,</span> <span class="s">&quot;-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">=</span><span class="s">&quot;sin(x)&quot;</span><span class="p">)</span>
+    <span class="n">pylab</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">pylab</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">testfilename</span><span class="p">=</span><span class="s">&#39;pylab-testfigure.png&#39;</span>
+
+    # <span class="n">check</span> <span class="n">that</span> <span class="n">file</span> <span class="n">does</span> <span class="n">not</span> <span class="n">exist</span> <span class="n">yet</span><span class="p">:</span>
+<span class="n">    if </span><span class="s">os.path.exists(testfilename):</span><span class="p"></span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Skipping plotting to file as file {} exists already.&quot;</span><span class="o">\</span>
+            <span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">testfilename</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        # <span class="n">Write</span> <span class="n">plot</span> <span class="n">to</span> <span class="n">file</span>
+        <span class="n">pylab</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
+        # <span class="n">Then</span> <span class="n">check</span> <span class="n">that</span> <span class="n">file</span> <span class="n">exists</span>
+<span class="n">        assert </span><span class="s">os.path.exists(testfilename)</span><span class="p"></span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Testing matplotlib... -&gt; pylab OK&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">testfilename</span><span class="p">)</span>
+
+
+<span class="n">def </span><span class="s">test_sympy():</span><span class="p"></span>
+    <span class="k">try</span><span class="p">:</span>
+<span class="n">        import </span><span class="s">sympy</span><span class="p"></span>
+<span class="n">    except </span><span class="s">ImportError:</span><span class="p"></span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;sympy&#39; -&gt; fail&quot;</span><span class="p">)</span>
+<span class="n">            return </span><span class="s">None</span><span class="p"></span>
+    # <span class="n">simple</span> <span class="n">test</span>
+    <span class="n">x</span> <span class="p">=</span> <span class="n">sympy</span><span class="p">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">my_f</span> <span class="p">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">    assert </span><span class="s">sympy.diff(my_f,x) == 2 * x</span><span class="p"></span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Testing sympy         -&gt; sympy OK&quot;</span><span class="p">)</span>
+
+
+<span class="n">def </span><span class="s">test_pytest():</span><span class="p"></span>
+    <span class="k">try</span><span class="p">:</span>
+<span class="n">        import </span><span class="s">pytest</span><span class="p"></span>
+<span class="n">    except </span><span class="s">ImportError:</span><span class="p"></span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Could not import &#39;pytest&#39; -&gt; fail&quot;</span><span class="p">)</span>
+<span class="n">            return </span><span class="s">None</span><span class="p"></span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Testing pytest        -&gt; pytest OK&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The we run the tests to test that we have all the packages we need. If we have installed Anaconda 3 correctly, there should be no errors.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Running using Python {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">version</span><span class="p">))</span>
+<span class="n">test_is_python_35</span><span class="p">()</span>
+<span class="n">test_numpy</span><span class="p">()</span>
+<span class="n">test_scipy</span><span class="p">()</span>
+<span class="n">test_pylab</span><span class="p">()</span>
+<span class="n">test_sympy</span><span class="p">()</span>
+<span class="n">test_pytest</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The remaining installation instructions are adapted from [2].</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-MATLAB-Bridge">Python-MATLAB Bridge<a class="anchor-link" href="#Python-MATLAB-Bridge"> </a></h2><p>To install this, we first have to install MATLAB. I'm assuming that this has been done and you have MATLAB 2017b or greater installed.</p>
+<p>Now we install the Python-MATLAB bridge.</p>
+<p>Here we've adapted the instructions given in the official Matlab documentation <a href="https://uk.mathworks.com/help/matlab/matlab-engine-for-python.html">MATLAB API for Python</a>.</p>
+<p>I ran this on my Mac. The equivalent Windows and Linux commands are given in the comments.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span># <span class="n">Mac</span> <span class="n">OS</span><span class="p">:</span> 
+<span class="n">matlabroot</span><span class="p">=</span><span class="s">&#39;/Applications/MATLAB_R2019a.app&#39;</span>
+# <span class="n">Windows</span>
+# <span class="n">matlabroot</span><span class="p">=</span><span class="s">&#39;C:\Program Files\MATLAB\R2019a&#39;</span>
+# <span class="n">Linux</span><span class="p">:</span> <span class="n">matlabroot</span><span class="p">=</span><span class="s">&#39;/usr/local/matlab/R2019a&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span># <span class="n">Unix</span>
+<span class="c">%cd {matlabroot}/extern/engines/python</span>
+# <span class="n">Windows</span><span class="p">:</span> 
+#<span class="c">%cd {matlabroot}\extern\engines\python</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Install-MATLAB-Engine">Install MATLAB Engine<a class="anchor-link" href="#Install-MATLAB-Engine"> </a></h3><p><strong>Notes</strong></p>
+<ul>
+<li>On windows you have to do this step as an admin user<ul>
+<li>Open the anaconda prompt as administrator.</li>
+<li>Copy result of previous command</li>
+<li>type <code>cd</code> then paste what you've just copied and type <code>Enter</code></li>
+<li>Now copy <code>python setup.py install</code>, paste and type <code>Enter</code></li>
+</ul>
+</li>
+<li>If your MATLAB is 2016b, or older, you may need to install an earlier version of Python and repeat the steps above.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="sx">!python setup.py install</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Test-Python-can-now-communicate-with-MATLAB">Test Python can now communicate with MATLAB<a class="anchor-link" href="#Test-Python-can-now-communicate-with-MATLAB"> </a></h2><p>First start a MATLAB session</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">import </span><span class="s">matlab.engine</span><span class="p"></span>
+<span class="n">eng</span> <span class="p">=</span> <span class="n">matlab</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">start_matlab</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then connect to the session</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">eng</span> <span class="p">=</span> <span class="n">matlab</span><span class="p">.</span><span class="n">engine</span><span class="p">.</span><span class="n">connect_matlab</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now compute something. Here's a 10x10 magic square</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">m</span> <span class="p">=</span> <span class="n">eng</span><span class="p">.</span><span class="nb">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Close the session</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">eng</span><span class="p">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="MATLAB-Kernel-for-Jupyter">MATLAB Kernel for Jupyter<a class="anchor-link" href="#MATLAB-Kernel-for-Jupyter"> </a></h2><p>Finally we install the <code>matlab_kernel</code> using the instructions given here: <a href="https://github.com/Calysto/matlab_kernel/blob/master/README.rst">Calysto/matlab_kernel</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="sx">!pip install matlab_kernel</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To check that the <code>malab_kernel</code> is properly installed do the following.</p>
+<ol>
+<li>Save this notebook <code>File-&gt;Save</code>.</li>
+<li>Select <code>Kernel-&gt;Shutdown</code> from the notebook menu.</li>
+<li>Close the browser window.</li>
+<li>Restart the Jupiter Notebook, as you did at the start, then return here:</li>
+</ol>
+
+<pre><code>jupyter notebook setup.ipynb --debug</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Test-MATLAB-Kernel">Test MATLAB Kernel<a class="anchor-link" href="#Test-MATLAB-Kernel"> </a></h2><p>From the <code>Kernel</code> menu you should be able to navigate to <code>Change kernel</code> and <code>Matlab</code> should now be listed (Fig. 1).</p>
+<p><img src="fig1.png" alt="Figure 1: The Kernel Menu">
+Figure 1: The Kernel Menu</p>
+<p>Go ahead and switch to the MATLAB kernel.</p>
+<p>If all is well, you should see the Kernel indicator (top right) change to 'Matlab' (Fig. 2)</p>
+<p><img src="fig2.png" alt="Figure 2: Matlab kernel indicator">
+Figure 2: The MATLAB kernel indicator</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should now be able to execute the MATLAB <code>magic(10)</code> function again and get the result shown:</p>
+<div class="highlight"><pre><span></span><span class="nb">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+<span class="n">    92    </span><span class="s">99     1     8    15    67    74    51    58    40</span><span class="p"></span>
+<span class="n">    98    </span><span class="s">80     7    14    16    73    55    57    64    41</span><span class="p"></span>
+<span class="n">     4    </span><span class="s">81    88    20    22    54    56    63    70    47</span><span class="p"></span>
+<span class="n">    85    </span><span class="s">87    19    21     3    60    62    69    71    28</span><span class="p"></span>
+<span class="n">    86    </span><span class="s">93    25     2     9    61    68    75    52    34</span><span class="p"></span>
+<span class="n">    17    </span><span class="s">24    76    83    90    42    49    26    33    65</span><span class="p"></span>
+<span class="n">    23     </span><span class="s">5    82    89    91    48    30    32    39    66</span><span class="p"></span>
+<span class="n">    79     </span><span class="s">6    13    95    97    29    31    38    45    72</span><span class="p"></span>
+<span class="n">    10    </span><span class="s">12    94    96    78    35    37    44    46    53</span><span class="p"></span>
+<span class="n">    11    </span><span class="s">18   100    77    84    36    43    50    27    59</span><span class="p"></span>
+</pre></div>
+<p>Go ahead and execute the next code cell.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="nb">magic</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you wish to further test the Matlab interface, download this file from the <code>Calysto/matlab_kernel</code> repository <a href="https://github.com/Calysto/matlab_kernel/blob/master/matlab_kernel.ipynb">matlab_kernel.ipynb</a>, open it in Jupyter and run the whole notebook.</p>
+<p><strong>Note</strong> There is a reported bug (<a href="https://github.com/Calysto/matlab_kernel/issues/101">kernel keeps crashing #101</a>) with the latest version of <code>matlab_kernel</code> (0.15.1) and MATLAB R2017b on a Mac. The kernel crashes randomly. I have experienced this issue myself. The problem is reported to not affect windows but I have not yet independently confirmed this. I will monitor the situation and update this page if a fix is released.</p>
+<p>If <em>you</em> have any problems, send me a message through the Teams page for the EG-247 Course.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="For-More-Information-on-Jupyter">For More Information on Jupyter<a class="anchor-link" href="#For-More-Information-on-Jupyter"> </a></h2><p>To learn more about Jupyter notebooks, the key resource is the <a href="https://jupyter.org">Jupyter Project site</a> itself. There, under the documentation section, you will find everything you need to fully understand Jupyter. However, it's not arranged in a way that is useful for a beginner!</p>
+<p>For a quick introduction, I particularly recommend Corey Schafer's YouTube tutorial: <a href="https://youtu.be/HW29067qVWk">https://youtu.be/HW29067qVWk</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%%html</span>
+<span class="o">&lt;</span><span class="n">iframe</span> <span class="n">width</span><span class="p">=</span><span class="s">&quot;560&quot;</span> <span class="n">height</span><span class="p">=</span><span class="s">&quot;315&quot;</span> <span class="n">src</span><span class="p">=</span><span class="s">&quot;https://www.youtube.com/embed/HW29067qVWk&quot;</span> <span class="n">frameborder</span><span class="p">=</span><span class="s">&quot;0&quot;</span> <span class="n">allow</span><span class="p">=</span><span class="s">&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot;</span> <span class="n">allowfullscreen</span><span class="o">&gt;&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Jupyter-Noteboooks-versus-MATLAB-Live-Scripts">Jupyter Noteboooks versus MATLAB Live Scripts<a class="anchor-link" href="#Jupyter-Noteboooks-versus-MATLAB-Live-Scripts"> </a></h2><p>Both Jupyter and MATLAB Live Script trace their origins -- or at least their inspiration -- to the <a href="https://en.wikipedia.org/wiki/Wolfram_Mathematica_(software)#The_Notebook_interface">Mathematica Notebook interface</a>. All allow the mixing of code with output, the running of code in sections, and the ability to add formatted text, images, and equations to tell a story and provide a repeatable record of a computation.</p>
+<p>The Mathworks claims some <a href="https://uk.mathworks.com/matlabcentral/answers/329935-jupyter-notebook-vs-live-scripts#answer_259207">advantages for the MATLAB Live Script interface</a> due to its close integration with the MATLAB desktop and the new MATLAB Online product. Other teachers have also advocated the use of Live Script in teaching, e.g. <a href="http://bastibe.de/2016-06-15-matlab-live-scripts.html">Teaching with Matlab Live Scripts</a>. The main issue though is that MATLAB is an expensive, licensed product. It's free to use while you are a student or a teacher at Swansea University. It is extremely expensive once you graduate!</p>
+<p>For me, the main advantage of Jupyter notebooks is that it is language independent, well supported, open source and free! It also has some features, mentioned at the top of this document, that make it particularly attractive as a support tool for the teaching on this course.</p>
+<p>That said, we will be using MATLAB throughout this course and MATLAB Live Scripts in the Labs for this module.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References"> </a></h2><ol>
+<li><p>Fangohr, Prof Hans, <em>Installation of Python, Spyder, Numpy, Sympy, Scipy, Pytest, Matplotlib via Anaconda</em>, University of Southampton, 20116. Available from: <a href="https://fangohr.github.io/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html">https://fangohr.github.io/blog/installation-of-python-spyder-numpy-sympy-scipy-pytest-matplotlib-via-anaconda.html</a>.</p>
+</li>
+<li><p>Blank, Doug, Silvester, Steven and Lee, Antony, <em><code>Calysto/matlab_kernel</code> README</em>, Calysto, 2017. Available from GitHub: <a href="https://github.com/Calysto/matlab_kernel/blob/master/README.rst">https://github.com/Calysto/matlab_kernel/blob/master/README.rst</a>.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eglm03-textbook/setup/python.html">
+      〈 <span class="u-margin-right-tiny"></span> Installing Python
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eglm03-textbook/setup/jupyter-book.html">
+      Setting up jupyter-book <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">Dr Chris Jobling</a> for <a href="https://www.swansea.ac.uk">Swansea University</a>.</p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

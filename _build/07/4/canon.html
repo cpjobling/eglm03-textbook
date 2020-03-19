@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /07/5/systransf.html
 suffix: .ipynb
-search: s array n x end begin left right frac mathbf form eqnarray vdots y c b canonical state u cdots t system dot d function dt pi transfer equation space model normal r companion p controller matrix ri block m cc forms ldots figure ccc into diagram j re differential g proper poles tau dy example ccccc ddots observer e equations general class shown pictures png w matrices given output numerator xi im variables called coefficients solution input therefore order bn jordan below controllable repeated rightarrow analysis let xn because obtained sn cdotsasa case strictly illustrated dots observable partial fraction
+search: s array end begin n x left right equation frac mathbf form eqnarray vdots y c b canonical state u cdots t system dot d function dt pi transfer space model normal r companion p controller matrix ri block m cc forms ldots figure ccc into diagram j re differential g proper poles tau dy example ccccc ddots observer e equations general class shown pictures png w matrices given output numerator xi im variables called coefficients solution input therefore order bn jordan below controllable repeated rightarrow analysis let xn because obtained sn cdotsasa case strictly illustrated dots observable partial fraction
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -124,9 +124,9 @@ equations or transfer function models.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$\frac{d^{n}y}{dt^{n}} +
+$$\begin{equation}\frac{d^{n}y}{dt^{n}} +
 a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
-y = b_0 u$$
+y = b_0 u\end{equation}$$
 </div>
 </div>
 </div>
@@ -148,7 +148,8 @@ y = b_0 u$$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We rearrange this equation so that the highest power is on the left</p>
-$$\frac{d^{n}y}{dt^{n}} = -a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}-a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}-\cdots-a_1\frac{dy}{dt}-a_0 y + b_0 u.$$<p></p>
+$$\begin{equation}
+\frac{d^{n}y}{dt^{n}} = -a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}-a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}-\cdots-a_1\frac{dy}{dt}-a_0 y + b_0 u.\end{equation}$$<p></p>
 <p>Let:</p>
 $$\begin{eqnarray*}
 x_1 &amp;=&amp; y \\ x_2 &amp;=&amp; \frac{dy}{dt} \\
@@ -173,9 +174,9 @@ $$\begin{eqnarray*}
 \dot{x}_{n-1}  &amp;=&amp; x_n \\ 
 \dot{x}_{n} &amp;=&amp; -a_{0}x_1 -a_1x_2 - \cdots  -a_{n-2}x_{n-1} -a_{n-1}x_{n} + b_0 u
 \end{eqnarray*}$$<p>We then define the state vector</p>
-$$\mathbf{x}=[x_1,\ x_2,\ \ldots,\ x_n]^T$$<p></p>
+$$\begin{equation}\mathbf{x}=[x_1,\ x_2,\ \ldots,\ x_n]^T\end{equation}$$<p></p>
 <p>and the matrix form of the state equations are</p>
-$$\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
+$$\begin{equation}\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
   0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
   0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
   \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -187,14 +188,14 @@ $$\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
   0 \\
   \vdots \\
   1
-\end{array}\right]u$$<p></p>
+\end{array}\right]u\end{equation}$$<p></p>
 <p>The system matrix is in "<em>companion form</em>", so called because the coefficients in the final row are the same as for the differential equation. The output equation depends on the dependent variable of interest but the simplest is $y=x_1$ which gives the solution of the differential equation. Thus</p>
-$$y = [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.$$<h3 id="Transfer-Function">Transfer Function<a class="anchor-link" href="#Transfer-Function"> </a></h3><p>The transfer function equivalent of this differential equation is obtained from the differential equation:</p>
-$$\frac{d^{n}y}{dt^{n}} + a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0 y = b_0 u$$<p></p>
+$$\begin{equation}y = [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{equation}$$<h3 id="Transfer-Function">Transfer Function<a class="anchor-link" href="#Transfer-Function"> </a></h3><p>The transfer function equivalent of this differential equation is obtained from the differential equation:</p>
+$$\begin{equation}\frac{d^{n}y}{dt^{n}} + a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0 y = b_0 u\end{equation}$$<p></p>
 <p>The transform of this equation, ignoring initial conditions, is</p>
-$$\left(s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0\right)Y(s) = b_0 U(s)$$<p></p>
+$$\begin{equation}\left(s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0\right)Y(s) = b_0 U(s)\end{equation}$$<p></p>
 <p>so the transfer function is</p>
-$$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.$$<p></p>
+$$\begin{equation}G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.\end{equation}$$<p></p>
 <p>Note that the numerator has no terms in $s$. We shall consider completely general case for both proper and strictly proper systems later.</p>
 
 </div>
@@ -217,9 +218,9 @@ $$G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdo
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="General-differential-equation">General differential equation<a class="anchor-link" href="#General-differential-equation"> </a></h3>$$\frac{d^{n}y}{dt^{n}} +
+<h3 id="General-differential-equation">General differential equation<a class="anchor-link" href="#General-differential-equation"> </a></h3>$$\begin{equation}\frac{d^{n}y}{dt^{n}} +
 a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
-y = b_0 u$$<p></p>
+y = b_0 u\end{equation}$$<p></p>
 
 </div>
 </div>
@@ -326,9 +327,9 @@ input.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A strictly proper system has transfer function</p>
-$$G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
+$$\begin{equation}G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
 b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
-a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}$$<p></p>
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}\end{equation}$$<p></p>
 <p>where $m&lt;n$.</p>
 
 </div>
@@ -414,7 +415,7 @@ this system is illustrated in Figure 2 for the case $m=n-1$.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="System-with-a-Proper-Transfer-Function">System with a Proper Transfer Function<a class="anchor-link" href="#System-with-a-Proper-Transfer-Function"> </a></h3><p>The general form of a transfer function of a proper single-input,
 single-output system of order $n$ is</p>
-$$\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}$$<p>In class, we will show how this system converted into state-space form.</p>
+$$\begin{equation}\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}\end{equation}$$<p>In class, we will show how this system converted into state-space form.</p>
 
 </div>
 </div>
@@ -427,12 +428,12 @@ $$\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s 
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>An alternative form, obtained by dividing the numerator by the
 denominator, is</p>
-$$b_n+\frac{(b_{n-1} - b_n a_{n-1})s^{n-1}+\cdots+(b_1 - b_n a_1)+(b_0 - b_n a_0)}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}.$$<p>If we define $d=b_n$ and the modified numerator coefficients are</p>
-$$c_j=b_j - b_n a_j,\ j=1,2,\ldots,n$$<p></p>
+$$\begin{equation}b_n+\frac{(b_{n-1} - b_n a_{n-1})s^{n-1}+\cdots+(b_1 - b_n a_1)+(b_0 - b_n a_0)}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}.\end{equation}$$<p>If we define $d=b_n$ and the modified numerator coefficients are</p>
+$$\begin{equation}c_j=b_j - b_n a_j,\ j=1,2,\ldots,n\end{equation}$$<p></p>
 <p>then the transfer function may be re-written</p>
-$$d+\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s + c_n}{s^n+a_{n-1}s^{n-1}+\cdots++a_1s + a_0}.$$<p>Writing the transfer function in its functional form we have:</p>
-$$Y(s)=d U(s) +\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s +
-c_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}U(s).$$<p></p>
+$$\begin{equation}d+\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s + c_n}{s^n+a_{n-1}s^{n-1}+\cdots++a_1s + a_0}.\end{equation}$$<p>Writing the transfer function in its functional form we have:</p>
+$$\begin{equation}Y(s)=d U(s) +\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s +
+c_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}U(s).\end{equation}$$<p></p>
 <p>Performing a similar
 analysis, as before, we obtain the state-equations for a proper system:</p>
 $$\begin{aligned}
@@ -474,7 +475,7 @@ u.\end{aligned}$$<p></p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example-1">Example 1<a class="anchor-link" href="#Example-1"> </a></h3><p>A system has transfer function</p>
-$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$<p>This system is "proper" because order of numerator equals order of denominator.</p>
+$$\begin{equation}G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}\end{equation}$$<p>This system is "proper" because order of numerator equals order of denominator.</p>
 <p>Determine the system state-space model in companion form.</p>
 
 </div>
@@ -612,7 +613,7 @@ converting the system into state-space form using MATLAB's <code>tf2ss</code> fu
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let</p>
-$$G(s) =\frac{Y(s)}{U(s)} = \frac{s^2 + 7s + 2 }{s^3 + 9s^2 + 26s + 24}$$
+$$\begin{equation}G(s) =\frac{Y(s)}{U(s)} = \frac{s^2 + 7s + 2 }{s^3 + 9s^2 + 26s + 24}\end{equation}$$
 </div>
 </div>
 </div>
@@ -928,7 +929,7 @@ $\mathbf{b}$ matrices, respectively, of the controller canonical form.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example-2">Example 2<a class="anchor-link" href="#Example-2"> </a></h3><p>The system with transfer function</p>
-$$G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}$$
+$$\begin{equation}G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}\end{equation}$$
 </div>
 </div>
 </div>
@@ -1591,8 +1592,8 @@ Continuous-time transfer function.
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If all the poles of a system are real and distinct then the transfer function may be written as a partial fraction expansion</p>
-$$G(s) = \frac{Y(s)}{U(s)} = \left\{\frac{r_1}{s-p_1} +
-\frac{r_2}{s-p_2} + \cdots + \frac{r_n}{s-p_n} + d\right\}$$<p></p>
+$$\begin{equation}G(s) = \frac{Y(s)}{U(s)} = \left\{\frac{r_1}{s-p_1} +
+\frac{r_2}{s-p_2} + \cdots + \frac{r_n}{s-p_n} + d\right\}\end{equation}$$<p></p>
 
 </div>
 </div>
@@ -1604,7 +1605,7 @@ $$G(s) = \frac{Y(s)}{U(s)} = \left\{\frac{r_1}{s-p_1} +
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>we can develop a state-space model for each term:</p>
-$$Y(s)=\frac{r_i}{s-p_i}U(s).$$<p></p>
+$$\begin{equation}Y(s)=\frac{r_i}{s-p_i}U(s).\end{equation}$$<p></p>
 $$\begin{eqnarray*}
 (s-p_i)Y(s) &amp; = &amp; r_i U(s)\\ \frac{d}{dt}y(t)-p_i y(t) &amp;=&amp; r_i
 u(t).\end{eqnarray*}$$<p></p>
@@ -1853,7 +1854,7 @@ $$\begin{eqnarray*}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$x_1 = x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$<p></p>
+$$\begin{equation}x_1 = x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau\end{equation}$$<p></p>
 
 </div>
 </div>
@@ -1876,7 +1877,7 @@ $$x_1 = x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau$$<p></p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>These are then combined through the output equation to give the solution for $y$:</p>
-$$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t).$$
+$$\begin{equation}y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t).\end{equation}$$
 </div>
 </div>
 </div>
@@ -1887,7 +1888,7 @@ $$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t).$$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="System-Response">System Response<a class="anchor-link" href="#System-Response"> </a></h3><p>Combine state responses through the output equation</p>
-$$y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)$$<p></p>
+$$\begin{equation}y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)\end{equation}$$<p></p>
 
 </div>
 </div>
@@ -1961,11 +1962,11 @@ $$\begin{eqnarray*}
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="System-with-Repeated-Poles">System with Repeated Poles<a class="anchor-link" href="#System-with-Repeated-Poles"> </a></h2><p>If the transfer function has repeated poles, then the form of the model must be changed. The partial fraction expansion contains terms of the form</p>
-$$\frac{r_i}{s-p_i} + \frac{r_{i+1}}{(s-p_i)^2}.$$<p></p>
+$$\begin{equation}\frac{r_i}{s-p_i} + \frac{r_{i+1}}{(s-p_i)^2}.\end{equation}$$<p></p>
 <p>This is most easily implemented using the <em>Normal Controllable Canonical Form</em> using a series connection of the
 block diagram for the single pole $$\frac{1}{s-p_i}$$ as shown in Figure 8. By examination of this diagram it should be clear that the signal seen at point $A$ is</p>
-$$A(s) = \frac{r_i}{s-p_i}U(s)$$<p>and that at $B$ is</p>
-$$B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)$$<p>as
+$$\begin{equation}A(s) = \frac{r_i}{s-p_i}U(s)\end{equation}$$<p>and that at $B$ is</p>
+$$\begin{equation}B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)\end{equation}$$<p>as
 required.</p>
 <h3 id="Figure-8-Part-of-a-system-with-repeated-poles">Figure 8 Part of a system with repeated poles<a class="anchor-link" href="#Figure-8-Part-of-a-system-with-repeated-poles"> </a></h3><p><img src="pictures/jordanblock.png" alt="Part of a system with repeated poles"></p>
 <p>For this portion of the state space model we have</p>
@@ -2029,22 +2030,22 @@ modified as follows.</p>
 </li>
 </ul>
 <p>The block</p>
-$$\left[\begin{array}{cc}
+$$\begin{equation}\left[\begin{array}{cc}
     p_i &amp; 1 \\
     0 &amp; p_{i} \\
-  \end{array}\right]$$<p>is known as a "<em>Jordan Block</em>". A matrix with one (or more) Jordan Blocks instead of a pure diagonal</p>
-$$\left[\begin{array}{cc}
+  \end{array}\right]\end{equation}$$<p>is known as a "<em>Jordan Block</em>". A matrix with one (or more) Jordan Blocks instead of a pure diagonal</p>
+$$\begin{equation}\left[\begin{array}{cc}
     p_i &amp; 0 \\
     0 &amp; p_{i+1} \\
-  \end{array}\right]$$<p>is in the "<em>Jordan Form</em>". The idea may be extended to systems with poles of higher multiplicity. For example for
+  \end{array}\right]\end{equation}$$<p>is in the "<em>Jordan Form</em>". The idea may be extended to systems with poles of higher multiplicity. For example for
 the case where the multiplicity is 3 as in</p>
-$$\frac{1}{(s-p_i)^3}$$<p></p>
+$$\begin{equation}\frac{1}{(s-p_i)^3}\end{equation}$$<p></p>
 <p>the Jordan Block is</p>
-$$\left[\begin{array}{ccc}
+$$\begin{equation}\left[\begin{array}{ccc}
     p_i &amp; 1 &amp; 0 \\
     0 &amp; p_{i} &amp; 1 \\
     0 &amp; 0 &amp; p_i
-  \end{array}\right].$$
+  \end{array}\right].\end{equation}$$
 </div>
 </div>
 </div>
@@ -2083,7 +2084,7 @@ $$\begin{eqnarray*}
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Normal-Canonical-Form-with-Complex-Poles">Normal Canonical Form with Complex Poles<a class="anchor-link" href="#Normal-Canonical-Form-with-Complex-Poles"> </a></h2><p>A system with complex poles will have a partial fraction expansion containing terms of the form</p>
-$$\frac{\Re\{ r_i\} + j\Im\{ r_i\}}{s - \Re\{p_i\} + j\Im\{p_i\}} + \frac{\Re\{r_i\} - j\Im\{ r_i\}}{s - \Re\{p_i\} - j\Im\{p_i\}}$$<p>(where the poles and the residuals both appear as complex conjugate pairs). We cannot implement these directly in state space form because the state matrices must have real coefficients to be realisable. However, the complex factors involved can be combined into a quadratic form and blocks replaced in the normal canonical form<sup>2</sup> as follows:</p>
+$$\begin{equation}\frac{\Re\{ r_i\} + j\Im\{ r_i\}}{s - \Re\{p_i\} + j\Im\{p_i\}} + \frac{\Re\{r_i\} - j\Im\{ r_i\}}{s - \Re\{p_i\} - j\Im\{p_i\}}\end{equation}$$<p>(where the poles and the residuals both appear as complex conjugate pairs). We cannot implement these directly in state space form because the state matrices must have real coefficients to be realisable. However, the complex factors involved can be combined into a quadratic form and blocks replaced in the normal canonical form<sup>2</sup> as follows:</p>
 <ul>
 <li><p>in $\mathbf{A}$</p>
 <p>$$\left[\begin{array}{cc}</p>

@@ -1,0 +1,3348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Frequency Response Design of a Lead Compensator</title>
+  <meta name="description" content="        Frequency Response Design of a Lead Compensator    LecturerSet up MATLAB    cd matlabpwdclear allformat compact    ans =    &#39;/Users/eechris/dev/e...">
+
+  <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/05/1/freqlead.html">
+  <link rel="alternate" type="application/rss+xml" title="EGLM03 Modern Control Systems" href="https://cpjobling.github.io/eglm03-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/05/1/freqlead.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Frequency Response Design of a Lead Compensator" />
+<meta property="og:description" content="        Frequency Response Design of a Lead Compensator    LecturerSet up MATLAB    cd matlabpwdclear allformat compact    ans =    &#39;/Users/eechris/dev/e..." />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://cpjobling.github.io/eglm03-textbook/05/1/freqlead.html",
+  "headline": "Frequency Response Design of a Lead Compensator",
+  "datePublished": "2020-03-19T10:47:14+00:00",
+  "dateModified": "2020-03-19T10:47:14+00:00",
+  "description": "        Frequency Response Design of a Lead Compensator    LecturerSet up MATLAB    cd matlabpwdclear allformat compact    ans =    &#39;/Users/eechris/dev/e...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cpjobling.github.io/eglm03-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cpjobling.github.io/eglm03-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eglm03-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+    // Number LaTeX-style equations
+    "TeX": {
+        equationNumbers: {
+          autoNumber: "all"
+        }
+    }
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eglm03-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eglm03-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eglm03-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eglm03-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eglm03-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eglm03-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eglm03-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eglm03-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "EGLM03 Modern Control Systems"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: ""
+    },
+    kernelOptions: {
+    kernelName: "matlab",
+    path: "content/05/1"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/eglm03-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EGLM03 Modern Control Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+          
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/intro.html"
+        >
+          
+          Introduction to this Module
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/background/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/background/index.html"
+        >
+          
+          Background
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_is_rlocus">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_is_rlocus.html"
+              >
+                
+                What is the root locus?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_does_the_rlocus_represent">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_does_the_rlocus_represent.html"
+              >
+                
+                What does the root locus represent?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/sketching_rules">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/sketching_rules.html"
+              >
+                
+                What are the rules for sketching a root locus?
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/modsim">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/modsim.html"
+        >
+          
+            1.
+          
+          Systems Modelling and Simulation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/02/ssntr">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/02/ssntr.html"
+        >
+          
+            2.
+          
+          Steady-State and Transient Response
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/03/classical">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/03/classical.html"
+        >
+          
+            3.
+          
+          Classical Control Systems Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/1/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/1/intro.html"
+              >
+                
+                  3.1
+                
+                Introducing phase-lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/2/velfb">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/2/velfb.html"
+              >
+                
+                  3.2
+                
+                Introduction to Root Locus Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/3/pplusd">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/3/pplusd.html"
+              >
+                
+                  3.3
+                
+                Proportional plus derivative compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/4/leadc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/4/leadc.html"
+              >
+                
+                  3.4
+                
+                Lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/5/analrloc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/5/analrloc.html"
+              >
+                
+                  3.5
+                
+                Analytical Root-Locus Design of Phase-Lead Compensators
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/6/lagc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/6/lagc.html"
+              >
+                
+                  3.6
+                
+                Lag compensation
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/04/pid">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/04/pid.html"
+        >
+          
+            4.
+          
+          PID Compensation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/0/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/0/intro.html"
+              >
+                
+                  4.1
+                
+                Introduction to PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/1/zeigler">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/1/zeigler.html"
+              >
+                
+                  4.2
+                
+                Zeigler-Nichols Tuning Algorithms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/2/tuning">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/2/tuning.html"
+              >
+                
+                  4.3
+                
+                Manually Tuning a PID compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/3/analpid">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/3/analpid.html"
+              >
+                
+                  4.4
+                
+                Analytical Design of a PID Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/4/autotune">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/4/autotune.html"
+              >
+                
+                  4.5
+                
+                PID Autotuning in MATLAB
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/05/freqresp">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/05/freqresp.html"
+        >
+          
+            5.
+          
+          Frequency Response Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/1/freqlead">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/1/freqlead.html"
+              >
+                
+                  5.1
+                
+                Frequency Response Design of a Lead Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/2/freqlag">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/2/freqlag.html"
+              >
+                
+                  5.2
+                
+                Frequency Response Design of a Lag Compensator
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/06/digital">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/06/digital.html"
+        >
+          
+            6.
+          
+          Digital Control Systems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/1/digi_intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/1/digi_intro.html"
+              >
+                
+                  6.1
+                
+                Introduction to Digital Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/2/dsm">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/2/dsm.html"
+              >
+                
+                  6.2
+                
+                Digital System Models and System Response
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/3/cse">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/3/cse.html"
+              >
+                
+                  6.3
+                
+                Continuous Systems Equivalence
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/4/digictrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/4/digictrl.html"
+              >
+                
+                  6.4
+                
+                Introduction to Digital Control
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/07/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/07/index.html"
+        >
+          
+            7.
+          
+          Modelling Systems in State-Space
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/1/intro2ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/1/intro2ss.html"
+              >
+                
+                  7.1
+                
+                State-Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/2/tf4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/2/tf4ss.html"
+              >
+                
+                  7.2
+                
+                Laplace Transforms of State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/3/tr4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/3/tr4ss.html"
+              >
+                
+                  7.3
+                
+                Time Response for State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/4/canon">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/4/canon.html"
+              >
+                
+                  7.4
+                
+                Canonical Forms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/5/systransf">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/5/systransf.html"
+              >
+                
+                  7.5
+                
+                Transformation of States and System Diagonalization
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/6/gensolution">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/6/gensolution.html"
+              >
+                
+                  7.6
+                
+                The General Solution of LTI Systems
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/08/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/08/index.html"
+        >
+          
+            8.
+          
+          State-Feedback Control
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/1/obsv_ctrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/1/obsv_ctrl.html"
+              >
+                
+                  8.1
+                
+                Controllability and Observability
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/2/sfcontrol">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/2/sfcontrol.html"
+              >
+                
+                  8.2
+                
+                State-Feedback Control
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/3/observers">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/3/observers.html"
+              >
+                
+                  8.3
+                
+                State Observers
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/4/observer_controller">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/4/observer_controller.html"
+              >
+                
+                  8.4
+                
+                Combined Observer and Controller
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/mattf">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/mattf.html"
+        >
+          
+          Appendix A Defining Transfer Functions in MATLAB
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/homework/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/homework/index.html"
+        >
+          
+          Homework Problems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/revision/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/revision/problems.html"
+              >
+                
+                Homework 1 - Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lead_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lead_compensation/problems.html"
+              >
+                
+                Homework 2 - Dominant Poles and Lead Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_compensation/problems.html"
+              >
+                
+                Homework 3 - Lag Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_lead_pid/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_lead_pid/problems.html"
+              >
+                
+                Homework 4 - Lag-Lead and PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/freqresp/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/freqresp/problems.html"
+              >
+                
+                Homework 5 - Frequency Response Cascade Compensator Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/digirev/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/digirev/problems.html"
+              >
+                
+                Homework 6 - Digital Systems Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ss2tf/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ss2tf/problems.html"
+              >
+                
+                Homework 7 - Modelling Systems in Statespace
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ssm/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ssm/problems.html"
+              >
+                
+                Homework 8 - State Space Modelling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ppo/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ppo/problems.html"
+              >
+                
+                Homework 9 - Pole Placement and Observers
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Handouts</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/handouts/csd/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/handouts/csd/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/1">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/1.html"
+              >
+                
+                1. Aims of Control Systems Analysis and Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/2">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/2.html"
+              >
+                
+                2. Design Methods
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/3">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/3.html"
+              >
+                
+                3. Design Strategies
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/4">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/4.html"
+              >
+                
+                4. Design Criteria
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/5">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/5.html"
+              >
+                
+                5. Some Useful Design Curves
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/ack">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/ack.html"
+              >
+                
+                Acknowledgements
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/appendix">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/appendix.html"
+              >
+                
+                Appendix -- Transfer Function Plots for Typical Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="setup/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/setup/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eglm03-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eglm03-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eglm03-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Frequency Response Design of a Lead Compensator</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">clear all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+ans =
+
+    &#39;/Users/eechris/dev/eglm03-textbook/content/05/1/matlab&#39;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Frequency-Response-Design-of-a-Lead-Compensator">Frequency Response Design of a Lead Compensator<a class="anchor-link" href="#Frequency-Response-Design-of-a-Lead-Compensator"> </a></h1><p>This section examines the design of phase-lead cascade compensators using Bode diagrams.</p>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis"> </a></h2><p>The plant is a type 1 servomechanism with transfer function:</p>
+$$G(s) = \frac{1}{s(s+1)}.$$<p>The system has unity gain feedback and the compensated closed-loop system is to have a static velocity error constant of 10 and a phase margin of 50%.</p>
+<p>Defining the system in Matlab</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">nG</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">dG</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">nG</span><span class="p">,</span><span class="n">dG</span><span class="p">);</span>
+<span class="n">H</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Go</span> <span class="p">=</span> <span class="n">G</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In order to display the sort of diagrams we want, we need to do more work with the graphics than is strictly necessary. In other words, you shouldn't worry too much about the MATLAB commands shown here. We recommend that in a real interactive design session you make use of the <code>ltiview</code> to examine the system response diagrams.</p>
+<p>First of all, I want to show the uncompensated frequency response diagrams plotted with the asymptotic bode curves. 
+There is no built-in function for the latter so I have included the source code for a function <code>asymp</code>, that does what we want. See the appendix for information of how to use this function.</p>
+<p>We predefine the frequency values that we want:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">w</span> <span class="p">=</span> <span class="nb">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we calculate the magnitude and phase</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">m0</span><span class="p">,</span><span class="n">p0</span><span class="p">]</span> <span class="p">=</span> <span class="n">bode</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result of <code>[m0,p0] = bode(Go,w)</code> produces a data structure. We need to convert the magnitude to decibels and extract the data into column vectors for plotting.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">m0dB</span> <span class="p">=</span> <span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">m0</span><span class="p">);</span>
+<span class="n">m0dB</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">m0dB</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">p0</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+For the asymptotic magnitude. We need the state space matrices:
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">Ao</span><span class="p">,</span><span class="n">Bo</span><span class="p">,</span><span class="n">Co</span><span class="p">,</span><span class="n">Do</span><span class="p">]=</span><span class="n">ssdata</span><span class="p">(</span><span class="n">Go</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and then the asymptotic response is computed using the function asymp:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">am0dB</span> <span class="p">=</span> <span class="n">asymp</span><span class="p">(</span><span class="n">Ao</span><span class="p">,</span><span class="n">Bo</span><span class="p">,</span><span class="n">Co</span><span class="p">,</span><span class="n">Do</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">m0dB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">am0dB</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">]),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Uncompensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Magnitude&#39;</span><span class="p">,</span><span class="s">&#39;Asymptote&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude Go(jw) (dB)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+<span class="s">subplot(212)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">p0</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Uncompensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Angle Go(jw)&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase Go(jw) (degrees)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_15_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the gain cut-off frequency $\omega_m \approx 1$ rad.s<sup>-1</sup> and the phase margin $\phi_m \approx 45^\circ$.</p>
+<h2 id="Gain-compensation-for-steady-state-performance">Gain compensation for steady-state performance<a class="anchor-link" href="#Gain-compensation-for-steady-state-performance"> </a></h2><p>For this system:</p>
+$$K_v =s \left.G_0(s)\right|_{s=0} = \left.\frac{1}{s(s+1)}\right|_{s=0} = 1.$$<p>We want $K_v =10$ so, with gain compensation only:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Kv</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">Kc</span> <span class="p">=</span> <span class="n">Kv</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The gain compensated open-loop transfer function is now</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">KcGo</span> <span class="p">=</span> <span class="n">Kc</span><span class="o">*</span><span class="n">Go</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We produce a new Bode diagram for the gain compensated system. The same commands are issued as before.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">m1</span><span class="p">,</span><span class="n">p1</span><span class="p">]</span> <span class="p">=</span> <span class="n">bode</span><span class="p">(</span><span class="n">KcGo</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="n">m1dB</span> <span class="p">=</span> <span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">m1</span><span class="p">);</span>
+<span class="n">m1dB</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">m1dB</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">p1</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Asymptotic magnitude</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">A1</span><span class="p">,</span><span class="n">B1</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">D1</span><span class="p">]=</span><span class="n">ssdata</span><span class="p">(</span><span class="n">KcGo</span><span class="p">);</span>
+<span class="n">am1dB</span> <span class="p">=</span> <span class="n">asymp</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">B1</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">D1</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">subplot(211)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">m1dB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">am1dB</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">]),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Gain Compensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;|KcGo(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;Asym. |KcGo(jw)|&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+<span class="s">% Phase is unchanged</span><span class="p"></span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">p1</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Gain Compensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;KcGo(jw)&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase KcGo(jw) (degrees)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_25_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should note that the magnitude plot has moved up by 20dB (10) but that the phase response is unchanged. A consequence of this is that $\omega_n \approx 3$ rad.s<sup>-1</sup>, a three-fold increase, so that the system will be about three-times faster. However, the phase margin is now $\phi_m\approx 20^\circ$, a reduction of 25%, so we would expect a reduction in stability – meaning larger overshoot and longer settling time. We need to use a combination of a zero and a pole to add phase lead at $\omega_1$ to restore the phase margin and therefore restore the transient performance to the pre-compensation values.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Phase-Lead-Compensation">Phase Lead Compensation<a class="anchor-link" href="#Phase-Lead-Compensation"> </a></h2><p>The lead compensator has transfer function</p>
+$$D(s)=K_c\left(\frac{1+Ts}{1+\alpha s}\right),\;\alpha&lt;1.$$<p>We have already established that the gain $K_c = 10$. We now chose the parameters $\alpha$ and $T$ to give us the phase margin of $50^\circ$ that we require.</p>
+<p>The relationship between the maximum phase in a phase-lead compensator is given by</p>
+$$\phi_{\mathrm{max}} = \left(\frac{1-\alpha}{1+\alpha}\right).$$<p>For the phase-lead compensator, the maximum phase-lead occurs mid-point logarithmically between the cut-off frequencies of $1/T$  and  $1/(\alpha T)$. This will be given by $\omega = 1/(T\sqrt{\alpha})$  so we arrange for $\omega=\omega_1$ and hence</p>
+$$ T = \frac{1}{\omega_1\sqrt{\alpha}}.$$<p>A plot of $\phi_{\mathrm{max}}$ against $\alpha$ is useful for design:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">recipr_alpha</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">:</span><span class="mi">60</span><span class="p">;</span>
+<span class="n">alpha</span> <span class="p">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">recipr_alpha</span><span class="p">;</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">recipr_alpha</span><span class="p">,</span><span class="nb">asin</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">./</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">))</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="nb">pi</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">grid</span><span class="p">,</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Maximum phase versus 1/alpha for a Lead Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Reciprocal Alpha&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Maximum Phase Lead (degrees)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_28_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Inverting the formula
+     .
+$$\alpha=\left(\frac{1-\sin\phi_{\mathrm{max}}}{1+\sin\phi_{\mathrm{max}}}\right).$$</p>
+<p>We can use this formula to calculate the required value of $\alpha$. We want a phase margin of $50^\circ$. We have $20^\circ$ so we need to add $30^\circ$ via a phase lead compensator. Experience shows that this will be conservative because the increase in gain added by the lead compensator at high frequency, causes an increase in $\omega_1$ so we will find that we are on the downward slope of the phase characteristic when the compensator is added to the plant.</p>
+<p>We therefore allow a bit extra – 50% in this case –  so choose $\phi_{\mathrm{max}}=45^\circ$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">phi_max</span> <span class="p">=</span> <span class="mi">45</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span> <span class="c">% angles in Matlab always in radians</span>
+<span class="n">sin_Pm</span> <span class="p">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">phi_max</span><span class="p">);</span>
+<span class="n">alpha</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sin_Pm</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sin_Pm</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+alpha =
+
+    0.1716
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now the compensator (without the gain) is ...</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">w1</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">T</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">w1</span><span class="p">);</span>
+<span class="n">aT</span> <span class="p">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">T</span><span class="p">;</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="n">aT</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+D =
+ 
+  0.8047 s + 1
+  ------------
+  0.1381 s + 1
+ 
+Continuous-time transfer function.
+
+
+D =
+ 
+  5.8284 (s+1.243)
+  ----------------
+     (s+7.243)
+ 
+Continuous-time zero/pole/gain model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's examine the frequency response of the lead compensator</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">md</span><span class="p">,</span><span class="n">pd</span><span class="p">]</span> <span class="p">=</span> <span class="n">bode</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="n">mddB</span> <span class="p">=</span> <span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">md</span><span class="p">);</span>
+<span class="n">mddB</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">mddB</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">pd</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Asymptotic magnitude</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">Ad</span><span class="p">,</span><span class="n">Bd</span><span class="p">,</span><span class="n">Cd</span><span class="p">,</span><span class="n">Dd</span><span class="p">]=</span><span class="n">ssdata</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+<span class="n">amddB</span> <span class="p">=</span> <span class="n">asymp</span><span class="p">(</span><span class="n">Ad</span><span class="p">,</span><span class="n">Bd</span><span class="p">,</span><span class="n">Cd</span><span class="p">,</span><span class="n">Dd</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">subplot(211)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">mddB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">amddB</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Lead Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;|D(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;Asym. |D(jw)|&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+<span class="s">% Phase is unchanged</span><span class="p"></span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">pd</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Lead Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;D(jw)&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase D(jw) (degrees)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_38_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now put the whole lot together</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">KcDG</span> <span class="p">=</span> <span class="n">series</span><span class="p">(</span><span class="n">Kc</span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="n">Go</span><span class="p">);</span>
+<span class="p">[</span><span class="n">m2</span><span class="p">,</span><span class="n">p2</span><span class="p">]</span> <span class="p">=</span> <span class="n">bode</span><span class="p">(</span><span class="n">KcDG</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="n">m2dB</span> <span class="p">=</span> <span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">m2</span><span class="p">);</span>
+<span class="n">m2dB</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">m2dB</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">p2</span> <span class="p">=</span> <span class="nb">reshape</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Asymptotic magnitude</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="p">[</span><span class="n">A2</span><span class="p">,</span><span class="n">B2</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">D2</span><span class="p">]=</span><span class="n">ssdata</span><span class="p">(</span><span class="n">KcDG</span><span class="p">);</span>
+<span class="n">am2dB</span> <span class="p">=</span> <span class="n">asymp</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="n">B2</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">D2</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plots</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">subplot(211)</span><span class="p"></span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">am0dB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">m2dB</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">am2dB</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">]),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Lead Compensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Asym. |Go(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;|KcDGo(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;Asym. |KcDGo(jw)|&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+<span class="s">% Phase ...</span><span class="p"></span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">p0</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">p2</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Lead Compensation Example - Lead Compensated Plant&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;Go(jw)&#39;</span><span class="p">,</span><span class="s">&#39;KcDGo(jw)&#39;</span><span class="p">),</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Phase KcDGo(jw) (degrees)&#39;</span><span class="p">),</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_44_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that the bandwidth has increased again (it's about double what we achieved with gain alone) but the phase margin looks about right. To find out how have we done we can compute the achieved phase margin:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">clf</span>
+<span class="s">margin(KcDG)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_46_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The phase margin is about $47^\circ$ and the gain cut-off frequency is now 6 rad.s<sup>-1</sup>.</p>
+<h2 id="Evaluation-of-the-Design">Evaluation of the Design<a class="anchor-link" href="#Evaluation-of-the-Design"> </a></h2><p>We now put everything together to evaluate the design.</p>
+<h3 id="Bode-Plots">Bode Plots<a class="anchor-link" href="#Bode-Plots"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Bode </span>
+<span class="c">%  blue -- Uncompensated Go(jw)</span>
+<span class="c">%  green - Gain compensated KcGo(jw)</span>
+<span class="c">%  red -- Lead Compensator KcD(jw)</span>
+<span class="c">%  cyan -- Lead Compensated D(jw)Go(jw)</span>
+<span class="n">bode</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">KcGo</span><span class="p">,</span><span class="n">Kc</span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="n">KcDG</span><span class="p">,</span><span class="n">w</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Bode Diagrams: Lead Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_48_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nyquist-Diagrams">Nyquist Diagrams<a class="anchor-link" href="#Nyquist-Diagrams"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Nyquist </span>
+<span class="c">%  blue -- Uncompensated Go(jw)</span>
+<span class="c">%  green - Gain compensated KcGo(jw)</span>
+<span class="c">%  red -- Lead Compensator KcD(jw)</span>
+<span class="c">%  cyan -- Lead Compensated D(jw)Go(jw)</span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">KcGo</span><span class="p">,</span><span class="n">Kc</span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="n">KcDG</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Nyquist Diagrams: Lead Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_50_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nichols-Charts">Nichols Charts<a class="anchor-link" href="#Nichols-Charts"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Nichols</span>
+<span class="c">%  blue -- Uncompensated Go(jw)</span>
+<span class="c">%  green - Gain compensated KcGo(jw)</span>
+<span class="c">%  red -- Lead Compensator KcD(jw)</span>
+<span class="c">%  cyan -- Lead Compensated D(jw)Go(jw)</span>
+<span class="n">nichols</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="n">KcGo</span><span class="p">,</span><span class="n">Kc</span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="n">KcDG</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Nichols Charts: Lead Compensator&#39;</span><span class="p">),</span><span class="c">...</span>
+<span class="n">   grid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_52_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Closed-Loop-Frequency-Response">Closed-Loop Frequency Response<a class="anchor-link" href="#Closed-Loop-Frequency-Response"> </a></h3><p>Now we examine the closed-loop frequency responses. Notice the increase in bandwidth paid for by a slight increase in peak magnification $M_\mathrm{max}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">Gc0</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Gc1</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">KcGo</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Gc2</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">KcDG</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="n">mc0</span><span class="p">,</span><span class="n">pc0</span><span class="p">]=</span><span class="n">bode</span><span class="p">(</span><span class="n">Gc0</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="p">[</span><span class="n">mc1</span><span class="p">,</span><span class="n">pc1</span><span class="p">]=</span><span class="n">bode</span><span class="p">(</span><span class="n">Gc1</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="p">[</span><span class="n">mc2</span><span class="p">,</span><span class="n">pc2</span><span class="p">]=</span><span class="n">bode</span><span class="p">(</span><span class="n">Gc2</span><span class="p">,</span><span class="n">w</span><span class="p">);</span>
+<span class="n">mc0</span> <span class="p">=</span> <span class="mf">20.</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">reshape</span><span class="p">(</span><span class="n">mc0</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">mc1</span> <span class="p">=</span> <span class="mf">20.</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">reshape</span><span class="p">(</span><span class="n">mc1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">mc2</span> <span class="p">=</span> <span class="mf">20.</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="nb">reshape</span><span class="p">(</span><span class="n">mc2</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">mc0</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">mc1</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">mc2</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">grid</span><span class="p">,</span><span class="c">...</span>
+   <span class="n">title</span><span class="p">(</span><span class="s">&#39;Closed-loop Frequency Response for Lead Compensated System&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">legend</span><span class="p">(</span><span class="s">&#39;|Go(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;Kc|Go(jw)|&#39;</span><span class="p">,</span><span class="s">&#39;Kc|D(jw)Go(jw)|&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Frequency (rad/s)&#39;</span><span class="p">),</span><span class="c">...</span>
+   <span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Magnitude (dB)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_54_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Closed-Loop-Time-Responses">Closed-Loop Time Responses<a class="anchor-link" href="#Closed-Loop-Time-Responses"> </a></h3><p>First we examine the closed-loop step responses. Notice the significant increase in speed paid for by a slight increase in peak overshoot %OS.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% Blue – uncompensated</span>
+<span class="c">% Green - gain compensated</span>
+<span class="c">% Red - lead compensated</span>
+<span class="n">step</span><span class="p">(</span><span class="n">Gc0</span><span class="p">,</span><span class="n">Gc1</span><span class="p">,</span><span class="n">Gc2</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Closed-Loop Step Response&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_56_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To compute the ramp error response we need to add an integrator to the error reponse:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">integ</span><span class="p">=</span><span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]);</span>
+<span class="n">re0</span> <span class="p">=</span> <span class="n">integ</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Go</span><span class="p">));</span>
+<span class="n">re1</span> <span class="p">=</span> <span class="n">integ</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span><span class="n">KcGo</span><span class="p">));</span>
+<span class="n">re2</span> <span class="p">=</span> <span class="n">integ</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">KcDG</span><span class="p">));</span><span class="n"></span>
+<span class="n">clf</span>
+<span class="s">step(re0,re1,re2), title(&#39;Velocity Error Response&#39;)</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../../images/05/1/freqlead_58_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The velocity error is reduced to 10% from 100% showing that $K_v$ is indeed 10.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Appendix-&#8211;-The-Matlab-Function-asymp">Appendix &#8211; The Matlab Function <code>asymp</code><a class="anchor-link" href="#Appendix-&#8211;-The-Matlab-Function-asymp"> </a></h2><p>The function <code>asymp</code> is used to determine the asymptotic magnitude response (in dB) of a system defined by a state-space model. The function is not built-in to Matlab so we provide a listing here. The text should be copied and pasted into the Matlab editor and saved as aymp.m in either the working directory or a directory located on the MATLAB path (e.g. P:\WORK).</p>
+<p><strong>Important Note</strong>: you will not be able to evaluate the code in this section unless <code>asymp</code> is available to MATLAB.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%%file matlab/asymp.m</span>
+<span class="k">function</span><span class="w"> </span>[mata] <span class="p">=</span><span class="w"> </span><span class="nf">asymp</span><span class="p">(</span>a,b,c,d,w<span class="p">)</span><span class="w"></span>
+<span class="c">%ASYMP  Asymptotic bode magnitude response of continuous-time linear systems.</span>
+<span class="c">%       [MAG] = ASYMP(A,B,C,D,W)  calculates the asymptotic frequency response </span>
+<span class="c">%       of the system:</span>
+<span class="c">%               .</span>
+<span class="c">%               x = Ax + Bu                          -1</span>
+<span class="c">%               y = Cx + Du             G(s) = C(sI-A) B + D</span>
+<span class="c">%</span>
+<span class="c">%</span>
+<span class="c">%       Vector W must contain the frequencies, in</span>
+<span class="c">%       radians, at which the Bode response is to be evaluated.  ASYMP returns</span>
+<span class="c">%       matrix MAG with LENGTH(W) rows. MAG is returned in decibels. </span>
+<span class="c">%</span>
+
+<span class="c">%       C.P. Jobling Dingyu Xue 14-02-88</span>
+<span class="c">%  	@(#)asymp.m	1.3      </span>
+
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">]=</span><span class="n">ss2tf</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="c">%strip off small coefficients of numerator</span>
+<span class="n">num</span><span class="p">=</span><span class="n">num</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">1.0e-10</span><span class="p">);</span>
+<span class="p">[</span><span class="n">zer</span><span class="p">,</span><span class="n">pol</span><span class="p">,</span><span class="n">k</span><span class="p">]=</span><span class="n">tf2zp</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">);</span>
+<span class="c">%strip infinite zeros</span>
+<span class="n">zer</span><span class="p">=</span><span class="n">zer</span><span class="p">(</span><span class="n">zer</span><span class="o">~=</span><span class="nb">inf</span><span class="p">);</span>
+<span class="n">table</span> <span class="p">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">pol</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.</span><span class="o">*</span><span class="nb">ones</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">pol</span><span class="p">),</span><span class="mi">1</span><span class="p">)];</span>
+<span class="n">table</span> <span class="p">=</span> <span class="p">[</span><span class="n">table</span><span class="p">;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">zer</span><span class="p">),</span><span class="nb">ones</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">zer</span><span class="p">),</span><span class="mi">1</span><span class="p">)];</span>
+<span class="n">sort</span><span class="p">(</span><span class="n">table</span><span class="p">);</span>
+<span class="n">bode_k</span><span class="p">=</span><span class="mf">20.</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+<span class="n">mata</span><span class="p">=</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">));</span>
+<span class="c">%add in contributions from frequency terms</span>
+<span class="k">for</span> <span class="nb">i</span><span class="p">=</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+	<span class="n">break_f</span> <span class="p">=</span> <span class="n">table</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+ 	<span class="c">%get points below break frequency</span>
+	<span class="n">low_f</span><span class="p">=</span><span class="n">w</span><span class="o">&lt;</span><span class="n">break_f</span><span class="p">;</span>
+	<span class="c">%get points above</span>
+	<span class="n">high_f</span><span class="p">=</span><span class="o">~</span><span class="n">low_f</span><span class="p">;</span><span class="n"></span>
+<span class="n">        if </span><span class="s">break_f == 0</span><span class="p"></span>
+		<span class="n">break_f</span><span class="p">=</span><span class="mi">1</span><span class="p">;</span><span class="n"></span>
+<span class="n">	else</span>
+<span class="n">		</span><span class="s">bode_k=bode_k+table(i,2)*20.*log10(break_f)</span><span class="p">;</span>
+<span class="n">	end</span>
+<span class="n">	</span><span class="s">mata=mata+[zeros(size(w(low_f))),table(i,2)*20*log10(w(high_f)./break_f)]</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="n">mata</span><span class="p">=</span><span class="n">mata</span><span class="o">+</span><span class="n">bode_k</span><span class="o">.*</span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">w</span><span class="p">));</span><span class="n"></span>
+<span class="n">return</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Created file &#39;/Users/eechris/dev/eglm03-textbook/content/05/1/matlab/asymp.m&#39;.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Resources">Resources<a class="anchor-link" href="#Resources"> </a></h2><p>An executable version of this document is available to download as a MATLAB Live Script file <a href="matlab/freqresp.mlx">freqresp.mlx</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eglm03-textbook/05/freqresp.html">
+      〈 <span class="u-margin-right-tiny"></span> Frequency Response Design
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eglm03-textbook/05/2/freqlag.html">
+      Frequency Response Design of a Lag... <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">Dr Chris Jobling</a> for <a href="https://www.swansea.ac.uk">Swansea University</a>.</p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

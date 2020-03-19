@@ -1,0 +1,2721 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Systems Modelling and Simulation</title>
+  <meta name="description" content="        Systems Modelling and Simulation    LecturerSet up MATLAB    cd matlabpwdclear allformat compact    ans =    &#39;/Users/eechris/dev/eglm03-textbook/...">
+
+  <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/01/modsim.html">
+  <link rel="alternate" type="application/rss+xml" title="EGLM03 Modern Control Systems" href="https://cpjobling.github.io/eglm03-textbook/feed.xml">
+
+  <meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/01/modsim.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Systems Modelling and Simulation" />
+<meta property="og:description" content="        Systems Modelling and Simulation    LecturerSet up MATLAB    cd matlabpwdclear allformat compact    ans =    &#39;/Users/eechris/dev/eglm03-textbook/..." />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/images/logo/logo.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://cpjobling.github.io/eglm03-textbook/01/modsim.html",
+  "headline": "Systems Modelling and Simulation",
+  "datePublished": "2020-03-19T10:47:14+00:00",
+  "dateModified": "2020-03-19T10:47:14+00:00",
+  "description": "        Systems Modelling and Simulation    LecturerSet up MATLAB    cd matlabpwdclear allformat compact    ans =    &#39;/Users/eechris/dev/eglm03-textbook/...",
+  "author": {
+    "@type": "Person",
+    "name": "Dr Chris P. Jobling"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cpjobling.github.io/eglm03-textbook",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cpjobling.github.io/eglm03-textbook",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/eglm03-textbook/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+    // Number LaTeX-style equations
+    "TeX": {
+        equationNumbers: {
+          autoNumber: "all"
+        }
+    }
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/eglm03-textbook/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/eglm03-textbook/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/eglm03-textbook';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/eglm03-textbook/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/eglm03-textbook/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/eglm03-textbook/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/eglm03-textbook/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/eglm03-textbook/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/eglm03-textbook/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/eglm03-textbook/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "EGLM03 Modern Control Systems"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: ""
+    },
+    kernelOptions: {
+    kernelName: "matlab",
+    path: "content/01"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyterbook.org/"><img src="/eglm03-textbook/images/logo/logo.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">EGLM03 Modern Control Systems</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="">
+        <a class="c-sidebar__entry"
+          href=".html"
+        >
+          
+          
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/intro.html"
+        >
+          
+          Introduction to this Module
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/background/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/background/index.html"
+        >
+          
+          Background
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_is_rlocus">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_is_rlocus.html"
+              >
+                
+                What is the root locus?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/what_does_the_rlocus_represent">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/what_does_the_rlocus_represent.html"
+              >
+                
+                What does the root locus represent?
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/background/rlocus/sketching_rules">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/background/rlocus/sketching_rules.html"
+              >
+                
+                What are the rules for sketching a root locus?
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/modsim">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/modsim.html"
+        >
+          
+            1.
+          
+          Systems Modelling and Simulation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/02/ssntr">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/02/ssntr.html"
+        >
+          
+            2.
+          
+          Steady-State and Transient Response
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/03/classical">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/03/classical.html"
+        >
+          
+            3.
+          
+          Classical Control Systems Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/1/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/1/intro.html"
+              >
+                
+                  3.1
+                
+                Introducing phase-lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/2/velfb">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/2/velfb.html"
+              >
+                
+                  3.2
+                
+                Introduction to Root Locus Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/3/pplusd">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/3/pplusd.html"
+              >
+                
+                  3.3
+                
+                Proportional plus derivative compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/4/leadc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/4/leadc.html"
+              >
+                
+                  3.4
+                
+                Lead compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/5/analrloc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/5/analrloc.html"
+              >
+                
+                  3.5
+                
+                Analytical Root-Locus Design of Phase-Lead Compensators
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/03/6/lagc">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/03/6/lagc.html"
+              >
+                
+                  3.6
+                
+                Lag compensation
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/04/pid">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/04/pid.html"
+        >
+          
+            4.
+          
+          PID Compensation
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/0/intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/0/intro.html"
+              >
+                
+                  4.1
+                
+                Introduction to PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/1/zeigler">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/1/zeigler.html"
+              >
+                
+                  4.2
+                
+                Zeigler-Nichols Tuning Algorithms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/2/tuning">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/2/tuning.html"
+              >
+                
+                  4.3
+                
+                Manually Tuning a PID compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/3/analpid">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/3/analpid.html"
+              >
+                
+                  4.4
+                
+                Analytical Design of a PID Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/04/4/autotune">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/04/4/autotune.html"
+              >
+                
+                  4.5
+                
+                PID Autotuning in MATLAB
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/05/freqresp">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/05/freqresp.html"
+        >
+          
+            5.
+          
+          Frequency Response Design
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/1/freqlead">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/1/freqlead.html"
+              >
+                
+                  5.1
+                
+                Frequency Response Design of a Lead Compensator
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/05/2/freqlag">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/05/2/freqlag.html"
+              >
+                
+                  5.2
+                
+                Frequency Response Design of a Lag Compensator
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/06/digital">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/06/digital.html"
+        >
+          
+            6.
+          
+          Digital Control Systems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/1/digi_intro">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/1/digi_intro.html"
+              >
+                
+                  6.1
+                
+                Introduction to Digital Systems
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/2/dsm">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/2/dsm.html"
+              >
+                
+                  6.2
+                
+                Digital System Models and System Response
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/3/cse">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/3/cse.html"
+              >
+                
+                  6.3
+                
+                Continuous Systems Equivalence
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/06/4/digictrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/06/4/digictrl.html"
+              >
+                
+                  6.4
+                
+                Introduction to Digital Control
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/07/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/07/index.html"
+        >
+          
+            7.
+          
+          Modelling Systems in State-Space
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/1/intro2ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/1/intro2ss.html"
+              >
+                
+                  7.1
+                
+                State-Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/2/tf4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/2/tf4ss.html"
+              >
+                
+                  7.2
+                
+                Laplace Transforms of State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/3/tr4ss">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/3/tr4ss.html"
+              >
+                
+                  7.3
+                
+                Time Response for State Space Models
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/4/canon">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/4/canon.html"
+              >
+                
+                  7.4
+                
+                Canonical Forms
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/5/systransf">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/5/systransf.html"
+              >
+                
+                  7.5
+                
+                Transformation of States and System Diagonalization
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/07/6/gensolution">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/07/6/gensolution.html"
+              >
+                
+                  7.6
+                
+                The General Solution of LTI Systems
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/08/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/08/index.html"
+        >
+          
+            8.
+          
+          State-Feedback Control
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/1/obsv_ctrl">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/1/obsv_ctrl.html"
+              >
+                
+                  8.1
+                
+                Controllability and Observability
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/2/sfcontrol">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/2/sfcontrol.html"
+              >
+                
+                  8.2
+                
+                State-Feedback Control
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/3/observers">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/3/observers.html"
+              >
+                
+                  8.3
+                
+                State Observers
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/08/4/observer_controller">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/08/4/observer_controller.html"
+              >
+                
+                  8.4
+                
+                Combined Observer and Controller
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/01/mattf">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/01/mattf.html"
+        >
+          
+          Appendix A Defining Transfer Functions in MATLAB
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Homework</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/homework/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/homework/index.html"
+        >
+          
+          Homework Problems
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/revision/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/revision/problems.html"
+              >
+                
+                Homework 1 - Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lead_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lead_compensation/problems.html"
+              >
+                
+                Homework 2 - Dominant Poles and Lead Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_compensation/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_compensation/problems.html"
+              >
+                
+                Homework 3 - Lag Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/lag_lead_pid/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/lag_lead_pid/problems.html"
+              >
+                
+                Homework 4 - Lag-Lead and PID Compensation
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/freqresp/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/freqresp/problems.html"
+              >
+                
+                Homework 5 - Frequency Response Cascade Compensator Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/digirev/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/digirev/problems.html"
+              >
+                
+                Homework 6 - Digital Systems Revision
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ss2tf/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ss2tf/problems.html"
+              >
+                
+                Homework 7 - Modelling Systems in Statespace
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ssm/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ssm/problems.html"
+              >
+                
+                Homework 8 - State Space Modelling
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/homework/ppo/problems">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/homework/ppo/problems.html"
+              >
+                
+                Homework 9 - Pole Placement and Observers
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Handouts</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/handouts/csd/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/handouts/csd/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/1">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/1.html"
+              >
+                
+                1. Aims of Control Systems Analysis and Design
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/2">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/2.html"
+              >
+                
+                2. Design Methods
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/3">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/3.html"
+              >
+                
+                3. Design Strategies
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/4">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/4.html"
+              >
+                
+                4. Design Criteria
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/5">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/5.html"
+              >
+                
+                5. Some Useful Design Curves
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/ack">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/ack.html"
+              >
+                
+                Acknowledgements
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/handouts/csd/appendix">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/handouts/csd/appendix.html"
+              >
+                
+                Appendix -- Transfer Function Plots for Typical Transfer Functions
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Setting up your own version of this book</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="setup/index">
+        <a class="c-sidebar__entry"
+          href="/eglm03-textbook/setup/index.html"
+        >
+          
+          Control System Design Methods
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter.html"
+              >
+                
+                About Jupyter notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/python">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/python.html"
+              >
+                
+                Installing Python
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/setup">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/setup.html"
+              >
+                
+                Setting up your MATLAB-Jupyter Computing Environment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/setup/jupyter-book">
+              <a class="c-sidebar__entry"
+                href="/eglm03-textbook/setup/jupyter-book.html"
+              >
+                
+                Setting up jupyter-book
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+
+
+
+  
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/eglm03-textbook/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/eglm03-textbook/search.html" class="topbar-right-button" id="search-button">
+    <img src="/eglm03-textbook/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Systems Modelling and Simulation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">cd </span><span class="s">matlab</span><span class="p"></span>
+<span class="n">pwd</span>
+<span class="s">clear all</span><span class="p"></span>
+<span class="n">format </span><span class="s">compact</span><span class="p"></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>ans =
+    &#39;/Users/eechris/dev/eglm03-textbook/content/01/matlab&#39;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="System-Modelling-and-Simulation">System Modelling and Simulation<a class="anchor-link" href="#System-Modelling-and-Simulation"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Contents">Contents<a class="anchor-link" href="#Contents"> </a></h2><ul>
+<li>Ordinary differential equations</li>
+<li>Transfer functions</li>
+<li>Integral models</li>
+<li>Using Simulink</li>
+<li>State-space models</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Ordinary-Differential-Equations">Ordinary Differential Equations<a class="anchor-link" href="#Ordinary-Differential-Equations"> </a></h2><ul>
+<li>Used to model a wide variety of so-called “lumped parameter” problems in engineering and technology.</li>
+<li>Based on the fundamental laws of nature such as Ohm’s law, Newton’s laws of motion, thermodynamics, chemistry etc.</li>
+<li>We will assume that you have or can derive such a model in your domain of interest.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-Example">An Example<a class="anchor-link" href="#An-Example"> </a></h3><p>Spring Mass Damper System</p>
+<p><img src="images/smd.png" alt="Spring Mass Damper System (SMD)"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Free-body-diagram">Free body diagram<a class="anchor-link" href="#Free-body-diagram"> </a></h3><p><img src="images/freeb.png" alt="Freebody diagram"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Differential-equation">Differential equation<a class="anchor-link" href="#Differential-equation"> </a></h3>$$\begin{eqnarray*}
+m\ddot x &amp;=&amp; \sum \mathrm{forces} \;\mathrm{in}\;\mathrm{the}\;x\;\mathrm{direction}\\
+ &amp;=&amp; F - kx - b\dot x\\
+F &amp;=&amp; m\ddot x + kx + b\dot x
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Challenge-for-Electrical-Engineers">Challenge for Electrical Engineers<a class="anchor-link" href="#Challenge-for-Electrical-Engineers"> </a></h3><p>Can you think of a simple electrical circuit that has a similar differential equation?</p>
+<p><em>Clue</em>: it would have 1 resistor 1 capacitor and 1 inductor.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transfer-functions">Transfer functions<a class="anchor-link" href="#Transfer-functions"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Laplace-transform">Laplace transform<a class="anchor-link" href="#Laplace-transform"> </a></h3><ul>
+<li>Allows us to represent a the differential equation representing a linear-time invariant (LTI) system as a rational polynomial in $s$.</li>
+<li>This can be solved for $t$ using the inverse-Laplace transform (time domain).</li>
+<li>Can substitute $s=j\omega$ to determine the response to sinusoidal inputs (frequency domain).</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transform-version-of-the-SMD">Transform version of the SMD<a class="anchor-link" href="#Transform-version-of-the-SMD"> </a></h3><p>Let:</p>
+$$\begin{eqnarray*}
+X(s) &amp;=&amp; \mathcal{L}x(t)\\
+F(s) &amp;=&amp; \mathcal{L}F(t)
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>then</p>
+$$F(s) = ms^2X(s) + bsX(s) + bX(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transfer-function">Transfer function<a class="anchor-link" href="#Transfer-function"> </a></h3>$$X(s) = \frac{1}{ms^2 + bs + k}F(s)$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Block-diagram">Block diagram<a class="anchor-link" href="#Block-diagram"> </a></h3><p><img src="images/bd.png" alt="Block diagram"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-LTI-Object">MATLAB LTI Object<a class="anchor-link" href="#MATLAB-LTI-Object"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%%file matlab/smd_params.m</span>
+<span class="c">%% SMD_PARAMS - define parameters for Spring Mass Damper (SMD) model</span>
+<span class="n">m</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c">% kg</span>
+<span class="n">b</span> <span class="p">=</span> <span class="mf">0.6</span><span class="p">;</span> <span class="c">% Ns/m</span>
+<span class="n">k</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c">% N/m</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Created file &#39;/Users/eechris/dev/eglm03-textbook/content/01/matlab/smd_params.m&#39;.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd_params</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd_tf</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">m</span> <span class="n">b</span> <span class="n">k</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+smd_tf =
+ 
+         1
+  ---------------
+  s^2 + 0.6 s + 5
+ 
+Continuous-time transfer function.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">smd_tf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/modsim_19_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Integral-Models">Integral Models<a class="anchor-link" href="#Integral-Models"> </a></h2><ul>
+<li>If system is non-linear, time-varying or very high order, we may not be able to solve the differential system directly.</li>
+<li>We typically resort to simulation</li>
+<li>MATLAB has a system simulation tool called <em>Simulink</em>.</li>
+<li>We first need to convert the differential equation to integral form.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integral-form">Integral form<a class="anchor-link" href="#Integral-form"> </a></h3><ul>
+<li>Makes use of the fact that for any differential term:</li>
+</ul>
+$$x(t)=\int_{0}^{t}\,\dot{x}(t)\,dt$$<ul>
+<li>We can use this fact to rearrange any <em>n</em><sup>th</sup>-order differential equation into n first-order integral equations.</li>
+<li>Using a numerical integration algorithm, we can solve such equations.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integral-form-of-SMD-equations">Integral form of SMD equations<a class="anchor-link" href="#Integral-form-of-SMD-equations"> </a></h3>$$\begin{eqnarray*}
+\ddot{x}&amp;=&amp;\frac{1}{m}\left(F-b\dot{x}-kx\right)\\
+\dot{x}&amp;=&amp;\int\ddot{x}\,dt\\
+x&amp;=&amp;\int\dot{x}\,dt
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Block-diagram">Block diagram<a class="anchor-link" href="#Block-diagram"> </a></h3><p><img src="images/intgm.png" alt="Integral model of SMD"></p>
+<p><strong>Note</strong></p>
+$$\mathcal{L}\left(\int x(t)\,dt\right) = \frac{1}{s}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Simulink-model">Simulink model<a class="anchor-link" href="#Simulink-model"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/simulink.png" alt="Simulink model of SMD system"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results-of-simulation">Results of simulation<a class="anchor-link" href="#Results-of-simulation"> </a></h3><p><img src="images/result.png" alt="Results of simulation"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="State-space-models">State-space models<a class="anchor-link" href="#State-space-models"> </a></h2><p>Let $x_1 = x$ and $x_2 = \dot{x}$ then</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$\begin{eqnarray*}
+\dot{x}_1&amp;=&amp;x_2\\
+\dot{x}_2&amp;=&amp;-\frac{k}{b}x_2-\frac{b}{m}x_1+\frac{F}{m}
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In matrix form</p>
+$$\left[ {\begin{array}{*{20}{c}}
+  {\dot {x}_1} \\ 
+  {\dot {x}_2} 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+  0&amp;1 \\ 
+  { - \frac{b}{m}}&amp;{ - \frac{k}{m}} 
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+   \\ 
+   
+\end{array}} \right] + \left[ {\begin{array}{*{20}{c}}
+  0 \\ 
+  {\frac{1}{m}} 
+\end{array}} \right]F$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="General-state-space-model">General state-space model<a class="anchor-link" href="#General-state-space-model"> </a></h3>$$\begin{eqnarray*}
+\mathbf{\dot x} &amp;=&amp; {\mathbf{Ax}} + {\mathbf{B}}u\\
+y &amp;=&amp; {\mathbf{Cx}} + {\mathbf{D}}u
+\end{eqnarray*}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MATLAB-LTI-Model">MATLAB LTI Model<a class="anchor-link" href="#MATLAB-LTI-Model"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="n">k</span><span class="o">/</span><span class="n">m</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">];</span> <span class="c">% state matrix</span>
+<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">];</span> <span class="c">% input matrix</span>
+<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">];</span> <span class="c">% Output matrix - output y = x1</span>
+<span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smd_ss</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+smd_ss =
+ 
+  A = 
+         x1    x2
+   x1     0     1
+   x2    -5  -0.6
+ 
+  B = 
+       u1
+   x1   0
+   x2   1
+ 
+  C = 
+       x1  x2
+   y1   1   0
+ 
+  D = 
+       u1
+   y1   0
+ 
+Continuous-time state-space model.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">smd_ss</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/01/modsim_35_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Comparison">Comparison<a class="anchor-link" href="#Comparison"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="images/smdcompare.png" alt="Comparing models in Simulink"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">smdcompare</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results"> </a></h3><p><img src="images/smdresults.png" alt="SMD Comparison"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Models-and-their-uses">Models and their uses<a class="anchor-link" href="#Models-and-their-uses"> </a></h2><ul>
+<li>Integral models for general solution of high-order, linear and non-linear differential equations.</li>
+<li>State-space models for <em>linear</em> time-invariant, time-varying and multi-input multi-output (<strong>MIMO</strong>) systems.</li>
+<li>Transfer function for linear time-invariant (<strong>LTI</strong>), single-input single output (<strong>SISO</strong>) systems</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Feedback-and-suggestions">Feedback and suggestions<a class="anchor-link" href="#Feedback-and-suggestions"> </a></h2><p>"<strong>Which bit of this session did you find the most difficult to understand</strong>”</p>
+<p>Use the Teams <a href="https://teams.microsoft.com/l/channel/19%3aa25f34ac58624f56b6a73358b97d2b42%40thread.skype/Week%25201?groupId=8831ec02-d0cc-4627-b070-40b1bff6a4e4&amp;tenantId=bbcab52e-9fbe-43d6-a2f3-9f66c43df268">week 1 discussion</a> to post feedback.</p>
+<p>Or tweet @<a href="https://twitter.com/eglm03">eglm03</a> hashtag #<a href="https://twitter.com/hashtag/eglm03">eglm03</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Additional-Background-Material">Additional Background Material<a class="anchor-link" href="#Additional-Background-Material"> </a></h2><p>Background is extra topics, usually references to the recommended text or links to web resources, that are provided to amplify topics that are introduced in the other activities. You are expected to access these materials in your own time. For this chapter, the background reading is all from the <a href="https://en.wikibooks.org/wiki/Control_Systems">Control Systems Wikibook</a>.</p>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Control_Systems/System_Modeling">Systems modeling</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Control_Systems/Transfer_Functions">Transfer functions</a></li>
+<li><a href="http://en.wikibooks.org/wiki/Control_Systems/State-Space_Equations">State-space equations</a> </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/eglm03-textbook/background/rlocus/sketching_rules.html">
+      〈 <span class="u-margin-right-tiny"></span> What are the rules for sketching a...
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/eglm03-textbook/02/ssntr.html">
+      Steady-State and Transient Response <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">Dr Chris Jobling</a> for <a href="https://www.swansea.ac.uk">Swansea University</a>.</p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
