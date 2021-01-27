@@ -98,7 +98,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+/site/
 
 # mypy
 .mypy_cache/
@@ -113,4 +113,6 @@ scripts/tests/site/_build
 # MATLAB/Simulink
 slprj
 *.slxc
+
+_build
 

@@ -1,0 +1,203 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+# This file contains the order and numbering for all sections in the book.
+#
+# It is a sample TOC file to help you get started. Fill it out with entries
+# for your own content.
+#
+# Each entry has the following schema:
+#
+# - title: mytitle   # Title of chapter or section
+#   file: /myfile  # file of section relative to the /content/ folder.
+#   sections:  # Contains a list of more entries that make up the chapter's sections
+#   not_numbered: true  # if the section shouldn't have a number in the sidebar
+#     (e.g. Introduction or appendices)
+#   expand_sections: true  # if you'd like the sections of this chapter to always
+#     be expanded in the sidebar.
+#   external: true  # Whether the file is an external link or points to content in the book
+#
+# Below are some special values that trigger specific behavior:
+# - search: true  # Will provide a link to a search page
+# - divider: true  # Will insert a divider in the sidebar
+# - header: My Header  # Will insert a header with no link in the sidebar
+#
+# See the links below for an example.
+
+# Top-level page
+- file: intro
+  title: Introduction to this Module
+
+- part:
+  chapters: 
+  - title: Background
+    file: background/index
+    sections:
+      - title: What is the root locus?
+        file: background/rlocus/what_is_rlocus
+      - title: What does the root locus represent?
+        file: background/rlocus/what_does_the_rlocus_represent
+      - title: What are the rules for sketching a root locus?
+        file: background/rlocus/sketching_rules
+
+- part: Modern Control Systems
+  numbered: true
+  chapters: 
+
+    - title: Systems Modelling and Simulation
+      file: 01/modsim
+
+    - title: Steady-State and Transient Response
+      file: 02/ssntr
+
+    - title: Classical Control Systems Design
+      file: 03/classical
+      sections:
+        - title: Introducing phase-lead compensation
+          file: 03/1/intro
+        - title: Introduction to Root Locus Design
+          file: 03/2/velfb
+        - title: Proportional plus derivative compensation
+          file: 03/3/pplusd
+        - title: Lead compensation
+          file: 03/4/leadc
+        - title: Analytical Root-Locus Design of Phase-Lead Compensators
+          file: 03/5/analrloc
+        - title: Lag compensation
+          file: 03/6/lagc
+
+    - title: PID Compensation
+      file: 04/pid
+      sections:
+        - title: Introduction to PID Compensation
+          file: 04/0/intro
+        - title: Zeigler-Nichols Tuning Algorithms
+          file: 04/1/zeigler
+        - title: Manually Tuning a PID compensator
+          file: 04/2/tuning
+        - title: Analytical Design of a PID Compensator
+          file: 04/3/analpid
+        - title: PID Autotuning in MATLAB
+          file: 04/4/autotune
+
+    - title: Frequency Response Design
+      file: 05/freqresp
+      sections:
+        - title: Frequency Response Design of a Lead Compensator
+          file: 05/1/freqlead
+        - title: Frequency Response Design of a Lag Compensator
+          file: 05/2/freqlag
+
+    - title: Digital Control Systems
+      file: 06/digital
+      sections:
+        - title: Introduction to Digital Systems
+          file: 06/1/digi_intro
+        - title: Digital System Models and System Response
+          file: 06/2/dsm
+        - title: Continuous Systems Equivalence
+          file: 06/3/cse
+        - title: Introduction to Digital Control
+          file: 06/4/digictrl
+    
+    - title: Modelling Systems in State-Space
+      file: 07/index
+      sections:
+        - title: State-Space Models
+          file: 07/1/intro2ss
+        - title: Laplace Transforms of State Space Models
+          file: 07/2/tf4ss
+        - title: Time Response for State Space Models
+          file: 07/3/tr4ss
+        - title: Canonical Forms
+          file: 07/4/canon
+        - title: Transformation of States and System Diagonalization
+          file: 07/5/systransf
+        - title: The General Solution of LTI Systems
+          file: 07/6/gensolution
+
+    - title: State-Feedback Control
+      file: 08/index
+      sections:
+        - title: Controllability and Observability
+          file: 08/1/obsv_ctrl
+        - title: State-Feedback Control
+          file: 08/2/sfcontrol
+        - title: State Observers
+          file: 08/3/observers
+        - title: Combined Observer and Controller
+          file: 08/4/observer_controller
+
+    - part: Appendices
+      
+      chapters:
+
+        - title: Appendix A Defining Transfer Functions in MATLAB
+          file: 01/mattf
+
+- part: Homework
+  
+  chapters:
+  
+  - title: Homework Problems
+    file: homework/index
+    sections:
+    - title: Homework 1 - Revision
+      file: homework/revision/problems
+    - title: Homework 2 - Dominant Poles and Lead Compensation
+      file: homework/lead_compensation/problems
+    - title: Homework 3 - Lag Compensation
+      file: homework/lag_compensation/problems
+    - title: Homework 4 - Lag-Lead and PID Compensation
+      file: homework/lag_lead_pid/problems
+    - title: Homework 5 - Frequency Response Cascade Compensator Design
+      file: homework/freqresp/problems
+    - title: Homework 6 - Digital Systems Revision
+      file: homework/digirev/problems
+    - title: Homework 7 - Modelling Systems in Statespace
+      file: homework/ss2tf/problems
+    - title: Homework 8 - State Space Modelling
+      file: homework/ssm/problems
+    - title: Homework 9 - Pole Placement and Observers
+      file: homework/ppo/problems
+    
+
+- part: Handouts
+  chapters:
+
+  - title: Control System Design Methods
+    file: handouts/csd/index
+    sections:
+    - title: 1. Aims of Control Systems Analysis and Design
+      file: handouts/csd/1
+    - title: 2. Design Methods
+      file: handouts/csd/2
+    - title: 3. Design Strategies
+      file: handouts/csd/3
+    - title: 4. Design Criteria
+      file: handouts/csd/4
+    - title: 5. Some Useful Design Curves
+      file: handouts/csd/5
+    - title: Acknowledgements
+      file: handouts/csd/ack
+    - title: Appendix -- Transfer Function Plots for Typical Transfer Functions
+      file: handouts/csd/appendix
+
+- part: Setting up your own version of this book
+  chapters:
+  - title: Setting up your own version of this book
+    file: setup/index
+  
+    sections:
+  
+    - title: About Jupyter notebooks
+      file: setup/jupyter
+    
+    - title: Installing Python
+      file: setup/python
+
+    - title: Setting up your MATLAB-Jupyter Computing Environment
+      file: setup/setup
+
+    - title: Setting up jupyter-book
+      file: setup/jupyter-book
+
