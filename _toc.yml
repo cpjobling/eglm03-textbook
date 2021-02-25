@@ -24,8 +24,8 @@
 # See the links below for an example.
 
 # Top-level page
+
 - file: intro
-  title: Introduction to this Module
 
 - part:
   chapters: 
