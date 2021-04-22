@@ -77,7 +77,6 @@ html:
        <a href="https://jupyterbook.org">
         Jupyter Book
       </a>
-    baseurl: "https://cpjobling.github.io/eglm03-textbook"
     comments:
       hypothesis: true
       utterences: false
