@@ -1,0 +1,8 @@
+/* Leave Right Navigation off PDF printouts */
+@media print {
+    .bd-toc {
+        visibility: hidden;
+    }
+}
+
+

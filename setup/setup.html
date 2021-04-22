@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -218,33 +219,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../04/3/analpid.html#example">
-     4.2.5. Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/3/analpid.html#calculations">
-     4.2.6. Calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/3/analpid.html#evaluation-of-design">
-     4.2.7. Evaluation of Design
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/3/analpid.html#footnotes">
-     4.2.8. Footnotes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/3/analpid.html#resources">
-     4.2.9. Resources
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../04/4/autotune.html">
-     4.2.10. PID Autotuning in MATLAB
+     4.2.5. PID Autotuning in MATLAB
     </a>
    </li>
   </ul>
@@ -1035,9 +1011,7 @@ Testing pytest        -&gt; pytest OK
 running build
 running build_py
 running install_lib
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>copying build/lib/matlab/engine/_arch.txt -&gt; /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages/matlab/engine
+copying build/lib/matlab/engine/_arch.txt -&gt; /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages/matlab/engine
 running install_egg_info
 Removing /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages/matlabengineforpython-R2020b-py3.8.egg-info
 Writing /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages/matlabengineforpython-R2020b-py3.8.egg-info
@@ -1109,91 +1083,85 @@ Writing /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages/matlabengin
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: imatlab in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (0.4)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matlabengineforpython&gt;=R2016b in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (R2020b)
-Requirement already satisfied: plotly&gt;=1.13.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (4.14.3)
-Requirement already satisfied: ipykernel&gt;=4.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (5.3.4)
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbconvert&gt;=4.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (5.6.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: widgetsnbextension&gt;=1.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (3.5.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: retrying&gt;=1.3.3 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from plotly&gt;=1.13.0-&gt;imatlab) (1.3.3)
-Requirement already satisfied: six in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from plotly&gt;=1.13.0-&gt;imatlab) (1.15.0)
-Requirement already satisfied: tornado&gt;=4.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (6.0.4)
-Requirement already satisfied: appnope; platform_system == &quot;Darwin&quot; in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (0.1.0)
-Requirement already satisfied: traitlets&gt;=4.1.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (5.0.5)
-Requirement already satisfied: ipython&gt;=5.0.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (7.19.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-client in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (6.1.7)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbformat&gt;=4.4 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (5.0.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jinja2&gt;=2.4 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (2.11.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-core in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (4.6.3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipykernel&gt;=4.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (5.3.4)
+Requirement already satisfied: widgetsnbextension&gt;=1.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (3.5.1)
+Requirement already satisfied: plotly&gt;=1.13.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (4.14.3)
+Requirement already satisfied: matlabengineforpython&gt;=R2016b in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from imatlab) (R2020b)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.8.4)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pygments in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (2.7.2)
+Requirement already satisfied: bleach in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (3.2.1)
+Requirement already satisfied: jinja2&gt;=2.4 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (2.11.2)
+Requirement already satisfied: nbformat&gt;=4.4 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (5.0.8)
+Requirement already satisfied: traitlets&gt;=4.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (5.0.5)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: defusedxml in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.6.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-core in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (4.6.3)
 Requirement already satisfied: testpath in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.4.4)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (1.4.3)
+Requirement already satisfied: defusedxml in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.6.0)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.3)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: bleach in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (3.2.1)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (1.4.3)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbconvert&gt;=4.2-&gt;imatlab) (0.8.4)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tornado&gt;=4.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (6.0.4)
+Requirement already satisfied: ipython&gt;=5.0.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (7.19.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: appnope; platform_system == &quot;Darwin&quot; in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (0.1.0)
+Requirement already satisfied: jupyter-client in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipykernel&gt;=4.1-&gt;imatlab) (6.1.7)
 Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from widgetsnbextension&gt;=1.0-&gt;imatlab) (6.1.4)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipython-genutils in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from traitlets&gt;=4.1.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.2.0)
-Requirement already satisfied: pickleshare in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.7.5)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from plotly&gt;=1.13.0-&gt;imatlab) (1.15.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (50.3.1.post20201107)
-Requirement already satisfied: backcall in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.2.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: retrying&gt;=1.3.3 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from plotly&gt;=1.13.0-&gt;imatlab) (1.3.3)
+Requirement already satisfied: packaging in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;imatlab) (20.4)
+Requirement already satisfied: webencodings in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;imatlab) (0.5.1)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jinja2&gt;=2.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (1.1.1)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (3.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipython-genutils in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (0.2.0)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (50.3.1.post20201107)
 Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (3.0.8)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: decorator in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (4.4.2)
-Requirement already satisfied: pexpect&gt;4.3; sys_platform != &quot;win32&quot; in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (4.8.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: backcall in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.2.0)
+Requirement already satisfied: decorator in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (4.4.2)
 Requirement already satisfied: jedi&gt;=0.10 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.17.1)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jupyter-client-&gt;ipykernel&gt;=4.1-&gt;imatlab) (2.8.1)
+Requirement already satisfied: pexpect&gt;4.3; sys_platform != &quot;win32&quot; in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (4.8.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pickleshare in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.7.5)
 Requirement already satisfied: pyzmq&gt;=13 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jupyter-client-&gt;ipykernel&gt;=4.1-&gt;imatlab) (19.0.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (3.2.0)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jinja2&gt;=2.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (1.1.1)
-Requirement already satisfied: webencodings in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;imatlab) (0.5.1)
-Requirement already satisfied: packaging in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from bleach-&gt;nbconvert&gt;=4.2-&gt;imatlab) (20.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: Send2Trash in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (1.5.0)
-Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (0.9.1)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jupyter-client-&gt;ipykernel&gt;=4.1-&gt;imatlab) (2.8.1)
 Requirement already satisfied: argon2-cffi in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (20.1.0)
 Requirement already satisfied: prometheus-client in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (0.8.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wcwidth in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.2.5)
-Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from pexpect&gt;4.3; sys_platform != &quot;win32&quot;-&gt;ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.6.0)
-Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jedi&gt;=0.10-&gt;ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.7.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: Send2Trash in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (1.5.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (0.9.1)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from packaging-&gt;bleach-&gt;nbconvert&gt;=4.2-&gt;imatlab) (2.4.7)
 Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (20.3.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyrsistent&gt;=0.14.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.4-&gt;nbconvert&gt;=4.2-&gt;imatlab) (0.17.3)
-Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from packaging-&gt;bleach-&gt;nbconvert&gt;=4.2-&gt;imatlab) (2.4.7)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wcwidth in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.2.5)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: parso&lt;0.8.0,&gt;=0.7.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from jedi&gt;=0.10-&gt;ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.7.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from pexpect&gt;4.3; sys_platform != &quot;win32&quot;-&gt;ipython&gt;=5.0.0-&gt;ipykernel&gt;=4.1-&gt;imatlab) (0.6.0)
 Requirement already satisfied: cffi&gt;=1.0.0 in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (1.14.3)
-Requirement already satisfied: pycparser in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (2.20)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pycparser in /usr/local/anaconda3/envs/eglm03/lib/python3.8/site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension&gt;=1.0-&gt;imatlab) (2.20)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):

@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -59,7 +60,7 @@
     <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/04/3/analpid.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.2.10. PID Autotuning in MATLAB" href="../4/autotune.html" />
+    <link rel="next" title="4.2.5. PID Autotuning in MATLAB" href="../4/autotune.html" />
     <link rel="prev" title="4.2.3. Tuning a PID Compensator" href="../2/tuning.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -218,33 +219,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="#example">
-     4.2.5. Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#calculations">
-     4.2.6. Calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#evaluation-of-design">
-     4.2.7. Evaluation of Design
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#footnotes">
-     4.2.8. Footnotes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#resources">
-     4.2.9. Resources
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../4/autotune.html">
-     4.2.10. PID Autotuning in MATLAB
+     4.2.5. PID Autotuning in MATLAB
     </a>
    </li>
   </ul>
@@ -737,51 +713,46 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   4.2.4. Analytical Design of a PID Compensator
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example">
-   4.2.5. Example
+   4.2.4.1. Example
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#calculations">
-   4.2.6. Calculations
+   4.2.4.2. Calculations
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluation-of-design">
-   4.2.7. Evaluation of Design
+   4.2.4.3. Evaluation of Design
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#root-locus">
-     4.2.7.1. Root locus:
+     4.2.4.3.1. Root locus:
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#closed-loop-transfer-function">
-     4.2.7.2. Closed-loop transfer function:
+     4.2.4.3.2. Closed-loop transfer function:
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-response">
-     4.2.7.3. Step response:
+     4.2.4.3.3. Step response:
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#footnotes">
-   4.2.8. Footnotes
+   4.2.4.4. Footnotes
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources">
-   4.2.9. Resources
+   4.2.4.5. Resources
   </a>
  </li>
 </ul>
@@ -820,9 +791,8 @@ pole position</p>
 \[\begin{equation}K_{\mathrm{prop}}=-\frac{\sin\psi}{|s_1|\left|G(s_1)H(s_1)\right|\sin\beta}-\frac{K_I}{|s_1|^2}\end{equation}\]</div>
 <p>Since there are three unknowns and only two relationships that must be satisfied, one of the gains may be chosen to satisfy a different design specification, such as choosing <span class="math notranslate nohighlight">\(K_I\)</span> to achieve a certain steady-state response. These equations can also be used for PI and P+D controllers by setting the appropriate gain
 to zero. We now illustrate the design procedure with an example.</p>
-</div>
 <div class="section" id="example">
-<h1><span class="section-number">4.2.5. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">4.2.4.1. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p><em>Definitions (change these to change design)</em></p>
 <p>The plant transfer function is</p>
 <div class="math notranslate nohighlight">
@@ -870,7 +840,9 @@ to zero. We now illustrate the design procedure with an example.</p>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 6 s + 1
- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
@@ -925,7 +897,7 @@ frequency to  <span class="math notranslate nohighlight">\(\omega_n = 2\)</span>
 </div>
 </div>
 <div class="section" id="calculations">
-<h1><span class="section-number">4.2.6. </span>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">4.2.4.2. </span>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">¶</a></h2>
 <p>Having set up your problem, you shouldn?t need to change these commands</p>
 <p>Polar form of <span class="math notranslate nohighlight">\(s_1\)</span></p>
 <div class="cell docutils container">
@@ -1056,7 +1028,7 @@ frequency to  <span class="math notranslate nohighlight">\(\omega_n = 2\)</span>
 </div>
 </div>
 <div class="section" id="evaluation-of-design">
-<h1><span class="section-number">4.2.7. </span>Evaluation of Design<a class="headerlink" href="#evaluation-of-design" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">4.2.4.3. </span>Evaluation of Design<a class="headerlink" href="#evaluation-of-design" title="Permalink to this headline">¶</a></h2>
 <p>Open loop transfer function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1089,11 +1061,11 @@ frequency to  <span class="math notranslate nohighlight">\(\omega_n = 2\)</span>
 </div>
 </div>
 <div class="section" id="root-locus">
-<h2><span class="section-number">4.2.7.1. </span>Root locus:<a class="headerlink" href="#root-locus" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">4.2.4.3.1. </span>Root locus:<a class="headerlink" href="#root-locus" title="Permalink to this headline">¶</a></h3>
 <p>rlocus(Go)</p>
 </div>
 <div class="section" id="closed-loop-transfer-function">
-<h2><span class="section-number">4.2.7.2. </span>Closed-loop transfer function:<a class="headerlink" href="#closed-loop-transfer-function" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">4.2.4.3.2. </span>Closed-loop transfer function:<a class="headerlink" href="#closed-loop-transfer-function" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">DG</span> <span class="p">=</span> <span class="n">D</span><span class="o">*</span><span class="n">G</span>  
@@ -1148,7 +1120,7 @@ frequency to  <span class="math notranslate nohighlight">\(\omega_n = 2\)</span>
 </div>
 </div>
 <div class="section" id="step-response">
-<h2><span class="section-number">4.2.7.3. </span>Step response:<a class="headerlink" href="#step-response" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">4.2.4.3.3. </span>Step response:<a class="headerlink" href="#step-response" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">)</span> 
@@ -1161,14 +1133,15 @@ frequency to  <span class="math notranslate nohighlight">\(\omega_n = 2\)</span>
 </div>
 </div>
 <div class="section" id="footnotes">
-<h1><span class="section-number">4.2.8. </span>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">4.2.4.4. </span>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
 <p>[1] The proofs of the formulae given are derived in Appendix B of this text.</p>
 <p>[2] You must be careful with angles when using packages like MATLAB, and indeed pocket calculators. It is nearly always beneficial to have a sketch so that you can correct the results. In this case a correction of <span class="math notranslate nohighlight">\(-90^\circ\)</span>
 was needed.</p>
 </div>
 <div class="section" id="resources">
-<h1><span class="section-number">4.2.9. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">4.2.4.5. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <p>An executable version of this document is available to download as the MATLAB Live Script file <span class="xref myst">analrloc.mlx</span>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1200,7 +1173,7 @@ was needed.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../2/tuning.html" title="previous page"><span class="section-number">4.2.3. </span>Tuning a PID Compensator</a>
-    <a class='right-next' id="next-link" href="../4/autotune.html" title="next page"><span class="section-number">4.2.10. </span>PID Autotuning in MATLAB</a>
+    <a class='right-next' id="next-link" href="../4/autotune.html" title="next page"><span class="section-number">4.2.5. </span>PID Autotuning in MATLAB</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

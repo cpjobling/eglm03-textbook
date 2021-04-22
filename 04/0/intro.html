@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -218,33 +219,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#example">
-     4.2.5. Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#calculations">
-     4.2.6. Calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#evaluation-of-design">
-     4.2.7. Evaluation of Design
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#footnotes">
-     4.2.8. Footnotes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#resources">
-     4.2.9. Resources
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../4/autotune.html">
-     4.2.10. PID Autotuning in MATLAB
+     4.2.5. PID Autotuning in MATLAB
     </a>
    </li>
   </ul>
@@ -805,13 +781,12 @@ u(t)=K_{\mathrm{prop}}\left(e(t)+\frac{1}{T_I}\,\int_{0}^{t}e(\tau)d\tau+T_D\,\f
 U(s)=K_{\mathrm{prop}}\left(E(s)+\frac{1}{T_I s}\,E(s)+sT_D\,E(s)\right)
 \end{equation}\]</div>
 <p>so that</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}
-D_{\mathrm{PID}}(s)=\frac{U(s)}{E(s)}=K_{\mathrm{prop}}\left(1+\frac{1}{T_I 
+<p>\begin{equation}
+D_{\mathrm{PID}}(s)=\frac{U(s)}{E(s)}=K_{\mathrm{prop}}\left(1+\frac{1}{T_I
 s}+sT_D\right)
-\end{equation}\]</div>
+\end{equation}</p>
 <p>Commercial compensators are provided with setting controls for each of
-the three parameters <span class="math notranslate nohighlight">\(K_{\mathrm{prop}\)</span>, <span class="math notranslate nohighlight">\(T_I\)</span>and <span class="math notranslate nohighlight">\(T_D\)</span>. They can also be used
+the three parameters <span class="math notranslate nohighlight">\(K_{\mathrm{prop}}\)</span>, <span class="math notranslate nohighlight">\(T_I\)</span>and <span class="math notranslate nohighlight">\(T_D\)</span>. They can also be used
 with and without the integral and derivative terms. The common configurations
 for the PID compensator are:</p>
 <div class="section" id="proportional-only">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.2.10. PID Autotuning in MATLAB &#8212; EGLM03 Modern Control Systems</title>
+    <title>4.2.5. PID Autotuning in MATLAB &#8212; EGLM03 Modern Control Systems</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -217,34 +218,9 @@
      4.2.4. Analytical Design of a PID Compensator
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#example">
-     4.2.5. Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#calculations">
-     4.2.6. Calculations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#evaluation-of-design">
-     4.2.7. Evaluation of Design
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#footnotes">
-     4.2.8. Footnotes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../3/analpid.html#resources">
-     4.2.9. Resources
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.2.10. PID Autotuning in MATLAB
+     4.2.5. PID Autotuning in MATLAB
     </a>
    </li>
   </ul>
@@ -739,12 +715,12 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matlab-s-pid-block">
-   4.2.10.1. MATLAB’s PID Block
+   4.2.5.1. MATLAB’s PID Block
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#autotuning-the-pid">
-   4.2.10.2. Autotuning the PID
+   4.2.5.2. Autotuning the PID
   </a>
  </li>
 </ul>
@@ -759,10 +735,10 @@
               <div>
                 
   <div class="section" id="pid-autotuning-in-matlab">
-<h1><span class="section-number">4.2.10. </span>PID Autotuning in MATLAB<a class="headerlink" href="#pid-autotuning-in-matlab" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.2.5. </span>PID Autotuning in MATLAB<a class="headerlink" href="#pid-autotuning-in-matlab" title="Permalink to this headline">¶</a></h1>
 <p>This section is yet to be written. In the meantime, please review this detailed tutorial from the <a class="reference external" href="http://ctms.engin.umich.edu/CTMS/index.php?example=Introduction%C2%A7ion=ControlPID">Control Systems Tutorial in MATLAB and Simulink</a>.</p>
 <div class="section" id="matlab-s-pid-block">
-<h2><span class="section-number">4.2.10.1. </span>MATLAB’s PID Block<a class="headerlink" href="#matlab-s-pid-block" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2.5.1. </span>MATLAB’s PID Block<a class="headerlink" href="#matlab-s-pid-block" title="Permalink to this headline">¶</a></h2>
 <p>MATLAB has introduced a PID block that can be used either from the command-line or within Simulink. The benefit of this block is that it can be used to autotune the PID compensator parameters in-loop.</p>
 <p><img alt="PID block" src="../../_images/pid-block.png" /></p>
 <p>The continuous-time PID block is to be found in the <strong>Continuous Systems</strong> library in Simulink. The block diagram is as shown below.</p>
@@ -785,7 +761,7 @@
 <p>In addition to the pole at the origin which is introduced by the integral term, The MATLAB PID has a proportional gain, two zeros, and an additional pole. Thus there are four parameters which can be adjusted to give a range of possible structures.</p>
 </div>
 <div class="section" id="autotuning-the-pid">
-<h2><span class="section-number">4.2.10.2. </span>Autotuning the PID<a class="headerlink" href="#autotuning-the-pid" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2.5.2. </span>Autotuning the PID<a class="headerlink" href="#autotuning-the-pid" title="Permalink to this headline">¶</a></h2>
 <p>Let us repeat the previous example (<a class="reference internal" href="../2/tuning.html"><span class="doc std std-doc">See 4.2 Manual Tuning</span></a>).</p>
 <p>Here we have:</p>
 <div class="math notranslate nohighlight">
