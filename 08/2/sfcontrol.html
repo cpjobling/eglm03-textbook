@@ -1351,7 +1351,8 @@ states and then transform back to the original system.</p></li>
 <p>Using the function <code class="docutils literal notranslate"><span class="pre">acker</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span> <span class="c">% vector of desired pole locations</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Example 3: alpha_c(s) = s^2 +2s + 1</span>
+<span class="n">P</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span> <span class="c">% vector of desired pole locations</span>
 <span class="n">Ka</span> <span class="p">=</span> <span class="n">acker</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1359,6 +1360,34 @@ states and then transform back to the original system.</p></li>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ka =
      0    -2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Example 1</span>
+<span class="n">K</span> <span class="p">=</span> <span class="n">place</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">],[</span><span class="mi">1</span><span class="p">;</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">10</span><span class="o">+</span>10<span class="nb">i</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span>10<span class="nb">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K =
+   19.4286  -14.4286
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Example 2</span>
+<span class="n">K</span> <span class="p">=</span> <span class="n">place</span><span class="p">([</span><span class="o">-</span><span class="mi">15</span> <span class="o">-</span><span class="mi">44</span><span class="p">;</span><span class="n">1</span> <span class="s">0],[1</span><span class="p">;</span> <span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">10</span><span class="o">+</span>10<span class="nb">i</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span>10<span class="nb">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K =
+    5.0000  156.0000
 </pre></div>
 </div>
 </div>
