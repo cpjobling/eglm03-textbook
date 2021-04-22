@@ -71,7 +71,7 @@
 <meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/03/6/lagc.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Lag Compensation" />
-<meta property="og:description" content="Lag CompensationIntroduction  Lead compensation is used to improved the transient response of a closed-loop control system.  In most cases it is also important " />
+<meta property="og:description" content="Lag Compensation  Lecturer  Set up MATLAB  %cd matlab pwd clear all imatlab_export_fig(&#39;print-svg&#39;)  % Static svg figures. format compact  ans =     &#39;/Users/eec" />
 <meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
 
 <meta name="twitter:card" content="summary" />
@@ -181,12 +181,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.6. Lag Compensation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#introduction">
-     3.7. Introduction
+     3.6. Lag compensation
     </a>
    </li>
   </ul>
@@ -592,42 +587,35 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   3.6. Lag Compensation
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   3.6.1. Introduction
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   3.7. Introduction
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-cascade-lag-compensator">
+   3.6.2. Properties of the Cascade Lag Compensator
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#properties-of-the-cascade-lag-compensator">
-     3.7.1. Properties of the Cascade Lag Compensator
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#design-procedure">
-     3.7.2. Design Procedure
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     3.7.3. Example
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comments">
-     3.7.4. Comments
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resources">
-     3.7.5. Resources
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-procedure">
+   3.6.3. Design Procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   3.6.4. Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comments">
+   3.6.5. Comments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources">
+   3.6.6. Resources
+  </a>
  </li>
 </ul>
 
@@ -640,7 +628,9 @@
         
               <div>
                 
-  <p><strong>Lecturer</strong></p>
+  <div class="section" id="lag-compensation">
+<h1><span class="section-number">3.6. </span>Lag Compensation<a class="headerlink" href="#lag-compensation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Lecturer</strong></p>
 <p>Set up MATLAB</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -659,11 +649,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="lag-compensation">
-<h1><span class="section-number">3.6. </span>Lag Compensation<a class="headerlink" href="#lag-compensation" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="introduction">
-<h1><span class="section-number">3.7. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h2><span class="section-number">3.6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Lead compensation is used to improved the transient response of a closed-loop control system.</p>
 <p>In most cases it is also important to ensure that the steady-state accuracy of the closed-loop system is controlled.</p>
 <p>In order to reduce the steady-state errors in a system we can use integral action (see <span class="xref myst">PID compensation</span>) which has the affect of increasing the system type number by 1 or increase the system gain.</p>
@@ -683,8 +670,9 @@
 <div class="math notranslate nohighlight">
 \[\left.D_{\mathrm{lag}}(j\omega)\right|_{\omega\to \infty} = K_c\]</div>
 <p>Because the low frequency gain is higher than the high frequency gain (the compensator has a low-pass characteristic). If the high frequency gain is designed to match the gain needed for transient performance, the low frequency gain can be independently designed to achieve steady-state performance requirements.</p>
+</div>
 <div class="section" id="properties-of-the-cascade-lag-compensator">
-<h2><span class="section-number">3.7.1. </span>Properties of the Cascade Lag Compensator<a class="headerlink" href="#properties-of-the-cascade-lag-compensator" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.2. </span>Properties of the Cascade Lag Compensator<a class="headerlink" href="#properties-of-the-cascade-lag-compensator" title="Permalink to this headline">¶</a></h2>
 <p>As <span class="math notranslate nohighlight">\(|z_0|&gt;|p_0|\)</span> (a ratio of <span class="math notranslate nohighlight">\(z_0/p_0\le 10\)</span> is usual), the angle contributed
 by the compensator to some arbitrary point <span class="math notranslate nohighlight">\(s_1\)</span> at on the s-plane, is illustrated
 in Figure 1.</p>
@@ -724,7 +712,7 @@ angle criterion.</p>
 <p>The gain <span class="math notranslate nohighlight">\(K\)</span> is chosen to satisfy the steady-state error requirements and the compensator gain <span class="math notranslate nohighlight">\(K_c\)</span> is used to ensure that the effective gain at <span class="math notranslate nohighlight">\(s=s_1\)</span> is unchanged.</p>
 </div>
 <div class="section" id="design-procedure">
-<h2><span class="section-number">3.7.2. </span>Design Procedure<a class="headerlink" href="#design-procedure" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.3. </span>Design Procedure<a class="headerlink" href="#design-procedure" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Choose <span class="math notranslate nohighlight">\(K_0\)</span> to ensure that the desired dominant closed-loop poles satisfy the transient response requirements.</p></li>
 </ol>
@@ -741,7 +729,7 @@ angle criterion.</p>
 <p>The lag compensator pole is then  <span class="math notranslate nohighlight">\(p_0 = K_c z_0\)</span>.</p>
 </div>
 <div class="section" id="example">
-<h2><span class="section-number">3.7.3. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.4. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>The plant (type 1)</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{1}{s(s + 4)}\]</div>
@@ -998,7 +986,7 @@ velocity error to 10 which will make the steady-state velocity error equal to
 </div>
 </div>
 <div class="section" id="comments">
-<h2><span class="section-number">3.7.4. </span>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.5. </span>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <p>The lag compensator has a significantly longer settling time and a raised overshoot. These effects can be explained by examination of the closed-loop transfer function.</p>
 <p>The benefits of the lag compensated repsonse can only be really seen when we compare the ramp responses. To determine the ramp response, we need to add an integrator to the plant and find the error responses:</p>
 <div class="cell docutils container">
@@ -1031,7 +1019,7 @@ velocity error to 10 which will make the steady-state velocity error equal to
 time. However, the zero will still have an effect on the overshoot.</p>
 </div>
 <div class="section" id="resources">
-<h2><span class="section-number">3.7.5. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.6. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <p>An executable version of this document is available to download as a MATLAB Live Script file <span class="xref myst">cclag.mlx</span>.</p>
 <p>You can simulate this design after defining the parameters:</p>
 <div class="cell docutils container">
