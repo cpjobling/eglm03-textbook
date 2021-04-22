@@ -1,0 +1,1172 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Design Criteria &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/handouts/csd/4.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5. Some useful design curves" href="5.html" />
+    <link rel="prev" title="3. Design Strategies" href="3.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/handouts/csd/4.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="4.	Design Criteria" />
+<meta property="og:description" content="4.	Design Criteria  4.1	Steady-­State Criteria  These criteria are measures of the ‘tracking accuracy’ and robustness of control systems.  4.1.1	Type 0 systems:" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07/index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="index.html">
+   Control System Design Methods
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/handouts/csd/4.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2Fhandouts/csd/4.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/handouts/csd/4.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steady-state-criteria">
+   4.1	Steady-­State Criteria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-0-systems-position-constant-k-p">
+     4.1.1	Type 0 systems: position constant (
+     <span class="math notranslate nohighlight">
+      \(K_p\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-1-systems-velocity-constant-k-v">
+     4.1.2	Type 1 systems: velocity constant (
+     <span class="math notranslate nohighlight">
+      \(K_v\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-2-systems-acceleration-constant-k-a">
+     4.1.3	Type 2 systems: acceleration constant (
+     <span class="math notranslate nohighlight">
+      \(K_a\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compliance">
+     4.1.4	Compliance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sensitivity">
+     4.1.5	Sensitivity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-domain-criteria">
+   4.2	Time Domain Criteria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#percentage-overshoot-m-p">
+     4.2.1	Percentage overshoot (
+     <span class="math notranslate nohighlight">
+      \(M_p\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rise-time-t-r">
+     4.2.2	Rise time (
+     <span class="math notranslate nohighlight">
+      \(t_r\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#settling-time-t-s">
+     4.2.3	Settling time (
+     <span class="math notranslate nohighlight">
+      \(t_s\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#delay-time-t-d">
+     4.2.4	Delay time (
+     <span class="math notranslate nohighlight">
+      \(t_d\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predominant-time-constant-tau">
+     4.2.5	Predominant time constant (
+     <span class="math notranslate nohighlight">
+      \(\tau\)
+     </span>
+     )
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequency-domain-criteria">
+   4.3 Frequency Domain Criteria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gain-margin-gm">
+     4.3.1 Gain margin (GM)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phase-margin-pm-or-phi-m">
+     4.3.3	Phase margin (PM or
+     <span class="math notranslate nohighlight">
+      \(\phi_m\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#band-width-omega-mathrm-bw">
+     4.3.4	Band-­width (
+     <span class="math notranslate nohighlight">
+      \(\omega_\mathrm{BW}\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cut-off-rate">
+     4.3.5	Cut-off rate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resonant-peak-m-mathrm-max">
+     4.3.6	Resonant peak (
+     <span class="math notranslate nohighlight">
+      \(M_\mathrm{max}\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resonant-frequency-omega-p">
+     4.3.7	Resonant frequency (
+     <span class="math notranslate nohighlight">
+      \(\omega_p\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.3.7	Delay time (
+     <span class="math notranslate nohighlight">
+      \(T_d\)
+     </span>
+     )
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="design-criteria">
+<h1>4.	Design Criteria<a class="headerlink" href="#design-criteria" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="steady-state-criteria">
+<h2>4.1	Steady-­State Criteria<a class="headerlink" href="#steady-state-criteria" title="Permalink to this headline">¶</a></h2>
+<p>These criteria are measures of the ‘tracking accuracy’ and robustness of control systems.</p>
+<div class="section" id="type-0-systems-position-constant-k-p">
+<h3>4.1.1	Type 0 systems: position constant (<span class="math notranslate nohighlight">\(K_p\)</span>)<a class="headerlink" href="#type-0-systems-position-constant-k-p" title="Permalink to this headline">¶</a></h3>
+<p>For the simple, unity-gain feedback system shown in Figure 2 the error is given by<sup>1</sup></p>
+<div class="math notranslate nohighlight">
+\[E(s) = \frac{R(s)}{1 + G_o(s)}\]</div>
+<p>For a type 0 system, the position constant, <span class="math notranslate nohighlight">\(K_p\)</span> is the d-c open loop gain:</p>
+<div class="math notranslate nohighlight">
+\[K_p = \lim_{s\to 0}\left.G_o(s)\right.\]</div>
+<p>and implies a steady state error of</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{1+K_p}\]</div>
+<p>following a unit step input. Thus a large position constant implies a small steady state error. For a type 1 control system <span class="math notranslate nohighlight">\(G_o(s)\)</span> contains an integration so that <span class="math notranslate nohighlight">\(K_p = \infty\)</span> and the error tends to zero.</p>
+<p><img alt="Unity gain feedback control system" src="../../_images/image014.png" /></p>
+<p><strong>Unity gain feedback control system</strong></p>
+</div>
+<div class="section" id="type-1-systems-velocity-constant-k-v">
+<h3>4.1.2	Type 1 systems: velocity constant (<span class="math notranslate nohighlight">\(K_v\)</span>)<a class="headerlink" href="#type-1-systems-velocity-constant-k-v" title="Permalink to this headline">¶</a></h3>
+<p>For the same system,</p>
+<div class="math notranslate nohighlight">
+\[K_v = \lim_{s\to 0}\;\left.sG_o(s)\right.\]</div>
+<p>The steady state position error for a constant velocity input is <span class="math notranslate nohighlight">\(1/K_v\)</span>, so a large velocity constant implies a small steady-state error. For a type 2 system <span class="math notranslate nohighlight">\(G_o(s)\)</span> contains two integrations so that <span class="math notranslate nohighlight">\(K_v = \infty\)</span> and the error to a constant velocity input tends to zero.</p>
+</div>
+<div class="section" id="type-2-systems-acceleration-constant-k-a">
+<h3>4.1.3	Type 2 systems: acceleration constant (<span class="math notranslate nohighlight">\(K_a\)</span>)<a class="headerlink" href="#type-2-systems-acceleration-constant-k-a" title="Permalink to this headline">¶</a></h3>
+<p>Similarly</p>
+<div class="math notranslate nohighlight">
+\[K_a = \lim_{s\to 0}\;\left.s^2G_o(s)\right.\]</div>
+<p>but this is not often specified.</p>
+</div>
+<div class="section" id="compliance">
+<h3>4.1.4	Compliance<a class="headerlink" href="#compliance" title="Permalink to this headline">¶</a></h3>
+<p>For the system illustrated in Figure 3, with a disturbance <span class="math notranslate nohighlight">\(W(s)\)</span>, the error is given by</p>
+<div class="math notranslate nohighlight">
+\[E(s) = \frac{R(s) + G(s)W(s)}{1+D(s)G(s)}\]</div>
+<p>The compliance is the steady-state error following a unit step change in <span class="math notranslate nohighlight">\(W(s)\)</span>. A small compliance requires <span class="math notranslate nohighlight">\(D(s) \gg 1\)</span> and zero compliance is obtained when <span class="math notranslate nohighlight">\(D(s)\)</span> contains an integrator.</p>
+<p><img alt="Compliance" src="../../_images/image016.png" /></p>
+<p><strong>Figure 3 Compliance</strong></p>
+</div>
+<div class="section" id="sensitivity">
+<h3>4.1.5	Sensitivity<a class="headerlink" href="#sensitivity" title="Permalink to this headline">¶</a></h3>
+<p>The sensitivity is the proportional variation in the closed-loop system caused by a variation in one of the open-loop components. A system will always be sensitive to variations of input, feedback and feed-forward paths, but the sensitivity to variations in the forward path is reduced by a factor of <span class="math notranslate nohighlight">\(1/(1 + \mathrm{loop\;gain})\)</span>.</p>
+</div>
+</div>
+<div class="section" id="time-domain-criteria">
+<h2>4.2	Time Domain Criteria<a class="headerlink" href="#time-domain-criteria" title="Permalink to this headline">¶</a></h2>
+<p>The time domain criteria defined below are derived from the model second order under-damped output response to a step input shown in Figure 4. Similar criteria may be defined from the impulse or ramp response. The performance measures are related to the s-plane via the pole-zero diagram shown in Figure 5 where the poles are solutions of the equation</p>
+<div class="math notranslate nohighlight">
+\[s^2 + 2\zeta \omega_n s + \omega_n^2 = 0\]</div>
+<p>and <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(\omega_d\)</span> are defined as</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \cos^{-1}\zeta\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma = \zeta\omega_n\]</div>
+<div class="math notranslate nohighlight">
+\[\omega_d = \omega_n\sqrt{1-\zeta^2}\]</div>
+<p><img alt="Model second-­order under-­damped step response" src="../../_images/image019.png" /></p>
+<p><strong>Figure 4 Model second-­order under-­damped step response</strong></p>
+<p><img alt="Location of second-­order complex poles" src="../../_images/image021.png" /></p>
+<p><strong>Figure 5 Location of second-­order complex poles</strong></p>
+<div class="section" id="percentage-overshoot-m-p">
+<h3>4.2.1	Percentage overshoot (<span class="math notranslate nohighlight">\(M_p\)</span>)<a class="headerlink" href="#percentage-overshoot-m-p" title="Permalink to this headline">¶</a></h3>
+<p>Maximum difference between transient and steady state response to a unit step input. A measure of relative stability. Often quoted as a percentage of the final value of the response.</p>
+<p>Design values: <span class="math notranslate nohighlight">\(M_p\)</span> should be kept below 40% and &lt; 25% is usually required. For a second order system (or a system with a pair of dominant complex poles) <span class="math notranslate nohighlight">\(M_p\)</span> may be related to the damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span> by the equation</p>
+<div class="math notranslate nohighlight">
+\[M_p = e^{-\pi\zeta/\sqrt{1-\zeta^2}}\;  0 \le \zeta \lt 1\]</div>
+<p>A plot of this curve is shown in <a class="reference external" href="#fig6">Figure 6</a>.</p>
+<p>A useful approximation to <span class="math notranslate nohighlight">\(M_p\)</span> is given by the straight-line equation:</p>
+<div class="math notranslate nohighlight">
+\[M_p \approx 1 - \frac{\zeta}{0.6}\; 0\le \zeta \le 0.6\]</div>
+<p><img alt="Plot of the peak overshoot Mp versus the damping ratio zeta for the second-­order system" src="../../_images/image026.png" /></p>
+<p><strong>Figure 6 Plot of the peak overshoot <span class="math notranslate nohighlight">\(M_p\)</span> versus the damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span> for the second-­order system</strong></p>
+</div>
+<div class="section" id="rise-time-t-r">
+<h3>4.2.2	Rise time (<span class="math notranslate nohighlight">\(t_r\)</span>)<a class="headerlink" href="#rise-time-t-r" title="Permalink to this headline">¶</a></h3>
+<p>Usually defined as the time taken for the response to rise from 10% to 90% of its final value. A measure of the speed of response of the system. Figure 7 shows the relationship between normalised rise time and the damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span>.</p>
+<p><em>Design values</em>: For a second order system (or a system with a pair of complex dominant poles) rise time may be related to the natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[t_r \approx \frac{1.8}{\omega_n}\]</div>
+<p>For process control, the step response is often over-damped and an alternative definition of rise time for such a response is illustrated in Figure 8.</p>
+<p><img alt="Normalised rise time vs damping ratio for a second order system" src="../../_images/image028.png" /></p>
+<p><strong>Figure 7 Normalised rise time vs damping ratio for a second order system</strong></p>
+<p><img alt="Typical process response curve" src="../../_images/image030.png" /></p>
+<p><strong>Figure 8 Typical process response curve</strong></p>
+</div>
+<div class="section" id="settling-time-t-s">
+<h3>4.2.3	Settling time (<span class="math notranslate nohighlight">\(t_s\)</span>)<a class="headerlink" href="#settling-time-t-s" title="Permalink to this headline">¶</a></h3>
+<p>Usually defined as the time taken for the response to reach and remain within some percentage of its final (steady-state) value (often 1, 2, or 5%). This parameter is related to the real part of the dominant poles <span class="math notranslate nohighlight">\(\sigma = \zeta\omega_n\)</span>. Figure 9 shows the relationship between settling time and damping ratio for 5% settling time.</p>
+<p><img alt="Normalised 5% settling time vs damping ratio for a second order system" src="../../_images/image032.png" /></p>
+<p><strong>Figure 9 Normalised 5% settling time vs damping ratio for a second order system</strong></p>
+<p><em>Design values</em>: For a second order system (or a system with a pair of dominant complex poles) rise time may be related to <span class="math notranslate nohighlight">\(\sigma\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[{t_s} = \frac{ - \ln \left( \frac{\% \;{\kern 1pt} {\text{of}}\;{\kern 1pt} {\text{final}}\;{\kern 1pt} {\text{value}}}{100} \right)}{\sigma }\]</div>
+<p><strong>Table 1 Typical settling time values</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Percentage of final value</p></th>
+<th class="head"><p>1%</p></th>
+<th class="head"><p>2%</p></th>
+<th class="head"><p>5%</p></th>
+<th class="head"><p>10%</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Settling time <span class="math notranslate nohighlight">\(t_s\)</span> seconds</p></td>
+<td><p>4.6/<span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>3.9/<span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>3/<span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>2.3/<span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Other parameters sometimes given are</p>
+</div>
+<div class="section" id="delay-time-t-d">
+<h3>4.2.4	Delay time (<span class="math notranslate nohighlight">\(t_d\)</span>)<a class="headerlink" href="#delay-time-t-d" title="Permalink to this headline">¶</a></h3>
+<p>Usually defined as the time taken for the response to reach 50% of its final value. An alternative definition favoured for process control (under-damped responses) is illustrated in Figure 8.</p>
+</div>
+<div class="section" id="predominant-time-constant-tau">
+<h3>4.2.5	Predominant time constant (<span class="math notranslate nohighlight">\(\tau\)</span>)<a class="headerlink" href="#predominant-time-constant-tau" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes given as an alternative to <span class="math notranslate nohighlight">\(t_s\)</span>. The exponential envelope of the second order response decays to 37% of its final value in <span class="math notranslate nohighlight">\(\tau\)</span> seconds.</p>
+<p><em>Design values</em>: for a second order system (or a system with a pair of dominant second order poles)</p>
+<div class="math notranslate nohighlight">
+\[\tau = \frac{1}{\zeta\omega_n}.\]</div>
+<p>The second order parameters <span class="math notranslate nohighlight">\(\zeta\)</span> and <span class="math notranslate nohighlight">\(\omega_n\)</span> may also be given as figures of merit. They can be useful in the design of higher order systems.</p>
+</div>
+</div>
+<div class="section" id="frequency-domain-criteria">
+<h2>4.3 Frequency Domain Criteria<a class="headerlink" href="#frequency-domain-criteria" title="Permalink to this headline">¶</a></h2>
+<p>Frequency domain specifications are usually given in terms of the steady-state response of a system to a sinusoidal input.</p>
+<div class="section" id="gain-margin-gm">
+<h3>4.3.1 Gain margin (GM)<a class="headerlink" href="#gain-margin-gm" title="Permalink to this headline">¶</a></h3>
+<p>A measure of relative stability. It is defined as the reciprocal of the magnitude of the open-loop transfer function evaluated at the frequency <span class="math notranslate nohighlight">\(\omega_\pi\)</span>, at which the phase angle is <span class="math notranslate nohighlight">\(-180^\circ\)</span> (<span class="math notranslate nohighlight">\(-\pi\)</span> radians). That is</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{GM} \equiv \frac{1}{\left|GH(j\omega_\pi)\right|}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\angle GH(j\omega_\pi) = -180^\circ = -\pi\)</span> radians.</p>
+<p><span class="math notranslate nohighlight">\(\omega_\pi\)</span> is called the ‘phase-cross-over frequency’. See Figure 10 for an illustration of gain margin determination from frequency response data.</p>
+<p><em>Design values</em>: for absolute stability we require <span class="math notranslate nohighlight">\(\left\|GH(j\omega_\pi)\right\| &lt;  1\)</span> or GM &gt; 1 (0 dB). Typical values are 3dB &lt; GM &lt; 8dB.</p>
+<p><img alt="Determination of gain margin (GM) from frequency responsediagrams" src="../../_images/image034.png" /></p>
+<p><strong>Figure 10 Determination of gain margin (GM) from frequency response diagrams</strong></p>
+</div>
+<div class="section" id="phase-margin-pm-or-phi-m">
+<h3>4.3.3	Phase margin (PM or <span class="math notranslate nohighlight">\(\phi_m\)</span>)<a class="headerlink" href="#phase-margin-pm-or-phi-m" title="Permalink to this headline">¶</a></h3>
+<p>Another measure of relative stability. It is defined as <span class="math notranslate nohighlight">\(180^\circ\)</span> plus the phase angle <span class="math notranslate nohighlight">\(\phi\)</span> of the loop-transfer function at unity gain. That is</p>
+<div class="math notranslate nohighlight">
+\[\phi_m \equiv 180^\circ + \angle GH(j\omega_1)\]</div>
+<p>where <span class="math notranslate nohighlight">\(GH(j\omega_1) = 1\)</span> (0 dB). Frequency <span class="math notranslate nohighlight">\(\omega_1\)</span> is called the gain cross-over frequency. See Figure 11 for illustration of phase margin determination from frequency response data.</p>
+<p><em>Design values</em>: for absolute stability we require <span class="math notranslate nohighlight">\(GH(j\omega_1) &lt; 180^\circ\)</span> or <span class="math notranslate nohighlight">\(\phi_m &gt; 0^\circ\)</span>. Typical values used are <span class="math notranslate nohighlight">\(\phi_m &gt; 30^\circ\)</span>, preferably <span class="math notranslate nohighlight">\(45^\circ &lt; \phi_m &lt; 60^\circ\)</span>.</p>
+<p>Note that if the Nyquist diagram is of the form illustrated in Figure 11, then <span class="math notranslate nohighlight">\(\phi_m\)</span> is related to the damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span> by the curve illustrated in Figure 12, for which <span class="math notranslate nohighlight">\(\zeta \approx \phi_m/100\)</span>.</p>
+<p><img alt="Determination of phase margin (PM) from frequency response diagrams" src="../../_images/image037.png" /></p>
+<p><strong>Figure 11 Determination of phase margin (<span class="math notranslate nohighlight">\(\phi_m\)</span>) from frequency response diagrams</strong></p>
+<p><img alt="Damping ratio zeta versus phase margin PM" src="../../_images/image039.png" /></p>
+<p><strong>Figure 12 Figure 12 Damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span> versus phase margin <span class="math notranslate nohighlight">\(\phi_m\)</span></strong></p>
+</div>
+<div class="section" id="band-width-omega-mathrm-bw">
+<h3>4.3.4	Band-­width (<span class="math notranslate nohighlight">\(\omega_\mathrm{BW}\)</span>)<a class="headerlink" href="#band-width-omega-mathrm-bw" title="Permalink to this headline">¶</a></h3>
+<p>A measure of the speed of response of a system. In control systems, this is defined as the frequency at which the magnitude ratio <span class="math notranslate nohighlight">\(C(j\omega)/R(j\omega)\)</span> is 3 dB down from the magnitude at <span class="math notranslate nohighlight">\(\omega = 0\)</span>. The frequency <span class="math notranslate nohighlight">\(\omega_\mathrm{BW}\)</span> is then
+equal to the cut-off frequency <span class="math notranslate nohighlight">\(\omega_c\)</span>. See Figure 13. Note that for a second-order underdamped system, <span class="math notranslate nohighlight">\(\omega_\mathrm{BW}\)</span> is approximately equal to <span class="math notranslate nohighlight">\(2\omega_1\)</span>, where <span class="math notranslate nohighlight">\(\omega_1\)</span> is the gain cross-over frequency.</p>
+<p><img alt="Typical second-­order closed-­loop frequency response" src="../../_images/image043.png" /></p>
+<p><strong>Figure 13 Typical second-­order closed-­loop frequency response</strong></p>
+</div>
+<div class="section" id="cut-off-rate">
+<h3>4.3.5	Cut-off rate<a class="headerlink" href="#cut-off-rate" title="Permalink to this headline">¶</a></h3>
+<p>The rate at which the magnitude ratio decreases beyond cut-off. E.g. 6 dB/octave = 20 dB/decade.</p>
+</div>
+<div class="section" id="resonant-peak-m-mathrm-max">
+<h3>4.3.6	Resonant peak (<span class="math notranslate nohighlight">\(M_\mathrm{max}\)</span>)<a class="headerlink" href="#resonant-peak-m-mathrm-max" title="Permalink to this headline">¶</a></h3>
+<p>A good measure of stability, maximum value of the closed-loop frequency response (see Figures <a class="reference external" href="#fig13">13</a> and <a class="reference external" href="#fig14">14</a>).</p>
+<div class="math notranslate nohighlight">
+\[{M_{\max }} = \mathop {\max }\limits_\omega  \left| \frac{C(j\omega )}{R(j\omega )} \right|\]</div>
+<p><em>Design values</em>: a useful rule-of thumb is <span class="math notranslate nohighlight">\(M_\max =\| C(j\omega_1)\|/\|R(j\omega_1)\|\)</span>. That is the closed-loop resonant peak occurs at about the open-loop gain cross-over frequency. A more accurate value can be obtained by finding the M-circle that is tangential to the Nyquist curve (see <a class="reference external" href="2#s2.3">Section 2.3</a>). We usually require <span class="math notranslate nohighlight">\(M_\max &lt; 2\)</span> (6 dB), preferably <span class="math notranslate nohighlight">\(M_\max &lt; 1.3\)</span> (2.3 dB).</p>
+</div>
+<div class="section" id="resonant-frequency-omega-p">
+<h3>4.3.7	Resonant frequency (<span class="math notranslate nohighlight">\(\omega_p\)</span>)<a class="headerlink" href="#resonant-frequency-omega-p" title="Permalink to this headline">¶</a></h3>
+<p>The frequency <span class="math notranslate nohighlight">\(\omega_p\)</span> at which <span class="math notranslate nohighlight">\(M_\max\)</span> occurs.</p>
+<p>A final frequency response criterion sometimes encountered is</p>
+</div>
+<div class="section" id="id1">
+<h3>4.3.7	Delay time (<span class="math notranslate nohighlight">\(T_d\)</span>)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>A measure of the speed of response is given by</p>
+<div class="math notranslate nohighlight">
+\[T_d(\omega) = \frac{d\gamma}{d\omega}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma = \angle C(j\omega)/R(j\omega) = \)</span> phase of closed-loop frequency response. The average value of <span class="math notranslate nohighlight">\(T_d(\omega)\)</span> of the frequency range of interest is usually specified.</p>
+<p><img alt="Relationship between resonant peak Mmax and damping ratio zeta" src="../../_images/image048.png" /></p>
+<p><strong>Figure 14 Relationship between resonant peak <span class="math notranslate nohighlight">\(M_\max\)</span> and damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span></strong></p>
+<hr>
+<ol class="simple">
+<li><p>for more general systems with desired output <span class="math notranslate nohighlight">\(C(s)\)</span> and demanded output <span class="math notranslate nohighlight">\(R(s)\)</span> the formula <span class="math notranslate nohighlight">\(E(s) = R(s) - C(s)\)</span> must be used to derive a relationship between <span class="math notranslate nohighlight">\(E(s)\)</span> and <span class="math notranslate nohighlight">\(R(s)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./handouts/csd"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="3.html" title="previous page">3.	Design Strategies</a>
+    <a class='right-next' id="next-link" href="5.html" title="next page">5. Some useful design curves</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

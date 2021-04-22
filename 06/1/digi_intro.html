@@ -1,0 +1,1467 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.1. Introduction to Digital Systems &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/06/1/digi_intro.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.2. Digital System Models and System Response" href="../2/dsm.html" />
+    <link rel="prev" title="6. Digital Control Systems" href="../digital.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/06/1/digi_intro.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Introduction to Digital Systems" />
+<meta property="og:description" content="Introduction to Digital Systems  Digital systems are important in modern technology because they are used extensively to implement designs that previously used " />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07/index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/06/1/digi_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F06/1/digi_intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/06/1/digi_intro.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/06/1/digi_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analogue-v-digital">
+   6.1.1. Analogue v Digital
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#samplers-and-discrete-time-physical-systems">
+   6.1.2. Samplers and Discrete-Time Physical Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analogue-to-digital-converter">
+     6.1.2.1. Analogue to Digital Converter
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#digital-to-analogue-converter-d-a-or-dac">
+       6.1.2.1.1. Digital to Analogue Converter (D/A or DAC)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#digital-systems">
+   6.1.3. Digital Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compact-disk-analogue-to-digital">
+     6.1.3.1. Compact Disk (Analogue to Digital)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compact-disk-digital-to-analogue">
+     6.1.3.2. Compact Disk (Digital to Analogue)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generation-of-digital-signals">
+   6.1.4. Generation of Digital Signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling-and-sequences">
+     6.1.4.1. Sampling and Sequences
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sampling-mathematical-model-of-the-adc">
+       6.1.4.1.1. Sampling – Mathematical model of the ADC
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modelling-sampling-sequences">
+       6.1.4.1.2. Modelling Sampling: Sequences
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modelling-sampling-regular-sampling">
+       6.1.4.1.3. Modelling sampling: Regular Sampling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sampling-the-signals">
+       6.1.4.1.4. Sampling: The Signals
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sampling-indexing-the-sequence">
+       6.1.4.1.5. Sampling: Indexing the sequence
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shifting-digital-signals">
+   6.1.5. Shifting Digital Signals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-shifting-a-digital-signal">
+     6.1.5.1. Forward Shifting a Digital Signal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advance-and-derivative-operator">
+     6.1.5.2. Advance and Derivative Operator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#backward-shifting-a-digital-signal">
+     6.1.5.3. Backward Shifting a Digital Signal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mathematical-and-computer-models">
+     6.1.5.4. Mathematical and Computer Models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#block-diagram-model">
+       6.1.5.4.1. Block Diagram Model
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-of-the-z-transformation">
+   6.1.6. Definition of the z Transformation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-transform-is-a-summed-series">
+     6.1.6.1. z Transform is a summed series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-what-is-the-z-transform-of-the-unit-impulse-delta-t">
+     6.1.6.2. Example 1: What is the z Transform of the Unit Impulse
+     <span class="math notranslate nohighlight">
+      \(\delta(t)\)
+     </span>
+     ?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-what-is-the-z-transform-of-the-unit-step-epsilon-t">
+     6.1.6.3. Example 2: What is the z Transform of the Unit Step
+     <span class="math notranslate nohighlight">
+      \(\epsilon(t)\)
+     </span>
+     ?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-z-transform-of-a-power-series">
+     6.1.6.4. Example 3: z Transform of a Power Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4-z-transform-of-a-continuous-signal">
+     6.1.6.5. Example 4: z Transform of a Continuous Signal
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#z-transforms-of-the-shift-operators">
+   6.1.7. z Transforms of the Shift Operators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-transform-of-the-forward-shift">
+     6.1.7.1. z Transform of the Forward Shift
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5-proof-of-z-transform-of-forward-shift">
+     6.1.7.2. Example 5: Proof of z Transform of Forward Shift
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-transform-for-the-backward-shift">
+     6.1.7.3. z Transform for the Backward Shift
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-inverse-z-transformation">
+   6.1.8. The Inverse z Transformation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#methods-of-obtaining-the-inverse-z-transform">
+     6.1.8.1. Methods of obtaining the inverse z Transform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-6">
+     6.1.8.2. Example 6
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#direct-method-polynomial-division">
+       6.1.8.2.1. Direct Method (polynomial division)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indirect-method-partial-fraction-expansion">
+       6.1.8.2.2. Indirect Method (partial fraction expansion)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-and-final-values-of-a-sequence">
+   6.1.9. Initial and Final Values of a Sequence
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-7">
+     6.1.9.1. Example 7
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-digital-systems">
+<h1><span class="section-number">6.1. </span>Introduction to Digital Systems<a class="headerlink" href="#introduction-to-digital-systems" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Digital systems are important in modern technology because they are used extensively to implement designs that previously used analogue (continuous) technology.</p></li>
+<li><p>The concepts developed for continuous systems are all applicable to digital systems.</p></li>
+<li><p>This introduction commences with <em>digital signals</em>, continues with <em>digital systems</em>, and ends with an overview of how analogue systems may be converted to digital systems.</p></li>
+</ul>
+<div class="section" id="analogue-v-digital">
+<h2><span class="section-number">6.1.1. </span>Analogue v Digital<a class="headerlink" href="#analogue-v-digital" title="Permalink to this headline">¶</a></h2>
+<p>The real world we inhabit is analogue. We process analogue signals: e.g. vision and sound. Physical systems are analogue systems of force, velocity, current, voltage, temperature pressure, etc.</p>
+<p>Advances in electronics means that more and more of the storage, distribution and processing of signals is actually done using digital technology.</p>
+<p>There have to be methods of converting analogue to digital (e.g. recording of sound) and digital to analogue (e.g. signals delivered by loudspeakers).</p>
+<p>We need to be able to model the signals, their conversion and the systems that process them.</p>
+</div>
+<div class="section" id="samplers-and-discrete-time-physical-systems">
+<h2><span class="section-number">6.1.2. </span>Samplers and Discrete-Time Physical Systems<a class="headerlink" href="#samplers-and-discrete-time-physical-systems" title="Permalink to this headline">¶</a></h2>
+<p>As hinted in the introduction, we need to convert analogue signals to digital signals before the digital signal can be stored, distributed and manipulated by a digital system. At the point of delivery, we need to convert the signal back into digital form. In this section we introduce the signal conversion devices and give an example of one
+commonly seen digital system.</p>
+<div class="section" id="analogue-to-digital-converter">
+<h3><span class="section-number">6.1.2.1. </span>Analogue to Digital Converter<a class="headerlink" href="#analogue-to-digital-converter" title="Permalink to this headline">¶</a></h3>
+<p>We begin by describing the <em>digital to analogue converter</em> (D/A or DAC),
+since this device is usually also a component of the <em>analogue to
+digital compensator</em> (A/D or ADC). We assume that the DAC receives a
+digital signal, in the form of a binary number, every <span class="math notranslate nohighlight">\(T\)</span> seconds
+(usually from a digital computer, micro-controller or a digital signal
+processor). The DAC converts the binary number to a constant voltage
+equal to the value of that number, and outputs this voltage until the
+next number arrives and the DAC input. The block diagram of the DAC and
+a typical response is shown in Figure 1.</p>
+<div class="section" id="digital-to-analogue-converter-d-a-or-dac">
+<h4><span class="section-number">6.1.2.1.1. </span>Digital to Analogue Converter (D/A or DAC)<a class="headerlink" href="#digital-to-analogue-converter-d-a-or-dac" title="Permalink to this headline">¶</a></h4>
+<p><img alt="image" src="../../_images/DAC.png" />
+<strong>Figure 1</strong></p>
+<p>We next describe a comparator, which is also a component of the ADC. A
+comparator and its characteristics are illustrated in Figure 2. The input
+voltage <span class="math notranslate nohighlight">\(v_i(t)\)</span> is compared with the reference voltage <span class="math notranslate nohighlight">\(v_r(t)\)</span>. If
+<span class="math notranslate nohighlight">\(v_i(t) &gt; v_r(t)\)</span> the comparator outputs logic “1”; for example logic 1
+is 5V for TTL logic. If <span class="math notranslate nohighlight">\(v_i(t) &lt; v_r(t)\)</span> the comparator outputs logic
+“0”; which is less than 1V for TTL logic. The signal ground is normally
+omitted from circuit diagrams, but all voltages are compared relative to
+signal ground.</p>
+<p>#### Comparator</p>
+<p><img alt="Comparator" src="../../_images/comparator.png" />
+<strong>Figure 2</strong></p>
+<p>Several circuits are used to implement an analogue to digital converter.
+Each circuit has different characteristics. We illustrate the up-counter
+ADC shown in Figure 3. The <span class="math notranslate nohighlight">\(n\)</span>-bit counter is reset to zero when the
+start-of-conversion (SOC) signal is received by the device. The count
+increases by 1 with the arrival of each clock pulse. The <span class="math notranslate nohighlight">\(n\)</span>-bit DAC
+converts the binary equivalent of the count to a voltage <span class="math notranslate nohighlight">\(v_R\)</span>.</p>
+<p>#### The Counter ADC</p>
+<p><img alt="ADC" src="../../_images/ADC.png" />
+<strong>Figure 3</strong></p>
+<p>The analogue voltage <span class="math notranslate nohighlight">\(v_x\)</span> to be converted is compared to <span class="math notranslate nohighlight">\(V_R\)</span>. When
+<span class="math notranslate nohighlight">\(V_R\)</span> becomes greater than <span class="math notranslate nohighlight">\(v_x\)</span>, the comparator outputs a logic 0,
+which halts the clock input through the AND gate. The end-of-conversion
+(EOC) pulse then signals that the digital equivalent to <span class="math notranslate nohighlight">\(v_x\)</span> is ready.
+The counter output can then be read from the digital output as a binary
+number which is approximately equal to the analogue input.</p>
+</div>
+</div>
+</div>
+<div class="section" id="digital-systems">
+<h2><span class="section-number">6.1.3. </span>Digital Systems<a class="headerlink" href="#digital-systems" title="Permalink to this headline">¶</a></h2>
+<p>Once we have the ability to convert analogue signals into binary numbers
+and back, we have the ability to process the information using computers
+and other digital devices. A once familiar device will be the compact disk
+(CD) player.</p>
+<div class="section" id="compact-disk-analogue-to-digital">
+<h3><span class="section-number">6.1.3.1. </span>Compact Disk (Analogue to Digital)<a class="headerlink" href="#compact-disk-analogue-to-digital" title="Permalink to this headline">¶</a></h3>
+<p>Continuous time signal is filtered with an “anti-aliasing” band-pass filter with bandwidth of 5 to 20,000 Hz.</p>
+<p>Filtered audio signal sampled using ADC at 44,100 samples per second and with 14-16 bits precision.</p>
+<p>Each sample is stored, along with error correcting bits, as a stream of binary codes.</p>
+<p>The codes are recorded using microscopic pits etched into the surface of the CD.</p>
+</div>
+<div class="section" id="compact-disk-digital-to-analogue">
+<h3><span class="section-number">6.1.3.2. </span>Compact Disk (Digital to Analogue)<a class="headerlink" href="#compact-disk-digital-to-analogue" title="Permalink to this headline">¶</a></h3>
+<p>For stereo music, two channels are sampled and stored.</p>
+<p>Data is stored on a continuous track that spirals outwards from the centre.</p>
+<p>Data is read at a constant rate (44,100 Hz) and is processed (e.g. error corrected and buffered for tilt control) before being converted, using DAC, to a signal that can be delivered to a loudspeaker.</p>
+<p>Velocity of disk needs to be controlled so that it decreases as the radius of the track increases. Position and the focus of the laser used to read the data is also controlled.</p>
+<p>Audio CD holds approx. 540 MBytes of data which is enough to store 74 minutes of stereo music.</p>
+</div>
+</div>
+<div class="section" id="generation-of-digital-signals">
+<h2><span class="section-number">6.1.4. </span>Generation of Digital Signals<a class="headerlink" href="#generation-of-digital-signals" title="Permalink to this headline">¶</a></h2>
+<p>Digital signals do not occur naturally. They are generated by sampling
+continuous signals, or by digitally processing other digital signals.
+Sampling is accomplished by a sampler known as an “<em>Analogue to Digital
+Converter (ADC)</em>”.</p>
+<div class="section" id="sampling-and-sequences">
+<h3><span class="section-number">6.1.4.1. </span>Sampling and Sequences<a class="headerlink" href="#sampling-and-sequences" title="Permalink to this headline">¶</a></h3>
+<p>Sampling - mathematical model of the ADC</p>
+<p>Sampled signals are modelled as sequences</p>
+<p>Sequences can be shifted backwards (<em>advanced</em>) and forwards (<em>delayed</em>)</p>
+<p>The advance and delay operators are analogies to the derivative and integral operators</p>
+<div class="section" id="sampling-mathematical-model-of-the-adc">
+<h4><span class="section-number">6.1.4.1.1. </span>Sampling – Mathematical model of the ADC<a class="headerlink" href="#sampling-mathematical-model-of-the-adc" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Sampler" src="../../_images/sampler.png" />
+<strong>Figure 4</strong></p>
+<p>The analogue to digital converter is modelled as a switch as shown in
+Figure 4.</p>
+<p>Quantisation, introduced by converting an analogue signal to a binary number with a finite number of bits, will not be considered.</p>
+</div>
+<div class="section" id="modelling-sampling-sequences">
+<h4><span class="section-number">6.1.4.1.2. </span>Modelling Sampling: Sequences<a class="headerlink" href="#modelling-sampling-sequences" title="Permalink to this headline">¶</a></h4>
+<p>At each sampling instant the switch is closed for an infinitesimal time,
+during which the digital signal has the same value as the continuous
+signal.</p>
+<p>The digital signal is therefore a “<em>Sequence</em>”
+$<span class="math notranslate nohighlight">\(\ldots\ v_{-2}\ v_{-1}\ v_{0}\
+v_{1}\ v_{2}\ \ldots\)</span>$</p>
+<p>which will be denoted by $<span class="math notranslate nohighlight">\(\left\{v_k\right\}\)</span>$</p>
+<p>At each sampling instant the switch is closed for an infinitesimal time,
+during which the digital signal has the same value as the continuous
+signal. The digital signal is therefore a “<em>Sequence</em>”
+$<span class="math notranslate nohighlight">\(\ldots\ v_{-2}\ v_{-1}\ v_{0}\
+v_{1}\ v_{2}\ \ldots\)</span><span class="math notranslate nohighlight">\( which will be denoted by \)</span><span class="math notranslate nohighlight">\(\left\{v_k\right\}\)</span>$</p>
+</div>
+<div class="section" id="modelling-sampling-regular-sampling">
+<h4><span class="section-number">6.1.4.1.3. </span>Modelling sampling: Regular Sampling<a class="headerlink" href="#modelling-sampling-regular-sampling" title="Permalink to this headline">¶</a></h4>
+<p>Only regular sampling will be considered. A constant period <span class="math notranslate nohighlight">\(T\)</span> s
+between sampling instants is equivalent to a sampling frequency
+<span class="math notranslate nohighlight">\(\omega_s\)</span> rad s<span class="math notranslate nohighlight">\(^{-1}\)</span>, where $<span class="math notranslate nohighlight">\(T = \frac{2\pi}{\omega_s}.\)</span>$</p>
+<p>Sampling is assumed to be synchronized to the time origin <span class="math notranslate nohighlight">\(t=0\)</span> so that
+$<span class="math notranslate nohighlight">\(v_k = v(kT)\ \forall \ k \ge 0.\)</span>$</p>
+</div>
+<div class="section" id="sampling-the-signals">
+<h4><span class="section-number">6.1.4.1.4. </span>Sampling: The Signals<a class="headerlink" href="#sampling-the-signals" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Sampling" src="../../_images/sampling.png" />
+<strong>Figure 5</strong></p>
+</div>
+<div class="section" id="sampling-indexing-the-sequence">
+<h4><span class="section-number">6.1.4.1.5. </span>Sampling: Indexing the sequence<a class="headerlink" href="#sampling-indexing-the-sequence" title="Permalink to this headline">¶</a></h4>
+<p>The index <span class="math notranslate nohighlight">\(k\)</span> denotes the current value. Digital signals will be taken
+as zero prior to the time origin, in the same way as continuous signals:
+$<span class="math notranslate nohighlight">\(v_k = v(kT) = 0\ \mathrm{for}\ k&lt;0.\)</span>$</p>
+<p>Except in cases where it is necessary to distinguish between them, both
+the continuous signal <span class="math notranslate nohighlight">\(v(t)\)</span> and the digital signal <span class="math notranslate nohighlight">\(\left\{v_k\right\}\)</span>
+will be denoted by <span class="math notranslate nohighlight">\(v\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="shifting-digital-signals">
+<h2><span class="section-number">6.1.5. </span>Shifting Digital Signals<a class="headerlink" href="#shifting-digital-signals" title="Permalink to this headline">¶</a></h2>
+<p>Shifting digital signals is the mechanism by which dynamic behaviour is introduced into digital systems.</p>
+<p>The shifting operators are comparable to differentiating and integrating continuous signals.</p>
+<div class="section" id="forward-shifting-a-digital-signal">
+<h3><span class="section-number">6.1.5.1. </span>Forward Shifting a Digital Signal<a class="headerlink" href="#forward-shifting-a-digital-signal" title="Permalink to this headline">¶</a></h3>
+<p>The first forward shift of a digital signal <span class="math notranslate nohighlight">\(v\)</span> is generated by
+applying the “<em>Advance Operator</em>” <span class="math notranslate nohighlight">\(\triangle\)</span> to give the advanced
+digital signal <span class="math notranslate nohighlight">\(\triangle v\)</span>, where $<span class="math notranslate nohighlight">\(\triangle v = \triangle
+      \{v_k\} = \{\triangle v_k\} = \{v_{k+1}\}.\)</span>$</p>
+<p>The signal <span class="math notranslate nohighlight">\(v\)</span> is advanced by one value (a time advance of <span class="math notranslate nohighlight">\(T\)</span>).
+<span class="math notranslate nohighlight">\(v_0\)</span> vanishes because <span class="math notranslate nohighlight">\(\triangle v\)</span> is zero prior to <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p>Repeated operation gives the <span class="math notranslate nohighlight">\(r\)</span>-th forward shift
+$<span class="math notranslate nohighlight">\(\triangle^r v = \{v_{k+r}\}.\)</span>$</p>
+</div>
+<div class="section" id="advance-and-derivative-operator">
+<h3><span class="section-number">6.1.5.2. </span>Advance and Derivative Operator<a class="headerlink" href="#advance-and-derivative-operator" title="Permalink to this headline">¶</a></h3>
+<p>The advance operator <span class="math notranslate nohighlight">\(\triangle\)</span> is equivalent to the derivative
+operator <span class="math notranslate nohighlight">\(d/dt\)</span>.</p>
+<p>Neither the advance operator <span class="math notranslate nohighlight">\(\triangle\)</span> nor the derivative <span class="math notranslate nohighlight">\(d/dt\)</span>
+is physically realistic.</p>
+<p><span class="math notranslate nohighlight">\(\triangle\)</span> is not realistic because the current value of
+<span class="math notranslate nohighlight">\(\triangle v\)</span>, which is <span class="math notranslate nohighlight">\(\triangle v_k\)</span>, is the <em>future</em> value of
+<span class="math notranslate nohighlight">\(v_{k+1}\)</span> of the signal <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<p>The Advance operator <span class="math notranslate nohighlight">\(\triangle\)</span> for digital signals is equivalent to
+the differential operator <span class="math notranslate nohighlight">\(d/dt\)</span> for continuous signals. The first
+forward shift <span class="math notranslate nohighlight">\(\triangle v\)</span> <span class="math notranslate nohighlight">\(\equiv\)</span> first derivative <span class="math notranslate nohighlight">\(dv/dt\)</span>. The
+<span class="math notranslate nohighlight">\(r\)</span>-th forward shift <span class="math notranslate nohighlight">\(\triangle^r\)</span> <span class="math notranslate nohighlight">\(\equiv\)</span> <span class="math notranslate nohighlight">\(r\)</span>-th derivative
+<span class="math notranslate nohighlight">\(d^rv/dt^r\)</span>. Neither the <span class="math notranslate nohighlight">\(\triangle\)</span> operator nor the <span class="math notranslate nohighlight">\(d/dt\)</span> operator
+are physically realistic.</p>
+</div>
+<div class="section" id="backward-shifting-a-digital-signal">
+<h3><span class="section-number">6.1.5.3. </span>Backward Shifting a Digital Signal<a class="headerlink" href="#backward-shifting-a-digital-signal" title="Permalink to this headline">¶</a></h3>
+<p>The first backward shift of a digital signal <span class="math notranslate nohighlight">\(v\)</span> is generated by
+applying the “<em>Delay Operator</em>” <span class="math notranslate nohighlight">\(\nabla\)</span> to give the delayed digital
+signal <span class="math notranslate nohighlight">\(\nabla v\)</span>, where $<span class="math notranslate nohighlight">\(\nabla v = \nabla
+      \{v_k\} = \{\nabla v_k\} = \{v_{k-1}\}.\)</span>$</p>
+<p>The signal <span class="math notranslate nohighlight">\(v\)</span> is delayed by one value (a time delay of <span class="math notranslate nohighlight">\(T\)</span>).</p>
+<p>Repeated operation gives the <span class="math notranslate nohighlight">\(r\)</span>-th backward shift
+$<span class="math notranslate nohighlight">\(\nabla^r v = \{v_{k-r}\}.\)</span>$</p>
+<p>The delay operator <span class="math notranslate nohighlight">\(\nabla\)</span> is equivalent to the integral operator
+<span class="math notranslate nohighlight">\(\int\)</span>.</p>
+<p>The delay operator <span class="math notranslate nohighlight">\(\nabla\)</span> is not only physically realistic but can
+be implemented easily by storage and retrieval in a digital
+computer.</p>
+<p>The delay operator <span class="math notranslate nohighlight">\(\nabla\)</span> for digital signals is equivalent to the
+integral operator <span class="math notranslate nohighlight">\(\int dt\)</span> for continuous signals. The first backward
+shift <span class="math notranslate nohighlight">\(\nabla v\)</span> <span class="math notranslate nohighlight">\(\equiv\)</span> first integral <span class="math notranslate nohighlight">\(\int v dt\)</span>. The <span class="math notranslate nohighlight">\(r\)</span>-th
+backward shift <span class="math notranslate nohighlight">\(\nabla^r\)</span> <span class="math notranslate nohighlight">\(\equiv\)</span> <span class="math notranslate nohighlight">\(r\)</span>-th integral <span class="math notranslate nohighlight">\(\int \int \cdots
+\int v dt\)</span>. Both the <span class="math notranslate nohighlight">\(\nabla\)</span> operator and the <span class="math notranslate nohighlight">\(d/dt\)</span> operator are
+physically realistic.</p>
+</div>
+<div class="section" id="mathematical-and-computer-models">
+<h3><span class="section-number">6.1.5.4. </span>Mathematical and Computer Models<a class="headerlink" href="#mathematical-and-computer-models" title="Permalink to this headline">¶</a></h3>
+<p><em>Advance operators</em> (like differential operators) are best suited to
+mathematical models.</p>
+<p><em>Delay operators</em> (like integral models) are best suited to computer
+models.</p>
+<div class="section" id="block-diagram-model">
+<h4><span class="section-number">6.1.5.4.1. </span>Block Diagram Model<a class="headerlink" href="#block-diagram-model" title="Permalink to this headline">¶</a></h4>
+<p>In a <em>Digital Operational Block Diagram</em> the fundamental dynamic
+operation is denoted by the <em>delay</em> operator</p>
+<p><img alt="Block diagram" src="../../_images/blockd.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="definition-of-the-z-transformation">
+<h2><span class="section-number">6.1.6. </span>Definition of the z Transformation<a class="headerlink" href="#definition-of-the-z-transformation" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math notranslate nohighlight">\(z\)</span> transformation has the same role in digital systems that the
+Laplace transform has in continuous systems.</p>
+<p>The <span class="math notranslate nohighlight">\(z\)</span> transformation of a digital signal <span class="math notranslate nohighlight">\(v\)</span> is defined as $<span class="math notranslate nohighlight">\(V =
+     V(z) = \mathcal{Z} v = \mathcal{Z} \{ v_{k} \}=\sum_{k=0}^{\infty}
+     v_k z^{-k}.\)</span>$</p>
+<p>Similarly, <span class="math notranslate nohighlight">\(v\)</span> is the <em>inverse <span class="math notranslate nohighlight">\(z\)</span> transform</em> of <span class="math notranslate nohighlight">\(V\)</span>, or
+$<span class="math notranslate nohighlight">\(\mathcal{Z}^{-1} V.\)</span>$</p>
+<div class="section" id="z-transform-is-a-summed-series">
+<h3><span class="section-number">6.1.6.1. </span>z Transform is a summed series<a class="headerlink" href="#z-transform-is-a-summed-series" title="Permalink to this headline">¶</a></h3>
+<p>Obtaining <span class="math notranslate nohighlight">\(z\)</span> transforms involves summing series.</p>
+<p>Often this is a <em>binomial</em> series $<span class="math notranslate nohighlight">\((1+x)^r = 1 + rx + \frac{r(r-1)}{2}x^2 +
+    \cdots + \frac{r(r-1)\cdots(r-n+1)}{n!}x^n + \cdots\)</span>$</p>
+<p>The transform pairs for common functions are put into tables so that
+it is not necessary to sum a series in most cases.</p>
+</div>
+<div class="section" id="example-1-what-is-the-z-transform-of-the-unit-impulse-delta-t">
+<h3><span class="section-number">6.1.6.2. </span>Example 1: What is the z Transform of the Unit Impulse <span class="math notranslate nohighlight">\(\delta(t)\)</span>?<a class="headerlink" href="#example-1-what-is-the-z-transform-of-the-unit-impulse-delta-t" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(v\)</span> is the digital sequence <span class="math notranslate nohighlight">\(\{\delta_k\}\)</span>, that is
+$<span class="math notranslate nohighlight">\(1\ 0\ 0\ 0\ 0\ \ldots\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(z\)</span> transform is
+$<span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} 1\times z^{-k} = 1 + 0\times z^{-1} + 0\times z^{-2}+\cdots\)</span>$</p>
+<p>Thus <span class="math notranslate nohighlight">\(\mathcal{Z}(\delta(t)) = 1\)</span>.</p>
+</div>
+<div class="section" id="example-2-what-is-the-z-transform-of-the-unit-step-epsilon-t">
+<h3><span class="section-number">6.1.6.3. </span>Example 2: What is the z Transform of the Unit Step <span class="math notranslate nohighlight">\(\epsilon(t)\)</span>?<a class="headerlink" href="#example-2-what-is-the-z-transform-of-the-unit-step-epsilon-t" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(v\)</span> is the digital sequence <span class="math notranslate nohighlight">\(\{\epsilon_k\}\)</span>, that is
+$<span class="math notranslate nohighlight">\(1\ 1\ 1\ 1\ 1\ \ldots\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(z\)</span> transform is
+$<span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} 1\times z^{-k} = 1 + z^{-1} + z^{-2}+\cdots\)</span>$</p>
+<p>This is summed as a binomial series as
+$<span class="math notranslate nohighlight">\((1-z^{-1})^{-1} = \frac{1}{1-z^{-1}} =
+    \frac{z}{z-1}.\)</span>$</p>
+</div>
+<div class="section" id="example-3-z-transform-of-a-power-series">
+<h3><span class="section-number">6.1.6.4. </span>Example 3: z Transform of a Power Series<a class="headerlink" href="#example-3-z-transform-of-a-power-series" title="Permalink to this headline">¶</a></h3>
+<p>Another example which is commonly found is the digital signal <span class="math notranslate nohighlight">\(v\)</span> given
+by <span class="math notranslate nohighlight">\(\{v_k\} = \{\alpha^k\}\)</span>. What is the <span class="math notranslate nohighlight">\(z\)</span>-transform of this signal?</p>
+<p><span class="math notranslate nohighlight">\(\{v_k\} = \{\alpha^k\}\)</span></p>
+<p>The <span class="math notranslate nohighlight">\(z\)</span> transform is
+$<span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} \alpha^{k} z^{-k} = 1 + \alpha z^{-1} + \alpha^2
+    z^{-2}+\cdots\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(\ldots\)</span> which is summed as a binomial series as
+$<span class="math notranslate nohighlight">\((1-\alpha z^{-1})^{-1} = \frac{1}{1-\alpha
+      z^{-1}} = \frac{z}{z-\alpha}.\)</span>$</p>
+</div>
+<div class="section" id="example-4-z-transform-of-a-continuous-signal">
+<h3><span class="section-number">6.1.6.5. </span>Example 4: z Transform of a Continuous Signal<a class="headerlink" href="#example-4-z-transform-of-a-continuous-signal" title="Permalink to this headline">¶</a></h3>
+<p>If the digital signal <span class="math notranslate nohighlight">\(v\)</span> is generated by sampling the continuous
+signal <span class="math notranslate nohighlight">\(v(t)\)</span>, then the transform <span class="math notranslate nohighlight">\(V\)</span> also has a correspondence with
+<span class="math notranslate nohighlight">\(v(t)\)</span>.</p>
+<p>For example, if $<span class="math notranslate nohighlight">\(v(t) = e^{-at}\)</span>$</p>
+<p>then $<span class="math notranslate nohighlight">\(v_k = v(kT)
+    = e^{-akT} = (e^{-aT})^k.\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(\ldots\)</span> So, from the previous result, with <span class="math notranslate nohighlight">\(\alpha=e^{-aT}\)</span>, we
+have the <span class="math notranslate nohighlight">\(z\)</span> transform as
+$<span class="math notranslate nohighlight">\(\frac{1}{1-e^{-aT}z^{-1}}=\frac{z}{z-e^{-aT}}.\)</span>$</p>
+</div>
+</div>
+<div class="section" id="z-transforms-of-the-shift-operators">
+<h2><span class="section-number">6.1.7. </span>z Transforms of the Shift Operators<a class="headerlink" href="#z-transforms-of-the-shift-operators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="z-transform-of-the-forward-shift">
+<h3><span class="section-number">6.1.7.1. </span>z Transform of the Forward Shift<a class="headerlink" href="#z-transform-of-the-forward-shift" title="Permalink to this headline">¶</a></h3>
+<p>This is similar to the derivative property of the Laplace transform.</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\triangle v = z V(z) - zv_0\]</div>
+<p>It also introduces the
+initial member <span class="math notranslate nohighlight">\(v_0\)</span>.</p>
+<p>We can also show that
+$<span class="math notranslate nohighlight">\(\mathcal{Z}\triangle^2 v = z^2 V(z) - z^2 v_0 - z v_1\)</span>$</p>
+<p>and in general
+$<span class="math notranslate nohighlight">\(\mathcal{Z}\triangle^r v = z^r V(z) - \sum_{i=0}^{r-1} v_i z^{r-i}.\)</span>$</p>
+</div>
+<div class="section" id="example-5-proof-of-z-transform-of-forward-shift">
+<h3><span class="section-number">6.1.7.2. </span>Example 5: Proof of z Transform of Forward Shift<a class="headerlink" href="#example-5-proof-of-z-transform-of-forward-shift" title="Permalink to this headline">¶</a></h3>
+<p>Prove that the <span class="math notranslate nohighlight">\(z\)</span>
+Transform of the Forward Shift:
+$<span class="math notranslate nohighlight">\(\mathcal{Z}\triangle v = z V(z) - zv_0\)</span>$</p>
+<p>To prove the relationship illustrated in we note that
+$<span class="math notranslate nohighlight">\(\triangle v = v_1\ v_2\ v_3\ \ldots\ v_{k+1}\ldots\)</span><span class="math notranslate nohighlight">\( so that
+\)</span>$\begin{eqnarray*}
+\mathcal{Z}\triangle v &amp; = &amp;  v_1 z^0 + v_2 z^{-1} + v_3 z^{-3} + \cdots</p>
+<ul class="simple">
+<li><p>v_{k+1}z^{-k}+\cdots \
+&amp; = &amp; z(v_0 + v_1 z^{-1} + v_2 z^{-2} + \cdots</p></li>
+<li><p>v_{k+1}z^{-{k+1}}+\cdots)-zv_0\
+&amp;=&amp; zV(z) - zv_0.\end{eqnarray*}$$</p></li>
+</ul>
+<p>Similar arguments may be used to prove
+the other relationships shown in the previous slide.</p>
+</div>
+<div class="section" id="z-transform-for-the-backward-shift">
+<h3><span class="section-number">6.1.7.3. </span>z Transform for the Backward Shift<a class="headerlink" href="#z-transform-for-the-backward-shift" title="Permalink to this headline">¶</a></h3>
+<p>This is similar to the integral property of the Laplace transform.</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{Z}\nabla v = z^{-1} V(z)\]</div>
+<p>The proof is similar to the Forward shift case and is left as an exercise.</p>
+</div>
+</div>
+<div class="section" id="the-inverse-z-transformation">
+<h2><span class="section-number">6.1.8. </span>The Inverse z Transformation<a class="headerlink" href="#the-inverse-z-transformation" title="Permalink to this headline">¶</a></h2>
+<p>The inverse <span class="math notranslate nohighlight">\(z\)</span> transform of <span class="math notranslate nohighlight">\(V\)</span> is <span class="math notranslate nohighlight">\(\mathcal{Z}^{-1} V = v\)</span>, where <span class="math notranslate nohighlight">\(v\)</span> is a digital signal, that is a sequence.</p>
+<p>This contrasts with the inverse Laplace transformation, which gives functions of time.</p>
+<p>As the definition of the transform involves <span class="math notranslate nohighlight">\(z^{-1}\)</span>, through
+$<span class="math notranslate nohighlight">\(V=\sum_{k=0}^{\infty} v_k z^{-k},\)</span><span class="math notranslate nohighlight">\( it is often useful to commence
+    the inversion if \)</span>V(z)<span class="math notranslate nohighlight">\( by expressing it as a function of \)</span>z^{-1}<span class="math notranslate nohighlight">\(
+    rather than of \)</span>z$.</p>
+<div class="section" id="methods-of-obtaining-the-inverse-z-transform">
+<h3><span class="section-number">6.1.8.1. </span>Methods of obtaining the inverse z Transform<a class="headerlink" href="#methods-of-obtaining-the-inverse-z-transform" title="Permalink to this headline">¶</a></h3>
+<p>There are several methods for obtaining inverse <span class="math notranslate nohighlight">\(z\)</span> transforms.</p>
+<p>They generally involve expressing <span class="math notranslate nohighlight">\(V\)</span> as a series involving powers
+of <span class="math notranslate nohighlight">\(z^{-1}\)</span>, from which the coefficients give the sequence <span class="math notranslate nohighlight">\(\{v_k\}\)</span>
+that is <span class="math notranslate nohighlight">\(v\)</span>.</p>
+<p>Alternatively, a partial fraction expansion is used to obtain terms
+from which the inverse transforms may be looked-up from tables.</p>
+</div>
+<div class="section" id="example-6">
+<h3><span class="section-number">6.1.8.2. </span>Example 6<a class="headerlink" href="#example-6" title="Permalink to this headline">¶</a></h3>
+<p>Use the direct and indirect methods to determine the inverse <span class="math notranslate nohighlight">\(z\)</span>
+transform of $<span class="math notranslate nohighlight">\(V=\frac{4z^3 - 16z}{z^3 - z^2 -
+  0.25 z + 0.25}.\)</span>$</p>
+<div class="section" id="direct-method-polynomial-division">
+<h4><span class="section-number">6.1.8.2.1. </span>Direct Method (polynomial division)<a class="headerlink" href="#direct-method-polynomial-division" title="Permalink to this headline">¶</a></h4>
+<p>This involves expressing <span class="math notranslate nohighlight">\(V\)</span> as a function of <span class="math notranslate nohighlight">\(z^{-1}\)</span>, and dividing the
+numerator polynomial by the denominator polynomial.</p>
+<p>First express <span class="math notranslate nohighlight">\(V\)</span> as a function of <span class="math notranslate nohighlight">\(z^{-1}\)</span> by multiplying numerator and
+denominator by <span class="math notranslate nohighlight">\(z^{-3}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[V = \frac{4-16z^{-2}}{1-z^{-1}-0.25 z^{-2} + 0.25 z^{-3}}\]</div>
+<p>Then divide
+$<span class="math notranslate nohighlight">\(\begin{array}{rrrrrrr}
+   &amp; +4 &amp; +4z^{-1} &amp; -11z^{-2} &amp; -11z^{-3} &amp; +\cdots  \mathrm{etc}&amp; \\ \hline
+  1-z^{-1}-0.25
+z^{-2} + 0.25 z^{-3} &amp;  |\ +4 &amp; . &amp; -16z^{-2} &amp;  &amp; &amp;
+\\
+   &amp; +4 &amp; -4z^{-1} &amp; -z^{-2} &amp; +z^{-3} &amp;  &amp;  \\ \hline
+   &amp;  &amp;   +4z^{-1} &amp; -15z^{-2} &amp; -z^{-3} &amp;  &amp;  \\
+   &amp;  &amp;   +4z^{-1} &amp; - 4z^{-2} &amp; -z^{-3} &amp; +z^{-4} &amp;  \\
+   \hline
+   &amp;  &amp;           &amp; -11z^{-2} &amp; .         &amp;    -z^{-4} &amp;  \\
+   &amp;  &amp;           &amp; -11z^{-2} &amp; +11z^{-3} &amp; +2.75z^{-4} &amp; -2.75z^{-5}
+   \\\hline
+  &amp;   &amp;           &amp;           &amp; -11z^{-3} &amp; -3.75z^{-4} &amp;
+  +2.75z^{-5} \\
+    &amp;   &amp;           &amp;           &amp; \cdots &amp; \cdots &amp;
+  \cdots \\
+\end{array}\)</span>$</p>
+<p>So $<span class="math notranslate nohighlight">\(V = 4 + 4z^{-1} -11 z^{-2} -11z^{-3} + \cdots\
+\mathrm{etc}\)</span><span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(v = \begin{array}{ccccccc}
+  4 &amp; 4 &amp; -11 &amp; -11 &amp; \cdots &amp; \cdots &amp; \mathrm{etc}.
+\end{array}\)</span>$</p>
+</div>
+<div class="section" id="indirect-method-partial-fraction-expansion">
+<h4><span class="section-number">6.1.8.2.2. </span>Indirect Method (partial fraction expansion)<a class="headerlink" href="#indirect-method-partial-fraction-expansion" title="Permalink to this headline">¶</a></h4>
+<p>This also involves expressing <span class="math notranslate nohighlight">\(V\)</span> as a function of <span class="math notranslate nohighlight">\(z^{-1}\)</span>, but now the
+denominator is factorized and a partial fraction is obtained.</p>
+<p>So $<span class="math notranslate nohighlight">\(\begin{aligned}
+ V  &amp;=  \frac{4-16z^{-2}}{1-z^{-1}-0.25 z^{-2} +
+0.25 z^{-3}}\\ &amp;= \frac{16-64z^{-2}}{4-4z^{-1}-z^{-2} + z^{-3}}\\
+&amp;= \frac{16(1-2z^{-1})(1+2z^{-1})}{(2-z^{-1})(2+z^{-1})(1-z^{-1})}\\
+&amp;= \frac{\frac{16\times -3\times 5}{4\times -1}}{2-z^{-1}} +
+\frac{\frac{16\times 5\times -3}{4\times 3}}{2+z^{-1}} +
+\frac{\frac{16\times -1 \times 3}{1\times 3}}{1-z^{-1}}
+\\ &amp;=\frac{60}{2-z^{-1}} -
+\frac{20}{2+z^{-1}} - \frac{16}{1-z^{-1}}
+\\&amp;=\frac{30}{1-{1/2}z^{-1}} -
+\frac{10}{1+{1/2}z^{-1}} - \frac{16}{1-z^{-1}}
+\\
+&amp;= 30\frac{z}{z-{1/2}} - 10\frac{z}{z+{1/2}} - 16\frac{z}{z-1}.\end{aligned}\)</span><span class="math notranslate nohighlight">\(
+Inverse transforming each term from tables gives \)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+v&amp;=30\{(1/2)^k\}-10\{(-1/2)^k\} -16 \{\epsilon_k\}\\
+&amp;= \begin{array}{ccccccc}
+  4 &amp; 4 &amp; -11 &amp; -11 &amp; \cdots &amp; \cdots &amp; -16
+\end{array}.\end{aligned}\)</span>$</p>
+<p>The direct method of polynomial division is useful for obtaining the
+first few members of a sequence, and the indirect method of partial
+fraction expansion is useful for obtaining a closed-form representation
+of the sequence (if one exists).</p>
+<p>Two further properties of the <span class="math notranslate nohighlight">\(z\)</span> transform are useful
+for finding the initial and final values of a sequence.</p>
+</div>
+</div>
+</div>
+<div class="section" id="initial-and-final-values-of-a-sequence">
+<h2><span class="section-number">6.1.9. </span>Initial and Final Values of a Sequence<a class="headerlink" href="#initial-and-final-values-of-a-sequence" title="Permalink to this headline">¶</a></h2>
+<p><em>Initial Value Property</em> $<span class="math notranslate nohighlight">\(v_0 = \lim_{z\rightarrow
+      \infty}V(z).\)</span>$</p>
+<p><em>Final Value Property</em>
+$<span class="math notranslate nohighlight">\(\lim_{k\rightarrow \infty}v_k = \lim_{z\rightarrow
+          1}\frac{z-1}{z}V(z).\)</span>$</p>
+<div class="section" id="example-7">
+<h3><span class="section-number">6.1.9.1. </span>Example 7<a class="headerlink" href="#example-7" title="Permalink to this headline">¶</a></h3>
+<p>Determine the initial and final values of the response of the system
+given in Example 6.</p>
+<p>In the example, the initial value is $<span class="math notranslate nohighlight">\(\lim_{k\rightarrow 0} v_k = \lim_{z\rightarrow
+  \infty}\frac{4z^3-16z}{z^3-z^2-0.25z+0.25} = 4.\)</span><span class="math notranslate nohighlight">\( The final value is
+\)</span><span class="math notranslate nohighlight">\(\begin{aligned}
+  \lim_{k\rightarrow \infty}v_k =&amp; \lim_{z\rightarrow
+      1}\frac{z-1}{z}\ \frac{4z^3-16z}{z^3-z^2-0.25z+0.25}\\
+ =&amp; \lim_{z\rightarrow
+      1}\frac{z-1}{z}\ \frac{(4)(z)(z-2)(z+2)}{(z-1)(z-0.5)(z+0.5)}\\
+=&amp; \frac{4\times -1 \times 3}{0.5\times 1.5} = -16.\end{aligned}\)</span>$</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./06/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../digital.html" title="previous page"><span class="section-number">6. </span>Digital Control Systems</a>
+    <a class='right-next' id="next-link" href="../2/dsm.html" title="next page"><span class="section-number">6.2. </span>Digital System Models and System Response</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

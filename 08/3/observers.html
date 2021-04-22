@@ -1,0 +1,1120 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8.3. State Observers &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/08/3/observers.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.4. Combined Observer and Controller" href="../4/observer_controller.html" />
+    <link rel="prev" title="8.2. State-Feedback Control" href="../2/sfcontrol.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/08/3/observers.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="State Observers" />
+<meta property="og:description" content="State Observers  In many practical cases it is not possible to measure all the states of a system.  That is we cannot form u=r-\mathbf{Kx}  for the purposes of " />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07/index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/08/3/observers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F08/3/observers.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/08/3/observers.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/08/3/observers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-observer">
+   8.3.1. State Observer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-observer-with-feedback">
+   8.3.2. State Observer with Feedback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observer-state-equations">
+   8.3.3. Observer state equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observed-state-errors">
+   8.3.4. Observed State Errors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-observed-error-state-equations">
+   8.3.5. Properties of the Observed Error State Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-of-the-l-matrix">
+   8.3.6. Design of the L Matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-example-1">
+     8.3.6.1. In-Class Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#block-diagram-of-the-observer">
+       8.3.6.1.1. Block Diagram of the Observer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-of-l-matrix-for-other-forms-of-state-equation">
+   8.3.7. Design of L Matrix for Other Forms of State Equation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choice-of-observer-poles">
+   8.3.8. Choice of Observer Poles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnote">
+   8.3.9. Footnote
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="state-observers">
+<h1><span class="section-number">8.3. </span>State Observers<a class="headerlink" href="#state-observers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>In many practical cases it is not possible to measure all the states
+of a system.</p></li>
+</ul>
+<ul class="simple">
+<li><p>That is we cannot form <span class="math notranslate nohighlight">\(u=r-\mathbf{Kx}\)</span>  for the purposes of
+feedback control because we do not have access to <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>If we know <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}\)</span>, and
+<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> then it may be possible to reconstruct the states from
+one or more of the system outputs by means of an <strong>observer</strong>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>It is necessary that the system states be observable from the
+output(s).</p></li>
+</ul>
+<div class="section" id="state-observer">
+<h2><span class="section-number">8.3.1. </span>State Observer<a class="headerlink" href="#state-observer" title="Permalink to this headline">¶</a></h2>
+<p>The main idea is to construct a model of the system and subject it to the same input:</p>
+<p><img alt="State Observer" src="../../_images/observer1.png" /></p>
+<p>Severe differences occur between <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{\mathbf{x}}\)</span> due
+to disturbances and parameter errors. Solution:- Employ feedback !</p>
+<p><strong>NB</strong> To simplify treatment, we take <span class="math notranslate nohighlight">\(\mathbf{D}=0\)</span>.</p>
+</div>
+<div class="section" id="state-observer-with-feedback">
+<h2><span class="section-number">8.3.2. </span>State Observer with Feedback<a class="headerlink" href="#state-observer-with-feedback" title="Permalink to this headline">¶</a></h2>
+<p><img alt="State Observer with Feedback" src="../../_images/observer2.png" /></p>
+</div>
+<div class="section" id="observer-state-equations">
+<h2><span class="section-number">8.3.3. </span>Observer state equations<a class="headerlink" href="#observer-state-equations" title="Permalink to this headline">¶</a></h2>
+<p>For the <strong>observer</strong> we have the state equations:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d{\bf{\hat x}}}{dt} = {\bf{A\hat x}} + {\bf{B}}u + {\bf{L}}\underbrace {(y - {\bf{C\hat x}})}_{\rm{feedback}}\]</div>
+</div>
+<div class="section" id="observed-state-errors">
+<h2><span class="section-number">8.3.4. </span>Observed State Errors<a class="headerlink" href="#observed-state-errors" title="Permalink to this headline">¶</a></h2>
+<p>Let the error in the estimated states <span class="math notranslate nohighlight">\(\hat{\mathbf{x}}\)</span> be:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{e}=\mathbf{x}-\hat{\mathbf{x}}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{e}}{dt}=\frac{d\mathbf{x}}{dt}-\frac{d\hat{\mathbf{x}}}{dt}\]</div>
+<p>Given,</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{x}}{dt}=\mathbf{A}\mathbf{x}+\mathbf{B}u\ \mathrm{and}\ y=\mathbf{C}\mathbf{x}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\frac{d\mathbf{e}}{dt} &amp; = &amp; \left(\mathbf{A}\mathbf{x}+\mathbf{B}u\right)-\left\{\mathbf{A}\hat{\mathbf{x}}+\mathbf{B}u+\mathbf{L}(y-\mathbf{C}\hat{\mathbf{x}})\right\} \\
+	&amp; = &amp; \mathbf{A}(\mathbf{x}-\hat{\mathbf{x}})-\mathbf{L}(\mathbf{C}\mathbf{x}-\mathbf{C}\hat{\mathbf{x}}) = \mathbf{Ae}-\mathbf{LCe}\\
+	&amp; = &amp; (\mathbf{A}-\mathbf{LC})\mathbf{e}\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="properties-of-the-observed-error-state-equations">
+<h2><span class="section-number">8.3.5. </span>Properties of the Observed Error State Equations<a class="headerlink" href="#properties-of-the-observed-error-state-equations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>These are the state equations for the observer error.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The errors decay to zero with time if the eigen values of
+<span class="math notranslate nohighlight">\((\mathbf{A}-\mathbf{LC})\)</span> lie in the left half plane (LHP).</p></li>
+</ul>
+<ul class="simple">
+<li><p>In fact we can design the matrix <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> to place the eigen
+values anywhere we wish</p></li>
+</ul>
+<ul class="simple">
+<li><p>If we place them well into the LHP then <span class="math notranslate nohighlight">\(\mathbf{e}\)</span> will decay
+quickly to zero making the observer states accurately track the
+system states <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> after a short time.</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{\mathbf{x}}\)</span> can then be used for feedback control.</p></li>
+</ul>
+</div>
+<div class="section" id="design-of-the-l-matrix">
+<h2><span class="section-number">8.3.6. </span>Design of the L Matrix<a class="headerlink" href="#design-of-the-l-matrix" title="Permalink to this headline">¶</a></h2>
+<p>This is particularly easy when we use the observer canonical form.</p>
+<p>Given the TF:</p>
+<div class="math notranslate nohighlight">
+\[\frac{Y(s)}{U(s)}=\frac{c_1s^{n-1}+\cdots+c_n}{s^n + a_1s^{n-1}+\cdots+a_n}\]</div>
+<p>the matrices of the state space model are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	 {\bf{A}} &amp; = &amp; \left[ {\begin{array}{*{20}c}
+	   { - a_1 } &amp; 1 &amp;  \cdots  &amp; 0  \\
+	   { - a_2 } &amp; 0 &amp;  \ddots  &amp; {0}  \\
+	    \vdots  &amp;  \vdots  &amp; {} &amp;  \vdots   \\
+	   { - a_n } &amp; 0 &amp;  \cdots  &amp; 0  \\
+	\end{array}} \right];\quad {\bf{B}} = \left[ {\begin{array}{*{20}c}
+	   {c_1 }  \\
+	   {c_2 }  \\
+	    \vdots   \\
+	   {c_n }  \\
+	\end{array}} \right] \\ 
+	 {\bf{C}} &amp; = &amp; \left[ {\begin{array}{*{20}c}
+	   1 &amp; 0 &amp;  \cdots  &amp; 0  \\
+	\end{array}} \right];\quad {\bf{D}} = 0 \\ 	\end{eqnarray*}\end{split}\]</div>
+<p>and the feedback vector is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L = \left[ {\begin{array}{*{20}c}
+   {l_1 } &amp; {l_2 } &amp;  \cdots  &amp; {l_n }  \\
+\end{array}} \right]^T\end{split}\]</div>
+<p>The state matrix of the observer is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{A}} - {\bf{LC}} = \left[ {\begin{array}{*{20}c}
+   {( - a_1  - l_1 )} &amp; 1 &amp;  \cdots  &amp; 0  \\
+   {( - a_2  - l_2 )} &amp; 0 &amp;  \ddots  &amp; 0  \\
+    \vdots  &amp;  \vdots  &amp; {} &amp;  \vdots   \\
+   {( - a_n  - l_n )} &amp; 0 &amp;  \cdots  &amp; 0  \\
+\end{array}} \right]\end{split}\]</div>
+<p>The poles of the observer are the roots of the CE:</p>
+<div class="math notranslate nohighlight">
+\[s^n+(a_1+l_1)s^{n-1}+\cdots+(a_n+l_n)=0\]</div>
+<p>If the desired observer poles are at <span class="math notranslate nohighlight">\(s=p_1,p_2,\ldots,p_n\)</span> then the
+desired CE equation is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\alpha_e(s) &amp; = &amp; (s-p_1)(s-p_2)\cdots(s-p_n) \\
+	            &amp; = &amp; s^n + \alpha_1s^{n-1} + \cdots + \alpha_n = 0\end{eqnarray*}\end{split}\]</div>
+<p>The <span class="math notranslate nohighlight">\(l\)</span> coefficients may be found by matching the two equations above.
+Thus,</p>
+<div class="math notranslate nohighlight">
+\[l_1=\alpha_1-a_1,\ l_2=\alpha_2-a_2,\ \cdots\ l_n=\alpha_n-a_n.\]</div>
+<div class="section" id="in-class-example-1">
+<h3><span class="section-number">8.3.6.1. </span>In-Class Example 1<a class="headerlink" href="#in-class-example-1" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem</strong>: Design an observer with poles or eigen values
+<span class="math notranslate nohighlight">\(\lambda_{1,2} = -20,\ -20\)</span> using the observer canonical form for the
+system with a TF:</p>
+<div class="math notranslate nohighlight">
+\[\frac{Y(s)}{U(s)}=\frac{7}{s^2+15s+44}.\]</div>
+<p><strong>SOLUTION</strong>: The observer canonical form gives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{A}} = \left[ {\begin{array}{*{20}c}
+   { - 15} &amp; 1  \\
+   { - 44} &amp; 0  \\
+\end{array}} \right];\;{\bf{B}} = \left[ {\begin{array}{*{20}c}
+   0  \\
+   7  \\
+\end{array}} \right];\;{\bf{C}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 0  \\
+\end{array}} \right];\;{\bf{D}} = 0\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(\mathbf{L}=[l_1,\ l_2]^T\)</span> we
+have observer poles at the roots of:</p>
+<div class="math notranslate nohighlight">
+\[s^2+(15+l_1)s+(44+l_2)=0.\]</div>
+<p>The desired CE is:</p>
+<div class="math notranslate nohighlight">
+\[\alpha_e(s)=(s + 20)(s + 20)=s^2+40s+400=0\]</div>
+<p>Comparing coefficients gives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    s^1:\ 15 + l_1 &amp; = &amp; 40 \to l_1=25 \\
+    s^0:\ 44 + l_2 &amp; = &amp; 400 \to l_2=356 \\ \end{eqnarray*}\end{split}\]</div>
+<p>So the observer states are given by:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\hat{\mathbf{x}}}{dt}=\mathbf{A}\hat{\mathbf{x}}+\mathbf{B}u-\mathbf{L}(\mathbf{C}\hat{\mathbf{x}}-y)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{L}=[25\ 356]^T.\)</span></p>
+<div class="section" id="block-diagram-of-the-observer">
+<h4><span class="section-number">8.3.6.1.1. </span>Block Diagram of the Observer<a class="headerlink" href="#block-diagram-of-the-observer" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Block Diagram of the Observer" src="../../_images/observer3.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="design-of-l-matrix-for-other-forms-of-state-equation">
+<h2><span class="section-number">8.3.7. </span>Design of L Matrix for Other Forms of State Equation<a class="headerlink" href="#design-of-l-matrix-for-other-forms-of-state-equation" title="Permalink to this headline">¶</a></h2>
+<p>When the observer canonical form is not used, then the design of the
+observer is more difficult. Ackermann’s formula can be adapted as
+follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{L}}^T  = \left[ {\begin{array}{*{20}c}
+   0 &amp;  \ldots  &amp; 0 &amp; 1  \\
+\end{array}} \right]\mathcal{O}^{ - 1} \alpha _e ({\bf{A}}^T )\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathcal{O}\)</span> is the observability matrix:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{O}=[\mathbf{C}^T\vdots\mathbf{A}^T\mathbf{C}^T\vdots\cdots\vdots(\mathbf{A}^T)^{n-1}\mathbf{C}^T]\]</div>
+<p>and if <span class="math notranslate nohighlight">\(\alpha_e(s)=s^n + \alpha_1s^{n-1}+\cdots+\alpha_n\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\alpha_e(\mathbf{A}^T)=(\mathbf{A}^T)^n + \alpha_1(\mathbf{A}^T)^{n-1}+\cdots+\mathbf{I}\alpha_n.\]</div>
+<p>Notice that if the system is unobservable, then the matrix inverse
+<span class="math notranslate nohighlight">\(\mathcal{O}^{-1}\)</span> does not exist and we cannot design an observer for
+this system.</p>
+<p>In MATLAB we could evaluate the <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> matrix using:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    L=acker(A&#39;,C&#39;,p)&#39;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">p</span></code> is a vector of desired observer poles.</p>
+</div>
+<div class="section" id="choice-of-observer-poles">
+<h2><span class="section-number">8.3.8. </span>Choice of Observer Poles<a class="headerlink" href="#choice-of-observer-poles" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Rule of thumb: observer poles can be faster than the controller
+poles (i.e. further from the origin) by a factor of 2 to 6. This
+makes the effect of the observer dynamics short-term and the overall
+response is dominated by the controller poles.</p></li>
+</ul>
+<ul>
+<li><p>If noise/disturbance is present this has an effect on the choice:</p>
+<p><strong>Process noise</strong> <span class="math notranslate nohighlight">\(w\)</span>: <span class="math notranslate nohighlight">\(d\mathbf{x}/dt=\mathbf{Ax}+\mathbf{B}u+\mathbf{B}_1 w\)</span></p>
+<p><strong>Sensor noise</strong> <span class="math notranslate nohighlight">\(v\)</span>: <span class="math notranslate nohighlight">\(y = \mathbf{C}x+v\)</span></p>
+<p><strong>Observer</strong>: <span class="math notranslate nohighlight">\(d\hat{\mathbf{x}}=\mathbf{A}\hat{\mathbf{x}}+\mathbf{B}u+\mathbf{L}(y-\mathbf{C}\hat{\mathbf{x}})\)</span></p>
+<p><strong>Error</strong> <span class="math notranslate nohighlight">\(\mathbf{e}=\mathbf{x}-\hat{\mathbf{x}}\)</span>: <span class="math notranslate nohighlight">\(d\mathbf{e}/dt=(\mathbf{A}-\mathbf{LC})\mathbf{e}+\mathbf{B}_1 w - \mathbf{L}v.\)</span></p>
+</li>
+</ul>
+<p>In the error equation, the sensor noise is multiplied by <span class="math notranslate nohighlight">\(\mathbf{L}\)</span>
+and the process noise is not. Therefore,</p>
+<ol class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> is very small, the effect of sensor noise <span class="math notranslate nohighlight">\(v\)</span> is
+removed but the observer is “slow” to respond, so that the error
+will not reject the effect of <span class="math notranslate nohighlight">\(w\)</span> very well.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> is large, the observer response is “fast” and the
+error rejects the process noise <span class="math notranslate nohighlight">\(w\)</span> well, but the sensor noise <span class="math notranslate nohighlight">\(v\)</span>
+is amplified by <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> resulting in large errors.</p></li>
+</ol>
+<p>Optimal control design methods can be used to achieve the “best”
+compromise.</p>
+</div>
+<div class="section" id="footnote">
+<h2><span class="section-number">8.3.9. </span>Footnote<a class="headerlink" href="#footnote" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Or some states in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, either because the states are not <em>physical states</em> and hence cannot be measured, or because they <em>are</em> physical states but we do not have suitable sensors for the physical quantity that is represented by the state.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./08/3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../2/sfcontrol.html" title="previous page"><span class="section-number">8.2. </span>State-Feedback Control</a>
+    <a class='right-next' id="next-link" href="../4/observer_controller.html" title="next page"><span class="section-number">8.4. </span>Combined Observer and Controller</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1576 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.1. State Space Models &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/07/1/intro2ss.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.2. Transforms and Time Responses for State Space Models" href="../2/tf4ss.html" />
+    <link rel="prev" title="7. Modelling Systems in State-Space" href="../index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/07/1/intro2ss.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="State Space Models" />
+<meta property="og:description" content="State Space Models  Introduction to State Space  Classical control system theory is based on the Transfer Function (TF) model. This applies only to those dynami" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/07/1/intro2ss.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F07/1/intro2ss.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/07/1/intro2ss.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/07/1/intro2ss.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-state-space">
+   7.1.1. Introduction to State Space
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classical-control-system-theory">
+     7.1.1.1. Classical control system theory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modern-control-systems-theory">
+     7.1.1.2. Modern control systems theory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-advances-enabled-by-state-space-models">
+     7.1.1.3. The Advances Enabled by State Space Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construction-of-state-space-models">
+   7.1.2. Construction of State Space Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     7.1.2.1. Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equations-for-example-1">
+     7.1.2.2. Equations for example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modelled-equations">
+     7.1.2.3. Modelled equations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-as-a-block-diagram">
+     7.1.2.4. Example 1 as a block diagram
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-equations-for-the-example">
+     7.1.2.5. State equations for the example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-equations-in-vector-form">
+     7.1.2.6. State equations in vector form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalizing-the-equations">
+     7.1.2.7. Generalizing the equations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-state-space-models-of-dynamic-systems">
+   7.1.3. General State Space Models of Dynamic Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     7.1.3.1. Example 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#physical-states">
+   7.1.4. Physical States
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     7.1.4.1. Example 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-nature-of-the-states">
+   7.1.5. The nature of the states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-space-models-for-linear-systems">
+   7.1.6. State Space Models for Linear Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-vector-matrix-notation">
+     7.1.6.1. A vector/matrix notation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-state-equation-1">
+       7.1.6.1.1. Matrix State Equation (1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-state-equation-2">
+       7.1.6.1.2. Matrix State Equation (2)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-output-equation-1">
+       7.1.6.1.3. General Output Equation (1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-output-equation-2">
+       7.1.6.1.4. General Output Equation (2)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-state-space-model">
+       7.1.6.1.5. The State Space Model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-space-model-for-example-1">
+     7.1.6.2. State-space model for example 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-of-pre-lecture">
+   7.1.7. End of Pre-Lecture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modelling-state-space-systems-in-matlab">
+     7.1.7.1. Modelling State Space Systems in MATLAB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-4">
+   7.1.8. Example 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnotes">
+   7.1.9. Footnotes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#answers-to-in-class-examples">
+   7.1.10. Answers to In-Class Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-example-2">
+     7.1.10.1. Solution to Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-example-3">
+     7.1.10.2. Solution to Example 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="state-space-models">
+<h1><span class="section-number">7.1. </span>State Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-state-space">
+<h2><span class="section-number">7.1.1. </span>Introduction to State Space<a class="headerlink" href="#introduction-to-state-space" title="Permalink to this headline">¶</a></h2>
+<p>Classical control system theory is based on the Transfer Function (TF) model. This applies only to those dynamic systems which can be described by linear time-invariant (LTI) differential equations. TF models are usually applied to Single Input Single Output (SISO) systems. Since the TF is expressed in terms of the Laplace Transform variable, <span class="math notranslate nohighlight">\(s\)</span>, analysis and design is mostly carried out in the <span class="math notranslate nohighlight">\(s\)</span>-domain or the frequency domain (<span class="math notranslate nohighlight">\(s=j\omega\)</span>).</p>
+<p>Modern control systems theory is based on a time domain description of a system in terms of a set of first order coupled differential equations in the so-called <em>state variables</em> of the system.</p>
+<p>State space models can do anything that classical TF models can do.</p>
+<p>In addition state space models have allowed control theory to be extended in various directions:</p>
+<div class="section" id="classical-control-system-theory">
+<h3><span class="section-number">7.1.1.1. </span>Classical control system theory<a class="headerlink" href="#classical-control-system-theory" title="Permalink to this headline">¶</a></h3>
+<p>is based on the <em>Transfer Function</em> model.</p>
+<ul class="simple">
+<li><p>Can only be used for systems that are defined by LTI differential
+equations.</p></li>
+</ul>
+</div>
+<div class="section" id="modern-control-systems-theory">
+<h3><span class="section-number">7.1.1.2. </span>Modern control systems theory<a class="headerlink" href="#modern-control-systems-theory" title="Permalink to this headline">¶</a></h3>
+<p>is based on a <em>time-domain</em> description of systems.</p>
+<ul class="simple">
+<li><p>System defined in terms of a set of first order coupled differential equations</p></li>
+</ul>
+<ul class="simple">
+<li><p>Uses the so-called <em>state variables</em> of the system</p></li>
+</ul>
+<ul class="simple">
+<li><p>Convenient matrix form makes the model attractive for simulation,
+analysis and design using packages like MATLAB.</p></li>
+</ul>
+<ul class="simple">
+<li><p>All classical control methods seen so far also apply to state-space
+models.</p></li>
+</ul>
+</div>
+<div class="section" id="the-advances-enabled-by-state-space-models">
+<h3><span class="section-number">7.1.1.3. </span>The Advances Enabled by State Space Models<a class="headerlink" href="#the-advances-enabled-by-state-space-models" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Handling Multiple Input Multiple Output (MIMO) systems.</p></li>
+<li><p>Extension to linear time-varying systems.</p></li>
+<li><p>Clarification of issues of controllability and observability.</p></li>
+<li><p>Development of powerful compensation methods via state feedback and
+observers.</p></li>
+<li><p>Development of optimal control theory.</p></li>
+</ol>
+<p>In this module we will restrict ourselves to the study of mostly to SISO
+LTI systems, but is important to note the possibility of its extension
+to more challenging areas.</p>
+</div>
+</div>
+<div class="section" id="construction-of-state-space-models">
+<h2><span class="section-number">7.1.2. </span>Construction of State Space Models<a class="headerlink" href="#construction-of-state-space-models" title="Permalink to this headline">¶</a></h2>
+<p>The state-space model is a form of system representation that is used in several engineering disciplines. It is particularly used in control and in signal processing.</p>
+<p>The state-space model is a form of differential equation representation and it is principally used when an analysis of the system behaviour is required in terms of time responses. That stated, it is relatively easy to convert a state-space model into a transfer function, to allow the frequency response analysis of a system. It is however not necessary to do this conversion if the time-response behaviour is all that is required.</p>
+<p>The state space model is easily extended to cope with models with more than one input and more than one output. It also has more favourable numerical properties that make it more attractive as a representation for high order systems<sup>1</sup> than the polynomial representation provided by the transfer function. State-space models are easily simulated by the straightforward application of numerical integration.</p>
+<div class="section" id="example-1">
+<h3><span class="section-number">7.1.2.1. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Figure 7.1 shows a simple electrical circuit. We shall develop this circuit into a block diagram and from the block-diagram we shall develop the state-space model. Later we will generalise this result.</p>
+<p><img alt="Figure 7.1 a simple circuit" src="../../_images/circuit.png" /></p>
+<div style="text-align:center"><b>Figure 7.1: A Simple Circuit</b></div></div>
+<div class="section" id="equations-for-example-1">
+<h3><span class="section-number">7.1.2.2. </span>Equations for example 1<a class="headerlink" href="#equations-for-example-1" title="Permalink to this headline">¶</a></h3>
+<p>If we write down the equations for the elements we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+  \frac{dv_{31}}{dt} &amp;=&amp; \frac{1}{C}\ i_2 \label{eq:l13e1}\\
+  \frac{di_{i}}{dt} &amp;=&amp; \frac{1}{L}\ v_{32} \label{eq:l13e2}\\
+  v_{21} &amp;=&amp; R\ i_1 \label{eq:l13e3}\end{eqnarray}\end{split}\]</div>
+<p>The “compatability” and “continuity” equations are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+  u &amp;=&amp; i_1 + i_2 \label{eq:l13e4}\\
+  v_{31} &amp;=&amp; v_{32} + v_{21} \label{eq:l13e5}\end{eqnarray}\end{split}\]</div>
+<p>Since the system “source” is <span class="math notranslate nohighlight">\(u\)</span>, we can construct the block diagram systematically by tracing the equations through from the source.</p>
+<p>We also introduce the additional constraint that we would like the derivative terms <span class="math notranslate nohighlight">\(dv_{31}/dt\)</span> and <span class="math notranslate nohighlight">\(di_1/dt\)</span> to appear as inputs to integrator blocks whose outputs are therefore</p>
+<p>Integrator equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+  v_{31} = \int \frac{dv_{31}}{dt} dt \label{eq:l13e6}\\
+  i_{1} = \int \frac{di_{1}}{dt} dt \label{eq:l13e7}\end{eqnarray}\end{split}\]</div>
+<p>We can model these equations in MATLAB/Simulink<sup>2</sup> using component block diagram models as shown in Figure 7.2. The other components of equations (1) to (3) appear as gain blocks and (4) and (5) appear as summing junctions.</p>
+<p>Simulink model: <span class="xref myst">blocks.slx</span>.</p>
+</div>
+<div class="section" id="modelled-equations">
+<h3><span class="section-number">7.1.2.3. </span>Modelled equations<a class="headerlink" href="#modelled-equations" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Figure 7.2 Block Diagram" src="../../_images/blocks.png" /></p>
+<div style="text-align:center"><b>Figure 7.2: Block models of equations (1) to (7)</b></div><p>Combining these blocks such that the input is <span class="math notranslate nohighlight">\(u\)</span> and the output is the current flowing through the inductance <span class="math notranslate nohighlight">\(i_1\)</span><sup>3</sup> we obtain the block diagram shown in Figure 7.3.</p>
+<p>Simulink model: <span class="xref myst">blockdiag.slx</span></p>
+</div>
+<div class="section" id="example-1-as-a-block-diagram">
+<h3><span class="section-number">7.1.2.4. </span>Example 1 as a block diagram<a class="headerlink" href="#example-1-as-a-block-diagram" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Figure 7.3 Block Diagram" src="../../_images/blockdiag.png" /></p>
+<div style="text-align:center"><b>Figure 7.3: Example 1 as a Block Diagram</b></div><p>Having constructed a block diagram that allows us the visualize the structure of the differential equations, we now go on to create the state-space model of the system.</p>
+<p>To do this we first identify the “<em>state-variables</em>” which are (in this case) the physical quantities that are changing with time, i.e. the voltage across the capacitor <span class="math notranslate nohighlight">\(v_{31}\)</span> and the current through the inductor <span class="math notranslate nohighlight">\(i_1\)</span><sup>4</sup>. The derivatives of these state variables become the left-hand-side of the “<em>state equations</em>”.</p>
+<p>These equations have apparently already been written down as (1) and (2), but we impose an additional condition that the state equations can only involve the state-variables, their derivatives and the system input. Thus we have to trace the path back through the block diagram from the inputs to the integrator blocks to the (nearest) state variable(s).</p>
+</div>
+<div class="section" id="state-equations-for-the-example">
+<h3><span class="section-number">7.1.2.5. </span>State equations for the example<a class="headerlink" href="#state-equations-for-the-example" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+  \frac{dv_{31}}{dt} &amp;=&amp; \frac{1}{C}\ i_2 = -\frac{1}{C}i_1 +
+  \frac{1}{C} u \label{eq:l13e8}\\
+  \frac{di_{i}}{dt} &amp;=&amp; \frac{1}{L}\ v_{32} = \frac{1}{L}v_{31} -\frac{R}{L} i_1 \label{eq:l13e9}\end{eqnarray}\end{split}\]</div>
+<p>Equations (8) and (9) together form a pair of simultaneous equations (they must both be satisfied by the dynamic response of the circuit voltages and currents to the input) and they may therefore be written in vector form<sup>5</sup>:</p>
+</div>
+<div class="section" id="state-equations-in-vector-form">
+<h3><span class="section-number">7.1.2.6. </span>State equations in vector form<a class="headerlink" href="#state-equations-in-vector-form" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}\label{eq:l13e10}
+  \left[\begin{array}{c}
+    dv_{31}/dt \\
+    di_{i}/dt \\
+    \end{array}\right]=\left[\begin{array}{cc}
+      0 &amp; -1/C \\
+      1/L &amp; -R/L \\
+    \end{array}\right]\left[\begin{array}{c}
+      v_{31} \\
+      i_1 \\
+    \end{array}\right]+\left[\begin{array}{c}
+      1/C \\
+      0 \\
+    \end{array}\right]\ u\end{equation}\end{split}\]</div>
+<p>The vector <span class="math notranslate nohighlight">\([v_{31}, i_{1}]^T\)</span> is called the “<em>state vector</em>.” Its elements are state variables.<sup>6</sup></p>
+</div>
+<div class="section" id="generalizing-the-equations">
+<h3><span class="section-number">7.1.2.7. </span>Generalizing the equations<a class="headerlink" href="#generalizing-the-equations" title="Permalink to this headline">¶</a></h3>
+<p>We can generalize this result by defining general state variables <span class="math notranslate nohighlight">\(x_1=v_{31}\)</span> and <span class="math notranslate nohighlight">\(x_2=i_1\)</span>. Using the notational shorthand <span class="math notranslate nohighlight">\(\dot{x}=dx/dt\)</span> we then get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}\label{eq:l13e11}
+  \left[\begin{array}{c}
+    \dot{x_1} \\
+    \dot{x_2} \\
+    \end{array}\right]=\left[\begin{array}{cc}
+      0 &amp; -1/C \\
+      1/L &amp; -R/L \\
+    \end{array}\right]\left[\begin{array}{c}
+      x_1 \\
+      x_2 \\
+    \end{array}\right]+\left[\begin{array}{c}
+      1/C \\
+      0 \\
+    \end{array}\right]\ u\end{equation}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="general-state-space-models-of-dynamic-systems">
+<h2><span class="section-number">7.1.3. </span>General State Space Models of Dynamic Systems<a class="headerlink" href="#general-state-space-models-of-dynamic-systems" title="Permalink to this headline">¶</a></h2>
+<p>An <span class="math notranslate nohighlight">\(n^\mathrm{th}\)</span> order dynamic system can be described by an <span class="math notranslate nohighlight">\(n^\mathrm{th}\)</span> order differential equation in one dependent variable, <span class="math notranslate nohighlight">\(y(t)\)</span>, and an input forcing function, <span class="math notranslate nohighlight">\(u(t)\)</span>, with time, <span class="math notranslate nohighlight">\(t\)</span>, as the independent variable.</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{d^ny}{dt^n}=f\left(\frac{d^{n-1}y}{dt^{n-1}}, \frac{d^{n-2}y}{dt^{n-2}}, \ldots, \frac{d^2y}{dt}, \frac{dy}{dt}, y, u(t), t \right) \label{eq:l13e12}\end{equation}\]</div>
+<p>Alternatively, in a state space model extra variables, called
+<strong>states</strong>, are introduced to create an equivalent description, but this
+time involving only 1st order differential equations.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+    x_1 &amp; = &amp; y \label{eq:l13e13a}\\
+    \frac{dx_1}{dt} &amp; = &amp; \frac{dy}{dt} = x_2  \label{eq:l13e13b} \\
+    \frac{dx_2}{dt} &amp; = &amp; \frac{d^2y}{dt^2} = x_3   \\
+     \vdots      \nonumber \\
+    \frac{dx_{n-2}}{dt} &amp; = &amp; \frac{d^{n-2}y}{dt^{n-2}} = x_{n-1}   \\
+    \frac{dx_{n-1}}{dt} &amp; = &amp; \frac{d^{n-1}y}{dt^{n-1}} = x_n   \\
+    \frac{dx_n}{dt} &amp;=&amp; \frac{d^{n}y}{dt^{n}} =  f\left(x_n, x_{n-1}, \ldots, x_3, x_2, x_1, u(t), t \right) \label{eq:l13e13c}\end{eqnarray}\end{split}\]</div>
+<p>An nth order system gives rise to a state space model consisting of n coupled 1st order differential equations (the <em>state equations</em> (14)–(17)) in terms of <span class="math notranslate nohighlight">\(n\)</span> state variables and the input forcing function(s). In addition there are the <em>output equations</em> (13) expressing other variables, or outputs, of interest, also in terms of the states and inputs.</p>
+<p>You should note that the formulation used in the differential equation (12) and its equivalent state equations (13)–(18) is completely general and makes no assumptions about the nature of <span class="math notranslate nohighlight">\(f\)</span>. In fact the only condition is that it
+represents a lumped parameter system rather than a distributed parameter system. The need to solve such equations by simulation is the basis of the integral models we introduced in <a class="reference external" href="../../01/modsim#integral-models">Chapter 1</a>.</p>
+<div class="section" id="example-2">
+<h3><span class="section-number">7.1.3.1. </span>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>Derive a state space model for the system described by the differential
+equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^2y}{dt^2}+3\frac{dy}{dt}+2y=u(t)\]</div>
+<p>You should try this now. We will work through the solution in class.</p>
+</div>
+</div>
+<div class="section" id="physical-states">
+<h2><span class="section-number">7.1.4. </span>Physical States<a class="headerlink" href="#physical-states" title="Permalink to this headline">¶</a></h2>
+<p>The states are often chosen to have a direct physical significance such
+as:</p>
+<ul class="simple">
+<li><p><em>Electrical Systems</em> – the charge or voltage on a capacitor or the
+current in an inductor.</p></li>
+</ul>
+<ul class="simple">
+<li><p><em>Mechanical Systems</em> – the force in springs or the velocity of mass
+or angular velocity of moments of inertia.</p></li>
+</ul>
+<ul class="simple">
+<li><p><em>Aerospace Systems</em> – forward velocity, thrust, pitch and pitch
+rate, yaw and yaw rate, position and velocity of control surfaces.</p></li>
+</ul>
+<ul class="simple">
+<li><p><em>Chemical Process Plant</em> – chemical composition, levels,
+temperatures, pressures and flows.</p></li>
+</ul>
+<div class="section" id="example-3">
+<h3><span class="section-number">7.1.4.1. </span>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
+<p>Derive the state equations for the Spring-Mass-Damper system shown in
+the Figure 7.4.</p>
+<p><img alt="Figure 7.4" src="../../_images/smd1.png" /></p>
+<div style="text-align:center"><b>Figure 7.4: A Spring-Mass-Damper System</b></div> <p>You should try this now. We will give the solution in the live class.</p>
+</div>
+</div>
+<div class="section" id="the-nature-of-the-states">
+<h2><span class="section-number">7.1.5. </span>The nature of the states<a class="headerlink" href="#the-nature-of-the-states" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The state equations can be solved uniquely when the input functions
+are given together with the initial values of all the states.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The solutions for the states are substituted into the output
+equations to obtain the solutions for the other variables in the
+system.</p></li>
+</ul>
+<ul class="simple">
+<li><p>In the above examples the states are physical quantities associated
+with energy storage in the system. The energy stored in a inductor
+is <span class="math notranslate nohighlight">\(E_L=Li_L^2/2\)</span>, and the energy stored in a capacitor is
+<span class="math notranslate nohighlight">\(E_C=CV_C^2/2\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Similarly for mechanical systems the velocity of a mass relates to
+its kinetic energy and the force in a spring relates to its elastic
+potential energy.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The states encode the configuration of the system, or its whole past
+history.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The choice of states is not unique, but they must be chosen such
+that the configuration of the system can be unambiguously and
+completely determined from them.</p></li>
+</ul>
+</div>
+<div class="section" id="state-space-models-for-linear-systems">
+<h2><span class="section-number">7.1.6. </span>State Space Models for Linear Systems<a class="headerlink" href="#state-space-models-for-linear-systems" title="Permalink to this headline">¶</a></h2>
+<p>Linear systems are the most important ones for control system analysis
+and design as the best methods and techniques apply to these.</p>
+<p>Non-linear systems are often approximated about a suitable operating
+point by the nearest equivalent linear system allowing linear techniques
+to be used in the design of a suitable controller.</p>
+<p>In the case of linear systems, each state equation expresses the
+derivative of one of the states as a linear function of the states and
+inputs. The output equations also express the output variables linearly.
+As a consequence the natural mathematical notation to use is that of
+vectors and matrices. Thus state, input and output variables are grouped
+in column vectors and are multiplied by matrices in the state and output
+equations.</p>
+<p>For linear time varying systems, the matrices have elements which are
+functions of time, but for time invariant systems all the matrices are
+constant.</p>
+<ul class="simple">
+<li><p>Linear systems most important for control systems analysis and design.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Best control methods and techniques apply to linear systems.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Nonlinear systems can often be linearized around a given operating
+point allowing linear methods to be used.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Linear models can be modelled with matrix equations with makes them
+attractive to tools like MATLAB.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Linear time-varying systems have matrix elements which are functions
+of time.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Linear time invariant systems have constant matrix elements.</p></li>
+</ul>
+<div class="section" id="a-vector-matrix-notation">
+<h3><span class="section-number">7.1.6.1. </span>A vector/matrix notation<a class="headerlink" href="#a-vector-matrix-notation" title="Permalink to this headline">¶</a></h3>
+<p>In general, we will have <span class="math notranslate nohighlight">\(n\)</span> state variables and <span class="math notranslate nohighlight">\(q\)</span> system inputs. In such a case we can write down a matrix state equation as developed in the next two slides.</p>
+<div class="section" id="matrix-state-equation-1">
+<h4><span class="section-number">7.1.6.1.1. </span>Matrix State Equation (1)<a class="headerlink" href="#matrix-state-equation-1" title="Permalink to this headline">¶</a></h4>
+<p>Let us define a general <span class="math notranslate nohighlight">\(n\)</span>-dimensional state vector</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x} = \left[x_1,\ x_2,\ \ldots, x_n\right]^T\]</div>
+<p>Its derivative
+is $<span class="math notranslate nohighlight">\(\frac{d\mathbf{x}}{dt} = \left[\frac{dx_1}{dt},\ \frac{dx_2}{dt},\
+\ldots,\
+\frac{dx_n}{dt}\right]^T\)</span>$</p>
+<p>or more compactly
+$<span class="math notranslate nohighlight">\(\dot{\mathbf{x}}=\left[\dot{x_1},\ \dot{x_2},\ \ldots,\
+\dot{x_n}\right]^T.\)</span>$</p>
+<p>There may be any number of inputs to a system, so we also assume a
+general vector of <span class="math notranslate nohighlight">\(q\)</span> inputs</p>
+</div>
+<div class="section" id="matrix-state-equation-2">
+<h4><span class="section-number">7.1.6.1.2. </span>Matrix State Equation (2)<a class="headerlink" href="#matrix-state-equation-2" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dot{\mathbf{x}}=\left[\begin{array}{cccc}
+  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}
+\end{array}\right]\ \mathbf{x} + \left[\begin{array}{cccc}
+  b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1q} \\
+  b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2q} \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{nq}
+\end{array}\right]\ \mathbf{u} \\
+\end{split}\]</div>
+<p>or more succinctly
+$<span class="math notranslate nohighlight">\(\dot{\mathbf{x}}=\mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u}\)</span>$</p>
+<p>Where
+<span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is the <span class="math notranslate nohighlight">\(n\times n\)</span> “<em>system matrix</em>” and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is
+the <span class="math notranslate nohighlight">\(n\times q\)</span> “<em>input matrix</em>”.</p>
+<p>The state equations allow us to describe the internal behaviour of the
+system when subjected to stimuli from the inputs. In example 1, we need
+nothing more if we wish to describe the way that the capacitor voltage
+<span class="math notranslate nohighlight">\(v_{31}\)</span> and inductor current <span class="math notranslate nohighlight">\(i_1\)</span> change with time under the influence
+of the input current <span class="math notranslate nohighlight">\(u\)</span>. However, if we wish to describe the behaviour
+of the other variables in the circuit we need to complete the state
+space model with a set of “<em>output equations</em>.”</p>
+<p>For illustration purposes we write an “output equation” for every
+possible signal.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+v_{31}&amp;=&amp;1\times v_{31} \\
+i_1 &amp; = &amp; 1\times i_1 \\
+v_{32} &amp;=&amp; 1\times v_{31} - R \times i_1 \\
+v_{21} &amp; = &amp; R \times i_1\\
+i_2 &amp; = &amp; u - 1\times i_1.\end{eqnarray*}\end{split}\]</div>
+<p>Arranging these equations in vector form we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{c}
+  v_{31} \\
+  i_1 \\
+  v_{32} \\
+  v_{21} \\
+  i_2
+\end{array}\right] = \left[\begin{array}{cc}
+  1 &amp; 0 \\
+  0 &amp; 1 \\
+  1 &amp; -R \\
+  0 &amp; R \\
+  0 &amp; -1
+\end{array}\right]\ \left[\begin{array}{c}
+  v_{31} \\
+  i_1
+\end{array}\right]+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  0 \\
+  1
+\end{array}\right] u\end{split}\]</div>
+<p>In general, we can describe a system with <span class="math notranslate nohighlight">\(r\)</span> inputs in terms of the
+generic output variables <span class="math notranslate nohighlight">\(y_1, y_2,\ldots,\ y_r\)</span> as shown in the next two slides.</p>
+</div>
+<div class="section" id="general-output-equation-1">
+<h4><span class="section-number">7.1.6.1.3. </span>General Output Equation (1)<a class="headerlink" href="#general-output-equation-1" title="Permalink to this headline">¶</a></h4>
+<p>Let us define a general output vector
+$<span class="math notranslate nohighlight">\(\mathbf{y} = \left[y_1,\ y_2,\ \ldots, y_r\right]^T\)</span>$</p>
+<p>Given that some of the inputs to the system may be directly connected to
+the output, the input vector may also appear in the output general
+equation.</p>
+</div>
+<div class="section" id="general-output-equation-2">
+<h4><span class="section-number">7.1.6.1.4. </span>General Output Equation (2)<a class="headerlink" href="#general-output-equation-2" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{y}=\left[\begin{array}{cccc}
+  c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1n} \\
+  c_{21} &amp; c_{22} &amp; \cdots &amp; c_{2n} \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+  c_{r1} &amp; c_{r2} &amp; \cdots &amp; c_{rn}
+\end{array}\right]\ \mathbf{x} + \left[\begin{array}{cccc}
+  d_{11} &amp; d_{12} &amp; \cdots &amp; d_{1q} \\
+  d_{21} &amp; d_{22} &amp; \cdots &amp; d_{2q} \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+  d_{r1} &amp; d_{r2} &amp; \cdots &amp; d_{rq}
+\end{array}\right]\ \mathbf{u} \\
+\end{split}\]</div>
+<p>or more succinctly
+$<span class="math notranslate nohighlight">\(\mathbf{y}=\mathbf{C}\mathbf{x}+\mathbf{D}\mathbf{u}\)</span>$</p>
+<p>Where
+<span class="math notranslate nohighlight">\(\mathbf{C}\)</span> is the <span class="math notranslate nohighlight">\(n\times r\)</span> “<em>output matrix</em>” and <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is
+the <span class="math notranslate nohighlight">\(r\times q\)</span> “<em>feedforward matrix</em>”.</p>
+<p>This equation relates the states and inputs to the outputs. There are no
+dynamic terms!</p>
+</div>
+<div class="section" id="the-state-space-model">
+<h4><span class="section-number">7.1.6.1.5. </span>The State Space Model<a class="headerlink" href="#the-state-space-model" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\dot{\mathbf{x}}=&amp;\mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u}\\
+\mathbf{y}=&amp;\mathbf{C}\mathbf{x}+\mathbf{D}\mathbf{u}\end{aligned}\end{split}\]</div>
+<p>This state-space model
+always be developed from a system with physically realizable states and
+physical realistic sources. Such a system is called “<em>proper</em>”. If
+<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> is null (matrix of zeros) the system is called “<em>strictly
+proper</em>”.</p>
+<p>A block diagram representation of the state space model is shown in Figure 7.5.
+The block diagram of the circuit, rearranged to match the general model
+is shown in Figure 7.6.</p>
+<p><img alt="Figure 7.5" src="../../_images/ssmodel.png" /></p>
+<div style="text-align:center"><b>Figure 7.5: Block diagram of a state-space model</b></div> <p>Simulink model: <span class="xref myst">statemodel.slx</span></p>
+</div>
+</div>
+<div class="section" id="state-space-model-for-example-1">
+<h3><span class="section-number">7.1.6.2. </span>State-space model for example 1<a class="headerlink" href="#state-space-model-for-example-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Figure 7.6" src="../../_images/statemodel.png" /></p>
+<div style="text-align:center"><b>Figure 7.6: State Space Model of Example 1</b></div> </div>
+</div>
+<div class="section" id="end-of-pre-lecture">
+<h2><span class="section-number">7.1.7. </span>End of Pre-Lecture<a class="headerlink" href="#end-of-pre-lecture" title="Permalink to this headline">¶</a></h2>
+<p>In class activities</p>
+<ul class="simple">
+<li><p>We will review the Simulink models of the circuit</p></li>
+<li><p>We will work through examples 2 and 3</p></li>
+<li><p>We will show the MATLAB commands for defining the state-space system of the circuit</p></li>
+<li><p>We will look at one of the derivation of a state-space model of one of the CTMS</p></li>
+</ul>
+<div class="section" id="modelling-state-space-systems-in-matlab">
+<h3><span class="section-number">7.1.7.1. </span>Modelling State Space Systems in MATLAB<a class="headerlink" href="#modelling-state-space-systems-in-matlab" title="Permalink to this headline">¶</a></h3>
+<p>For the example above</p>
+<p>Important note, for this to work you must assign numerical values to the
+the parameters <code class="docutils literal notranslate"><span class="pre">Cap</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">L</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="s">all</span>
+<span class="n">cd</span> <span class="s">matlab</span>
+<span class="n">format</span> <span class="s">compact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Cap</span> <span class="p">=</span> <span class="mf">1e-6</span><span class="p">;</span> <span class="c">% 1 uF</span>
+<span class="n">L</span> <span class="p">=</span> <span class="mf">3e-3</span><span class="p">;</span>  <span class="c">% 3 mH</span>
+<span class="n">R</span> <span class="p">=</span> <span class="mf">200e3</span><span class="p">;</span> <span class="c">% 200 kOhm</span>
+<span class="n">open</span> <span class="s">statemodel.slx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Cap</span><span class="p">;</span> <span class="mi">1</span><span class="o">/</span><span class="n">L</span> <span class="o">-</span><span class="n">R</span><span class="o">/</span><span class="n">L</span><span class="p">];</span>
+<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">Cap</span><span class="p">;</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">;</span> <span class="n">0</span> <span class="s">1</span><span class="p">;</span> <span class="n">1</span> <span class="o">-</span><span class="n">R</span><span class="p">;</span> <span class="n">0</span> <span class="s">R</span><span class="p">;</span> <span class="n">0</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">circ_ss</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span><span class="k">...</span>
+   <span class="s">&#39;statename&#39;</span><span class="p">,{</span><span class="s">&#39;v31&#39;</span> <span class="s">&#39;i1&#39;</span><span class="p">},</span> <span class="s">&#39;inputname&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="k">...</span>
+   <span class="s">&#39;outputname&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;v31&#39;</span> <span class="s">&#39;i1&#39;</span> <span class="s">&#39;v32&#39;</span> <span class="s">&#39;v21&#39;</span> <span class="s">&#39;i2&#39;</span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">circ_ss</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>circ_ss =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               v31          i1
+   v31           0      -1e+06
+   i1        333.3  -6.667e+07
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            u
+   v31  1e+06
+   i1       0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           v31      i1
+   v31       1       0
+   i1        0       1
+   v32       1  -2e+05
+   v21       0   2e+05
+   i2        0      -1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        u
+   v31  0
+   i1   0
+   v32  0
+   v21  0
+   i2   1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once you have the state-space model, all the analysis techniques seen so
+far are open to you.</p>
+</div>
+</div>
+<div class="section" id="example-4">
+<h2><span class="section-number">7.1.8. </span>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h2>
+<p>Construct the state-space model chosen by the class from the <a class="reference external" href="http://ctms.engin.umich.edu/CTMS/index.php?aux=Home">Control Systems Tutorials in MATLAB and Simulink</a> collection.</p>
+</div>
+<div class="section" id="footnotes">
+<h2><span class="section-number">7.1.9. </span>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Systems with large numbers of derivative terms</p></li>
+<li><p>Note that in triangular blocks are used for gains and that the transfer function block <span class="math notranslate nohighlight">\(1/s\)</span> represents the integral operator <span class="math notranslate nohighlight">\(\int\)</span>. The small elliptical blocks represent input and output ports.</p></li>
+<li><p>We could have used any signal as an output as we shall see later.</p></li>
+<li><p>A state variable that can be related to a physical quantity is called a “<em>physical state variable</em>.”</p></li>
+<li><p>You should expand this matrix equation (8) out to verify that it is equivalent to (6) and (7).</p></li>
+<li><p>The matrix operator <span class="math notranslate nohighlight">\([]^T\)</span> is the “transpose” operator. In this case it converts the row vector shown into the column vector actually used in the state equations. When applied to a matrix, the rows of the matrix become the columns of the transposed matrix. We shall use the transpose operator in the discussion of state equations to avoid messy attempts to write column vectors in the body of a sentence!</p></li>
+</ol>
+</div>
+<div class="section" id="answers-to-in-class-examples">
+<h2><span class="section-number">7.1.10. </span>Answers to In-Class Examples<a class="headerlink" href="#answers-to-in-class-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-example-2">
+<h3><span class="section-number">7.1.10.1. </span>Solution to Example 2<a class="headerlink" href="#solution-to-example-2" title="Permalink to this headline">¶</a></h3>
+<p>Introducing state variables <span class="math notranslate nohighlight">\(x_1=y\)</span> and <span class="math notranslate nohighlight">\(x_2=dy/dt\)</span> then the state equations are:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx_1}{dt}=\frac{dy}{dt}=x_2\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{dx_2}{dt}=\frac{d^2y}{dt^2}=-2x_1 - 3x_2 + u\]</div>
+<p>and the output equation is:</p>
+<div class="math notranslate nohighlight">
+\[y=x_1.\]</div>
+</div>
+<div class="section" id="solution-to-example-3">
+<h3><span class="section-number">7.1.10.2. </span>Solution to Example 3<a class="headerlink" href="#solution-to-example-3" title="Permalink to this headline">¶</a></h3>
+<p>For this system, summing the forces in the direction <span class="math notranslate nohighlight">\(x\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[F = m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx\]</div>
+<p>If we chose the position <span class="math notranslate nohighlight">\(x\)</span> of the mass <span class="math notranslate nohighlight">\(m\)</span> and its velocity <span class="math notranslate nohighlight">\(dx/dt\)</span> to be the states, and let the force <span class="math notranslate nohighlight">\(F\)</span> be the system input, then <span class="math notranslate nohighlight">\(x_1 = x\)</span>, <span class="math notranslate nohighlight">\(x_2 = dx/dt\)</span> and <span class="math notranslate nohighlight">\(u=F\)</span> and the state equations are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    \frac{dx_1}{dt} &amp; = &amp; x_2 \\
+    \frac{dx_2}{dt} &amp; = &amp; -\frac{k}{m} x_1 -\frac{b}{m} x_2 + \frac{1}{m} u\end{eqnarray*}\end{split}\]</div>
+<p>You should construct the Simulink model represented by these equations and compare the results with those shown in <a class="reference internal" href="../../01/modsim.html"><span class="doc std std-doc">Chapter 1</span></a>.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./07/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page"><span class="section-number">7. </span>Modelling Systems in State-Space</a>
+    <a class='right-next' id="next-link" href="../2/tf4ss.html" title="next page"><span class="section-number">7.2. </span>Transforms and Time Responses for State Space Models</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

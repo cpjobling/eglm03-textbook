@@ -1,0 +1,985 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.1. Introducing phase-lead compensation &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/03/1/intro.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.2. Introduction to Root Locus Design" href="../2/velfb.html" />
+    <link rel="prev" title="3. Classical Control Systems Design" href="../classical.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/03/1/intro.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Introducing phase-lead compensation" />
+<meta property="og:description" content="Introducing phase-lead compensation  Time Response Design Characteristics  Two types of characteristic given:  Steady-state performance  Transient transient per" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07/index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/03/1/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F03/1/intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/03/1/intro.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/03/1/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-response-design-characteristics">
+   3.1.1. Time Response Design Characteristics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#typical-design-problems">
+   3.1.2. Typical design problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-root-locus-design">
+   3.1.3. Introduction to Root Locus Design
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plant">
+     3.1.3.1. Plant
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#design-requirements">
+     3.1.3.2. Design Requirements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pre-design-questions">
+     3.1.3.3. Pre-design Questions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity-feedback">
+     3.1.3.4. Velocity Feedback
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introducing-phase-lead-compensation">
+<h1><span class="section-number">3.1. </span>Introducing phase-lead compensation<a class="headerlink" href="#introducing-phase-lead-compensation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="time-response-design-characteristics">
+<h2><span class="section-number">3.1.1. </span>Time Response Design Characteristics<a class="headerlink" href="#time-response-design-characteristics" title="Permalink to this headline">¶</a></h2>
+<p>Two types of characteristic given:</p>
+<ul class="simple">
+<li><p>Steady-state performance</p></li>
+</ul>
+<ul class="simple">
+<li><p>Transient transient performance</p></li>
+</ul>
+<p>Achievement of both usually requires design tradeoffs.</p>
+<p>The availability of computer tools simplifies iteration…</p>
+<p>… if we know what direction we are going in!</p>
+</div>
+<div class="section" id="typical-design-problems">
+<h2><span class="section-number">3.1.2. </span>Typical design problems<a class="headerlink" href="#typical-design-problems" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Steady-state OK but need to improve transient response (relative stability, speed, damping)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Transient is OK but need to improve steady-state performance</p></li>
+</ul>
+<ul class="simple">
+<li><p>Both steady-state and transient need improvement</p></li>
+</ul>
+<ul class="simple">
+<li><p>Design method to be used: <em>Root Locus</em></p></li>
+</ul>
+</div>
+<div class="section" id="introduction-to-root-locus-design">
+<h2><span class="section-number">3.1.3. </span>Introduction to Root Locus Design<a class="headerlink" href="#introduction-to-root-locus-design" title="Permalink to this headline">¶</a></h2>
+<p>Plant: Satellite Attitude Control System (double integrator)</p>
+<p>Use of <a class="reference internal" href="../2/velfb.html"><span class="doc std std-doc">velocity feedback</span></a> now.</p>
+<p>Next we will use <a class="reference internal" href="../3/pplusd.html"><span class="doc std std-doc">Proportial+Derivative</span></a> and <a class="reference internal" href="../4/leadc.html"><span class="doc std std-doc">Phase-Lead compensation</span></a>.</p>
+<div class="section" id="plant">
+<h3><span class="section-number">3.1.3.1. </span>Plant<a class="headerlink" href="#plant" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Satellite attitude control" src="../../_images/fig15.png" /></p>
+<p><strong>Figure 1: Satellite attitude control</strong></p>
+<p>The model assumes that the satellite can be modeled as a disk (or a cylinder) with moment of inertia <span class="math notranslate nohighlight">\(J\)</span> rotating around its axis. The control action is the torque produced by gas jets attached to the circumference of the disk. The jets fire in either direction but in opposition as shown in the figure. They will produce a torque in the opposite direction to the gas flow. The equation of motion is simply obtained from Newton’s law which relates the angular acceleration of the disk to the torque applied.</p>
+<div class="math notranslate nohighlight">
+\[q(t) = J\frac{d^2\theta}{dt^2}\]</div>
+<p><span class="math notranslate nohighlight">\(J\)</span> is the moment of inertia.</p>
+<div class="math notranslate nohighlight">
+\[\Theta(s) = \frac{1/J}{s^2}Q(s)\]</div>
+<p>Let <span class="math notranslate nohighlight">\(J = 1\)</span> kgm<sup>2</sup></p>
+<p><img alt="Simple feedback" src="../../_images/fig21.png" /></p>
+<p><strong>Fig 2: Simple feedback</strong></p>
+<p>We arrange the system like this so that the torque applied to the system is proportional to the error between the demanded angle and the actual angle. We would then choose <span class="math notranslate nohighlight">\(K\)</span> so that we achieved the design criteria to be defined next.</p>
+<div class="math notranslate nohighlight">
+\[q(t) = K(\theta - \theta_d)\]</div>
+<div class="math notranslate nohighlight">
+\[Q(s)=K(\Theta(s)-\Theta_d(s))\]</div>
+<div class="math notranslate nohighlight">
+\[Q(s)=KE(s)\]</div>
+</div>
+<div class="section" id="design-requirements">
+<h3><span class="section-number">3.1.3.2. </span>Design Requirements<a class="headerlink" href="#design-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Zero steady-state step error:</p>
+<div class="math notranslate nohighlight">
+\[e(t) = \left.\theta(t)-\theta_d(t)\right|_{t\to\infty} = 0\]</div>
+<div class="math notranslate nohighlight">
+\[s\left.E(s)\right|_{s\to 0} = 0\]</div>
+<p>“Ideal” damping:</p>
+<div class="math notranslate nohighlight">
+\[\zeta = \frac{1}{\sqrt{2}}\]</div>
+<p>Settling time:</p>
+<div class="math notranslate nohighlight">
+\[T_s = 2.3\;\mathrm{s}\]</div>
+</div>
+<div class="section" id="pre-design-questions">
+<h3><span class="section-number">3.1.3.3. </span>Pre-design Questions<a class="headerlink" href="#pre-design-questions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What is the minimum type number the system has to have to achieve required steady-state performance<sup>1</sup>?</p></li>
+</ul>
+<ul class="simple">
+<li><p>What angle will the damping line subtend with the positive real axis<sup>2</sup>?</p></li>
+</ul>
+<ul class="simple">
+<li><p>What will the real-part of the closed-loop poles be<sup>3</sup>?</p></li>
+</ul>
+<ul class="simple">
+<li><p>What will the damped, natural frequency of the closed-loop poles be<sup>4</sup>?</p></li>
+</ul>
+<ul class="simple">
+<li><p>What design criteria can we satisfy<sup>5</sup>?</p></li>
+</ul>
+<p><strong>Notes</strong>:</p>
+<ol class="simple">
+<li><p>System type number refers to the number of integrators in the forward path. For a unity-gain feedback system, these will appear as multipliers <span class="math notranslate nohighlight">\(s^n\)</span> in the denominators in the open-loop transfer function <span class="math notranslate nohighlight">\(G_o(s)\)</span> and correspond to poles at the origin of the s-plane (that is <span class="math notranslate nohighlight">\(s = 0\)</span>). Thus, the system type number is equal to <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>The angle that the line of constant damping makes with the negative real axis is <span class="math notranslate nohighlight">\(cos^{-1}(\zeta)\)</span>. Since <span class="math notranslate nohighlight">\(zeta = 1/\sqrt(2) = 0.707\)</span>, that angle is <span class="math notranslate nohighlight">\(45^\circ\)</span>. The question asks for the angle subtended by this line and the positive real axis, so this is <span class="math notranslate nohighlight">\(180^\circ – 45^\circ = 135^\circ\)</span>. The question was asked this way because when we calculate the contribution of open-loop poles and zeros to the closed-loop poles and zeros for the purposes of satisfying the root locus angle criterion, we measure the angle from the positive real axis.</p></li>
+<li><p>The settling time is <span class="math notranslate nohighlight">\(T_s = 4.6/(\zeta\omega_n)\)</span>. Since <span class="math notranslate nohighlight">\(T_s = 2.3\)</span>, <span class="math notranslate nohighlight">\(\zeta\omega_n\)</span> must be 2. The real part of the complex poles for a second order system is, by definition, <span class="math notranslate nohighlight">\(\sigma_s = - \zeta\omega_n\)</span>. Hence -2 is the correct answer.</p></li>
+<li><p>The triangle formed by the line of constant damping is at <span class="math notranslate nohighlight">\(45^\circ\)</span> degrees so if the base is 2, the height must be 2 as well so the answer is 2 rad/s.</p></li>
+<li><p>The system type number for the system with gain and unity gain feedback is 2 so theoretically, the steady state step and velocity error should be zero. However, because the system never actually reaches steady state in this configuration, the correct answer is actually “none of them”. In fact, for a step change in attitude angle there is no steady-state, the damping ratio is zero, and settling time is infinite! It is easy to see this when you look at the root locus on the next slide.</p></li>
+</ol>
+<p><img alt="Design region" src="../../_images/fig31.png" /></p>
+<p><strong>Figure 3: The Design Region</strong></p>
+<p>There are two poles at the origin and the root locus will move up and down the imaginary axis as <span class="math notranslate nohighlight">\(K\)</span> is increased. We need to be at the intersection of the two lines and clearly we are not for any value of <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p><img alt="Adding a zero to achieve design requirements" src="../../_images/fig41.png" /></p>
+<p><strong>Figure 4: Adding a zero to achieve design requirements</strong></p>
+<p>We need to add a zero to the system so that the root locus looks like this. We can then find a value of the zero location for which the root locus passes through the intersection of the design curves as shown. The <a class="reference internal" href="../2/velfb.html"><span class="doc std std-doc">next section</span></a> explains how the system equations can be configured to allow position of the zero to be determined by the angle criterion and the corresponding system gains <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(K_t\)</span> can be selected to place the root locus at the desired location.</p>
+</div>
+<div class="section" id="velocity-feedback">
+<h3><span class="section-number">3.1.3.4. </span>Velocity Feedback<a class="headerlink" href="#velocity-feedback" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Velocity feedback" src="../../_images/fig61.png" /></p>
+<p>This is how we would use velocity feedback to place the root locus in the desired location. The values needed for <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(K_t\)</span> are left as an exercise.</p>
+<p><em>Hint</em>: determine the closed-loop characteristic equation and equate it to the model second order equation.</p>
+<p>We will show how the root locus is calculated in the next sections.</p>
+<p><img alt="Step response" src="../../_images/fig71.png" /></p>
+<p>This is the corresponding step response. Does it meet the design requirements?</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./03/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../classical.html" title="previous page"><span class="section-number">3. </span>Classical Control Systems Design</a>
+    <a class='right-next' id="next-link" href="../2/velfb.html" title="next page"><span class="section-number">3.2. </span>Introduction to Root Locus Design</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

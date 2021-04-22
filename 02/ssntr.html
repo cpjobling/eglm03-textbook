@@ -1,0 +1,1662 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Steady-state and Transient Response &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/02/ssntr.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Classical Control Systems Design" href="../03/classical.html" />
+    <link rel="prev" title="1. System Modelling and Simulation" href="../01/modsim.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/02/ssntr.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Steady-state and Transient Response" />
+<meta property="og:description" content="Steady-state and Transient Response  This chapter is concerned with the analysis of steady-state and transient response performance of control systems.  The sec" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../07/index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02/ssntr.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F02/ssntr.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/02/ssntr.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/02/ssntr.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading">
+   2.1. Reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transient-performance">
+   2.2. Transient Performance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-second-order-system">
+     2.2.1. A Second-Order System
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#effect-of-damping-on-2nd-order-response">
+     2.2.2. Effect of Damping on 2nd Order Response
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-the-natural-frequency-and-damping-ratio-relate-to-pole-locations">
+     2.2.3. How do the natural frequency and damping ratio relate to pole locations?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-the-transient-performance-criteria-map-to-the-closed-loop-poles">
+     2.2.4. How do the transient performance criteria map to the closed loop poles?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#settling-time-t-s">
+       2.2.4.1. Settling time
+       <span class="math notranslate nohighlight">
+        \(T_s\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rise-time-t-r">
+       2.2.4.2. Rise Time
+       <span class="math notranslate nohighlight">
+        \(T_r\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#percentage-overshoot-os-or-m-p">
+       2.2.4.3. Percentage overshoot (%OS or
+       <span class="math notranslate nohighlight">
+        \(M_p\)
+       </span>
+       )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#combined-constraints">
+       2.2.4.4. Combined constraints
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-if-the-system-is-not-second-order">
+     2.2.5. What if the system is not second order?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#effect-of-an-extra-zero">
+       2.2.5.1. Effect of an Extra Zero
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nd-order-system-with-extra-zero">
+       2.2.5.2. 2nd order system with extra zero
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-about-adding-an-extra-pole">
+       2.2.5.3. .. how about adding an extra pole?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nd-order-system-with-extra-pole">
+       2.2.5.4. 2nd order system with extra pole
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dominant-poles-and-order-reduction">
+     2.2.6. Dominant poles and order reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steady-state-response">
+   2.3. Steady-state response
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#canonical-system">
+     2.3.1. Canonical System
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state-performance">
+     2.3.2. Steady-state Performance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-cases">
+   2.4. Special Cases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disturbance-rejection-compliance">
+     2.4.1. Disturbance rejection? (Compliance)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-unity-gain-feedback">
+     2.4.2. Non-unity gain feedback
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   2.5. Further Reading
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><strong>Lecturer</strong></p>
+<p>Set up MATLAB</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="s">matlab</span>
+<span class="n">pwd</span>
+<span class="s">clear</span> <span class="s">all</span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+<span class="n">format</span> <span class="s">compact</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+    &#39;/Users/eechris/code/src/github.com/cpjobling/eglm03-textbook/02/matlab&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="steady-state-and-transient-response">
+<h1><span class="section-number">2. </span>Steady-state and Transient Response<a class="headerlink" href="#steady-state-and-transient-response" title="Permalink to this headline">¶</a></h1>
+<p>This chapter is concerned with the analysis of steady-state and transient response performance of control systems.</p>
+<p>The second-order system response and its relationship to the closed-loop poles and zeros is revised. The effect of an additional zero or an additional pole on the 2<sup>nd</sup> order response is examined and pole-zero cancellation is discussed.</p>
+<p>System type-number and its relationship to steady-state error response is revised.</p>
+<div class="section" id="reading">
+<h2><span class="section-number">2.1. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
+<p>You should read sections 4.2 <strong>Time Domain Criteria</strong> and 4.1 <strong>Steady-State Criteria</strong> of the <span class="xref myst">Handout</span> <strong>Control System Design Methods, Compensation Strategies and Design Criteria</strong>.</p>
+</div>
+<div class="section" id="transient-performance">
+<h2><span class="section-number">2.2. </span>Transient Performance<a class="headerlink" href="#transient-performance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-second-order-system">
+<h3><span class="section-number">2.2.1. </span>A Second-Order System<a class="headerlink" href="#a-second-order-system" title="Permalink to this headline">¶</a></h3>
+<p><img alt="a second order system" src="../_images/fig1.png" /></p>
+<p>Where are the system poles and what does the model 2nd Order response look like for each of these cases?</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\omega_n\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\zeta\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>0.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="effect-of-damping-on-2nd-order-response">
+<h3><span class="section-number">2.2.2. </span>Effect of Damping on 2nd Order Response<a class="headerlink" href="#effect-of-damping-on-2nd-order-response" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">wn</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">z</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">zeta</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">wn</span>^<span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">wn</span><span class="p">,</span> <span class="n">wn</span>^<span class="mi">2</span><span class="p">])</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span><span class="n">pzmap</span><span class="p">(</span> <span class="n">G</span><span class="p">),</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">),</span><span class="n">step</span><span class="p">(</span> <span class="n">G</span><span class="p">),</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s^2 + 4.243 s + 9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../_images/ssntr_9_7.svg" src="../_images/ssntr_9_7.svg" /></div>
+</div>
+<p>Or download and run this script <span class="xref myst">second_resp.m</span> in MATLAB.</p>
+<p><img alt="model 2nd order response" src="../_images/fig2.png" /></p>
+</div>
+<div class="section" id="how-do-the-natural-frequency-and-damping-ratio-relate-to-pole-locations">
+<h3><span class="section-number">2.2.3. </span>How do the natural frequency and damping ratio relate to pole locations?<a class="headerlink" href="#how-do-the-natural-frequency-and-damping-ratio-relate-to-pole-locations" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[T(s) = \frac{\omega _n^2}{s^2 + \zeta {\omega _n}s + \omega _n^2}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}{P_{1,2}} &amp;=&amp;  - \zeta\omega_n  \pm j{\omega _n}\sqrt {1 - {\zeta ^2}}\\
+ &amp;=&amp; - {\sigma _d} \pm j{\omega _d}\end{eqnarray*}\end{split}\]</div>
+<p><img alt="pole locations" src="../_images/fig3.png" /></p>
+</div>
+<div class="section" id="how-do-the-transient-performance-criteria-map-to-the-closed-loop-poles">
+<h3><span class="section-number">2.2.4. </span>How do the transient performance criteria map to the closed loop poles?<a class="headerlink" href="#how-do-the-transient-performance-criteria-map-to-the-closed-loop-poles" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="settling-time-t-s">
+<h4><span class="section-number">2.2.4.1. </span>Settling time <span class="math notranslate nohighlight">\(T_s\)</span><a class="headerlink" href="#settling-time-t-s" title="Permalink to this headline">¶</a></h4>
+<p>Settling time is related to relative stability and speed of response.</p>
+<p>1% settling time:</p>
+<div class="math notranslate nohighlight">
+\[T_s \approx \frac{4.6}{\sigma_d}\]</div>
+<p><img alt="Design region for 1% settling time" src="../_images/fig4.png" /></p>
+</div>
+<div class="section" id="rise-time-t-r">
+<h4><span class="section-number">2.2.4.2. </span>Rise Time <span class="math notranslate nohighlight">\(T_r\)</span><a class="headerlink" href="#rise-time-t-r" title="Permalink to this headline">¶</a></h4>
+<p>Rise time is related to speed of response</p>
+<div class="math notranslate nohighlight">
+\[T_r \approx \frac{1.8}{\omega_n}\]</div>
+<p><img alt="Design region for specified rise time" src="../_images/fig5.png" /></p>
+</div>
+<div class="section" id="percentage-overshoot-os-or-m-p">
+<h4><span class="section-number">2.2.4.3. </span>Percentage overshoot (%OS or <span class="math notranslate nohighlight">\(M_p\)</span>)<a class="headerlink" href="#percentage-overshoot-os-or-m-p" title="Permalink to this headline">¶</a></h4>
+<p>Percentage overshoot is related to damping</p>
+<div class="math notranslate nohighlight">
+\[\%OS = \exp\left(\frac{-\pi\zeta}{\sqrt{1-\zeta^2}}\right)\times 100\]</div>
+<div class="math notranslate nohighlight">
+\[\%OS \approx \left( 1 - \frac{\zeta }{0.6} \right) \times 100\;{\kern 1pt} 0 \leqslant \zeta  \leqslant 0.6\]</div>
+<p><img alt="Design region for specified Percentage Overshoot" src="../_images/fig6.png" /></p>
+</div>
+<div class="section" id="combined-constraints">
+<h4><span class="section-number">2.2.4.4. </span>Combined constraints<a class="headerlink" href="#combined-constraints" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>If system has inadequate rise time (too slow) we must raise the natural frequency</p></li>
+<li><p>If system has too much overshoot we need to increase damping</p></li>
+<li><p>If transient persists too long, move the poles further to the left in the s-plane</p></li>
+</ul>
+<p><img alt="Design area for combined constraints" src="../_images/fig7.png" /></p>
+</div>
+</div>
+<div class="section" id="what-if-the-system-is-not-second-order">
+<h3><span class="section-number">2.2.5. </span>What if the system is not second order?<a class="headerlink" href="#what-if-the-system-is-not-second-order" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What is the effect of an extra zero?</p></li>
+</ul>
+<ul class="simple">
+<li><p>What is the effect of an extra pole?</p></li>
+</ul>
+<ul class="simple">
+<li><p>What if there are many poles and zeros?</p></li>
+</ul>
+<div class="section" id="effect-of-an-extra-zero">
+<h4><span class="section-number">2.2.5.1. </span>Effect of an Extra Zero<a class="headerlink" href="#effect-of-an-extra-zero" title="Permalink to this headline">¶</a></h4>
+<p>First normalize transfer function:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{C(s)}{R(s)}=\frac{1}{\left(\frac{s}{\omega_n}\right)^2+2\zeta\left(\frac{s}{\omega_n}\right)+1}\]</div>
+<p>Then add a zero</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{C(s)}{R(s)}=\frac{\left(\frac{s}{\alpha\zeta\omega_n}\right)+1}{\left(\frac{s}{\omega_n}\right)^2+2\zeta\left(\frac{s}{\omega_n}\right)+1}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\alpha\)</span> is a multiplier of the real part of the complex poles <span class="math notranslate nohighlight">\(\zeta\omega_n\)</span>.</p>
+</div>
+<div class="section" id="nd-order-system-with-extra-zero">
+<h4><span class="section-number">2.2.5.2. </span>2nd order system with extra zero<a class="headerlink" href="#nd-order-system-with-extra-zero" title="Permalink to this headline">¶</a></h4>
+<p>Matlab demo (run <span class="xref myst">zero2nd.m</span>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">zero2nd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tc =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  10 s^2 + 140 s + 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../_images/ssntr_38_7.svg" src="../_images/ssntr_38_7.svg" /></div>
+</div>
+<p><img alt="result" src="../_images/fig8.png" /></p>
+<p>Design curves (see handout):</p>
+<p><img alt="design curves -- effect of an extra zero" src="../_images/fig9.png" /></p>
+</div>
+<div class="section" id="how-about-adding-an-extra-pole">
+<h4><span class="section-number">2.2.5.3. </span>.. how about adding an extra pole?<a class="headerlink" href="#how-about-adding-an-extra-pole" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{C(s)}{R(s)} = \frac{1}{\left( \left( \frac{s}{\alpha \zeta \omega _n} \right) + 1 \right)\left( \left( \frac{s}{\omega _n} \right)^2 + 2\zeta \left( \frac{s}{\omega _n} \right) + 1 \right)}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\alpha\)</span> is a multiplier of the real part of the complex poles.</p>
+</div>
+<div class="section" id="nd-order-system-with-extra-pole">
+<h4><span class="section-number">2.2.5.4. </span>2nd order system with extra pole<a class="headerlink" href="#nd-order-system-with-extra-pole" title="Permalink to this headline">¶</a></h4>
+<p>Matlab demo (run <span class="xref myst">pole2nd.m</span>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pole2nd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tc =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  10 s^2 + 140 s + 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../_images/ssntr_46_7.svg" src="../_images/ssntr_46_7.svg" /></div>
+</div>
+<p><img alt="result" src="../_images/fig10.png" /></p>
+<p>Design curves (see handout):</p>
+<p><img alt="design curves -- effect of an extra pole" src="../_images/fig11.png" /></p>
+</div>
+</div>
+<div class="section" id="dominant-poles-and-order-reduction">
+<h3><span class="section-number">2.2.6. </span>Dominant poles and order reduction<a class="headerlink" href="#dominant-poles-and-order-reduction" title="Permalink to this headline">¶</a></h3>
+<p>Because the time response of many real systems will be dominated by two or three low frequency poles, a complex high order system can often be simplified by ignoring the effects of high-frequency poles and zeros or a pole that is effectively cancelled by a zero. This MATLAB script file demonstrates this.</p>
+<p>Matlab demo (Run <span class="xref myst">reduction.m</span>)</p>
+<p>In this example we ignore any poles or zeros that are located 4 or more times the real part of the dominant poles <span class="math notranslate nohighlight">\(s = -1 \pm j\)</span> or poles that a cancelled by a closed-loop zero and see that the seventh order system is effectively only a third-order system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sigma</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">wd</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Full order system&#39;</span><span class="p">)</span>
+<span class="nb">zeros</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">sigma</span><span class="p">;</span> <span class="o">-</span><span class="mf">3.2</span><span class="o">*</span><span class="n">sigma</span><span class="p">]</span>
+<span class="n">poles</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="n">sigma</span>
+   <span class="o">-</span><span class="mi">7</span><span class="o">*</span><span class="n">sigma</span><span class="o">+</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">wd</span>
+   <span class="o">-</span><span class="mi">7</span><span class="o">*</span><span class="n">sigma</span><span class="o">-</span><span class="nb">j</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">wd</span>
+   <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span>
+   <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span>
+   <span class="o">-</span><span class="n">sigma</span><span class="o">+</span><span class="nb">j</span><span class="o">*</span><span class="n">wd</span>
+   <span class="o">-</span><span class="n">sigma</span><span class="o">-</span><span class="nb">j</span><span class="o">*</span><span class="n">wd</span><span class="p">]</span>
+<span class="n">g</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="nb">zeros</span><span class="p">,</span><span class="n">poles</span><span class="p">,</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">poles</span><span class="p">))</span><span class="o">/</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">zeros</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full order system
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeros =
+   -6.0000
+   -3.2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>poles =
+  -9.0000 + 0.0000i
+  -7.0000 + 2.0000i
+  -7.0000 - 2.0000i
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">poles</span><span class="p">,</span><span class="nb">zeros</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_52_0.svg" src="../_images/ssntr_52_0.svg" /></div>
+</div>
+<p>Now remove redundant terms</p>
+<p>Step 1: remove high frequency pole at <span class="math notranslate nohighlight">\(-9*\sigma\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z1</span> <span class="p">=</span> <span class="nb">zeros</span>
+<span class="n">p1</span> <span class="p">=</span> <span class="n">poles</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">g1</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span><span class="n">p1</span><span class="p">,</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p1</span><span class="p">))</span><span class="o">/</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z1</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z1 =
+   -6.0000
+   -3.2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p1 =
+  -7.0000 + 2.0000i
+  -7.0000 - 2.0000i
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">z1</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">g1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_55_0.svg" src="../_images/ssntr_55_0.svg" /></div>
+</div>
+<p>Step 2: remove complex hf pole pair</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z2</span> <span class="p">=</span> <span class="n">z1</span>
+<span class="n">p2</span> <span class="p">=</span> <span class="n">p1</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">g2</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span><span class="n">p2</span><span class="p">,</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p2</span><span class="p">))</span><span class="o">/</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z2</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z2 =
+   -6.0000
+   -3.2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p2 =
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span><span class="n">z2</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_58_0.svg" src="../_images/ssntr_58_0.svg" /></div>
+</div>
+<p>Step 3: remove hf zero</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z3</span><span class="p">=</span> <span class="n">z2</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">p3</span> <span class="p">=</span> <span class="n">p2</span>
+<span class="n">g3</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z3</span><span class="p">,</span><span class="n">p3</span><span class="p">,</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p3</span><span class="p">))</span><span class="o">/</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z3</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z3 =
+   -3.2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p3 =
+  -3.0000 + 0.0000i
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">p3</span><span class="p">,</span><span class="n">z3</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span><span class="p">,</span><span class="n">g3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_61_0.svg" src="../_images/ssntr_61_0.svg" /></div>
+</div>
+<p>Step 4: remove pole-zero cancellation terms</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z4</span><span class="p">=</span> <span class="p">[]</span>
+<span class="n">p4</span> <span class="p">=</span> <span class="n">p3</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">g4</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z4</span><span class="p">,</span><span class="n">p4</span><span class="p">,</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p4</span><span class="p">))</span><span class="o">/</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z4</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z4 =
+     []
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p4 =
+  -2.0000 + 0.0000i
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">p4</span><span class="p">,</span><span class="n">z4</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span><span class="p">,</span><span class="n">g3</span><span class="p">,</span><span class="n">g4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_64_0.svg" src="../_images/ssntr_64_0.svg" /></div>
+</div>
+<p>Step 5: remove last non-dominant pole’)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z5</span> <span class="p">=</span> <span class="n">z4</span>
+<span class="n">p5</span> <span class="p">=</span> <span class="n">p4</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">g5</span> <span class="p">=</span> <span class="n">zpk</span><span class="p">(</span><span class="n">z5</span><span class="p">,</span><span class="n">p5</span><span class="p">,</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p5</span><span class="p">))</span><span class="o">/</span><span class="n">prod</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z5</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z5 =
+     []
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p5 =
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">p5</span><span class="p">,</span><span class="n">z5</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span><span class="p">,</span><span class="n">g3</span><span class="p">,</span><span class="n">g4</span><span class="p">,</span><span class="n">g5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_67_0.svg" src="../_images/ssntr_67_0.svg" /></div>
+</div>
+<p>Original system</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>g =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                298.12 (s+6) (s+3.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  (s+9) (s+3) (s+2) (s^2 + 2s + 2) (s^2 + 14s + 53)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time zero/pole/gain model.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reduced order system</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">g4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>g4 =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  --------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  (s+2) (s^2 + 2s + 2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time zero/pole/gain model.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">poles</span><span class="p">,</span><span class="nb">zeros</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">p4</span><span class="p">,</span><span class="n">z4</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">step</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">g4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ssntr_72_0.svg" src="../_images/ssntr_72_0.svg" /></div>
+</div>
+<p>What are the steady-state performance criteria?</p>
+</div>
+</div>
+<div class="section" id="steady-state-response">
+<h2><span class="section-number">2.3. </span>Steady-state response<a class="headerlink" href="#steady-state-response" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Canonical system</p></li>
+<li><p>Disturbance rejection</p></li>
+<li><p>System type for non-unity gain feedback</p></li>
+</ul>
+<div class="section" id="canonical-system">
+<h3><span class="section-number">2.3.1. </span>Canonical System<a class="headerlink" href="#canonical-system" title="Permalink to this headline">¶</a></h3>
+<p>(unity-gain feedback)</p>
+<p><img alt="Canonical system with unity gain feedback" src="../_images/fig12.png" /></p>
+<div class="math notranslate nohighlight">
+\[E(s) = R(s) - C(s)\]</div>
+<div class="math notranslate nohighlight">
+\[E(s) = \frac{G_o(s)}{1 + G_o(s)}R(s)\]</div>
+</div>
+<div class="section" id="steady-state-performance">
+<h3><span class="section-number">2.3.2. </span>Steady-state Performance<a class="headerlink" href="#steady-state-performance" title="Permalink to this headline">¶</a></h3>
+<p>For a unity-gain negative feedback system with open-loop transfer function Go(s) the steady-state error (SSE) response of the closed-loop system is related to system type number according to the table shown below.</p>
+<table>
+    <thead style="font-weight:bold;background-color:Gainsboro;">
+        <tr>
+            <td colspan="2">
+                &nbsp;
+            </td>
+            <td colspan="3">
+                System Type Number
+            </td>
+         </tr>
+         <tr>
+             <td colspan="2">
+                &nbsp;
+            </td>
+            <td>
+                Type 0
+            </td>
+            <td>
+                Type 1
+            </td>
+            <td>
+                Type 2
+            </td>
+         </tr>
+         <tr>
+             <td>
+                Type of input 
+            </td>
+            <td>
+                SSE
+            </td>
+            <td>
+                Step
+            </td>
+            <td>
+                Velocity
+            </td>
+            <td>
+                Acceleration
+            </td>
+         </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Step</td><td style="width:20ex">$$\frac{1}{1+K_p}$$</td><td style="width:20ex">$$\frac{1}{1+K_p}$$</td><td style="width:20ex">$\infty$</td><td style="width:20ex">$\infty$</td>
+        </tr>
+        <tr>
+            <td>Ramp</td><td>$$\frac{1}{K_v}$$</td><td>$$0$$</td><td>$$\frac{1}{K_v}$$</td><td>$\infty$</td>
+        </tr>
+        <tr>
+            <td>Parabola</td><td>$$\frac{1}{K_a}$$</td><td>$$0$$</td><td>$$0$$</td><td>$$\frac{1}{K_a}$$</td>
+        </tr>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;/tbody&gt;
+</pre></div>
+</div>
+</table><p><strong>Position error constant for step input</strong>: <span class="math notranslate nohighlight">\(R(s) = 1/s\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[K_p = \lim_{s\to\infty}\;G_o(s)\]</div>
+<p><strong>Velocity error constant for ramp input</strong>: <span class="math notranslate nohighlight">\(R(s) = 1/s^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[K_v = \lim_{s\to\infty}\;sG_o(s)\]</div>
+<p><strong>Acceleration error constant for parabolic input</strong>: <span class="math notranslate nohighlight">\(R(s) = 1/s^3\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[K_a = \lim_{s\to\infty}\;s^2G_o(s)\]</div>
+</div>
+</div>
+<div class="section" id="special-cases">
+<h2><span class="section-number">2.4. </span>Special Cases<a class="headerlink" href="#special-cases" title="Permalink to this headline">¶</a></h2>
+<p>For these models calculate the error response (<span class="math notranslate nohighlight">\(E(s) = G_o(s)N_d(s)\)</span> for the “disturbance rejection” case and
+<span class="math notranslate nohighlight">\(E(s) = R(s) - C(s)\)</span> for the “non-unity-gain-feedback”) case and use the final value theorem to calculate the steady state step error.</p>
+<p>Compare your result with the result of the simulation.</p>
+<p>You should note that in both cases the plant transfer function has type number 1. Do the rules of system type number as you understand them carry over to these special cases?</p>
+<div class="section" id="disturbance-rejection-compliance">
+<h3><span class="section-number">2.4.1. </span>Disturbance rejection? (Compliance)<a class="headerlink" href="#disturbance-rejection-compliance" title="Permalink to this headline">¶</a></h3>
+<p>Assuming that the system is originally at steady-state (<span class="math notranslate nohighlight">\(E(s) = R(s) - C(s) = 0\)</span>) what is the steady-state error to a step change in the disturbance in <span class="math notranslate nohighlight">\(n_d(t)\)</span>? (<span class="math notranslate nohighlight">\(N_d(s) = 1/s\)</span>)</p>
+<p><img alt="A system to illustrate compliance" src="../_images/fig13.png" /></p>
+<p>[Model file <span class="xref myst">disturbance_rejection.mdl</span>]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">disturbance_rejection</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="non-unity-gain-feedback">
+<h3><span class="section-number">2.4.2. </span>Non-unity gain feedback<a class="headerlink" href="#non-unity-gain-feedback" title="Permalink to this headline">¶</a></h3>
+<p><img alt="A system to illustrate non-unity gain feedback" src="../_images/fig14.png" /></p>
+<p>[Model file <span class="xref myst">non_unity_gain_feedback.mdl</span>]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">non_unity_gain_feedback</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="further-reading">
+<h2><span class="section-number">2.5. </span>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://en.wikibooks.org/wiki/Control_Systems/System_Metrics">System Metrics</a> section of the <a class="reference external" href="https://en.wikibooks.org/wiki/Control_Systems">Control Systems Wikibook</a> amplifies some of the topics covered in this chapter.</p>
+<p>The topics covered in this chapter are also amplified in</p>
+<ul class="simple">
+<li><p>Nise. Chapter 4: Time Response.</p></li>
+<li><p>Dorf and Bishop. Chapter 5: The Performance of Feedback Control Systems.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../01/modsim.html" title="previous page"><span class="section-number">1. </span>System Modelling and Simulation</a>
+    <a class='right-next' id="next-link" href="../03/classical.html" title="next page"><span class="section-number">3. </span>Classical Control Systems Design</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,2050 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.5. Transformation of States and System Diagonalization &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/07/5/systransf.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.6. The General Solution of LTI Systems" href="../6/gensolution.html" />
+    <link rel="prev" title="7.4. Canonical Forms" href="../4/canon.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/07/5/systransf.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Transformation of States and System Diagonalization" />
+<meta property="og:description" content="Transformation of States and System Diagonalization  The canonical forms described in the last section give different descriptions of the same transfer function" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/07/5/systransf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F07/5/systransf.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/07/5/systransf.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/07/5/systransf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-class-presentation-transformation-of-state-models">
+   7.5.1. Pre-Class Presentation: Transformation of State Models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-contents">
+   7.5.2. Section Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">
+   7.5.3. Eigenvalues and Eigenvectors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-of-an-eigenvector">
+     7.5.3.1. Definition of an Eigenvector
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-1-eigenvectors-and-transformations">
+     7.5.3.2. Figure 1: Eigenvectors and Transformations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eigenvalues">
+     7.5.3.3. Eigenvalues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-the-eigenvectors-of-a-system">
+     7.5.3.4. Finding the eigenvectors of a system
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformation-of-state-space-models">
+   7.5.4. Transformation of State Space Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-transformation">
+     7.5.4.1. State transformation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ouput-transformation">
+     7.5.4.2. Ouput transformation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformed-model">
+     7.5.4.3. Transformed Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#similarity-transform-preserves-eigenvalues">
+     7.5.4.4. Similarity Transform Preserves Eigenvalues
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diagonalization-of-a-system-matrix">
+   7.5.5. Diagonalization of a System Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-diagonalization-to-solve-state-equations">
+   7.5.6. Using Diagonalization to Solve State Equations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-of-general-state-equations">
+     7.5.6.1. Solution of General State Equations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-pre-class-presentation">
+   7.5.7. Summary of Pre-Class Presentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activities-for-class">
+   7.5.8. Activities for Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#worked-examples">
+   7.5.9. Worked Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-finding-eigenvectors">
+     7.5.9.1. Example 1: finding eigenvectors
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       7.5.9.1.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-similarity-transformations-on-state-equations">
+     7.5.9.2. Example 2: Similarity transformations on state equations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       7.5.9.2.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-diagonalization-of-a-system-in-state-space">
+     7.5.9.3. Example 3: Diagonalization of a system in state space
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       7.5.9.3.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     7.5.9.4. Example 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       7.5.9.4.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-transformations-in-matlab">
+   7.5.10. System Transformations in MATLAB
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     7.5.10.1. Eigenvalues and eigenvectors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#similarity-transforms">
+     7.5.10.2. Similarity transforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-control-system-toolbox">
+     7.5.10.3. Using Control System Toolbox
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagonalization">
+     7.5.10.4. Diagonalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagonalization-using-cst-canon-function">
+     7.5.10.5. Diagonalization using CST canon function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnotes">
+   7.5.11. Footnotes
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="transformation-of-states-and-system-diagonalization">
+<h1><span class="section-number">7.5. </span>Transformation of States and System Diagonalization<a class="headerlink" href="#transformation-of-states-and-system-diagonalization" title="Permalink to this headline">¶</a></h1>
+<p>The canonical forms described in the last <a class="reference external" href="https://cpjobling.github.io/eglm03-textbook/07/4/canon">section</a> give different descriptions of the same transfer function (TF) and are therefore equivalent in their overall input-output relationship. This means that it should be possible to convert one canonical form into another by the operation of simple matrix operations. Furthermore, by transforming a system to the <em>normal form</em>, determining the response and mapping back, it is possible to determine the total system response of any state space system.</p>
+<p>The <em>eigenvalues</em> of the state matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> have an important influence on the system response and understanding them is key to understanding the general solution of state-space systems.</p>
+<p>In this section we define eigenvalues and eigenvectors, show the system transformation method and prove that it has no impact on the system eigenvalues, show how it can be used to transform an arbitrary state-space model into one with a diagonal (normal) structure, and finally we use these results to find a general time-response solution to the state space equations.</p>
+<div class="section" id="pre-class-presentation-transformation-of-state-models">
+<h2><span class="section-number">7.5.1. </span>Pre-Class Presentation: Transformation of State Models<a class="headerlink" href="#pre-class-presentation-transformation-of-state-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>For a given transfer function the canonical forms are equivalent in their input-output relationships.</p></li>
+</ul>
+<ul class="simple">
+<li><p>We can convert one form of canonical system into another by the application of simple matrix operations.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Transforming to normal form simplifies the calculation of system response.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The <em>eigenvalues</em> of the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix are key to the process.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Knowledge of a system’s eigenvalues means that we can determine the system response of any LTI system.</p></li>
+</ul>
+</div>
+<div class="section" id="section-contents">
+<h2><span class="section-number">7.5.2. </span>Section Contents<a class="headerlink" href="#section-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Eigenvalues and eigenvectors</p></li>
+</ul>
+<ul class="simple">
+<li><p>System transformation</p></li>
+</ul>
+<ul class="simple">
+<li><p>Diagonalization of a state space model</p></li>
+</ul>
+<ul class="simple">
+<li><p>Solution to the general state equations</p></li>
+</ul>
+</div>
+<div class="section" id="eigenvalues-and-eigenvectors">
+<h2><span class="section-number">7.5.3. </span>Eigenvalues and Eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definition-of-an-eigenvector">
+<h3><span class="section-number">7.5.3.1. </span>Definition of an Eigenvector<a class="headerlink" href="#definition-of-an-eigenvector" title="Permalink to this headline">¶</a></h3>
+<p>The eignevectors<sup>1</sup> of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are all vectors <span class="math notranslate nohighlight">\(\mathbf{x}_i\ne\mathbf{0}\)</span>, which under the transformation <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> become multiples of themselves;</p>
+<p>That is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i\end{equation}\]</div>
+<p>where each <span class="math notranslate nohighlight">\(\lambda_i\)</span> is
+a constant called an <em>eigenvalue</em>.</p>
+<p>Figure 1 illustrates this definition of eigenvectors. If <span class="math notranslate nohighlight">\(\mathbf{Ax}\)</span> is not
+collinear with <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> after the transformation, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is
+not an eigenvector. If <span class="math notranslate nohighlight">\(\mathbf{Ax}\)</span> is collinear with <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>
+after the transformation, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is an eigenvector.</p>
+</div>
+<div class="section" id="figure-1-eigenvectors-and-transformations">
+<h3><span class="section-number">7.5.3.2. </span>Figure 1: Eigenvectors and Transformations<a class="headerlink" href="#figure-1-eigenvectors-and-transformations" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Eigenvectors and Transformations" src="../../_images/eigenvectors.png" /></p>
+<p>To be an eigenvector, the transformation <span class="math notranslate nohighlight">\(\mathbf{Ax}\)</span> must be collinear with <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. Thus, in (a), <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is not an eigenvector: in (b), it is.</p>
+</div>
+<div class="section" id="eigenvalues">
+<h3><span class="section-number">7.5.3.3. </span>Eigenvalues<a class="headerlink" href="#eigenvalues" title="Permalink to this headline">¶</a></h3>
+<p>The eigenvalues of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are the values of <span class="math notranslate nohighlight">\(\lambda_i\)</span> that satisfy (1) for <span class="math notranslate nohighlight">\(\mathbf{x}_i\ne \mathbf{0}\)</span>.</p>
+<p>To find the eigenvectors, we arrange equation (1). The eigenvectors, <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>, satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\mathbf{0}=(\lambda_i\mathbf{I}-\mathbf{A})\mathbf{x}_i\end{equation}\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span></p>
+<p>by premultiplying both sides by <span class="math notranslate nohighlight">\((\lambda_i\mathbf{I}-\mathbf{A})^{-1}\)</span> yields</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}_i = (\lambda_i\mathbf{I}-\mathbf{A})^{-1} =
+           \frac{\textrm{adj}(\lambda_i\mathbf{I}-\mathbf{A})^{-1}}{\det(\lambda_i\mathbf{I}-\mathbf{A})^{-1}} = \mathbf{0}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{x}_i\ne \mathbf{0}\)</span>,</p>
+<p>a nonzero solution exists if</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+    \det(\lambda_i\mathbf{I}-\mathbf{A}) = \mathbf{0} \label{eq:eigenvalue}\end{equation}\]</div>
+<p>From which <span class="math notranslate nohighlight">\(\lambda_i\)</span>, the eigenvalues, can be found.</p>
+<p>We are now ready to show how to find the eigenvectors <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>. First we find the eigenvalues, <span class="math notranslate nohighlight">\(\lambda_i\)</span>, using <span class="math notranslate nohighlight">\(\det(\lambda_i\mathbf{I}-\mathbf{A}) = \mathbf{0}\)</span>, and then we use equation (1) to find the eigenvectors.</p>
+</div>
+<div class="section" id="finding-the-eigenvectors-of-a-system">
+<h3><span class="section-number">7.5.3.4. </span>Finding the eigenvectors of a system<a class="headerlink" href="#finding-the-eigenvectors-of-a-system" title="Permalink to this headline">¶</a></h3>
+<p>To find the eigenvectors <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> of a system matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span></p>
+<ol class="simple">
+<li><p>First find the eigenvalues, <span class="math notranslate nohighlight">\(\lambda_i\)</span>, using <span class="math notranslate nohighlight">\(\det(\lambda_i\mathbf{I}-\mathbf{A}) = \mathbf{0}\)</span></p></li>
+<li><p>Use <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i\)</span> to find the eigenvectors.</p></li>
+</ol>
+<p>We will work through an example in class.</p>
+</div>
+</div>
+<div class="section" id="transformation-of-state-space-models">
+<h2><span class="section-number">7.5.4. </span>Transformation of State Space Models<a class="headerlink" href="#transformation-of-state-space-models" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have a state space model with states <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and matrices <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> and we wish to transform to a model with states <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{Tw}\)</span>. <span class="math notranslate nohighlight">\(\mathbf{T}\)</span> is the <em>transformation matrix</em> for the states.</p>
+<div class="section" id="state-transformation">
+<h3><span class="section-number">7.5.4.1. </span>State transformation<a class="headerlink" href="#state-transformation" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\frac{d\mathbf{x}}{dt} &amp; = &amp; \mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u} \\
+	\frac{d\mathbf{Tw}}{dt} &amp; = &amp; \mathbf{ATw}+\mathbf{B}\mathbf{u} \\
+	\mathbf{T}\frac{d\mathbf{w}}{dt} &amp; = &amp; \mathbf{ATw}+\mathbf{B}\mathbf{u} \\
+	\frac{d\mathbf{w}}{dt} &amp; = &amp; \mathbf{T}^{-1}\mathbf{ATw}+\mathbf{T}^{-1}\mathbf{B}\mathbf{u} \\	\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="ouput-transformation">
+<h3><span class="section-number">7.5.4.2. </span>Ouput transformation<a class="headerlink" href="#ouput-transformation" title="Permalink to this headline">¶</a></h3>
+<p>Similarly for the output equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\mathbf{y} &amp; = &amp; \mathbf{Cx} + \mathbf{Du} \\
+	\mathbf{y} &amp; = &amp; \mathbf{CTw} + \mathbf{Du} \\	\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="transformed-model">
+<h3><span class="section-number">7.5.4.3. </span>Transformed Model<a class="headerlink" href="#transformed-model" title="Permalink to this headline">¶</a></h3>
+<p>Therefore the new state space model is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\frac{d\mathbf{w}}{dt} &amp; = &amp; \mathbf{A}'\mathbf{w} + \mathbf{B}'\mathbf{u} \\
+	\mathbf{y} &amp; = &amp; \mathbf{C}'\mathbf{w}+\mathbf{D}'\mathbf{u}\end{eqnarray*}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{A}'=\mathbf{T}^{-1}\mathbf{A}\mathbf{T}\)</span>,
+<span class="math notranslate nohighlight">\(\mathbf{B}'=\mathbf{T}^{-1}\mathbf{B}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}'=\mathbf{CT}\)</span>, and
+<span class="math notranslate nohighlight">\(\mathbf{D}'=\mathbf{D}\)</span>.</p>
+<ul class="simple">
+<li><p>This should not be surprising since the poles of the system being
+modelled correspond to the eigenvalues of the state matrix, whatever
+the choice of states.</p></li>
+</ul>
+</div>
+<div class="section" id="similarity-transform-preserves-eigenvalues">
+<h3><span class="section-number">7.5.4.4. </span>Similarity Transform Preserves Eigenvalues<a class="headerlink" href="#similarity-transform-preserves-eigenvalues" title="Permalink to this headline">¶</a></h3>
+<p>The transformation <span class="math notranslate nohighlight">\(\mathbf{T}^{-1}\mathbf{AT}\)</span> is a <em>similarity transform</em>. That is the eigenvalues are the same as for <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p><em>Proof</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\mathbf{Ax} &amp; = &amp; \lambda\mathbf{x} \\
+	\mathbf{T}^{-1}\mathbf{Ax} &amp; = &amp; \lambda\mathbf{T}^{-1}\mathbf{x}	
+\end{eqnarray*}\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{Tw}\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	\mathbf{T}^{-1}\mathbf{ATw} &amp; = &amp; \lambda\mathbf{T}^{-1}\mathbf{Tw} \\	
+	(\mathbf{T}^{-1}\mathbf{AT})\mathbf{w} &amp; = &amp; \lambda\mathbf{w} \\	\end{eqnarray*}\end{split}\]</div>
+<p>Therefore if <span class="math notranslate nohighlight">\(\lambda\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> then it is also one of <span class="math notranslate nohighlight">\(\mathbf{A}'=\mathbf{T}^{-1}\mathbf{AT}\)</span>.</p>
+<p><em>QED</em>.</p>
+</div>
+</div>
+<div class="section" id="diagonalization-of-a-system-matrix">
+<h2><span class="section-number">7.5.5. </span>Diagonalization of a System Matrix<a class="headerlink" href="#diagonalization-of-a-system-matrix" title="Permalink to this headline">¶</a></h2>
+<p>If we choose the eigenvectors of a system matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> to be the basis of a transformation, <span class="math notranslate nohighlight">\(\mathbf{T}\)</span>, the resulting system matrix will be in the diagonal normal form. Let the transformation matrix <span class="math notranslate nohighlight">\(\mathbf{T}\)</span> consist of the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+    \mathbf{T}=[\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, \ldots, \mathbf{x}_n]\end{equation}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> are eigenvectors,</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i\)</span>, can be written equivalently as a set of equations expressed by</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+    \mathbf{AT}=\mathbf{T\Lambda}\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\Lambda}\)</span> is a matrix which has the eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span> on the diagonal in some order and
+zeros elsewhere, and <span class="math notranslate nohighlight">\(\mathbf{T}\)</span> is as defined in Eq. (8).</p>
+<p>Solving Eq. (9) for <span class="math notranslate nohighlight">\(\mathbf{\Lambda}\)</span> by premultiplying by <span class="math notranslate nohighlight">\(\mathbf{T}^{-1}\)</span>, we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+    \mathbf{\Lambda}=\mathbf{T}^{-1}\mathbf{AT}\end{equation}\]</div>
+<p>which is the system matrix in normal canonical form.<sup>2</sup></p>
+<p>In summary, under the transformation <span class="math notranslate nohighlight">\(\mathbf{T}\)</span>, consisting of the eigenvalues of the system matrix, the transformed system is identical to that obtained using the partial fraction expansion of the transfer function with distinct real roots.</p>
+</div>
+<div class="section" id="using-diagonalization-to-solve-state-equations">
+<h2><span class="section-number">7.5.6. </span>Using Diagonalization to Solve State Equations<a class="headerlink" href="#using-diagonalization-to-solve-state-equations" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to obtain solutions for the state equations in any set of states, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, by transforming to normal canonical form and solving the latter’s states, <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>, as shown in <a class="reference external" href="https://cpjobling.github.io/eglm03-textbook/07/4/canon">Section 7.4</a>.</p>
+<p>The initial states are found, using the inverse transformation, as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{w}_0=\mathbf{T}^{-1}\mathbf{x}_0\]</div>
+<p>The solutions to the original states can then be found from <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>
+using the transformation $<span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{Tw}\)</span>$</p>
+<p>Since the state space model for <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is in normal form then the
+state matrix, <span class="math notranslate nohighlight">\(\mathbf{A}' = \mathbf{\Lambda}\)</span>, is diagonal with the
+eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> in some order on the diagonal.</p>
+<p>As demonstrated above, the columns of the transformation matrix, <span class="math notranslate nohighlight">\(\mathbf{T}\)</span> will be formed by concatenation of the corresponding eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> in the same order.</p>
+<div class="section" id="solution-of-general-state-equations">
+<h3><span class="section-number">7.5.6.1. </span>Solution of General State Equations<a class="headerlink" href="#solution-of-general-state-equations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>In <a class="reference external" href="https://cpjobling.github.io/eglm03-textbook/07/4/canon">Section 7.4</a> we showed how we could determine the solution to a state equation in normal (diagonal form).</p></li>
+<li><p>Here we have demonstrated how to use the eignenvalues and eigenvectors to transform a model in state space form to the normal form.</p></li>
+<li><p>Thus if we have <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> the initial states will be
+<span class="math notranslate nohighlight">\(\mathbf{w}_0=\mathbf{T}^{-1}\mathbf{x}_0\)</span>, and</p></li>
+<li><p>The solutions to the original states can then be found from
+<span class="math notranslate nohighlight">\(\mathbf{w}\)</span> using the transformation <span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{Tw}\)</span></p></li>
+</ul>
+<p>Example 4 illustrates the procedure.</p>
+</div>
+</div>
+<div class="section" id="summary-of-pre-class-presentation">
+<h2><span class="section-number">7.5.7. </span>Summary of Pre-Class Presentation<a class="headerlink" href="#summary-of-pre-class-presentation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Eigenvalues and eigenvectors</p></li>
+<li><p>System transformation</p></li>
+<li><p>Diagonalization of a state space model</p></li>
+<li><p>Solution to the general state equations</p></li>
+</ul>
+</div>
+<div class="section" id="activities-for-class">
+<h2><span class="section-number">7.5.8. </span>Activities for Class<a class="headerlink" href="#activities-for-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Worked Examples (solutions in notes)</p></li>
+<li><p>System Transformations in Matlab</p></li>
+</ul>
+</div>
+<div class="section" id="worked-examples">
+<h2><span class="section-number">7.5.9. </span>Worked Examples<a class="headerlink" href="#worked-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1-finding-eigenvectors">
+<h3><span class="section-number">7.5.9.1. </span>Example 1: finding eigenvectors<a class="headerlink" href="#example-1-finding-eigenvectors" title="Permalink to this headline">¶</a></h3>
+<p>Find the eigenvectors of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}{\bf{A}} = \left[ {\begin{array}{*{20}c}
+       { - 3} &amp; 1  \\
+       1 &amp; { - 3}  \\
+    \end{array}} \right]\end{equation}\end{split}\]</div>
+<div class="section" id="solution">
+<h4><span class="section-number">7.5.9.1.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h4>
+<p>The eigenvectors, <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>, satisfy Eq. (2). First, use <span class="math notranslate nohighlight">\(\det(\lambda_i\mathbf{I}-\mathbf{A})=0\)</span> to find the eigenvalues, <span class="math notranslate nohighlight">\(\lambda_i\)</span>, for Eq. (1):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{c}
+ \det (\lambda {\bf{I}} - {\bf{A}}) = \left| {\left[ {\begin{array}{*{20}c}
+   \lambda  &amp; 0  \\
+   0 &amp; \lambda   \\
+\end{array}} \right] - \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; 1  \\
+   1 &amp; { - 3}  \\
+\end{array}} \right]} \right| \\
+  = \left| {\begin{array}{*{20}c}
+   {\lambda  + 3} &amp; { - 1}  \\
+   { - 1} &amp; {\lambda  + 3}  \\
+\end{array}} \right| \\
+  = \lambda ^2  + 6\lambda  + 8 \\
+ \end{array}\end{split}\]</div>
+<p>from which the eigenvalues are <span class="math notranslate nohighlight">\(\lambda_1 = -2\)</span> and <span class="math notranslate nohighlight">\(\lambda_2 = -4\)</span>.</p>
+<p>Using Eq. (1) successively with each eigenvalue, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+ {\bf{Ax}}_i  = \lambda {\bf{x}}_i  \\
+ \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; 1  \\
+   1 &amp; { - 3}  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   {x_1 }  \\
+   {x_2 }  \\
+\end{array}} \right] =  - 2\left[ {\begin{array}{*{20}c}
+   {x_1 }  \\
+   {x_2 }  \\
+\end{array}} \right] \\
+ \end{array}\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+-3x_1+x_2 &amp; = &amp; -2x_1 \\
+x_1-3x_2 &amp; = &amp; -2x_2\end{eqnarray*}\end{split}\]</div>
+<p>from which <span class="math notranslate nohighlight">\(x_1 = x_2\)</span>. Thus,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+{\bf{x}} = \left[ {\begin{array}{*{20}c}
+   c  \\
+   c  \\
+\end{array}} \right]\end{equation}\end{split}\]</div>
+<p>Using the other eigenvalue, <span class="math notranslate nohighlight">\(-4\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+{\bf{x}} = \left[ {\begin{array}{*{20}c}
+   c  \\
+   -c  \\
+\end{array}} \right]\end{equation}\end{split}\]</div>
+<p>Using Eqs. (5) and (6), one choice of eigenvectors is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}
+{\bf{x}}_1  = \left[ {\begin{array}{*{20}c}
+   1  \\
+   1  \\
+\end{array}} \right]\quad {\rm{and}}\quad {\bf{x}}_2  = \left[ {\begin{array}{*{20}c}
+   1  \\
+   { - 1}  \\
+\end{array}} \right]\end{equation}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="example-2-similarity-transformations-on-state-equations">
+<h3><span class="section-number">7.5.9.2. </span>Example 2: Similarity transformations on state equations<a class="headerlink" href="#example-2-similarity-transformations-on-state-equations" title="Permalink to this headline">¶</a></h3>
+<p>Given the system represented in state space by the
+following equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+ {\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
+   0 &amp; 1 &amp; 0  \\
+   0 &amp; 0 &amp; 1  \\
+   { - 2} &amp; { - 5} &amp; { - 7}  \\
+\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
+   0  \\
+   0  \\
+   1  \\
+\end{array}} \right]u \\
+ y = \left[ {\begin{array}{*{20}c}
+   1 &amp; 0 &amp; 0  \\
+\end{array}} \right]{\bf{x}} \\
+ \end{array}\end{split}\]</div>
+<p>transform the system to a new set of state variables, <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>, where the new state variables are related to the original state variables, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+	w_1 &amp; = &amp; 2x_1 \\
+	w_2 &amp; = &amp; 3x_1 + 2x_2 \\
+	w_3 &amp; = &amp; x_1 + 4x_2 + 5x_3\end{aligned}\end{split}\]</div>
+<div class="section" id="id1">
+<h4><span class="section-number">7.5.9.2.1. </span>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Expressing the transformed states in vector-matrix form,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{w}} = \left[ {\begin{array}{*{20}c}
+   2 &amp; 0 &amp; 0  \\
+   3 &amp; 2 &amp; 0  \\
+   1 &amp; 4 &amp; 5  \\
+\end{array}} \right]{\bf{x}} = {\bf{T}}^{ - 1} {\bf{x}}\end{split}\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{c}
+ {\bf{T}}^{ - 1} {\bf{AT}} = \left[ {\begin{array}{*{20}c}
+   2 &amp; 0 &amp; 0  \\
+   3 &amp; 2 &amp; 0  \\
+   1 &amp; 4 &amp; 5  \\
+\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
+   0 &amp; 1 &amp; 0  \\
+   0 &amp; 0 &amp; 1  \\
+   { - 2} &amp; { - 5} &amp; { - 7}  \\
+\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
+   {0.5} &amp; 0 &amp; 0  \\
+   { - 0.75} &amp; {0.5} &amp; 0  \\
+   {0.5} &amp; { - 0.4} &amp; {0.2}  \\
+\end{array}} \right] \\
+  = \left[ {\begin{array}{*{20}c}
+   { - 1.5} &amp; 1 &amp; 0  \\
+   { - 1.25} &amp; {0.7} &amp; {0.4}  \\
+   { - 2.5} &amp; {0.4} &amp; { - 6.2}  \\
+\end{array}} \right] \\
+ \end{array}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{T}}^{ - 1} {\bf{B}} = \left[ {\begin{array}{*{20}c}
+   2 &amp; 0 &amp; 0  \\
+   3 &amp; 2 &amp; 0  \\
+   1 &amp; 4 &amp; 5  \\
+\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
+   0  \\
+   0  \\
+   1  \\
+\end{array}} \right] = \left[ {\begin{array}{*{20}c}
+   0  \\
+   0  \\
+   5  \\
+\end{array}} \right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{CT}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 0 &amp; 0  \\
+\end{array}} \right]\;\left[ {\begin{array}{*{20}c}
+   {0.5} &amp; 0 &amp; 0  \\
+   { - 0.75} &amp; {0.5} &amp; 0  \\
+   {0.5} &amp; { - 0.4} &amp; {0.2}  \\
+\end{array}} \right] = \left[ {\begin{array}{*{20}c}
+   {0.5} &amp; 0 &amp; 0  \\
+\end{array}} \right]\end{split}\]</div>
+<p>Therefore the transformed system is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+ {\bf{\dot w}} = \left[ {\begin{array}{*{20}c}
+   { - 1.5} &amp; 1 &amp; 0  \\
+   { - 1.25} &amp; {0.7} &amp; {0.4}  \\
+   { - 2.5} &amp; { 0.4} &amp; {-6.2}  \\
+\end{array}} \right]{\bf{w}} + \left[ {\begin{array}{*{20}c}
+   0  \\
+   0  \\
+   5  \\
+\end{array}} \right]u \\
+ y = \left[ {\begin{array}{*{20}c}
+   {0.5} &amp; 0 &amp; 0  \\
+\end{array}} \right]{\bf{w}} \\
+ \end{array}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="example-3-diagonalization-of-a-system-in-state-space">
+<h3><span class="section-number">7.5.9.3. </span>Example 3: Diagonalization of a system in state space<a class="headerlink" href="#example-3-diagonalization-of-a-system-in-state-space" title="Permalink to this headline">¶</a></h3>
+<p>Given the system shown below, find the diagonal (normal form) system that is similar.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+  {\mathbf{\dot x}} &amp;=&amp; \left[ {\begin{array}{*{20}{c}}
+  { - 3}&amp;1 \\ 
+  1&amp;{ - 3} 
+\end{array}} \right]{\mathbf{x}} + \left[ {\begin{array}{*{20}{c}}
+  1 \\ 
+  2 
+\end{array}} \right]u \hfill \\
+  y &amp;=&amp; \left[ {\begin{array}{*{20}{c}}
+  2&amp;3 
+\end{array}} \right]{\mathbf{x}} \hfill \\ 
+\end{eqnarray*}\end{split}\]</div>
+<div class="section" id="id2">
+<h4><span class="section-number">7.5.9.3.1. </span>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>First find the eigenvalues and the eigenvectors. This step was performed in Example 1. Next form the transformation matrix <span class="math notranslate nohighlight">\(\mathbf{T}\)</span>, whose columns are the eignevectors.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{T}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   1 &amp; { - 1}  \\
+\end{array}} \right]\end{split}\]</div>
+<p>finally form the similar systems’s system matrix, input matrix and output matrix respectively.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{*{20}{c}}
+  \mathbf{T}^{ - 1}\mathbf{AT} = \left[ {\begin{array}{*{20}{c}}
+  {1/2}&amp;{1/2} \\ 
+  {1/2}&amp;{ - 1/2} 
+\end{array}} \right]{\kern 1pt} \left[ {\begin{array}{*{20}{c}}
+  { - 3}&amp;1 \\ 
+  1&amp;{ - 3} 
+\end{array}} \right]{\kern 1pt} \left[ {\begin{array}{*{20}{c}}
+  1&amp;1 \\ 
+  1&amp;{ - 1} 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+  { - 2}&amp;0 \\ 
+  0&amp;{ - 4} 
+\end{array}} \right] \\ 
+  \mathbf{T}^{ - 1}\mathbf{B} = \left[ {\begin{array}{*{20}{c}}
+  {1/2}&amp;{1/2} \\ 
+  {1/2}&amp;{ - 1/2} 
+\end{array}} \right]\;{\kern 1pt} \left[ {\begin{array}{*{20}{c}}
+  1 \\ 
+  2 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+  {3/2} \\ 
+  { - 1/2} 
+\end{array}} \right] \\ 
+  \mathbf{CT} = \left[ {\begin{array}{*{20}{c}}
+  2&amp;3 
+\end{array}} \right]\;{\kern 1pt} \left[ {\begin{array}{*{20}{c}}
+  1&amp;1 \\ 
+  1&amp;{ - 1} 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+  5&amp;{ - 1} 
+\end{array}} \right] 
+\end{array}\end{split}\]</div>
+<p>Substituting this result into the equivalent state equations gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{c}
+ {\bf{\dot w}} = \left[ {\begin{array}{*{20}c}
+   { - 2} &amp; 0  \\
+   0 &amp; { - 4}  \\
+\end{array}} \right]{\bf{w}} + \left[ {\begin{array}{*{20}c}
+   {3/2}   \\
+   { - 1/2}  \\
+\end{array}} \right]u \\
+ y = \left[ {\begin{array}{*{20}c}
+   5 &amp; { - 1}  \\
+\end{array}} \right]{\bf{w}} \\
+ \end{array}\end{split}\]</div>
+<p>Notice that the transformed system matrix is diagonal, with the
+eigenvalues on the diagonal.</p>
+</div>
+</div>
+<div class="section" id="example-4">
+<h3><span class="section-number">7.5.9.4. </span>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+<p>Solve the state equations
+$<span class="math notranslate nohighlight">\({\bf{\dot x}} = \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; { - 2}  \\
+   1 &amp; 0  \\
+\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]u\)</span><span class="math notranslate nohighlight">\( given \)</span>\mathbf{x}_0 = [1, 0]^T<span class="math notranslate nohighlight">\( at \)</span>t=0<span class="math notranslate nohighlight">\( and
+\)</span>u=0$.</p>
+<div class="section" id="id3">
+<h4><span class="section-number">7.5.9.4.1. </span>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p><em>First find the eigenvalues</em>: The eigenvalues of the state
+matrix are the roots of:</p>
+<div class="math notranslate nohighlight">
+\[\det(\lambda\mathbf{I}-\mathbf{A})=0\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+ \det \left( {\left[ {\begin{array}{*{20}c}
+   \lambda  &amp; 0  \\
+   0 &amp; \lambda   \\
+\end{array}} \right] - \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; { - 2}  \\
+   1 &amp; 0  \\
+\end{array}} \right]} \right) = \left| {\begin{array}{*{20}c}
+   {\lambda  + 3} &amp; 2  \\
+   { - 1} &amp; \lambda   \\
+\end{array}} \right| = 0 \\
+ (\lambda  + 3)\lambda  + 2 = \lambda ^2  + 3\lambda  + 2 = (\lambda  + 1)(\lambda  + 2) = 0 \\
+ \end{array}\end{split}\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(\lambda_1=-1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=-2\)</span>.</p>
+<p><em>Next, find the transformation matrix</em>: The eigenvectors are the solutions of <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}_i=\lambda_i\mathbf{x}_i\)</span> for <span class="math notranslate nohighlight">\(i=1,2\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(i=1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; { - 2}  \\
+   1 &amp; 0  \\
+\end{array}} \right]\underbrace {\left[ {\begin{array}{*{20}c}
+   {x_1 }  \\
+   {x_2 }  \\
+\end{array}} \right]}_{\bf{x}_1 } &amp; = &amp; \underbrace {( - 1)}_{\lambda _1 }\left[ {\begin{array}{*{20}c}
+   {x_1 }  \\
+   {x_2 }  \\
+\end{array}} \right] \\
+  - 3x_1  - 2x_2  &amp; = &amp;  - x_1  \\
+ x_1  + 0x_2  &amp; = &amp;  - x_2  \\
+ \end{eqnarray*}\end{split}\]</div>
+<p>These equations are linearly dependent, and if we let <span class="math notranslate nohighlight">\(x_1 =1\)</span> then <span class="math notranslate nohighlight">\(x_2 = -1\)</span> giving <span class="math notranslate nohighlight">\(\mathbf{x}_1=[1,\ -1]^T\)</span>.</p>
+<p>Similarly, for <span class="math notranslate nohighlight">\(i=2\)</span> we obtain <span class="math notranslate nohighlight">\(\mathbf{x}_2=[1, -0.5]^T\)</span>.</p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{l}
+ {\bf{T}} = \left[ {\begin{array}{*{20}c}
+   {\bf{x}_1 } &amp;  \vdots  &amp; {\bf{x}_2 }  \\
+\end{array}} \right] = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   { - 1} &amp; { - 0.5}  \\
+\end{array}} \right] \\
+ {\bf{T}}^{ - 1}  = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right] \\
+ \end{array}\end{split}\]</div>
+<p><em>Finally solve the state equations of the transformed system</em></p>
+<p>Transform the initial states:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right] = \left[ {\begin{array}{*{20}c}
+   { - 1}  \\
+   2  \\
+\end{array}} \right]\end{split}\]</div>
+<p>Solve for the transformed states:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    w_1 &amp; = &amp; w_{1,0}e^{\lambda_1t} \\
+    w_1 &amp; = &amp; (-1)e^{-t} \\\end{eqnarray*}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    w_2 &amp; = &amp; w_{2,0}e^{\lambda_2t} \\
+    w_2 &amp; = &amp; (2)e^{-2t} \\\end{eqnarray*}\end{split}\]</div>
+<p>Transform the answers back to the original states:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   { - 1} &amp; { - 0.5}  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   { - e^{ - t} }  \\
+   {2e^{ - 2t} }  \\
+\end{array}} \right]\end{split}\]</div>
+<p>Therefore $<span class="math notranslate nohighlight">\(\begin{eqnarray*}
+    x_1 &amp; = &amp; -e^{-t} + 2e^{-2t} \\
+    x_2 &amp; = &amp; e^{-t}-e^{-2t} \\\end{eqnarray*}\)</span>$</p>
+</div>
+</div>
+</div>
+<div class="section" id="system-transformations-in-matlab">
+<h2><span class="section-number">7.5.10. </span>System Transformations in MATLAB<a class="headerlink" href="#system-transformations-in-matlab" title="Permalink to this headline">¶</a></h2>
+<p>MATLAB provides a rich set of tools for finding eigenvalues and
+eigenvectors, transforming state equations using similarity transforms
+and solving state space equations. We conclude this lecture by reworking
+the first three examples in Matlab. You should repeat these examples
+during the self-directed learning session.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="s">all</span>
+<span class="n">format</span> <span class="s">compact</span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">7.5.10.1. </span>Eigenvalues and eigenvectors<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Solution of Example 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="mi">1</span><span class="p">;</span> <span class="n">1</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Lambda</span><span class="p">]</span> <span class="p">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+    -3     1
+     1    -3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T =
+    0.7071    0.7071
+   -0.7071    0.7071
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lambda =
+    -4     0
+     0    -2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note <span class="math notranslate nohighlight">\(\mathbf{T}\)</span> is the transform matrix whose columns are the
+eigenvectors, <span class="math notranslate nohighlight">\(\mathbf{\Lambda}\)</span> is the diagonal matrix of eigenvalues.</p>
+</div>
+<div class="section" id="similarity-transforms">
+<h3><span class="section-number">7.5.10.2. </span>Similarity transforms<a class="headerlink" href="#similarity-transforms" title="Permalink to this headline">¶</a></h3>
+<p>Solution of Example 2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Tinv</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="n">3</span> <span class="s">2</span> <span class="s">0</span><span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="s">5]</span><span class="p">;</span>
+<span class="n">T</span> <span class="p">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">Tinv</span><span class="p">)</span>
+           
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T =
+    0.5000         0         0
+   -0.7500    0.5000   -0.0000
+    0.5000   -0.4000    0.2000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ax</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="s">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">5</span> <span class="o">-</span><span class="mi">7</span><span class="p">];</span>
+<span class="n">Bx</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">Cx</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Transform</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Aw</span> <span class="p">=</span> <span class="n">Tinv</span><span class="o">*</span><span class="n">Ax</span><span class="o">*</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aw =
+   -1.5000    1.0000   -0.0000
+   -1.2500    0.7000    0.4000
+   -2.5000    0.4000   -6.2000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Bw</span> <span class="p">=</span> <span class="n">Tinv</span><span class="o">*</span><span class="n">Bx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bw =
+     0
+     0
+     5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Cw</span> <span class="p">=</span> <span class="n">Cx</span><span class="o">*</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cw =
+    0.5000         0         0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-control-system-toolbox">
+<h3><span class="section-number">7.5.10.3. </span>Using Control System Toolbox<a class="headerlink" href="#using-control-system-toolbox" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Tinv</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="n">3</span> <span class="s">2</span> <span class="s">0</span><span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="s">5]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Ax</span></code>, <code class="docutils literal notranslate"><span class="pre">Bx</span></code>, <code class="docutils literal notranslate"><span class="pre">Cx</span></code> as previously defined. <code class="docutils literal notranslate"><span class="pre">Dx</span></code> = 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sysx</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">Ax</span><span class="p">,</span> <span class="n">Bx</span><span class="p">,</span> <span class="n">Cx</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+           
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sysx =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2  x3
+   x1   0   1   0
+   x2   0   0   1
+   x3  -2  -5  -7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   0
+   x2   0
+   x3   1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2  x3
+   y1   1   0   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perform transformation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sysw</span> <span class="p">=</span> <span class="n">ss2ss</span><span class="p">(</span><span class="n">sysx</span><span class="p">,</span> <span class="n">Tinv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sysw =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              x1         x2         x3
+   x1       -1.5          1  -1.11e-16
+   x2      -1.25        0.7        0.4
+   x3       -2.5        0.4       -6.2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   0
+   x2   0
+   x3   5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        x1   x2   x3
+   y1  0.5    0    0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="diagonalization">
+<h3><span class="section-number">7.5.10.4. </span>Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">¶</a></h3>
+<p>Example 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="mi">1</span><span class="p">;</span> <span class="n">1</span> <span class="o">-</span><span class="mi">3</span><span class="p">];</span> <span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">];</span> <span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">];</span>
+<span class="p">[</span><span class="n">T</span><span class="p">,</span><span class="n">Lambda</span><span class="p">]</span> <span class="p">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T =
+    0.7071    0.7071
+   -0.7071    0.7071
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lambda =
+    -4     0
+     0    -2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Adt</span> <span class="p">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adt =
+   -4.0000         0
+         0   -2.0000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Bdt</span> <span class="p">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bdt =
+   -0.7071
+    2.1213
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Cdt</span> <span class="p">=</span> <span class="n">C</span><span class="o">*</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cdt =
+   -0.7071    3.5355
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="diagonalization-using-cst-canon-function">
+<h3><span class="section-number">7.5.10.5. </span>Diagonalization using CST canon function<a class="headerlink" href="#diagonalization-using-cst-canon-function" title="Permalink to this headline">¶</a></h3>
+<p>Example 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="mi">1</span><span class="p">;</span> <span class="n">1</span> <span class="o">-</span><span class="mi">3</span><span class="p">];</span> <span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">2</span><span class="p">];</span> <span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2
+   x1  -3   1
+   x2   1  -3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   1
+   x2   2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2
+   y1   2   3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Sp</span> <span class="p">=</span> <span class="n">canon</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="s">&#39;modal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sp =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2
+   x1  -2   0
+   x2   0  -4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           u1
+   x1   2.121
+   x2  0.7071
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           x1      x2
+   y1   3.536  0.7071
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="footnotes">
+<h2><span class="section-number">7.5.11. </span>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The world <em>eigen</em> is from the German for “characteristic” so
+another name for eigenvalue might be <em>characteristic value</em>. There
+is a very close relationship between the eigenvalues and the
+characteristic equation we have discussed in earlier lectures.
+Indeed as we shall see, the equation
+<span class="math notranslate nohighlight">\(\det(\lambda\mathbf{I}-\mathbf{A})=0\)</span> that is used to find the
+eignenvalues of a system is almost identical to
+<span class="math notranslate nohighlight">\(\det(s\mathbf{I}-A)=0\)</span> that determines the poles of the system
+defined in transfer function form. From this is should be clear that
+the eigenvalues of the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix are the same as the poles
+of the corresponding transfer function.</p></li>
+<li><p>Note we need to perform some additional manipulations if there are
+repeated or complex eigenvalues. We leave the discovery of these
+extra steps as an exercise for the interested student. It will not
+be examined!</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./07/5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../4/canon.html" title="previous page"><span class="section-number">7.4. </span>Canonical Forms</a>
+    <a class='right-next' id="next-link" href="../6/gensolution.html" title="next page"><span class="section-number">7.6. </span>The General Solution of LTI Systems</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

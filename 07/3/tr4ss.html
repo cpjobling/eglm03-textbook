@@ -1,0 +1,1509 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.3. Time Response for State Space Models &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/07/3/tr4ss.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.4. Canonical Forms" href="../4/canon.html" />
+    <link rel="prev" title="7.2. Transforms and Time Responses for State Space Models" href="../2/tf4ss.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/07/3/tr4ss.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Time Response for State Space Models" />
+<meta property="og:description" content="Time Response for State Space Models  In this section we shall determine the time response of a system represented by a state-space model. We shall take as a st" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/07/3/tr4ss.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F07/3/tr4ss.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/07/3/tr4ss.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/07/3/tr4ss.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zero-input-response">
+   7.3.1. Zero Input Response
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resolvent-matrix">
+     7.3.1.1. Resolvent matrix
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-transition-matrix">
+   7.3.2. State Transition Matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#characteristic-polynomial">
+     7.3.2.1. Characteristic Polynomial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-characteristic-or-eigen-values">
+     7.3.2.2. System Characteristic (or Eigen) Values
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.3.3. Zero-input response
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-modes">
+     7.3.3.1. System ‘modes’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     7.3.3.2. Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zero-input-system-response">
+     7.3.3.3. Zero Input System Response
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-zero-state-response">
+   7.3.4. The Zero State Response
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#full-system-response">
+   7.3.5. Full System Response
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-of-pre-class-presentation">
+   7.3.6. End of Pre-Class Presentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.3.7. Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-example">
+     7.3.7.1. Solution to Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-this-problem-in-matlab">
+     7.3.7.2. Solving this problem in MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-of-state-space-models-in-matlab">
+     7.3.7.3. Simulation of State Space Models in Matlab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnote">
+   7.3.8. Footnote
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="time-response-for-state-space-models">
+<h1><span class="section-number">7.3. </span>Time Response for State Space Models<a class="headerlink" href="#time-response-for-state-space-models" title="Permalink to this headline">¶</a></h1>
+<p>In this section we shall determine the time response of a system
+represented by a state-space model. We shall take as a starting point
+the transformed state space model developed in the <a class="reference internal" href="../2/tf4ss.html"><span class="doc std std-doc">last section</span></a>.</p>
+<p>It is
+possible to derive the time response directly in the time domain from
+the state-equations. I believe however, that the following development
+will be easier to understand. I advise you to consult any text book for
+the time domain development.</p>
+<p>In the <a class="reference internal" href="../2/tf4ss.html"><span class="doc std std-doc">last section</span></a>, we showed that the state space model was</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+     \dot{\mathbf{x}}(t) &amp; = &amp;
+            \mathbf{A}\mathbf{x}(t)+\mathbf{B}\mathbf{u}(t) \\\\
+          \mathbf{y}(t) &amp; = &amp;
+             \mathbf{C}\mathbf{x}(t)+\mathbf{D}\mathbf{u}(t)
+   \end{eqnarray*}\end{split}\]</div>
+<p>and that
+the transformed equation was</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    s\mathbf{X}(s) - \mathbf{x}(0) &amp; = &amp;
+                 \mathbf{A}\mathbf{X}(s)+\mathbf{B}\mathbf{U}(s) \\\\
+     \mathbf{Y}(s)                 &amp; = &amp;
+                 \mathbf{C}\mathbf{X}(s)+\mathbf{D}\mathbf{U}(s)
+  \end{eqnarray*}\end{split}\]</div>
+<p>In this section we will show how the time
+response of the state space model may be derived from the transformed
+model.</p>
+<div class="section" id="zero-input-response">
+<h2><span class="section-number">7.3.1. </span>Zero Input Response<a class="headerlink" href="#zero-input-response" title="Permalink to this headline">¶</a></h2>
+<p>We first consider the response of the system to its initial conditions
+and zero input. This is the <em>zero input response</em> or homogeneous
+response of the system.</p>
+<p>With the input transform <span class="math notranslate nohighlight">\(U(s)=0\)</span> the state
+equation becomes</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{X}(s)=\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{x}(0).\]</div>
+<p>We define
+$<span class="math notranslate nohighlight">\(\Phi(s) = \left[s\mathbf{I}-\mathbf{A}\right]^{-1}\)</span>$</p>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\label{eq:l4eq1}
+\mathbf{X}(s)=\Phi(s)\mathbf{x}(0)\end{equation}\]</div>
+<p>is the transform of the zero input
+state response.</p>
+<p>In the time domain, the corresponding state response is
+given by the inverse Laplace transform of
+equation (1)</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\label{eq:l4eq2} \mathbf{x}(t) = \mathcal{L}^{-1}
+\left\{\Phi(s)\mathbf{x}(0)\right\},\end{equation}\]</div>
+<p>which, since the initial
+condition vector <span class="math notranslate nohighlight">\(\mathbf{x}(0)\)</span> is a vector of constants becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\mathbf{x}(t) &amp; = &amp; \mathcal{L}^{-1}
+\left\{\Phi(s)\right\}\mathbf{x}(0)\nonumber \\ &amp; = &amp;
+\phi(t)\mathbf{x}(0).\label{eq:l4eq3}\end{eqnarray}\end{split}\]</div>
+<div class="section" id="resolvent-matrix">
+<h3><span class="section-number">7.3.1.1. </span>Resolvent matrix<a class="headerlink" href="#resolvent-matrix" title="Permalink to this headline">¶</a></h3>
+<p>The <em>resolvent matrix</em> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\Phi(s) = \left[s\mathbf{I}-\mathbf{A}\right]^{-1} =
+\frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]}{\left|s\mathbf{I}-\mathbf{A}\right|}.\]</div>
+<p>The resolvent matrix is a matrix of rational polynomials in the Laplace transform variable <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>The state transition matrix is</p>
+<div class="math notranslate nohighlight">
+\[\phi(t) = \mathcal{L}^{-1}\left\{\frac{\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]}{\left|s\mathbf{I}-\mathbf{A}\right|}\right\}.\]</div>
+<p>What is the form of this function?</p>
+</div>
+</div>
+<div class="section" id="state-transition-matrix">
+<h2><span class="section-number">7.3.2. </span>State Transition Matrix<a class="headerlink" href="#state-transition-matrix" title="Permalink to this headline">¶</a></h2>
+<p>The vector of time functions <span class="math notranslate nohighlight">\(\phi(t)\)</span> is known as the <em>state transition
+matrix</em>. It defines the motion (or <em>trajectory</em>) of the state variables
+through the <span class="math notranslate nohighlight">\(n\)</span>-dimensional <em>state space</em> from a given set of initial
+states.</p>
+<div class="section" id="characteristic-polynomial">
+<h3><span class="section-number">7.3.2.1. </span>Characteristic Polynomial<a class="headerlink" href="#characteristic-polynomial" title="Permalink to this headline">¶</a></h3>
+<p>The adjoint
+matrix <span class="math notranslate nohighlight">\(\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right]\)</span> is a matrix of polynomials each of which is of
+order <span class="math notranslate nohighlight">\(n-1\)</span> or less.</p>
+<p>The determinant
+$<span class="math notranslate nohighlight">\(\left|s\mathbf{I}-\mathbf{A}\right| = \left|\begin{array}{cccc}
+  s-a_{11} &amp; -a_{12} &amp; \cdots &amp; -a_{1n} \\
+  -a_{21} &amp; s-a_{22} &amp; \cdots &amp; -a_{2n} \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  -a_{n1} &amp; -a_{2n} &amp; \cdots &amp; s-a_{nn}
+\end{array}\right|\)</span>$</p>
+<p>is called the <em>characteristic polynomial</em>. It is
+always a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Therefore each element of the
+resolvent matrix <span class="math notranslate nohighlight">\(\Phi(s)\)</span> is of the form</p>
+<div class="math notranslate nohighlight">
+\[\frac{b_{n-1}s^{n-1}+ \cdots + b_0}{s^n + a_{n-1}s^{n-1}+\cdots+a_0}.\]</div>
+</div>
+<div class="section" id="system-characteristic-or-eigen-values">
+<h3><span class="section-number">7.3.2.2. </span>System Characteristic (or Eigen) Values<a class="headerlink" href="#system-characteristic-or-eigen-values" title="Permalink to this headline">¶</a></h3>
+<p>The
+coefficients <span class="math notranslate nohighlight">\(b_i\)</span> of each element of the resolvent matrix <span class="math notranslate nohighlight">\(\Phi(s)\)</span>
+depend on the form of the system. The characteristic polynomial
+<span class="math notranslate nohighlight">\(\left|s\mathbf{I}-\mathbf{A}\right|\)</span> is the common denominator of all elements of <span class="math notranslate nohighlight">\(\Phi(s)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Phi(s)\)</span> may be factorized:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\left|s\mathbf{I}-\mathbf{A}\right|&amp;=&amp;s^n + a_{n-1}s^{n-1} + \cdots + a_1s + a_0
+\\
+&amp;=&amp;(s - p_1)(s-p_2)\cdots(s-p_n)\end{eqnarray*}\end{split}\]</div>
+<p>The values <span class="math notranslate nohighlight">\(p_i\)</span> are
+known as the <em>characteristic</em> (or <em>eigen</em>) values of the state matrix
+<span class="math notranslate nohighlight">\(\mathbf{A}\)</span>. The characteristic values are the <em>poles</em> of the system!</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">7.3.3. </span>Zero-input response<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>If we make
+a partial fraction expansion of the characteristic equation, then for
+the <span class="math notranslate nohighlight">\(i\)</span>-<span class="math notranslate nohighlight">\(j\)</span>th element of the resolvent matrix we have</p>
+<div class="math notranslate nohighlight">
+\[\Phi_{ij}(s)=\frac{r_1}{s-p_1}+\frac{r_2}{s-p_2} + \cdots +
+\frac{r_n}{s-p_n}\]</div>
+<p>(where the coefficient <span class="math notranslate nohighlight">\(r_i\)</span> is the so called
+<em>residue</em> of the partial fraction expansion determined at the value
+<span class="math notranslate nohighlight">\(s=p_i\)</span>).</p>
+<p>Inverse Laplace transforming this equation we finally obtain
+the <em>state transition</em> function:</p>
+<div class="math notranslate nohighlight">
+\[\phi_{ij}(t) = r_1 e^{p_1 t} + r_2 e^{p_2 t} + \cdots + r_n
+e^{p_n t}.\]</div>
+<div class="section" id="system-modes">
+<h3><span class="section-number">7.3.3.1. </span>System ‘modes’<a class="headerlink" href="#system-modes" title="Permalink to this headline">¶</a></h3>
+<p>The state
+transition matrix <span class="math notranslate nohighlight">\(\phi(t)\)</span> is an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix, each element of
+which is a linear combination of the <span class="math notranslate nohighlight">\(n\)</span> “mode functions” (or simply
+<em>modes</em>)</p>
+<div class="math notranslate nohighlight">
+\[e^{p_1 t},\ e^{p_2 t},\ \ldots,\ e^{p_n t}.\]</div>
+<p>Each mode is
+constructed from the eigenvalues (<span class="math notranslate nohighlight">\(p_1,\ p_2,\ \ldots,\ p_n\)</span>) of the
+state matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+<p>The eigenvalues are also known as the
+<em>poles</em> of the system.</p>
+</div>
+<div class="section" id="example">
+<h3><span class="section-number">7.3.3.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{A} = \left[\begin{array}{cc}
+  0 &amp; 1 \\
+  -6 &amp; -5
+\end{array}\right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}s\mathbf{I}-\mathbf{A} = \left[\begin{array}{cc}
+  s &amp; -1 \\
+  6 &amp; s+5
+\end{array}\right]\end{split}\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[\left|s\mathbf{I}-\mathbf{A}\right| = s^2 + 5s + 6 = (s+2)(s+3).\]</div>
+<p>The characteristic values of the system are <span class="math notranslate nohighlight">\(p_1=-2\)</span> and <span class="math notranslate nohighlight">\(p_2=-3\)</span> so the
+modes are <span class="math notranslate nohighlight">\(e^{-2t}\)</span> and <span class="math notranslate nohighlight">\(e^{-3t}\)</span>.</p>
+<p>Now</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathrm{adj}\left[s\mathbf{I}-\mathbf{A}{}\right] = \left[\begin{array}{cc}
+  s+5 &amp; 1 \\
+  -6 &amp; s
+\end{array}\right]\end{split}\]</div>
+<p>so the resolvent matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Phi(s) = \left[\begin{array}{cc}
+  \frac{s+5}{(s+2)(s+3)} &amp; \frac{1}{(s+2)(s+3)} \\
+  \frac{-6}{(s+2)(s+3)} &amp; \frac{s}{(s+2)(s+3)}
+\end{array}\right].\end{split}\]</div>
+<p>Expanding each element of <span class="math notranslate nohighlight">\(\Phi(s)\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Phi(s) = \left[\begin{array}{cc}
+  \frac{3}{s+2}-\frac{2}{s+3} &amp; \frac{1}{s+2}-\frac{1}{s+3} \\
+  \frac{-6}{s+2}+\frac{6}{s+3} &amp; -\frac{2}{s+2}+\frac{3}{s+3}
+\end{array}\right].\end{split}\]</div>
+<p>Inverse Laplace transforming this we get the final
+state transition matrix, representing the zero-input response of the
+system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\phi(t)=\left[\begin{array}{cc}
+  3e^{-2t}-2e^{-3t} &amp; e^{-2t}-e^{-3t} \\
+ -6e^{-2t}+6e^{-3t} &amp; -2e^{-2t}+3e^{-3t}
+\end{array}\right].\end{split}\]</div>
+<p>Note that, by an alternative derivation<sup>1</sup>, we can show that</p>
+<div class="math notranslate nohighlight">
+\[\phi(t)=e^{\mathbf{A}t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(e^{\mathbf{A}t}\)</span> is called the matrix
+exponential.</p>
+</div>
+<div class="section" id="zero-input-system-response">
+<h3><span class="section-number">7.3.3.3. </span>Zero Input System Response<a class="headerlink" href="#zero-input-system-response" title="Permalink to this headline">¶</a></h3>
+<p>For non-zero
+initial conditions and zero input we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\label{eq:l4eq6a}
+  \mathbf{X}(s)&amp;=&amp;\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{x}(0) \nonumber\\
+&amp;=&amp; \Phi(s)\mathbf{x}(0) \label{eq:l4eq7a}\end{eqnarray}\end{split}\]</div>
+<p>The zero-input
+system output transform is therefore given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\label{eq:l4eq8a}
+ \mathbf{Y}_\mathrm{zi}(s)=\mathbf{C}\Phi(s)\mathbf{x}(0).\end{equation}\]</div>
+<p>Because we have already shown that <span class="math notranslate nohighlight">\(\phi(t)\)</span> will be a linear
+combination of modes, the unforced system response <span class="math notranslate nohighlight">\(y(t)\)</span> will be
+another linear combination of the same modes.</p>
+<p>We now consider the case where the initial condition vector
+<span class="math notranslate nohighlight">\(\mathbf{x}(0)=\mathbf{0}\)</span> and we will obtain the response of the system
+to an input. This is called the <em>zero state response</em> of the system.</p>
+</div>
+</div>
+<div class="section" id="the-zero-state-response">
+<h2><span class="section-number">7.3.4. </span>The Zero State Response<a class="headerlink" href="#the-zero-state-response" title="Permalink to this headline">¶</a></h2>
+<p>For zero initial
+conditions we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\label{eq:l4eq6}
+  \mathbf{X}(s)&amp;=&amp;\left[s\mathbf{I}-\mathbf{A}\right]^{-1}\mathbf{B}\mathbf{U}(s) \nonumber \\
+&amp;=&amp; \Phi(s)\mathbf{B}\mathbf{U}(s) \label{eq:l4eq7}\end{eqnarray}\end{split}\]</div>
+<p>The
+system output transform (forced response) is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\label{eq:l4eq8}
+ \mathbf{Y}_{\mathrm{zs}}(s)=\left[\mathbf{C}\Phi(s)\mathbf{B}+\mathbf{D}\right]\mathbf{U}(s)\end{equation}\]</div>
+<p>(where <span class="math notranslate nohighlight">\(\mathbf{C}\Phi(s)\mathbf{B}+\mathbf{D}\)</span> is the system transfer matrix).</p>
+</div>
+<div class="section" id="full-system-response">
+<h2><span class="section-number">7.3.5. </span>Full System Response<a class="headerlink" href="#full-system-response" title="Permalink to this headline">¶</a></h2>
+<p>The full system response for the state-space model is simply the sum of
+the zero-state and zero-input responses:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\mathbf{Y}_{\mathrm{full}}(s) &amp;=&amp; \mathbf{Y}_{\mathrm{zs}}(s) +
+\mathbf{Y}_{\mathrm{zi}}(s)\nonumber\\ &amp;=&amp;
+\mathbf{C}\Phi(s)\left[\mathbf{x}(0)+\mathbf{B}\mathbf{U}(s)\right] + \mathbf{DU}(s).\end{eqnarray}\end{split}\]</div>
+</div>
+<div class="section" id="end-of-pre-class-presentation">
+<h2><span class="section-number">7.3.6. </span>End of Pre-Class Presentation<a class="headerlink" href="#end-of-pre-class-presentation" title="Permalink to this headline">¶</a></h2>
+<p>In the class we will reinforce these concepts by working through an
+example in detail.</p>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">7.3.7. </span>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\dot{\mathbf{x}}&amp;=&amp;\left[\begin{array}{cc}
+  0 &amp; 1 \\
+  -6 &amp; -5
+\end{array}\right]\mathbf{x}+\left[\begin{array}{cc}
+  2 &amp; 1 \\
+ -1 &amp; 0
+\end{array}\right]\mathbf{u}\\
+\mathbf{y}&amp;=&amp;\left[\begin{array}{cc}
+  2 &amp; -1 \\
+  0 &amp; 1
+\end{array}\right]\mathbf{x}\\ \mathbf{u}&amp;=&amp;\left[\begin{array}{c}
+  e^{-t} \\
+  \epsilon(t)
+\end{array}\right].\end{eqnarray*}\end{split}\]</div>
+<p>Calculate the full system response
+for this system given that the initial conditions are
+<span class="math notranslate nohighlight">\(\mathbf{x}(0)=[-1, 1]^T\)</span>.</p>
+<div class="section" id="solution-to-example">
+<h3><span class="section-number">7.3.7.1. </span>Solution to Example<a class="headerlink" href="#solution-to-example" title="Permalink to this headline">¶</a></h3>
+<p>The transfer function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{G}(s)&amp;=&amp;\mathbf{C}\Phi(s)\mathbf{B} =
+\left[\begin{array}{cc}
+  2 &amp; -1 \\
+  0 &amp; 1
+\end{array}\right]
+\left[\begin{array}{cc}
+  \frac{s+5}{(s+2)(s+3)} &amp; \frac{1}{(s+2)(s+3)} \\
+  \frac{-6}{(s+2)(s+3)} &amp; \frac{s}{(s+2)(s+3)}
+\end{array}\right]\left[\begin{array}{cc}
+  2 &amp; 1 \\
+ -1 &amp; 0
+\end{array}\right]\\
+&amp;=&amp;\left[\begin{array}{cc}
+  2 &amp; -1 \\
+  0 &amp; 1
+\end{array}\right]
+\left[\begin{array}{cc}
+  \frac{2s+9}{(s+2)(s+3)} &amp; \frac{s+5}{(s+2)(s+3)} \\
+  \frac{-s-12}{(s+2)(s+3)} &amp; \frac{-6}{(s+2)(s+3)}
+\end{array}\right]\\
+&amp;=&amp; \left[\begin{array}{cc}
+  \frac{5s+30}{(s+2)(s+3)} &amp; \frac{2s+16}{(s+2)(s+3)} \\
+   \frac{-s-12}{(s+2)(s+3)} &amp; \frac{-6}{(s+2)(s+3)}
+\end{array}\right]\end{eqnarray*}\end{split}\]</div>
+<p>The transform of the input vector is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{U}(s) = \mathcal{L}\left[\begin{array}{c}
+  e^{-t} \\
+  \epsilon(t)
+\end{array}\right] = \left[\begin{array}{c}
+  \frac{1}{s+1} \\
+  \frac{1}{s}
+\end{array}\right].$$ Hence $$\begin{eqnarray*}
+\mathbf{Y}(s) &amp;=&amp; \left[\begin{array}{cc}
+  \frac{5s+30}{(s+2)(s+3)} &amp; \frac{2s+16}{(s+2)(s+3)} \\
+   \frac{-s-12}{(s+2)(s+3)} &amp; \frac{-6}{(s+2)(s+3)}
+\end{array}\right]\left[\begin{array}{c}
+  \frac{1}{s+1} \\
+  \frac{1}{s}
+\end{array}\right]\\
+&amp;=&amp;\left[\begin{array}{c}
+  \frac{7s^2+48s+16}{s(s+1)(s+2)(s+3)} \\
+  \frac{-(s^2+18s+6)}{s(s+1)(s+2)(s+3)}
+\end{array}\right] = \left[\begin{array}{c}
+  \frac{8/3}{s}+\frac{25/2}{s+1}-\frac{26}{s+2}+\frac{65/6}{s+3} \\
+   -\frac{1}{s}-\frac{11/2}{s+1}+\frac{13}{s+2}-\frac{13/2}{s+3}
+\end{array}\right]\end{eqnarray*}\end{split}\]</div>
+<p>Inverse Laplace transforming the previous result gives the zero-state
+output response of the system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{c}
+  \frac{8}{3}\epsilon(t)+\frac{25}{2}e^{-t}-26e^{-2t}+\frac{65}{6}e^{-3t} \\
+   -\epsilon(t)-\frac{11}{2}e^{-t}+13e^{-2t}-\frac{13}{2}e^{-3t}
+\end{array}\right].\end{split}\]</div>
+<p>Note that response is now a linear combination of
+the system modes (<span class="math notranslate nohighlight">\(e^{-2t}\)</span> and <span class="math notranslate nohighlight">\(e^{-3t}\)</span>) and the input modes
+(<span class="math notranslate nohighlight">\(\epsilon(t)\)</span> [the unit step function] and <span class="math notranslate nohighlight">\(e^{-t}\)</span>).</p>
+<p>If the initial condition vector <span class="math notranslate nohighlight">\(\mathbf{x}(0)=[-1, 1]^T\)</span> what is the
+total response of the system?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \mathbf{Y}(s)&amp;=&amp;
+\left[\begin{array}{cc}
+  2 &amp; -1 \\
+  0 &amp; 1
+\end{array}\right]
+\left[\begin{array}{cc}
+  \frac{s+5}{(s+2)(s+3)} &amp; \frac{1}{(s+2)(s+3)} \\
+  \frac{-6}{(s+2)(s+3)} &amp; \frac{s}{(s+2)(s+3)}
+\end{array}\right]\\
+&amp;\times&amp; \left\{\left[\begin{array}{c}
+  -1 \\
+  1
+\end{array}\right]+\left[\begin{array}{cc}
+  2 &amp; 1 \\
+  -1 &amp; 0
+\end{array}\right]\left[\begin{array}{c}
+  \frac{1}{s+1} \\
+  \frac{1}{s}
+\end{array}\right]\right\}\\
+&amp;=&amp; \left[\begin{array}{cc}
+  \frac{2s+16}{(s+2)(s+3)} &amp; \frac{-s+2}{(s+2)(s+3)} \\
+  \frac{-6}{(s+2)(s+3)} &amp; \frac{s}{(s+2)(s+3)}
+\end{array}\right]\left[\begin{array}{c}
+  \frac{-s^2+2s+1}{s(s+1)} \\
+  \frac{s^2}{s(s+1)}
+\end{array}\right]\end{eqnarray*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{Y}(s)&amp;=&amp; \left[\begin{array}{c}
+  \frac{-3s^2-10s^2+34s+16}{s(s+1)(s+2)(s+3)} \\
+  \frac{s^3+6s^2-12s-6}{s(s+1)(s+2)(s+3)}
+\end{array}\right]\\
+\mathbf{y}(t)&amp;=&amp; \left[\begin{array}{c}
+  \frac{8}{3}\epsilon(t)+\frac{25}{2}e^{-t}-34e^{-2t}+\frac{59}{6}e^{-3t} \\
+   -\epsilon(t)-\frac{11}{2}e^{-t}+17e^{-2t}-\frac{19}{2}e^{-3t}
+\end{array}\right].\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="solving-this-problem-in-matlab">
+<h3><span class="section-number">7.3.7.2. </span>Solving this problem in MATLAB<a class="headerlink" href="#solving-this-problem-in-matlab" title="Permalink to this headline">¶</a></h3>
+<p>We can use the symbolic toolbox!</p>
+<p>Set up the problem … we can use ordinary matrices for this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">format</span> <span class="s">compact</span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">];</span> <span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span> <span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">x0</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now define <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> as symbolic variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span> <span class="n">syms</span> <span class="s">t</span> <span class="s">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define input vector <span class="math notranslate nohighlight">\(\mathbf{U}(s)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="p">=</span> <span class="p">[</span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">);</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">)];</span>
+<span class="n">Us</span> <span class="p">=</span> <span class="n">laplace</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Us =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/(s + 1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      1/s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute <span class="math notranslate nohighlight">\(\Phi(s)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">PhiS</span> <span class="p">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">s</span><span class="o">*</span><span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PhiS =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(s + 5)/(s^2 + 5*s + 6), 1/(s^2 + 5*s + 6)]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[     -6/(s^2 + 5*s + 6), s/(s^2 + 5*s + 6)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now compute zero state response:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{Y}_{\mathrm{zs}}(s) = \left(\mathbf{C}\mathbf{\Phi}(s)\mathbf{B}+\mathbf{D}\right)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Yzs</span> <span class="p">=</span> <span class="p">(</span><span class="n">C</span><span class="o">*</span><span class="n">PhiS</span><span class="o">*</span><span class="n">B</span> <span class="o">+</span> <span class="n">D</span><span class="p">)</span><span class="o">*</span><span class="n">Us</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Yzs =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(s/(s^2 + 5*s + 6) + 10/(s^2 + 5*s + 6) + (4*(s + 5))/(s^2 + 5*s + 6))/(s + 1) + (6/(s^2 + 5*s + 6) + (2*(s + 5))/(s^2 + 5*s + 6))/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                          - 6/(s*(s^2 + 5*s + 6)) - (s/(s^2 + 5*s + 6) + 12/(s^2 + 5*s + 6))/(s + 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unforced (zero-initial condition) response:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{Y}_{\mathrm{zi}}(s) = \left(\mathbf{C}\mathbf{\Phi}(s)\mathbf{B}+\mathbf{D}\right)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Yzi</span> <span class="p">=</span> <span class="n">C</span><span class="o">*</span><span class="n">PhiS</span><span class="o">*</span><span class="n">x0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Yzi =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- s/(s^2 + 5*s + 6) - 4/(s^2 + 5*s + 6) - (2*(s + 5))/(s^2 + 5*s + 6)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                s/(s^2 + 5*s + 6) + 6/(s^2 + 5*s + 6)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Total response:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{Y}(s) = \mathbf{Y}_{\mathrm{zs}}(s) + \mathbf{Y}_{\mathrm{zi}}(s)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ytotal</span> <span class="p">=</span> <span class="n">Yzs</span> <span class="o">+</span> <span class="n">Yzi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ytotal =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(s/(s^2 + 5*s + 6) + 10/(s^2 + 5*s + 6) + (4*(s + 5))/(s^2 + 5*s + 6))/(s + 1) - 4/(s^2 + 5*s + 6) - s/(s^2 + 5*s + 6) - (2*(s + 5))/(s^2 + 5*s + 6) + (6/(s^2 + 5*s + 6) + (2*(s + 5))/(s^2 + 5*s + 6))/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                          s/(s^2 + 5*s + 6) + 6/(s^2 + 5*s + 6) - 6/(s*(s^2 + 5*s + 6)) - (s/(s^2 + 5*s + 6) + 12/(s^2 + 5*s + 6))/(s + 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally compute the time response <span class="math notranslate nohighlight">\(\mathbf{y}(t)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="p">=</span> <span class="n">ilaplace</span><span class="p">(</span><span class="n">Ytotal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25*exp(-t))/2 - 34*exp(-2*t) + (95*exp(-3*t))/6 + 8/3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  17*exp(-2*t) - (11*exp(-t))/2 - (19*exp(-3*t))/2 - 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot response</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;y_1(t)&#39;</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">ezplot</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">]),</span><span class="n">grid</span><span class="p">,</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;y_2(t)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tr4ss_72_0.svg" src="../../_images/tr4ss_72_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="simulation-of-state-space-models-in-matlab">
+<h3><span class="section-number">7.3.7.3. </span>Simulation of State Space Models in Matlab<a class="headerlink" href="#simulation-of-state-space-models-in-matlab" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The functions <code class="docutils literal notranslate"><span class="pre">step</span></code> and <code class="docutils literal notranslate"><span class="pre">impulse</span></code> will produce step impulse
+responses of a system with zero initial conditions.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">lsim</span></code> can be used to determine the state space
+response to arbitrary inputs.</p></li>
+<li><p>If you need to simulate a system with arbitrary inputs and
+predefined initial conditions, you should use the <em>Linear Simulation
+Tool</em> which is opened when you execute <code class="docutils literal notranslate"><span class="pre">lsim(model)</span></code>.</p></li>
+</ul>
+<p>Visit the MATLAB Control Systems Toolbox help pages to find out more.</p>
+</div>
+</div>
+<div class="section" id="footnote">
+<h2><span class="section-number">7.3.8. </span>Footnote<a class="headerlink" href="#footnote" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>For a first order differential equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt}=ax\]</div>
+<p>so
+the Laplace transform is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    sX(s) - x(0) &amp; = &amp;
+    aX(s)\\ X(s)(s - a)&amp; = &amp; x(0)\\ X(s)
+    &amp;=&amp;\frac{x(0)}{s-a}.\end{eqnarray*}\end{split}\]</div>
+<p>The inverse laplace transform of
+the final equation gives</p>
+<div class="math notranslate nohighlight">
+\[x(t) = x(0) e^{at}.\]</div>
+<p>For the vector case</p>
+<div class="math notranslate nohighlight">
+\[s\mathbf{X}(s)-\mathbf{x}(0)=\mathbf{A}\mathbf{X(s)}\]</div>
+<p>so by
+comparison</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}(t)=\mathbf{x}(0)e^{\mathbf{A} t}.\]</div>
+<p>The proper proof is
+of course a little more involved and will be explored in <span class="xref myst">Section 7.6</span>!</p>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./07/3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../2/tf4ss.html" title="previous page"><span class="section-number">7.2. </span>Transforms and Time Responses for State Space Models</a>
+    <a class='right-next' id="next-link" href="../4/canon.html" title="next page"><span class="section-number">7.4. </span>Canonical Forms</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

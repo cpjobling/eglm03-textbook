@@ -1,0 +1,1198 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.6. The General Solution of LTI Systems &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/07/6/gensolution.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. State Space Design of Control Systems" href="../../08/index.html" />
+    <link rel="prev" title="7.5. Transformation of States and System Diagonalization" href="../5/systransf.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/07/6/gensolution.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="The General Solution of LTI Systems" />
+<meta property="og:description" content="The General Solution of LTI Systems  In this section we conclude our introduction to state space systems by developing a method that can be used to solve any li" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/07/6/gensolution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F07/6/gensolution.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/07/6/gensolution.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/07/6/gensolution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-matrix-exponential-function">
+   7.6.1. The Matrix Exponential Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taylor-series">
+     7.6.1.1. Taylor series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-similarity-transformation">
+     7.6.1.2. Using the Similarity Transformation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transition-matrix">
+     7.6.1.3. Transition Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forced-solution">
+     7.6.1.4. Forced solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#end-of-pre-class-presentation">
+     7.6.1.5. End of Pre-Class Presentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   7.6.2. Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     7.6.2.1. Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-solution-1">
+     7.6.2.2. Alternative solution 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-solution-2">
+     7.6.2.3. Alternative solution 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-general-solution-of-lti-systems">
+<h1><span class="section-number">7.6. </span>The General Solution of LTI Systems<a class="headerlink" href="#the-general-solution-of-lti-systems" title="Permalink to this headline">¶</a></h1>
+<p>In this section we conclude our introduction to state space systems by developing a method that can be used to solve any linear time invariant (LTI) system using the state space model. This will put on a formal mathematical footing the approach described in <a class="reference internal" href="../3/tr4ss.html"><span class="doc std std-doc">Section 7.3</span></a>.</p>
+<p>To do this we need to derive the Taylor series for the state matrix and then use the results from the previous two lectures to formally derive the state transmission matrix <span class="math notranslate nohighlight">\(\mathbf{\phi}(t)\)</span> from the resolvant matrix</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\Phi}(\lambda) = |\lambda\mathbf{I}-\mathbf{A}|.\]</div>
+<p>This will lead is to a general solution which we will illustrate with examples and compare with the solution developed in the <span class="xref myst">last section</span> and the solution obtained by inverting the system transfer function. As before, we will refer to MATLAB where relevant.</p>
+<p>Once we have completed this material, we will be in a position to move on to look at state-space methods for control system design.</p>
+<div class="section" id="the-matrix-exponential-function">
+<h2><span class="section-number">7.6.1. </span>The Matrix Exponential Function<a class="headerlink" href="#the-matrix-exponential-function" title="Permalink to this headline">¶</a></h2>
+<p>In mathematics, the <a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series">Taylor series</a> is a representation of a function as an infinite sum of terms calculated from the values of its derivatives at a single point. It is named after the English mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a>. It is common practice to use a finite number of terms of the series to approximate a function. The Taylor series may be regarded as the limit of the Taylor polynomials.</p>
+<p>We use Taylor series to approximate general functions, and here we adapt the Taylor series to discover the form of a function of a matrix.</p>
+<div class="section" id="taylor-series">
+<h3><span class="section-number">7.6.1.1. </span>Taylor series<a class="headerlink" href="#taylor-series" title="Permalink to this headline">¶</a></h3>
+<p>If a function <span class="math notranslate nohighlight">\(f(t)\)</span> has Taylor series:</p>
+<div class="math notranslate nohighlight">
+\[f(t)=f_0 + f_1t + f_2t^2 + \cdots + f_nt^n + \cdots\]</div>
+<p>Then the corresponding matrix function is defined as:</p>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{A}t)=f_0\mathbf{I} + f_1\mathbf{A}t + f_2\mathbf{A}^2t^2 + \cdots + f_n\mathbf{A}^nt^n + \cdots\]</div>
+</div>
+<div class="section" id="using-the-similarity-transformation">
+<h3><span class="section-number">7.6.1.2. </span>Using the Similarity Transformation<a class="headerlink" href="#using-the-similarity-transformation" title="Permalink to this headline">¶</a></h3>
+<p>Given the transformation <span class="math notranslate nohighlight">\(\mathbf{T}^{-1}\mathbf{AT}=\mathbf{\Lambda}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}
+	\mathbf{A}t = (\mathbf{T\Lambda T}^{-1}) t
+\end{equation*}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A}^nt^n &amp; = &amp; (\mathbf{T\Lambda T}^{-1})(\mathbf{T\Lambda T}^{-1})\ldots(\mathbf{T\Lambda T}^{-1})t^n \\
+	                &amp; = &amp; \mathbf{T\Lambda T}^{-1}\mathbf{T\Lambda T}^{-1}\ldots\mathbf{T\Lambda T}^{-1}t^n \end{eqnarray*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}	\mathbf{A}^nt^n &amp; = &amp; \mathbf{T\Lambda}\mathbf{I}\mathbf{\Lambda I}\ldots\mathbf{I\Lambda T}^{-1}t^n \\
+	              &amp; = &amp; \mathbf{T\Lambda}^n\mathbf{T}^{-1}t^n \\\end{eqnarray*}\end{split}\]</div>
+<p>The matrix function becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	f(\mathbf{A}t) &amp; = &amp; f_0\mathbf{TIT}^{-1} + f_1\mathbf{T\Lambda T}^{-1}t + f_2\mathbf{T\Lambda}^2\mathbf{T}^{-1}t^2 + \cdots + f_n\mathbf{T\Lambda}^n\mathbf{T}^{-1}t^n + \cdots \\
+	f(\mathbf{A}t) &amp; = &amp; \mathbf{T}\left(f_0\mathbf{I} + f_1\mathbf{\Lambda}t + f_2\mathbf{\Lambda}^2t^2 + \cdots + f_n\mathbf{\Lambda}^nt^n + \cdots \right)\mathbf{T}^{-1}\\
+	               &amp; = &amp; \mathbf{T}f(\mathbf{\Lambda}t)\mathbf{T}^{-1}\end{eqnarray*}\end{split}\]</div>
+<p>The term inside the brackets on the rhs is a diagonal matrix and the
+<span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span> diagonal element is:</p>
+<div class="math notranslate nohighlight">
+\[f_0+f_1\lambda_it + f_2\lambda_i^2t^2 + \cdots + f_n\lambda_i^nt^ + \cdots\]</div>
+<p>From the Taylor series this must be <span class="math notranslate nohighlight">\(f(\lambda_i t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{A} t)=\mathbf{T} f(\mathbf{\Lambda} t) \mathbf{T}^{-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f(\mathbf{\Lambda} t)=\mathrm{diag}\left(f(\lambda_i t)\right)\)</span>.</p>
+</div>
+<div class="section" id="transition-matrix">
+<h3><span class="section-number">7.6.1.3. </span>Transition Matrix<a class="headerlink" href="#transition-matrix" title="Permalink to this headline">¶</a></h3>
+<p>In particular, the solution of:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{x}}{dt}=\mathbf{Ax}\]</div>
+<p>given <span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{x}_0\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}=e^{\mathbf{A}t}\mathbf{x}_0\]</div>
+<p>The term <span class="math notranslate nohighlight">\(\mathbf{\phi}(t) = e^{\mathbf{A}t}\)</span> is known as the state transition matrix because it shows how time, <span class="math notranslate nohighlight">\(t\)</span>, transforms the initial state vector into the present one.</p>
+</div>
+<div class="section" id="forced-solution">
+<h3><span class="section-number">7.6.1.4. </span>Forced solution<a class="headerlink" href="#forced-solution" title="Permalink to this headline">¶</a></h3>
+<p>Furthermore, the solution of:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{x}}{dt}=\mathbf{Ax} + \mathbf{Bu}\]</div>
+<p>given <span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{x}_0\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}=e^{\mathbf{A}t}\mathbf{x}_0 + \int_0^t e^{\mathbf{A}(t-\tau)}\mathbf{Bu}(\tau)d\tau.\]</div>
+</div>
+<div class="section" id="end-of-pre-class-presentation">
+<h3><span class="section-number">7.6.1.5. </span>End of Pre-Class Presentation<a class="headerlink" href="#end-of-pre-class-presentation" title="Permalink to this headline">¶</a></h3>
+<p>In the class we will work through a worked example of this approach and contrast it with two alternatives – diagonalization by similarity transform and Laplace.</p>
+</div>
+</div>
+<div class="section" id="example">
+<h2><span class="section-number">7.6.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Find the solution of:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{d\mathbf{x}}{dt} = \left[ {\begin{array}{*{20}c}
+   { - 3} &amp; { - 2}  \\
+   1 &amp; 0  \\
+\end{array}} \right]{\bf{x}} + \left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]u\end{split}\]</div>
+<p>given <span class="math notranslate nohighlight">\(\mathbf{x}_0=[1,\ 1]^T\)</span>, and <span class="math notranslate nohighlight">\(u = 1\)</span> for <span class="math notranslate nohighlight">\(t\ge 0\)</span>.</p>
+<p><strong>Note</strong>: The solutions to this example and the remaining alternatives are available in the form of MATLAB scripts and as Pencasts in OneNote.</p>
+<div class="section" id="solution">
+<h3><span class="section-number">7.6.2.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<p>The state matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is the same as Example 4 from <a class="reference external" href="https://cpjobling.github.io/eglm03-textbook/07/3/tr4ss">Section 7.3</a>, so the transformation matrix is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{T}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   { - 1} &amp; { - 0.5}  \\
+\end{array}} \right]\end{split}\]</div>
+<p>with an inverse:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{T}}^{ - 1}  = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]\end{split}\]</div>
+<p>and with corresponding eigenvalues <span class="math notranslate nohighlight">\(\lambda_1=-1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=-2\)</span>.</p>
+<p>Therefore the state transition matrix is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{\phi}(t) &amp; = &amp; e^{\mathbf{A}t}=\mathbf{T}e^{\mathbf{\Lambda}t}\mathbf{T}^{-1} \\
+                 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       1 &amp; 1  \\
+       { - 1} &amp; { - 0.5}  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       {e^{ - t} } &amp; 0  \\
+       0 &amp; {e^{ - 2t} }  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       { - 1} &amp; { - 2}  \\
+       2 &amp; 2  \\
+    \end{array}} \right] \\
+                 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       1 &amp; 1  \\
+       { - 1} &amp; { - 0.5}  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       {-e^{ - t} } &amp; {-2e^{ - t} }  \\
+       {2e^{ - 2t} } &amp; {2e^{ - 2t} }  \\
+    \end{array}} \right] \\
+                 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       \left\{ {-e^{ - t} + 2e^{-2t}} \right\} &amp; \left\{ {-2e^{ - t} + 2e^{-2t}} \right\}  \\
+       \left\{ {e^{ - t} - e^{-2t}} \right\} &amp; \left\{ {2e^{ - t} - e^{-2t}} \right\}  \\
+    \end{array}} \right] \\
+\end{eqnarray*}\end{split}\]</div>
+<p>The solution is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}(t) = \mathrm{term}_1+\int_0^t\mathrm{term}_2 d\tau.\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{term}_1=\mathbf{\phi}(t)\mathbf{x}_0=e^{\mathbf{A}t}\mathbf{x}_0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathrm{term}_1 &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       \left\{ {-e^{ - t} + 2e^{-2t}} \right\} &amp; \left\{ {-2e^{ - t} + 2e^{-2t}} \right\}  \\
+       \left\{ {e^{ - t} - e^{-2t}} \right\} &amp; \left\{ {2e^{ - t} - e^{-2t}} \right\}  \\
+    \end{array}} \right] \left[ {\begin{array}{*{20}c}
+       1  \\
+       1  \\
+    \end{array}} \right] \\
+    &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       {\left\{ {\left. { - 3e^{ - t}  + 4e^{ - 2t} } \right\}} \right.}  \\
+       {\left\{ {\left. {3e^{ - t}  - 2e^{ - 2t} } \right\}} \right.}  \\
+    \end{array}} \right]\end{eqnarray*}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    {\rm{term}}_2  &amp; = &amp; e^{\bf{A}(t - \tau )} {\bf{B}}u = e^{\bf{A}(t - \tau )} \left[ {\begin{array}{*{20}c}
+       1  \\
+       0  \\
+    \end{array}} \right] \times 1 \\
+ &amp; = &amp; \left[ {\begin{array}{*{20}c}
+   {\left. {\left\{ { - e^{ - (t - \tau )}  + 2e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+   {\left. {\left\{ {e^{ - (t - \tau )}  - e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+\end{array}} \right]\end{eqnarray*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    \int_0^t {\rm{term}_2 d\tau }  &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       {\int_0^t {\left. {\left\{ { - e^{ - (t - \tau )}  + 2e^{ - 2(t - \tau )} } \right.} \right\}d\tau } }  \\
+       {\int_0^t {\left. {\left\{ {e^{ - (t - \tau )}  - e^{ - 2(t - \tau )} } \right.} \right\}d\tau } }  \\
+    \end{array}} \right] \\
+    &amp; = &amp;
+      \left[ {\begin{array}{*{20}c}
+       {\left. {\left\{ { - e^{ - (t - \tau )}  + e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+       {\left. {\left\{ {e^{ - (t - \tau )}  - 0.5e^{ - 2(t - \tau )} } \right.} \right\}}  \\
+    \end{array}} \right]_{\tau  = 0}^t  \\
+     &amp; = &amp; \left[ {\begin{array}{*{20}c}
+       { - 1 + e^{ - t}  + 1 - e^{ - 2t} }  \\
+       { 1 - e^{ - t}  - 0.5 + 0.5e^{ - 2t} }  \\
+    \end{array}} \right] \\
+     &amp;  = &amp; \left[ {\begin{array}{*{20}c}
+       {e^{ - t}  - e^{ - 2t} }  \\
+       {0.5 - e^{ - t}  + 0.5e^{ - 2t} }  \\
+    \end{array}} \right]\end{eqnarray*}\end{split}\]</div>
+<p>Combining <span class="math notranslate nohighlight">\(\mathrm{term}_1\)</span> and <span class="math notranslate nohighlight">\(\int_0^t \mathrm{term}_2 d\tau\)</span> we find the total, forced, response:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{x}}(t) = \left[ {\begin{array}{*{20}c}
+   { - 3e^{ - t}  + 4e^{ - 2t} }  \\
+   {3e^{ - t}  - 2e^{ - 2t} }  \\
+\end{array}} \right] + \left[ {\begin{array}{*{20}c}
+   {e^{ - t}  - e^{ - 2t} }  \\
+   {0.5 - e^{ - t}  + 0.5e^{ - 2t} }  \\
+\end{array}} \right]\end{split}\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{x}}(t) = \left[ {\begin{array}{*{20}c}
+   { - 2e^{ - t}  + 3e^{ - 2t} }  \\
+   {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
+\end{array}} \right].\end{split}\]</div>
+</div>
+<div class="section" id="alternative-solution-1">
+<h3><span class="section-number">7.6.2.2. </span>Alternative solution 1<a class="headerlink" href="#alternative-solution-1" title="Permalink to this headline">¶</a></h3>
+<p>Repeat Example 1 using the transformation to normal canonical form:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{w}}{dt}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u.\]</div>
+<p>Using the transformation to normal canonical form:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathbf{w}}{dt}=\mathbf{\Lambda w}+ \mathbf{T}^{-1}\mathbf{B}u\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{d{\bf{w}}}{dt} = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; 0  \\
+   0 &amp; { - 2}  \\
+\end{array}} \right]{\bf{w}} + \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]u;\quad u = 1\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{dw_1}{dt}=-w_1-1\ \textrm{and}\ \frac{dw_2}{dt}=-2w_2 + 2\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{w}}_0  = {\bf{T}}^{ - 1} {\bf{x}}_0  = \left[ {\begin{array}{*{20}c}
+   { - 1} &amp; { - 2}  \\
+   2 &amp; 2  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   1  \\
+   1  \\
+\end{array}} \right] = \left[ {\begin{array}{*{20}c}
+   { - 3}  \\
+   4  \\
+\end{array}} \right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    w_1 &amp; = &amp; w_{10}e^{-t}-\int_0^t e^{-(t-\tau)} d\tau \\
+        &amp; = &amp; -3e^{-t}-\left[e^{-(t-\tau)}\right]_0^t \\
+        &amp; = &amp; -3e^{-t}-\left[1 - e^{-t}\right] \\
+        &amp; = &amp; -1 -2e^{-t}\end{eqnarray*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+    w_2 &amp; = &amp; w_{20}e^{-2t}+2\int_0^t e^{-2(t-\tau)} d\tau \\
+        &amp; = &amp; 4e^{-2t}+2\left[0.5e^{-2(t-\tau)}\right]_0^t \\
+        &amp; = &amp; 4e^{-2t}+\left[1 - e^{-2t}\right] \\
+        &amp; = &amp; 1 + 3e^{-2t}\end{eqnarray*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{x}} = {\bf{Tw}} = \left[ {\begin{array}{*{20}c}
+   1 &amp; 1  \\
+   { - 1} &amp; { - 0.5}  \\
+\end{array}} \right]\left[ {\begin{array}{*{20}c}
+   { - 1 - 2e^{ - t} }  \\
+   {1 + 3e^{ - 2t} }  \\
+\end{array}} \right]\end{split}\]</div>
+<p>Therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{x}} = \left[ {\begin{array}{*{20}c}
+   { - 2e^{ - t}  + 3e^{ - 2t} }  \\
+   {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
+\end{array}} \right]\end{split}\]</div>
+</div>
+<div class="section" id="alternative-solution-2">
+<h3><span class="section-number">7.6.2.3. </span>Alternative solution 2<a class="headerlink" href="#alternative-solution-2" title="Permalink to this headline">¶</a></h3>
+<p>Solve the problem of example 1 using the Laplace transform method.</p>
+<p>Taking Laplace transforms of the state equations, taking account of the
+initial conditions:</p>
+<div class="math notranslate nohighlight">
+\[s\mathbf{X}(s)-\mathbf{x}_0=\mathbf{A}\mathbf{X}(s)+\mathbf{B}U(s)\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}(s{\bf{I}} - {\bf{A}}){\bf{X}}(s) = {\bf{x}}_0  + {\bf{B}}U(s) = \left[ {\begin{array}{*{20}c}
+   1  \\
+   1  \\
+\end{array}} \right] + \left[ {\begin{array}{*{20}c}
+   1  \\
+   0  \\
+\end{array}} \right]\frac{1}{s}\end{split}\]</div>
+<p>Therefore</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{X}}(s) = (s{\bf{I}} - {\bf{A}})^{ - 1} \left[ {\begin{array}{*{20}c}
+   {1 + \frac{1}{s}}  \\
+   1  \\
+\end{array}} \right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}{\rm{Now\;}}(s{\bf{I}} - {\bf{A}})^{ - 1}  = \left[ {\begin{array}{*{20}c}
+   {s + 3} &amp; 2  \\
+   { - 1} &amp; s  \\
+\end{array}} \right]^{ - 1}  = \frac{1}{(s + 3)(s + 2)}\left[ {\begin{array}{*{20}c}
+   s &amp; { - 2}  \\
+   1 &amp; {s + 3}  \\
+\end{array}} \right]$$ Therefore \end{split}\\\begin{split}$$\begin{eqnarray*}
+    {\bf{X}}(s) &amp; = &amp; \frac{1}{s^2  + 3s + 2}\left[ {\begin{array}{*{20}c}
+       s &amp; { - 2}  \\
+       1 &amp; {s + 3}  \\
+    \end{array}} \right]\left[ {\begin{array}{*{20}c}
+       {1 + \frac{1}{s}}  \\
+       1  \\
+    \end{array}} \right] \\
+                &amp; = &amp; \frac{1}{(s + 1)(s + 2)}\left[ {\begin{array}{*{20}c}
+       {s - 1}  \\
+       {\frac{s^2  + 4s + 1}{s}}  \\
+    \end{array}} \right] \\
+    &amp;  = &amp; \left[ {\begin{array}{*{20}c}
+       {\frac{s - 1}{(s + 1)(s + 2)}}  \\
+       {\frac{s^2  + 4s + 1}{s(s + 1)(s + 2)}}  \\
+    \end{array}} \right]\end{eqnarray*}\end{split}\end{aligned}\end{align} \]</div>
+<p>Taking partial fractions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{X}}(s) = \left[ {\begin{array}{*{20}c}
+   {\frac{ - 2}{s + 1} + \frac{3}{s + 2}}  \\
+   {\frac{0.5}{s} + \frac{2}{s + 1} + \frac{ - 1.5}{s + 2}}  \\
+\end{array}} \right]\end{split}\]</div>
+<p>Finally, taking inverse Laplace transforms:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{x}}(t) = \left[ {\begin{array}{*{20}c}
+   { - 2e^{ - t}  + 3e^{ - 2t} }  \\
+   {0.5 + 2e^{ - t}  - 1.5e^{ - 2t} }  \\
+\end{array}} \right]\end{split}\]</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./07/6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../5/systransf.html" title="previous page"><span class="section-number">7.5. </span>Transformation of States and System Diagonalization</a>
+    <a class='right-next' id="next-link" href="../../08/index.html" title="next page"><span class="section-number">8. </span>State Space Design of Control Systems</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

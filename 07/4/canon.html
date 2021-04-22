@@ -1,0 +1,2489 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.4. Canonical Forms &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/07/4/canon.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.5. Transformation of States and System Diagonalization" href="../5/systransf.html" />
+    <link rel="prev" title="7.3. Time Response for State Space Models" href="../3/tr4ss.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/07/4/canon.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Canonical Forms" />
+<meta property="og:description" content="Canonical Forms  Although a state-space model may uniquely represent a given dynamic system, there is no state-space model that uniquely represents a given tran" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../06/digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06/4/digictrl.html">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/07/4/canon.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F07/4/canon.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/07/4/canon.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/07/4/canon.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-1-introducing-canonical-forms">
+   7.4.1. Part 1: Introducing Canonical Forms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-a-differential-equation-into-state-space-form">
+   7.4.2. Converting a Differential Equation into State Space Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#differential-equation-into-state-space">
+     7.4.2.1. Differential Equation into State Space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transfer-function">
+     7.4.2.2. Transfer Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-companion-form">
+   7.4.3. The Companion Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-differential-equation">
+     7.4.3.1. General differential equation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#companion-form">
+     7.4.3.2. Companion Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-1-block-diagram-of-companion-form">
+     7.4.3.3. Figure 1: Block Diagram of Companion Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-with-a-strictly-proper-transfer-function">
+     7.4.3.4. System with a Strictly Proper Transfer Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-2-system-with-a-strictly-proper-transfer-function">
+     7.4.3.5. Figure 2: System with a Strictly Proper Transfer Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-with-a-proper-transfer-function">
+     7.4.3.6. System with a Proper Transfer Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-3-system-with-a-proper-transfer-function">
+     7.4.3.7. Figure 3: System with a Proper Transfer Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     7.4.3.8. Example 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       7.4.3.8.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-of-pre-class-presentation">
+   7.4.4. End of Pre-Class Presentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-other-canonical-forms">
+   7.4.5. Part 2: Other Canonical Forms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controller-canonical-form">
+   7.4.6. Controller Canonical Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-little-matlab">
+     7.4.6.1. A Little MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     7.4.6.2. The Companion Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#controller-canonical-form-re-number-states">
+     7.4.6.3. Controller canonical form: Re-number States
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#controller-canonical-form-re-ordered-states">
+     7.4.6.4. Controller canonical form: Re-Ordered States
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-4-controller-canonical-form-block-diagram">
+     7.4.6.5. Figure 4: Controller Canonical Form: Block Diagram
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observer-canonical-form">
+   7.4.7. Observer Canonical Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     7.4.7.1. Observer canonical form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-5-observer-canonical-form-block-diagram">
+     7.4.7.2. Figure 5: Observer Canonical Form: Block Diagram
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     7.4.7.3. Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     7.4.7.4. Solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matlab-code-for-examples">
+     7.4.7.5. MATLAB Code for Examples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#controller-canonical-companion-form">
+       7.4.7.5.1. Controller canonical companion form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       7.4.7.5.2. Observer canonical form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       7.4.7.5.3. Companion form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matlab-s-built-in-canonical-form">
+       7.4.7.5.4. MATLAB’s built-in canonical form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#all-forms-represent-the-same-transfer-function">
+       7.4.7.5.5. All forms represent the same transfer function!
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-canonical-form">
+   7.4.8. Normal Canonical Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-6-state-space-model-of-a-first-order-system">
+     7.4.8.1. Figure 6 State-Space model of a first-order system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-7-normal-canonical-form-block-diagram">
+     7.4.8.2. Figure 7 Normal Canonical Form: Block Diagram
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normal-observable-canonical-state-space-model">
+     7.4.8.3. Normal Observable Canonical State-Space Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normal-controllable-canonical-state-space-model">
+     7.4.8.4. Normal Controllable Canonical State-Space Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     7.4.8.5. Example 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       7.4.8.5.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-response-from-normal-form">
+   7.4.9. Time Response from Normal Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-response">
+     7.4.9.1. System Response
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jordan-forms">
+   7.4.10. Jordan Forms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-with-repeated-poles">
+   7.4.11. System with Repeated Poles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     7.4.11.1. Example 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-canonical-form-with-complex-poles">
+   7.4.12. Normal Canonical Form with Complex Poles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     7.4.12.1. Example 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   7.4.13. End of Pre-Class Presentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnotes">
+   7.4.14. Footnotes
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="canonical-forms">
+<h1><span class="section-number">7.4. </span>Canonical Forms<a class="headerlink" href="#canonical-forms" title="Permalink to this headline">¶</a></h1>
+<p>Although a state-space model may uniquely represent a given dynamic
+system, there is no state-space model that uniquely represents a given
+transfer function. That is there are many state-space models that can be
+transformed into a given transfer function. If one begins the analysis
+of a dynamic system from an analysis of the elementary dynamics then the
+state space model that results from such an analysis will accurately
+reflect the physical state variables in the system. However, if one’s
+analysis begins from a differential equation or (equivalently) from a
+transfer function, then it is convenient to transform the model
+description into one of a small number of “standard” or <em>canonical
+forms</em>.</p>
+<div class="section" id="part-1-introducing-canonical-forms">
+<h2><span class="section-number">7.4.1. </span>Part 1: Introducing Canonical Forms<a class="headerlink" href="#part-1-introducing-canonical-forms" title="Permalink to this headline">¶</a></h2>
+<p>Standard forms for state space models derived from differential
+equations or transfer function models.</p>
+<ul class="simple">
+<li><p>Derivation of the companion form</p></li>
+</ul>
+<ul class="simple">
+<li><p>Example</p></li>
+</ul>
+</div>
+<div class="section" id="converting-a-differential-equation-into-state-space-form">
+<h2><span class="section-number">7.4.2. </span>Converting a Differential Equation into State Space Form<a class="headerlink" href="#converting-a-differential-equation-into-state-space-form" title="Permalink to this headline">¶</a></h2>
+<p>These notes describe how a general differential equation may be converted into a state-space model.</p>
+<div class="section" id="differential-equation-into-state-space">
+<h3><span class="section-number">7.4.2.1. </span>Differential Equation into State Space<a class="headerlink" href="#differential-equation-into-state-space" title="Permalink to this headline">¶</a></h3>
+<p>Consider the general differential equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{d^{n}y}{dt^{n}} +
+a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
+y = b_0 u\end{equation}\]</div>
+<p>In class we will show how this can be converted into the so-called “companion form” state-space model.</p>
+<p>We rearrange this equation so that the highest power is on the left</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+\frac{d^{n}y}{dt^{n}} = -a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}-a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}-\cdots-a_1\frac{dy}{dt}-a_0 y + b_0 u.\end{equation}\]</div>
+<p>Let:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+x_1 &amp;=&amp; y \\ x_2 &amp;=&amp; \frac{dy}{dt} \\
+x_3 &amp; = &amp; \frac{d^2y}{dt^2} \\ 
+\vdots \\ 
+x_{n-1} &amp;=&amp; \frac{d^{n-2}y}{dt^{n-2}} \\ 
+x_{n} &amp;=&amp; \frac{d^{n-1}y}{dt^{n-1}}
+\end{eqnarray*}\end{split}\]</div>
+<p>If we differentiate both sides of these new definitions we obtain</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\dot{x}_1 &amp;=&amp; \frac{dy}{dt} \\
+\dot{x}_2 &amp;=&amp; \frac{d^2y}{dt^2} \\
+\dot{x}_3 &amp; = &amp; \frac{d^3y}{dt^3} \\ 
+\vdots \\ 
+\dot{x}_{n-1}  &amp;=&amp; \frac{d^{n-1}y}{dt^{n-1}} \\
+\dot{x}_{n} &amp;=&amp; \frac{d^{n}y}{dt^{n}}
+\end{eqnarray*}\end{split}\]</div>
+<p>These equations represent the left-hand-side of the state equations and if we make the substitutions we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\dot{x}_1 &amp;=&amp; x_2 \\ 
+\dot{x}_2 &amp;=&amp;  x_3   \\
+\dot{x}_3 &amp; = &amp;  x_4 \\ 
+\vdots \\ 
+\dot{x}_{n-1}  &amp;=&amp; x_n \\ 
+\dot{x}_{n} &amp;=&amp; -a_{0}x_1 -a_1x_2 - \cdots  -a_{n-2}x_{n-1} -a_{n-1}x_{n} + b_0 u
+\end{eqnarray*}\end{split}\]</div>
+<p>We then define the state vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\mathbf{x}=[x_1,\ x_2,\ \ldots,\ x_n]^T\end{equation}\]</div>
+<p>and the matrix form of the state equations are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}\dot{\mathbf{x}} = \left[\begin{array}{ccccc}
+  0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+  -a_{0} &amp; -a_{1} &amp; -a_{2} &amp; \cdots &amp; -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{array}\right]u\end{equation}\end{split}\]</div>
+<p>The system matrix is in “<em>companion form</em>”, so called because the coefficients in the final row are the same as for the differential equation. The output equation depends on the dependent variable of interest but the simplest is <span class="math notranslate nohighlight">\(y=x_1\)</span> which gives the solution of the differential equation. Thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}y = [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{equation}\]</div>
+</div>
+<div class="section" id="transfer-function">
+<h3><span class="section-number">7.4.2.2. </span>Transfer Function<a class="headerlink" href="#transfer-function" title="Permalink to this headline">¶</a></h3>
+<p>The transfer function equivalent of this differential equation is obtained from the differential equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{d^{n}y}{dt^{n}} + a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0 y = b_0 u\end{equation}\]</div>
+<p>The transform of this equation, ignoring initial conditions, is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\left(s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0\right)Y(s) = b_0 U(s)\end{equation}\]</div>
+<p>so the transfer function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n + a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.\end{equation}\]</div>
+<p>Note that the numerator has no terms in <span class="math notranslate nohighlight">\(s\)</span>. We shall consider completely general case for both proper and strictly proper systems later.</p>
+</div>
+</div>
+<div class="section" id="the-companion-form">
+<h2><span class="section-number">7.4.3. </span>The Companion Form<a class="headerlink" href="#the-companion-form" title="Permalink to this headline">¶</a></h2>
+<p>We have just shown that a state space model for the system defined by the <strong>general differential equation</strong> was the <strong>companion form</strong>.</p>
+<div class="section" id="general-differential-equation">
+<h3><span class="section-number">7.4.3.1. </span>General differential equation<a class="headerlink" href="#general-differential-equation" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{d^{n}y}{dt^{n}} +
+a_{n-1}\frac{d^{n-1}y}{dt^{n-1}}+a_{n-2}\frac{d^{n-2}y}{dt^{n-2}}+\cdots+a_1\frac{dy}{dt}+a_0
+y = b_0 u\end{equation}\]</div>
+<p>or transfer function</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+G(s) = \frac{Y(s)}{U(s)} = \frac{b_0}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}.\end{equation}\]</div>
+<p>The state variables in this model are the so-called “<em>phase variables</em>” <span class="math notranslate nohighlight">\(x_1 = y\)</span>,
+<span class="math notranslate nohighlight">\(x_2 = dy/dt\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> <span class="math notranslate nohighlight">\(x_n = dy^{n-1}/dt^{n-1}\)</span>.</p>
+</div>
+<div class="section" id="companion-form">
+<h3><span class="section-number">7.4.3.2. </span>Companion Form<a class="headerlink" href="#companion-form" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \dot{\mathbf{x}} &amp;=&amp;
+\left[\begin{array}{ccccc}
+  0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+  -a_{0} &amp; -a_{1} &amp; -a_{2} &amp; \cdots &amp; -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  b_0
+\end{array}\right]u\\
+y &amp; = &amp; [1,\ 0,\ 0,\ \ldots, 0] \mathbf{x}.\end{eqnarray*}\end{split}\]</div>
+<p>The structure of this state-space model is illustrated in Figure 1.</p>
+</div>
+<div class="section" id="figure-1-block-diagram-of-companion-form">
+<h3><span class="section-number">7.4.3.3. </span>Figure 1: Block Diagram of Companion Form<a class="headerlink" href="#figure-1-block-diagram-of-companion-form" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Block Diagram of Companion Form" src="../../_images/companion1.png" /></p>
+</div>
+<div class="section" id="system-with-a-strictly-proper-transfer-function">
+<h3><span class="section-number">7.4.3.4. </span>System with a Strictly Proper Transfer Function<a class="headerlink" href="#system-with-a-strictly-proper-transfer-function" title="Permalink to this headline">¶</a></h3>
+<p>Now let us consider the case of a system that has derivatives of the
+input.</p>
+<p>A strictly proper system has transfer function</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}G(s)=\frac{Y(s)}{U(s)} = \frac{b_ms^m +
+b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m&lt;n\)</span>.</p>
+<p>In class, we will show how this more general system converted into a state-space model.</p>
+<p>Well, let us introduce an intermediate variable <span class="math notranslate nohighlight">\(W(s)\)</span> and use this to
+split the transfer function into two parts like so:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+W(s) = \frac{1}{s^n +
+a_{n-1}s^{n-1}+a_{n-2}s^{n-2}+\cdots+a_1s+a_0}U(s)\end{equation}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+Y(s) = \left(b_ms^m +
+b_{m-1}s^{m-1}+b_{m-2}s^{m-2}+\cdots+b_1s+b_0\right)W(s).\end{equation}\]</div>
+<p>Now equation (2) has the same form as the system of equation (1) with <span class="math notranslate nohighlight">\(b_0 = 1\)</span>. So if we define our first phase
+variable to be <span class="math notranslate nohighlight">\(X_1(s) = W(s)\)</span> then the state matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> will be the same as for the previous example and the input matrix <span class="math notranslate nohighlight">\(\mathbf{B} = \left[0, 0, \ldots, 1\right]^T\)</span>. To determine the output matrix <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> we inverse Laplace transform equation (3) to
+get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+y(t) = b_m\frac{d^m}{dt^m}w(t) +
+b_{m-1}\frac{d^{m-1}}{dt^{m-1}}w(t)+\cdots+b_1\frac{d}{dt}w(t)+
+b_0w(t).\end{equation}\]</div>
+<p>Now, since by definition <span class="math notranslate nohighlight">\(x_1(t) = w(t)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+y(t) = b_mx_{m+1}(t) + b_{m-1}x_m(t)+\cdots+b_1x_2(t)+
+b_0x_1(t).\end{equation}\]</div>
+<p>Where, in (5), substitutions have been made according to the definition of the phase variables.</p>
+<p>The vector state equations are therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \dot{\mathbf{x}} &amp;=&amp;
+\left[\begin{array}{ccccc}
+  0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+  -a_{0} &amp; -a_{1} &amp; -a_{2} &amp; \cdots &amp; -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{array}\right]u\\
+y &amp; = &amp; [b_0,\ b_1,\ \dots,\ b_{m-1}, b_m]
+\mathbf{x}.\end{eqnarray*}\end{split}\]</div>
+<p>Note that the coefficients of the numerator appear in reverse order in the <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> matrix. The structure of
+this system is illustrated in Figure 2 for the case <span class="math notranslate nohighlight">\(m=n-1\)</span>.</p>
+</div>
+<div class="section" id="figure-2-system-with-a-strictly-proper-transfer-function">
+<h3><span class="section-number">7.4.3.5. </span>Figure 2: System with a Strictly Proper Transfer Function<a class="headerlink" href="#figure-2-system-with-a-strictly-proper-transfer-function" title="Permalink to this headline">¶</a></h3>
+<p><img alt="System with a Strictly Proper Transfer Function" src="../../_images/companion2.png" /></p>
+</div>
+<div class="section" id="system-with-a-proper-transfer-function">
+<h3><span class="section-number">7.4.3.6. </span>System with a Proper Transfer Function<a class="headerlink" href="#system-with-a-proper-transfer-function" title="Permalink to this headline">¶</a></h3>
+<p>The general form of a transfer function of a proper single-input,
+single-output system of order <span class="math notranslate nohighlight">\(n\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{b_ns^n+b_{n-1}s^{n-1}+\cdots+b_1s + b_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}\end{equation}\]</div>
+<p>In class, we will show how this system converted into state-space form.</p>
+<p>An alternative form, obtained by dividing the numerator by the
+denominator, is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}b_n+\frac{(b_{n-1} - b_n a_{n-1})s^{n-1}+\cdots+(b_1 - b_n a_1)+(b_0 - b_n a_0)}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}.\end{equation}\]</div>
+<p>If we define <span class="math notranslate nohighlight">\(d=b_n\)</span> and the modified numerator coefficients are</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}c_j=b_j - b_n a_j,\ j=1,2,\ldots,n\end{equation}\]</div>
+<p>then the transfer function may be re-written</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}d+\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s + c_n}{s^n+a_{n-1}s^{n-1}+\cdots++a_1s + a_0}.\end{equation}\]</div>
+<p>Writing the transfer function in its functional form we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}Y(s)=d U(s) +\frac{c_{n-1}s^{n-1}+c_{n-2}s^{n-2}+\cdots+c_1s +
+c_0}{s^n+a_{n-1}s^{n-1}+\cdots+a_1s + a_0}U(s).\end{equation}\]</div>
+<p>Performing a similar
+analysis, as before, we obtain the state-equations for a proper system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\dot{\mathbf{x}} &amp; = &amp; \left[\begin{array}{ccccc}
+  0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+  -a_{0} &amp; -a_{1} &amp; -a_{2} &amp; \cdots &amp; -a_{n-1}
+\end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  0 \\
+  \vdots \\
+  1
+\end{array}\right]u\\
+y &amp; = &amp; [c_0,\ c_1,\ \dots,\ c_{n-1}, c_n] \mathbf{x} + d
+u.\end{aligned}\end{split}\]</div>
+<p>The block diagram for this system is illustrated in Figure 3.</p>
+</div>
+<div class="section" id="figure-3-system-with-a-proper-transfer-function">
+<h3><span class="section-number">7.4.3.7. </span>Figure 3: System with a Proper Transfer Function<a class="headerlink" href="#figure-3-system-with-a-proper-transfer-function" title="Permalink to this headline">¶</a></h3>
+<p><img alt="System with a Proper Transfer Function" src="../../_images/companion3.png" /></p>
+</div>
+<div class="section" id="example-1">
+<h3><span class="section-number">7.4.3.8. </span>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>A system has transfer function</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}\end{equation}\]</div>
+<p>This system is “proper” because order of numerator equals order of denominator.</p>
+<p>Determine the system state-space model in companion form.</p>
+<div class="section" id="solution">
+<h4><span class="section-number">7.4.3.8.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h4>
+<p>First divide the numerator into the denominator to get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+G(s)&amp;=&amp;\frac{2(s^3 + 7s^2 + 10s) + 2s^2 + 10s + 8}{s^3 + 7s^2 +
+10s}\\ &amp;=&amp; \frac{2s^2 + 10s + 8}{s^3 + 7s^2 + 10s} +
+2.\end{eqnarray*}\end{split}\]</div>
+<p>The companion form of the state matrices are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp; = &amp; \left[\begin{array}{ccc}
+  0 &amp; 1 &amp; 0 \\
+  0 &amp; 0 &amp; 1 \\
+  0 &amp; -10 &amp; -7
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  0 \\
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} &amp; = &amp; \left[\begin{array}{ccc}
+  8 &amp; 10 &amp; 2
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}\end{split}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="end-of-pre-class-presentation">
+<h2><span class="section-number">7.4.4. </span>End of Pre-Class Presentation<a class="headerlink" href="#end-of-pre-class-presentation" title="Permalink to this headline">¶</a></h2>
+<p>In class we will:</p>
+<ul class="simple">
+<li><p>Work through the three cases introduced here</p></li>
+<li><p>Complete the worked example</p></li>
+</ul>
+</div>
+<div class="section" id="part-2-other-canonical-forms">
+<h2><span class="section-number">7.4.5. </span>Part 2: Other Canonical Forms<a class="headerlink" href="#part-2-other-canonical-forms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Controller and Observer Canonical Forms</p></li>
+</ul>
+<ul class="simple">
+<li><p>Normal form</p></li>
+</ul>
+<ul class="simple">
+<li><p>Jordan forms</p></li>
+</ul>
+</div>
+<div class="section" id="controller-canonical-form">
+<h2><span class="section-number">7.4.6. </span>Controller Canonical Form<a class="headerlink" href="#controller-canonical-form" title="Permalink to this headline">¶</a></h2>
+<p>If one defines a transfer function in , e.g. as shown in the slide entitled <strong>A Litte MATLAB</strong> below, the result of
+converting the system into state-space form using MATLAB’s <code class="docutils literal notranslate"><span class="pre">tf2ss</span></code> function is rather surprisingly not the companion form we have seen before.</p>
+<p>Instead, the result is what is known as the <em>Controller Canonical Form</em>. This is still a companion form because the coefficients of the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> matrices are the coefficients of the transfer function’s denominator and numerator polynomials.</p>
+<div class="section" id="a-little-matlab">
+<h3><span class="section-number">7.4.6.1. </span>A Little MATLAB<a class="headerlink" href="#a-little-matlab" title="Permalink to this headline">¶</a></h3>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}G(s) =\frac{Y(s)}{U(s)} = \frac{s^2 + 7s + 2 }{s^3 + 9s^2 + 26s + 24}\end{equation}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">format</span> <span class="s">compact</span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">num</span><span class="p">=[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span> <span class="n">den</span><span class="p">=[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span> <span class="mi">24</span><span class="p">];</span>
+<span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">]=</span><span class="n">tf2ss</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+    -9   -26   -24
+     1     0     0
+     0     1     0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+     1
+     0
+     0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C =
+     1     7     2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D =
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Result:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\dot{\mathbf{x}} &amp; = &amp;\left[\begin{array}{ccc}
+  -9 &amp; -26 &amp; -24  \\
+  1 &amp; 0 &amp; 0  \\
+  0 &amp; 1  &amp; 0
+ \end{array}\right]\mathbf{x}+\left[\begin{array}{c}
+  1 \\
+  0 \\
+  0
+\end{array}\right]u\\
+y &amp; = &amp; [1,\ 7,\ 2] \mathbf{x}.\end{eqnarray*}\end{split}\]</div>
+<p>The controller canonical form is simply obtained by re-ordering the phase variables as illustrated below.</p>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">7.4.6.2. </span>The Companion Form<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \left[\begin{array}{c}
+  \dot{x}_{1} \\
+  \dot{x}_{2} \\
+  \vdots \\
+  \dot{x}_{n-1} \\
+  \dot{x}_n
+\end{array}\right] &amp;=&amp; \left[\begin{array}{ccccc}
+  0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+  -a_{0} &amp; -a_{1} &amp; -a_{2} &amp; \cdots &amp; -a_{n-1}
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{1} \\
+  {x}_{2} \\
+  \vdots \\
+  {x}_{n-1} \\
+  {x}_{n}
+\end{array}\right]+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  \vdots \\
+  0 \\
+  1
+\end{array}\right]u\\
+y &amp; = &amp; [b_0,\ b_1,\ \dots,\ b_{n-2}, b_{n-1}][
+  {x}_{1},\
+  {x}_{2},\
+  \ldots,\
+  {x}_{n-1},\
+  {x}_{n}]^T\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="controller-canonical-form-re-number-states">
+<h3><span class="section-number">7.4.6.3. </span>Controller canonical form: Re-number States<a class="headerlink" href="#controller-canonical-form-re-number-states" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \left[\begin{array}{c}
+  \dot{x}_{n} \\
+  \dot{x}_{n-1} \\
+  \vdots \\
+  \dot{x}_{2} \\
+  \dot{x}_{1}
+\end{array}\right] &amp;=&amp; \left[\begin{array}{ccccc}
+  0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+  -a_{0} &amp; -a_{1} &amp; -a_{2} &amp; \cdots &amp; -a_{n-1}
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{n} \\
+  {x}_{n-1} \\
+  \vdots \\
+  {x}_{2} \\
+  {x}_{1}
+\end{array}\right]+\left[\begin{array}{c}
+  0 \\
+  0 \\
+  \vdots \\
+  0 \\
+  1
+\end{array}\right]u\\ y &amp; = &amp; [b_0,\ b_1,\ \dots,\ b_{n-2}, b_{n-1}]
+\left[
+  {x}_{n},\
+  {x}_{n-1},\
+  \ldots,\
+  {x}_{2},\
+  {x}_{1}
+\right]^T\end{eqnarray*}\end{split}\]</div>
+<p>The general form of the controller canonical state-space model is the as shown below.</p>
+</div>
+<div class="section" id="controller-canonical-form-re-ordered-states">
+<h3><span class="section-number">7.4.6.4. </span>Controller canonical form: Re-Ordered States<a class="headerlink" href="#controller-canonical-form-re-ordered-states" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \left[\begin{array}{c}
+  \dot{x}_{1} \\
+  \dot{x}_{2} \\
+  \vdots \\
+  \dot{x}_{n-1} \\
+  \dot{x}_{n}
+\end{array}\right] &amp;=&amp; \left[\begin{array}{ccccc}
+ -a_{n-1} &amp; -a_{n-2} &amp; \cdots &amp; -a_{1} &amp; -a_{0} \\
+   1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+  0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+  0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{1} \\
+  {x}_{2} \\
+  \vdots \\
+  {x}_{n-1} \\
+  {x}_{n}
+\end{array}\right]+\left[\begin{array}{c}
+  1 \\
+  0 \\
+  \vdots \\
+  0 \\
+  0
+\end{array}\right]u\\ y &amp; = &amp; [b_{n-1},\ b_{n-2},\ \dots,\ b_{1}, b_{0}]
+\left[
+  {x}_{1},\
+  {x}_{2},\
+  \ldots,\
+  {x}_{n-1},\
+  {x}_{n}
+\right]^T\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="figure-4-controller-canonical-form-block-diagram">
+<h3><span class="section-number">7.4.6.5. </span>Figure 4: Controller Canonical Form: Block Diagram<a class="headerlink" href="#figure-4-controller-canonical-form-block-diagram" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Controller Canonical Form: Block Diagram" src="../../_images/ccanon.png" /></p>
+</div>
+</div>
+<div class="section" id="observer-canonical-form">
+<h2><span class="section-number">7.4.7. </span>Observer Canonical Form<a class="headerlink" href="#observer-canonical-form" title="Permalink to this headline">¶</a></h2>
+<p>The observer canonical form is the “dual” of the controller canonical
+form.</p>
+<p>The state equations are shown below. Note that the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>
+matrix is the transpose of the controller canonical form and that
+<span class="math notranslate nohighlight">\(\mathbf{b}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> are the transposes of the <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{b}\)</span> matrices, respectively, of the controller canonical form.</p>
+<div class="section" id="id2">
+<h3><span class="section-number">7.4.7.1. </span>Observer canonical form<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \left[\begin{array}{c}
+  \dot{x}_{1} \\
+  \dot{x}_{2} \\
+  \vdots \\
+  \dot{x}_{n-1} \\
+  \dot{x}_{n}
+\end{array}\right] &amp;=&amp; \left[\begin{array}{ccccc}
+ -a_{n-1} &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+ -a_{n-2} &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+ -a_{n-3} &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+ -a_{1} &amp; 0 &amp; \cdots &amp; 0 &amp; 1 \\
+ -a_{0} &amp; 0 &amp; \cdots &amp; 0 &amp; 0
+\end{array}\right]\left[\begin{array}{c}
+  {x}_{1} \\
+  {x}_{2} \\
+  {x}_{3} \\
+  \vdots \\
+  {x}_{n-1} \\
+  {x}_{n}
+\end{array}\right]+\left[\begin{array}{c}
+  b_{n-1} \\
+  b_{n-2} \\
+  b_{n-3} \\
+  \vdots \\
+  b_{1} \\
+  b_0
+\end{array}\right]u\\ y &amp; = &amp; [1,\ 0,\ 0,\ \ldots, 0]\left[
+  {x}_{1},\
+  {x}_{2},\
+  \ldots,\
+  {x}_{n-1},\
+  {x}_{n}
+\right]^T\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="figure-5-observer-canonical-form-block-diagram">
+<h3><span class="section-number">7.4.7.2. </span>Figure 5: Observer Canonical Form: Block Diagram<a class="headerlink" href="#figure-5-observer-canonical-form-block-diagram" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Controller Canonical Form: Block Diagram" src="../../_images/ocanon.png" /></p>
+</div>
+<div class="section" id="example-2">
+<h3><span class="section-number">7.4.7.3. </span>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>The system with transfer function</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}G(s)=\frac{Y(s)}{U(s)}=\frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s}\end{equation}\]</div>
+<p>was found, earlier, to have companion form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp; = &amp; \left[\begin{array}{ccc}
+  0 &amp; 1 &amp; 0 \\
+  0 &amp; 0 &amp; 1 \\
+  0 &amp; -10 &amp; -7
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  0 \\
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} &amp; = &amp; \left[\begin{array}{ccc}
+  8 &amp; 10 &amp; 2
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}\end{split}\]</div>
+<p>Express this system in controller canonical and observer canonical
+forms.</p>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">7.4.7.4. </span>Solution<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The controller canonical form is obtained by re-ordering the state
+variables:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp; = &amp; \left[\begin{array}{ccc}
+  -7 &amp; -10 &amp; 0 \\
+  1 &amp; 0 &amp; 0 \\
+  0 &amp; 1 &amp; 0
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  1 \\
+  0 \\
+  0
+\end{array}\right]\\ \mathbf{C} &amp; = &amp; \left[\begin{array}{ccc}
+  2 &amp; 10 &amp; 8
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}\end{split}\]</div>
+<p>and the
+observable canonical form is obtained by transposing the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>
+matrix and letting <span class="math notranslate nohighlight">\(\mathbf{B} = \mathbf{C}^T\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{C}=\mathbf{B}^T\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp; = &amp; \left[\begin{array}{ccc}
+  -7 &amp; 1 &amp; 0 \\
+  -10 &amp; 0 &amp; 1 \\
+  0 &amp; 0 &amp; 0
+\end{array}\right]\ \mathbf{B}=\left[\begin{array}{c}
+  2 \\
+  10 \\
+  8
+\end{array}\right]\\ \mathbf{C} &amp; = &amp; \left[\begin{array}{ccc}
+  1 &amp; 0 &amp; 0
+\end{array}\right]\ \mathbf{D}=\left[2\right]\end{eqnarray*}\end{split}\]</div>
+</div>
+<div class="section" id="matlab-code-for-examples">
+<h3><span class="section-number">7.4.7.5. </span>MATLAB Code for Examples<a class="headerlink" href="#matlab-code-for-examples" title="Permalink to this headline">¶</a></h3>
+<p>We will show these in class.</p>
+<div class="section" id="controller-canonical-companion-form">
+<h4><span class="section-number">7.4.7.5.1. </span>Controller canonical companion form<a class="headerlink" href="#controller-canonical-companion-form" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Acc</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">Bcc</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">Ccc</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span> <span class="n">D</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">Gcc</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">Acc</span><span class="p">,</span><span class="n">Bcc</span><span class="p">,</span><span class="n">Ccc</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gcc =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        x1   x2   x3
+   x1   -7  -10    0
+   x2    1    0    0
+   x3    0    1    0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   1
+   x2   0
+   x3   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2  x3
+   y1   2  10   8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4><span class="section-number">7.4.7.5.2. </span>Observer canonical form<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>To create the observer canonical form, we transpose some of the matrices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Goc</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">Acc</span><span class="o">&#39;</span><span class="p">,</span><span class="n">Ccc</span><span class="o">&#39;</span><span class="p">,</span><span class="n">Bcc</span><span class="o">&#39;</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Goc =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        x1   x2   x3
+   x1   -7    1    0
+   x2  -10    0    1
+   x3    0    0    0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   2
+   x2  10
+   x3   8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2  x3
+   y1   1   0   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h4><span class="section-number">7.4.7.5.3. </span>Companion form<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>To obtain the companion form, some trickery is needed to re-order the controller
+canonical state matrices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">]=</span><span class="nb">size</span><span class="p">(</span><span class="n">Acc</span><span class="p">);</span> <span class="c">% n = m = 3 for the example</span>
+<span class="n">Acf</span> <span class="p">=</span> <span class="n">Acc</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Bcf</span> <span class="p">=</span> <span class="n">Bcc</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,:);</span>
+<span class="n">Ccf</span> <span class="p">=</span> <span class="n">Ccc</span><span class="p">(:,</span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The companion form is then created from the reordered matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Gcf</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">Acf</span><span class="p">,</span><span class="n">Bcf</span><span class="p">,</span><span class="n">Ccf</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gcf =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        x1   x2   x3
+   x1    0    1    0
+   x2    0    0    1
+   x3    0  -10   -7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   0
+   x2   0
+   x3   1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       x1  x2  x3
+   y1   8  10   2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="matlab-s-built-in-canonical-form">
+<h4><span class="section-number">7.4.7.5.4. </span>MATLAB’s built-in canonical form<a class="headerlink" href="#matlab-s-built-in-canonical-form" title="Permalink to this headline">¶</a></h4>
+<p>This is none of the forms discussed. So for example if we convert the transfer function directly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
+<span class="n">den</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">G</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="n">den</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2 s^3 + 16 s^2 + 30 s + 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     s^3 + 7 s^2 + 10 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then convert into state space using the <code class="docutils literal notranslate"><span class="pre">ss</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Gtf</span> <span class="p">=</span> <span class="n">ss</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gtf =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  A = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         x1    x2    x3
+   x1    -7  -2.5     0
+   x2     4     0     0
+   x3     0  0.25     0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  B = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   x1   4
+   x2   0
+   x3   0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  C = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          x1     x2     x3
+   y1    0.5  0.625      2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  D = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       u1
+   y1   2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time state-space model.
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a canonical form known only to the Mathworks! The algorithm used to generate it presumably has some useful numerical properties.</p>
+</div>
+<div class="section" id="all-forms-represent-the-same-transfer-function">
+<h4><span class="section-number">7.4.7.5.5. </span>All forms represent the same transfer function!<a class="headerlink" href="#all-forms-represent-the-same-transfer-function" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G1</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Gtf</span><span class="p">)</span> <span class="c">% Mathworks tf-to-ss form</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G1 =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2 s^3 + 16 s^2 + 30 s + 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     s^3 + 7 s^2 + 10 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G2</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Gcc</span><span class="p">)</span> <span class="c">% Controller Canonical form</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G2 =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2 s^3 + 16 s^2 + 30 s + 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     s^3 + 7 s^2 + 10 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G3</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Goc</span><span class="p">)</span> <span class="c">% Observer Canonical Form</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G3 =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2 s^3 + 16 s^2 + 30 s + 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     s^3 + 7 s^2 + 10 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">G4</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="n">Gcf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G4 =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2 s^3 + 16 s^2 + 30 s + 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     s^3 + 7 s^2 + 10 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now consider one final canonical form, the so-called “normal” or “parallel” form.</p>
+</div>
+</div>
+</div>
+<div class="section" id="normal-canonical-form">
+<h2><span class="section-number">7.4.8. </span>Normal Canonical Form<a class="headerlink" href="#normal-canonical-form" title="Permalink to this headline">¶</a></h2>
+<p>The normal form of a state-space model isolates the characteristic values, also called the eigen values, or system poles, of the system.</p>
+<p>If all the poles of a system are real and distinct then the transfer function may be written as a partial fraction expansion</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}G(s) = \frac{Y(s)}{U(s)} = \left\{\frac{r_1}{s-p_1} +
+\frac{r_2}{s-p_2} + \cdots + \frac{r_n}{s-p_n} + d\right\}\end{equation}\]</div>
+<p>we can develop a state-space model for each term:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}Y(s)=\frac{r_i}{s-p_i}U(s).\end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+(s-p_i)Y(s) &amp; = &amp; r_i U(s)\\ \frac{d}{dt}y(t)-p_i y(t) &amp;=&amp; r_i
+u(t).\end{eqnarray*}\end{split}\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(x_i(t) = y(t)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\dot{x}_i &amp;=&amp; p_i x_i + r_i u \\ y &amp;=&amp; x_i\end{eqnarray*}\end{split}\]</div>
+<p>Thus, each partial fraction term may be represented by the block diagram shown in Figure 6.</p>
+<div class="section" id="figure-6-state-space-model-of-a-first-order-system">
+<h3><span class="section-number">7.4.8.1. </span>Figure 6 State-Space model of a first-order system<a class="headerlink" href="#figure-6-state-space-model-of-a-first-order-system" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\dot{x}_i &amp;=&amp; p_i x_i + r_i u \\ y &amp;=&amp; x_i\end{eqnarray*}\end{split}\]</div>
+<p><img alt="state-space model of a single pole" src="../../_images/sspole.png" /></p>
+<p>Thus, the total state-space model of the system is simply the sum of such terms as shown in Figure 7.</p>
+</div>
+<div class="section" id="figure-7-normal-canonical-form-block-diagram">
+<h3><span class="section-number">7.4.8.2. </span>Figure 7 Normal Canonical Form: Block Diagram<a class="headerlink" href="#figure-7-normal-canonical-form-block-diagram" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Normal Canonical Form: Block Diagram" src="../../_images/normalcan.png" /></p>
+<p>Therefore the state space model for the whole system is as shown below.</p>
+</div>
+<div class="section" id="normal-observable-canonical-state-space-model">
+<h3><span class="section-number">7.4.8.3. </span>Normal Observable Canonical State-Space Model<a class="headerlink" href="#normal-observable-canonical-state-space-model" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \mathbf{\dot{x}}&amp;=&amp;\left[\begin{array}{ccccc}
+  p_1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; p_2 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; p_3 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; p_n
+\end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  r_1 \\
+  r_2 \\
+  r_3 \\
+  \vdots \\
+  r_n
+\end{array}\right] u\\ y &amp;=&amp; \left[1,\ 1,\ 1,\ \ldots,\ 1\right] \mathbf{x} + d u\end{eqnarray*}\end{split}\]</div>
+<p>Note that the residues of the partial fraction expansion <span class="math notranslate nohighlight">\(r_1,\ r_2,\ \ldots,\ r_n\)</span> have been allocated to the input side of the block diagram and therefore to the input matrix in the state space model. This model, in which all the elements of the output matrix are unity, is called the “<em>Normal Observable Canonical Form</em>”. It would be equally
+valid to allocate the residues to the output matrix, leaving the elements of the input matrix as unity, this would be the “<em>Normal Controllable Canonical Form</em>” illustrated below.</p>
+</div>
+<div class="section" id="normal-controllable-canonical-state-space-model">
+<h3><span class="section-number">7.4.8.4. </span>Normal Controllable Canonical State-Space Model<a class="headerlink" href="#normal-controllable-canonical-state-space-model" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+ \mathbf{\dot{x}}&amp;=&amp;\left[\begin{array}{ccccc}
+  p_1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; p_2 &amp; 0 &amp; \cdots &amp; 0 \\
+  0 &amp; 0 &amp; p_3 &amp; \cdots &amp; 0 \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  0 &amp; 0 &amp; 0 &amp; \cdots &amp; p_n
+\end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  1 \\
+  1 \\
+  1 \\
+  \vdots \\
+  1
+\end{array}\right] u\\ y &amp;=&amp; \left[r_1,\ r_2,\ r_3,\ \ldots,\ r_n\right] \mathbf{x} + d u\end{eqnarray*}\end{split}\]</div>
+<p>The most important property of the normal canonical model is that the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix is diagonal and that the elements on the diagonal are the eigenvalues of the system matrix. If you form the systemtransition matrix for this system each state response is simply of the form <span class="math notranslate nohighlight">\(r_i e^{p_i t}\)</span>, that is each state response is equal to the corresponding mode response<sup>1</sup>.</p>
+</div>
+<div class="section" id="example-3">
+<h3><span class="section-number">7.4.8.5. </span>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
+<p>Determine the observer and controller normal canonical forms for the system examined earlier.</p>
+<div class="section" id="id6">
+<h4><span class="section-number">7.4.8.5.1. </span>Solution<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+G(s) &amp;=&amp; \frac{2s^3 + 16s^2 + 30s + 8}{s^3 + 7s^2 + 10s} \\
+ &amp;=&amp;
+\frac{2s^2 + 10s + 8}{s^3 + 7s^2 + 10s} + 2 \\
+ &amp;=&amp; \frac{2s^2 + 10s + 8}{s(s+2)(s+5)} + 2 \\
+ &amp;=&amp; \frac{4/5}{s} + \frac{2/3}{s+2} + \frac{8/15}{s+5} + 2
+\\\end{eqnarray*}\end{split}\]</div>
+<p>The normal controllable canonical form therefore is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{\dot{x}}&amp;=&amp;\left[\begin{array}{ccc}
+  0 &amp; 0 &amp; 0  \\
+  0 &amp; -2 &amp; 0  \\
+  0 &amp; 0 &amp; -5  \\
+ \end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  4/5 \\
+  2/3 \\
+  8/15
+\end{array}\right] u\\ y &amp;=&amp; \left[1,\ 1,\ 1\right] \mathbf{x} + 2 u\end{eqnarray*}\end{split}\]</div>
+<p>and the normal observable canonical form is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{\dot{x}}&amp;=&amp;\left[\begin{array}{ccc}
+  0 &amp; 0 &amp; 0  \\
+  0 &amp; -2 &amp; 0  \\
+  0 &amp; 0 &amp; -5  \\
+ \end{array}\right] \mathbf{x} + \left[\begin{array}{c}
+  1 \\
+  1  \\
+  1
+\end{array}\right] u\\ y &amp;=&amp; \left[4/5,\ 2/3,\ 8/15\right] \mathbf{x} + 2
+u\end{eqnarray*}\end{split}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="time-response-from-normal-form">
+<h2><span class="section-number">7.4.9. </span>Time Response from Normal Form<a class="headerlink" href="#time-response-from-normal-form" title="Permalink to this headline">¶</a></h2>
+<p>Notice that in the case of a system defined in <em>normal form</em>, because the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix is diagonal, the state equations are decoupled from each other and can be solved independently. This canonical form is useful for the solution of the state equations.</p>
+<p>Given initial states <span class="math notranslate nohighlight">\(x_1(t)=x_{1}(0)\)</span>, <span class="math notranslate nohighlight">\(x_2(t)=x_2(0)\)</span>, etc at <span class="math notranslate nohighlight">\(t=0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+     sX_1 (s) - x_{1}(0)  &amp; = &amp; p_1 X_1 (s) + r_1 U(s) \\
+     (s - p_1 )X_1 (s) &amp; = &amp; x_{1}(0)  + r_1 U(s) \\
+     X_1 (s) &amp; = &amp; \frac{x_{1}(0)}{s - p_1 } + \frac{r_1 }{s - p_1 }U(s)
+    \end{eqnarray*}\end{split}\]</div>
+<p>Taking inverse Laplace transforms:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}x_1 = x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau\end{equation}\]</div>
+<p>Repeated for the other states.</p>
+<p>These are then combined through the output equation to give the solution for <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t).\end{equation}\]</div>
+<div class="section" id="system-response">
+<h3><span class="section-number">7.4.9.1. </span>System Response<a class="headerlink" href="#system-response" title="Permalink to this headline">¶</a></h3>
+<p>Combine state responses through the output equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t)\end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+	y(t) &amp; = &amp; x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau  \\
+         &amp; + &amp;	x_{2}(0)e^{p_2t}+r_2\int_0^tu(\tau)e^{p_2(t-\tau)}d\tau \\
+	     &amp; \vdots &amp; \\
+	     &amp; + &amp; x_{n}(0)e^{p_nt}+r_n\int_0^tu(\tau)e^{p_n(t-\tau)}d\tau + du(t)\end{eqnarray*}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="jordan-forms">
+<h2><span class="section-number">7.4.10. </span>Jordan Forms<a class="headerlink" href="#jordan-forms" title="Permalink to this headline">¶</a></h2>
+<p>Are needed for the special cases of</p>
+<ul class="simple">
+<li><p>Systems with repeated poles</p></li>
+</ul>
+<ul class="simple">
+<li><p>Systems with complex poles</p></li>
+</ul>
+<p>These are discussed in the notes but will not be examined!</p>
+</div>
+<div class="section" id="system-with-repeated-poles">
+<h2><span class="section-number">7.4.11. </span>System with Repeated Poles<a class="headerlink" href="#system-with-repeated-poles" title="Permalink to this headline">¶</a></h2>
+<p>If the transfer function has repeated poles, then the form of the model must be changed. The partial fraction expansion contains terms of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{r_i}{s-p_i} + \frac{r_{i+1}}{(s-p_i)^2}.\end{equation}\]</div>
+<p>This is most easily implemented using the <em>Normal Controllable Canonical Form</em> using a series connection of the
+block diagram for the single pole $<span class="math notranslate nohighlight">\(\frac{1}{s-p_i}\)</span><span class="math notranslate nohighlight">\( as shown in Figure 8. By examination of this diagram it should be clear that the signal seen at point \)</span>A$ is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}A(s) = \frac{r_i}{s-p_i}U(s)\end{equation}\]</div>
+<p>and that at <span class="math notranslate nohighlight">\(B\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{equation}B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)\end{equation}$$ as
+required.\\### Figure 8 Part of a system with repeated poles\\![Part of a system with repeated poles](pictures/jordanblock.png)\\For this portion of the state space model we have \\\begin{split}$$\begin{eqnarray*}
+\left[\begin{array}{c}
+  \dot{x}_i \\
+  \dot{x}_{i+1}
+\end{array}\right] &amp;=&amp; \left[\begin{array}{cc}
+  p_i &amp; 1 \\
+  0 &amp; p_i
+\end{array}\right]\left[\begin{array}{c}
+  x_i \\
+  x_{i+1}
+\end{array}\right] + \left[\begin{array}{c}
+  0 \\
+  1
+\end{array}\right] u\\
+y &amp; = &amp; \left[r_{i+1},\ r_i\right]\left[\begin{array}{c}
+  x_i \\
+  x_{i+1}
+\end{array}\right].\end{eqnarray*}\end{split}\end{aligned}\end{align} \]</div>
+<p>By comparison of this result with the normal situation we see that the
+state matrices (of the observer controllable canonical form) are
+modified as follows.</p>
+<ul>
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{cc}
+        p_i &amp; 0 \\
+        0 &amp; p_{i+1} \\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        p_i &amp; 1 \\
+        0 &amp; p_{i} \\
+      \end{array}\right];\end{split}\]</div>
+</li>
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{B}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{c}
+        1 \\
+        1  \\
+      \end{array}\right] \rightarrow \left[\begin{array}{c}
+        0 \\
+        1 \\
+      \end{array}\right];\end{split}\]</div>
+</li>
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{C}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{cc}
+        r_i &amp; r_{i+1}\\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        r_{i+1} &amp; r_i\\
+      \end{array}\right].\end{split}\]</div>
+</li>
+</ul>
+<p>The block</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}\left[\begin{array}{cc}
+    p_i &amp; 1 \\
+    0 &amp; p_{i} \\
+  \end{array}\right]\end{equation}\end{split}\]</div>
+<p>is known as a “<em>Jordan Block</em>”. A matrix with one (or more) Jordan Blocks instead of a pure diagonal</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}\left[\begin{array}{cc}
+    p_i &amp; 0 \\
+    0 &amp; p_{i+1} \\
+  \end{array}\right]\end{equation}\end{split}\]</div>
+<p>is in the “<em>Jordan Form</em>”. The idea may be extended to systems with poles of higher multiplicity. For example for
+the case where the multiplicity is 3 as in</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{1}{(s-p_i)^3}\end{equation}\]</div>
+<p>the Jordan Block is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}\left[\begin{array}{ccc}
+    p_i &amp; 1 &amp; 0 \\
+    0 &amp; p_{i} &amp; 1 \\
+    0 &amp; 0 &amp; p_i
+  \end{array}\right].\end{equation}\end{split}\]</div>
+<div class="section" id="example-4">
+<h3><span class="section-number">7.4.11.1. </span>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+<p><strong>Not examined</strong></p>
+<p>The system with transfer function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+G(s) &amp;=&amp; \frac{1}{s^3 + 4s^2 + 5s + 2}\\
+&amp;=&amp; \frac{1}{(s+1)^2(s+2)} \\ &amp;=&amp; \frac{-1}{s+1} +
+\frac{1}{(s+1)^2} + \frac{1}{s+2}.\end{eqnarray*}\end{split}\]</div>
+<p>The normal canonical form is therefore given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp;=&amp; \left[\begin{array}{ccc}
+  -1 &amp; 1 &amp; 0 \\
+  0 &amp; -1 &amp; 0 \\
+  0 &amp; 0 &amp; -2
+\end{array}\right] \mathbf{B} = \left[\begin{array}{c}
+  0 \\
+  1 \\
+  1
+\end{array}\right]\\ \mathbf{C} &amp;=&amp; \left[\begin{array}{ccc}
+  1 &amp; -1 &amp; 1
+\end{array}\right] \mathbf{D} = \left[0\right]\end{eqnarray*}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="normal-canonical-form-with-complex-poles">
+<h2><span class="section-number">7.4.12. </span>Normal Canonical Form with Complex Poles<a class="headerlink" href="#normal-canonical-form-with-complex-poles" title="Permalink to this headline">¶</a></h2>
+<p>A system with complex poles will have a partial fraction expansion containing terms of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}\frac{\Re\{ r_i\} + j\Im\{ r_i\}}{s - \Re\{p_i\} + j\Im\{p_i\}} + \frac{\Re\{r_i\} - j\Im\{ r_i\}}{s - \Re\{p_i\} - j\Im\{p_i\}}\end{equation}\]</div>
+<p>(where the poles and the residuals both appear as complex conjugate pairs). We cannot implement these directly in state space form because the state matrices must have real coefficients to be realisable. However, the complex factors involved can be combined into a quadratic form and blocks replaced in the normal canonical form<sup>2</sup> as follows:</p>
+<ul>
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{cc}
+        p_i &amp; 0 \\
+        0 &amp; p_{i+1} \\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        +\Re\{p_i\} &amp; +\Im\{p_i\} \\
+        -\Im\{p_i\} &amp; +\Re\{p_i\} \\
+      \end{array}\right];\end{split}\]</div>
+</li>
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{B}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{c}
+        1 \\
+        1  \\
+      \end{array}\right] \rightarrow \left[\begin{array}{c}
+        0 \\
+        1 \\
+      \end{array}\right];\end{split}\]</div>
+</li>
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{C}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{cc}
+        r_i &amp; r_{i+1}\\
+      \end{array}\right] \rightarrow \left[\begin{array}{cc}
+        2\Im\{r_{i}\} &amp; 2\Re\{r_i\}\\
+      \end{array}\right].\end{split}\]</div>
+</li>
+</ul>
+<div class="section" id="example-5">
+<h3><span class="section-number">7.4.12.1. </span>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+<p>The system with transfer function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+G(s) &amp;=&amp; \frac{6s+6}{s^2 + 4s + 13}\\
+&amp;=&amp; \frac{6(s+1)}{(s+2)^2 + 3^2} \\ &amp;=&amp;
+\frac{6(s+1)}{(s+2+3j)(s+2-3j)}
+\\ &amp;=&amp; \frac{3-j}{s+2+3j} + \frac{3-j}{s+2-3j}.\end{eqnarray*}\end{split}\]</div>
+<p>The normal canonical form is therefore given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp;=&amp; \left[\begin{array}{cc}
+  -2-3j &amp; 0 \\
+  0 &amp; -2+3j
+\end{array}\right] \mathbf{B} = \left[\begin{array}{c}
+  1 \\
+  1
+\end{array}\right]\\ \mathbf{C} &amp;=&amp; \left[\begin{array}{cc}
+  3-j &amp; 3+j
+\end{array}\right] \mathbf{D} = \left[0\right]\end{eqnarray*}\end{split}\]</div>
+<p>But this is not realisable so instead we use</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\mathbf{A} &amp;=&amp; \left[\begin{array}{cc}
+  -2 &amp; -3 \\
+  3 &amp; -2
+\end{array}\right] \mathbf{B} = \left[\begin{array}{c}
+  0 \\
+  1
+\end{array}\right]\\ \mathbf{C} &amp;=&amp; \left[\begin{array}{cc}
+  -2 &amp; -6
+\end{array}\right] \mathbf{D} = \left[0\right].\end{eqnarray*}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">7.4.13. </span>End of Pre-Class Presentation<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>In class we will work through the examples given here and if we have time we’ll look at</p>
+<ul class="simple">
+<li><p>Examples of controllable and observable forms</p></li>
+<li><p>MATLAB and canonical forms</p></li>
+<li><p>Normal form</p></li>
+<li><p>Time response of normal form</p></li>
+</ul>
+</div>
+<div class="section" id="footnotes">
+<h2><span class="section-number">7.4.14. </span>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The proof is left as an exercise.</p></li>
+<li><p>The details are left as an exercise.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./07/4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../3/tr4ss.html" title="previous page"><span class="section-number">7.3. </span>Time Response for State Space Models</a>
+    <a class='right-next' id="next-link" href="../5/systransf.html" title="next page"><span class="section-number">7.5. </span>Transformation of States and System Diagonalization</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

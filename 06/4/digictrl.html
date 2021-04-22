@@ -1,0 +1,1849 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.4. Introduction to Digital Control &#8212; EGLM03 Modern Control Systems</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/06/4/digictrl.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. Modelling Systems in State-Space" href="../../07/index.html" />
+    <link rel="prev" title="6.3. Continuous System Equivalence" href="../3/cse.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/06/4/digictrl.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Introduction to Digital Control" />
+<meta property="og:description" content="Introduction to Digital Control  Purpose of this Section  To describe the basic tools for the design of a control system to be implemented using a computer or m" />
+<meta property="og:image"       content="https://cpjobling.github.io/eglm03-textbook/_static/logo.png" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">EGLM03 Modern Control Systems</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   EGLM03 Modern Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../background/index.html">
+   Background
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_is_rlocus.html">
+     What is the root locus?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/what_does_the_rlocus_represent.html">
+     What does the root locus represent?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../background/rlocus/sketching_rules.html">
+     What are the rules for sketching a root locus?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Modern Control Systems
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/modsim.html">
+   1. Systems Modelling and Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02/ssntr.html">
+   2. Steady-State and Transient Response
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../03/classical.html">
+   3. Classical Control Systems Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/1/intro.html">
+     3.1. Introducing phase-lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/2/velfb.html">
+     3.2. Introduction to Root Locus Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/3/pplusd.html">
+     3.3. Proportional plus derivative compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/4/leadc.html">
+     3.4. Lead compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/5/analrloc.html">
+     3.5. Analytical Root-Locus Design of Phase-Lead Compensators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html">
+     3.6. Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03/6/lagc.html#introduction">
+     3.7. Introduction
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../04/pid.html">
+   4. PID Compensation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/0/intro.html">
+     4.2.1. Introduction to PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/1/zeigler.html">
+     4.2.2. Zeigler-Nichols Tuning Algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/2/tuning.html">
+     4.2.3. Manually Tuning a PID compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html">
+     4.2.4. Analytical Design of a PID Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#example">
+     4.2.5. Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#calculations">
+     4.2.6. Calculations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#evaluation-of-design">
+     4.2.7. Evaluation of Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#footnotes">
+     4.2.8. Footnotes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/3/analpid.html#resources">
+     4.2.9. Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../04/4/autotune.html">
+     4.2.10. PID Autotuning in MATLAB
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../05/freqresp.html">
+   5. Frequency Response Design
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/1/freqlead.html">
+     5.1. Frequency Response Design of a Lead Compensator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05/2/freqlag.html">
+     5.2. Frequency Response Design of a Lag Compensator
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../digital.html">
+   6. Digital Control Systems
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/digi_intro.html">
+     6.1. Introduction to Digital Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/dsm.html">
+     6.2. Digital System Models and System Response
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/cse.html">
+     6.3. Continuous Systems Equivalence
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.4. Introduction to Digital Control
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../07/index.html">
+   7. Modelling Systems in State-Space
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/1/intro2ss.html">
+     7.1. State-Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/2/tf4ss.html">
+     7.2. Laplace Transforms of State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/3/tr4ss.html">
+     7.3. Time Response for State Space Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/4/canon.html">
+     7.4. Canonical Forms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/5/systransf.html">
+     7.5. Transformation of States and System Diagonalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../07/6/gensolution.html">
+     7.6. The General Solution of LTI Systems
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../08/index.html">
+   8. State-Feedback Control
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/1/obsv_ctrl.html">
+     8.1. Controllability and Observability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/2/sfcontrol.html">
+     8.2. State-Feedback Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/3/observers.html">
+     8.3. State Observers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08/4/observer_controller.html">
+     8.4. Combined Observer and Controller
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../01/mattf.html">
+   Appendix A Defining Transfer Functions in MATLAB
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Homework
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../homework/index.html">
+   Homework Problems
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/revision/problems.html#homework-1-revision">
+     Homework 1: Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lead_compensation/problems.html#homework-2-dominant-poles-and-lead-compensation">
+     Homework 2: Dominant Poles and Lead Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_compensation/problems.html#homework-3-lag-compensation">
+     Homework 3: Lag Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/lag_lead_pid/problems.html#homework-4-lag-lead-and-pid-compensation">
+     Homework 4: Lag-Lead and PID Compensation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/freqresp/problems.html#homework-5-frequency-response-cascade-compensator-design">
+     Homework 5: Frequency Response Cascade Compensator Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/digirev/problems.html#homework-6-digital-systems-revision">
+     Homework 6: Digital Systems Revision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ss2tf/problems.html#homework-7-modelling-systems-in-statespace">
+     Homework 7: Modelling Systems in Statespace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ssm/problems.html#homework-8-state-space-modelling">
+     Homework 8: State Space Modelling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html">
+     Swansea University
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#college-of-engineering">
+     College of Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#eglm03-modern-control-systems">
+     EGLM03 Modern Control Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../homework/ppo/problems.html#homework-9-pole-placement-and-observers">
+     Homework 9: Pole Placement and Observers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Handouts
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../handouts/csd/index.html">
+   Control System Design Methods
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/1.html">
+     1. Aims of Control Systems Analysis and Design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/2.html">
+     2. Design Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/3.html">
+     3. Design Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/4.html">
+     4. Design Criteria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/5.html">
+     5. Some Useful Design Curves
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/ack.html">
+     Acknowledgements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../handouts/csd/appendix.html">
+     Appendix -- Transfer Function Plots for Typical Transfer Functions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Setting up your own version of this book
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../setup/index.html">
+   Setting up your own version of this book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../setup/setup.html">
+     Setting up your MATLAB-Jupyter Computing Environment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by 
+ <a href="https://jupyterbook.org">
+  Jupyter Book
+</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/06/4/digictrl.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cpjobling/eglm03-textbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F06/4/digictrl.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/cpjobling/eglm03-textbook/edit/master/06/4/digictrl.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cpjobling/eglm03-textbook/master?urlpath=tree/06/4/digictrl.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose-of-this-section">
+   6.4.1. Purpose of this Section
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#typical-architecture-of-a-digital-control-system">
+   6.4.2. Typical Architecture of a Digital Control System
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relationship-between-s-and-z">
+   6.4.3. Relationship between
+   <span class="math notranslate nohighlight">
+    \(s\)
+   </span>
+   and
+   <span class="math notranslate nohighlight">
+    \(z\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-between-between-s-and-z">
+     6.4.3.1. Mapping between between s and z
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stability-in-the-z-plane">
+     6.4.3.2. Stability in the z-plane
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-plane-design-curves">
+     6.4.3.3. z-plane Design Curves
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-design">
+   6.4.4. Continuous Design
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discretization-procedure">
+     6.4.4.1. Discretization Procedure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discretization-with-matlab">
+     6.4.4.2. Discretization with MATLAB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-of-discretization-methods">
+     6.4.4.3. Summary of Discretization Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-of-approximations">
+     6.4.4.4. Comparison of approximations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compare-digital-equivalents">
+       6.4.4.4.1. Compare digital equivalents
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hold-equivalent">
+         6.4.4.4.1.1. Hold equivalent
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#tustin-equivalent">
+         6.4.4.4.1.2. Tustin equivalent
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#matched-pole-zero">
+         6.4.4.4.1.3. Matched pole-zero
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#make-bode-plot">
+       6.4.4.4.2. Make Bode plot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id1">
+         6.4.4.4.2.1. Hold equivalent
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id2">
+         6.4.4.4.2.2. Tustin equivalent
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id3">
+         6.4.4.4.2.3. Matched pole-zero
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       6.4.4.4.3. Make Bode plot
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#design-example">
+     6.4.4.5. Design Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plan-for-classroom-session">
+       6.4.4.5.1. Plan for classroom session
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       6.4.4.5.2. Design Example
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#root-locus-design-parameters">
+       6.4.4.5.3. Root Locus Design Parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implementation-of-design">
+       6.4.4.5.4. Implementation of design
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implementation-of-design-pseudocode">
+       6.4.4.5.5. Implementation of design - pseudocode
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limits-of-continuous-design-approach">
+     6.4.4.6. Limits of Continuous Design Approach
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#direct-digital-design">
+   6.4.5. Direct Digital Design
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-tools">
+     6.4.5.1. Analysis Tools
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assumed-architecture">
+       6.4.5.1.1. Assumed architecture
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discrete-equivalent">
+       6.4.5.1.2. Discrete equivalent
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hold-plus-plant">
+         6.4.5.1.2.1. Hold plus plant
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     6.4.5.2. Example
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#root-locus-of-plant-g-s-a-s-a">
+       6.4.5.2.1. Root locus of plant
+       <span class="math notranslate nohighlight">
+        \(G(s) = a/(s + a)\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#root-locus-of-hold-equivalent-plant-g-z-1-alpha-z-alpha">
+       6.4.5.2.2. Root locus of hold-equivalent plant
+       <span class="math notranslate nohighlight">
+        \(G(z) = (1 − \alpha)/(z + \alpha)\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discrete-three-term-compensators">
+       6.4.5.2.3. Discrete Three Term Compensators
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#design-example-repeated">
+     6.4.5.3. Design example repeated
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-double-integrator-plant-again">
+       6.4.5.3.1. Example: Double-integrator plant again
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#root-locus">
+       6.4.5.3.2. Root locus
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#footnotes">
+   6.4.6. Footnotes
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-digital-control">
+<h1><span class="section-number">6.4. </span>Introduction to Digital Control<a class="headerlink" href="#introduction-to-digital-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="purpose-of-this-section">
+<h2><span class="section-number">6.4.1. </span>Purpose of this Section<a class="headerlink" href="#purpose-of-this-section" title="Permalink to this headline">¶</a></h2>
+<p>To describe the basic tools for the design of a control system to be
+implemented using a computer or microcomputer.</p>
+<p><strong>Contents</strong></p>
+<ul class="simple">
+<li><p>Typical architecture</p></li>
+</ul>
+<ul class="simple">
+<li><p>Relationship between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(z\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>Continuous design followed by Discretization</p></li>
+</ul>
+<ul class="simple">
+<li><p>Direct digital design</p></li>
+</ul>
+</div>
+<div class="section" id="typical-architecture-of-a-digital-control-system">
+<h2><span class="section-number">6.4.2. </span>Typical Architecture of a Digital Control System<a class="headerlink" href="#typical-architecture-of-a-digital-control-system" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Digital control system" src="../../_images/digicon.png" /></p>
+</div>
+<div class="section" id="relationship-between-s-and-z">
+<h2><span class="section-number">6.4.3. </span>Relationship between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(z\)</span><a class="headerlink" href="#relationship-between-s-and-z" title="Permalink to this headline">¶</a></h2>
+<p>We have already seen that (see <a class="reference internal" href="../3/cse.html"><span class="doc std std-doc">Section 6.3</span></a>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}z=e^{sT}\end{equation}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+	s=\frac{1}{T}\ln z
+\end{equation}\]</div>
+<p>We can use Equation (1) to define a mapping between the <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(z\)</span> planes as summarised below.</p>
+<div class="section" id="mapping-between-between-s-and-z">
+<h3><span class="section-number">6.4.3.1. </span>Mapping between between s and z<a class="headerlink" href="#mapping-between-between-s-and-z" title="Permalink to this headline">¶</a></h3>
+<p>Since <span class="math notranslate nohighlight">\(z=e^{sT}\)</span> we can define a ‘mapping’ from the <span class="math notranslate nohighlight">\(s\)</span>-plane to the <span class="math notranslate nohighlight">\(z\)</span>-plane. Various properties of the <span class="math notranslate nohighlight">\(z\)</span>-plane follow.</p>
+<ul class="simple">
+<li><p>s-plane stability boundary <span class="math notranslate nohighlight">\(s=j\omega\)</span> maps to the unit circle in the z-plane:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[|z|=1\]</div>
+<ul class="simple">
+<li><p>Maximum frequency is half the sampling frequency <span class="math notranslate nohighlight">\(\omega_s/2\)</span> (a consequence of Nyquist’s sampling theorem) and is mapped to the negative real axis in the z-plane.</p></li>
+</ul>
+<p>For proofs, see the problems in the self-directed learning exercises.</p>
+</div>
+<div class="section" id="stability-in-the-z-plane">
+<h3><span class="section-number">6.4.3.2. </span>Stability in the z-plane<a class="headerlink" href="#stability-in-the-z-plane" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Because the stability boundary is a unit circle, Routh-Hurwitz and
+Nyquist stability tests no longer work.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The Jury test is a similar test to the Routh-Hurwitz test but it is
+more involved.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The design curves for constant natural frequency <span class="math notranslate nohighlight">\(\omega_n\)</span>, damping
+ratio <span class="math notranslate nohighlight">\(\zeta\)</span>, <span class="math notranslate nohighlight">\(\sigma_d\)</span> and <span class="math notranslate nohighlight">\(\omega_d\)</span> are also distorted by the
+mapping.</p></li>
+</ul>
+</div>
+<div class="section" id="z-plane-design-curves">
+<h3><span class="section-number">6.4.3.3. </span>z-plane Design Curves<a class="headerlink" href="#z-plane-design-curves" title="Permalink to this headline">¶</a></h3>
+<p>Use the Matlab function <code class="docutils literal notranslate"><span class="pre">zgrid</span></code> to see the mapping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">zgrid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/digictrl_19_0.svg" src="../../_images/digictrl_19_0.svg" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="continuous-design">
+<h2><span class="section-number">6.4.4. </span>Continuous Design<a class="headerlink" href="#continuous-design" title="Permalink to this headline">¶</a></h2>
+<p>Assumption – we have designed a compensator using root-locus or frequency response and now need to implement it with digital hardware, e.g. a digital micro-controller or digital signal processor (DSP).</p>
+<p>We will recall the <strong>discretization</strong> methods discussed in the <a class="reference internal" href="../3/cse.html"><span class="doc std std-doc">last section</span></a>, give a comparison of their frequency response behaviour and the applicability of the continuous design approach. We conclude with an example.</p>
+<div class="section" id="discretization-procedure">
+<h3><span class="section-number">6.4.4.1. </span>Discretization Procedure<a class="headerlink" href="#discretization-procedure" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Digitization" src="../../_images/digitization.png" /></p>
+<p>The idea is that given a continuous compensator transfer function <span class="math notranslate nohighlight">\(D(s)\)</span> we need to find the best equivalent <span class="math notranslate nohighlight">\(D(z)\)</span>. As illustrated in , there is no exact solution since the whole time history is available to <span class="math notranslate nohighlight">\(D(s)\)</span> whereas only  samples are available to <span class="math notranslate nohighlight">\(D(z)\)</span> so different discretization approximation methods make different assumptions about what happens to <span class="math notranslate nohighlight">\(e(t)\)</span> between sampling instants.</p>
+</div>
+<div class="section" id="discretization-with-matlab">
+<h3><span class="section-number">6.4.4.2. </span>Discretization with MATLAB<a class="headerlink" href="#discretization-with-matlab" title="Permalink to this headline">¶</a></h3>
+<p>Given a continuous <span class="math notranslate nohighlight">\(D(s)\)</span> find best equivalent <span class="math notranslate nohighlight">\(D(z)\)</span>.</p>
+<p>Take a transfer function (here <span class="math notranslate nohighlight">\(D(s)=p/(s+p)\)</span>) and return an equivalent
+<span class="math notranslate nohighlight">\(D(z)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c">% rad/s</span>
+<span class="n">ds</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="n">p</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ds =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s + 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span> <span class="c">% Hz</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To discretize <span class="math notranslate nohighlight">\(D(s)\)</span> we use</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dz</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary-of-discretization-methods">
+<h3><span class="section-number">6.4.4.3. </span>Summary of Discretization Methods<a class="headerlink" href="#summary-of-discretization-methods" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Method</strong></p></th>
+<th class="head"><p><strong>Transform</strong></p></th>
+<th class="head"><p><strong>c2d method</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Zero-order hold</p></td>
+<td><p>$<span class="math notranslate nohighlight">\((1-z^{-1})\mathcal{Z}(D(s)/s)\)</span>$</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'zoh'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tustin (bilinear transform)</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(s = (2/T)(1-z^{-1})/(1+z^{-1})\)</span>$</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'tustin'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Matched pole-zero</p></td>
+<td><p>map poles/zeros using <span class="math notranslate nohighlight">\(z=e^{sT}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'matched'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>First-order hold</p></td>
+<td><p>See Matlab documentation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'foh'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Impulse-invariant</p></td>
+<td><p>See Matlab documentation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'imp'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tustin with pre-warp</p></td>
+<td><p>See Matlab documentation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'prewarp'</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, for <em>Zero-Order-Hold Equivalent</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dz</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.2696
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.7304
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.062832 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="s">&#39;-&#39;</span><span class="p">,</span><span class="n">dz</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/digictrl_31_0.svg" src="../../_images/digictrl_31_0.svg" /></div>
+</div>
+<p>See <a class="reference internal" href="../3/cse.html"><span class="doc std std-doc">Section 6.3</span></a> for mathematical derivations.</p>
+</div>
+<div class="section" id="comparison-of-approximations">
+<h3><span class="section-number">6.4.4.4. </span>Comparison of approximations<a class="headerlink" href="#comparison-of-approximations" title="Permalink to this headline">¶</a></h3>
+<p>You can run this example yourself by downloading and executing the script <span class="xref myst">comparison.m</span>.</p>
+<div class="section" id="compare-digital-equivalents">
+<h4><span class="section-number">6.4.4.4.1. </span>Compare digital equivalents<a class="headerlink" href="#compare-digital-equivalents" title="Permalink to this headline">¶</a></h4>
+<p>First plot continuous frequency response.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">bode</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ds =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s + 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+</pre></div>
+</div>
+<img alt="../../_images/digictrl_35_7.svg" src="../../_images/digictrl_35_7.svg" /></div>
+</div>
+<p>Run comparison for <span class="math notranslate nohighlight">\(f_s = 15\)</span> Hz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hold-equivalent">
+<h5><span class="section-number">6.4.4.4.1.1. </span>Hold equivalent<a class="headerlink" href="#hold-equivalent" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsz</span><span class="p">=</span><span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.2835
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.7165
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.066667 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="tustin-equivalent">
+<h5><span class="section-number">6.4.4.4.1.2. </span>Tustin equivalent<a class="headerlink" href="#tustin-equivalent" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dst</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;tustin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dst =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.1429 z + 0.1429
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     z - 0.7143
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.066667 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="matched-pole-zero">
+<h5><span class="section-number">6.4.4.4.1.3. </span>Matched pole-zero<a class="headerlink" href="#matched-pole-zero" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsm</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;mpz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsm =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.2835
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.7165
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.066667 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="make-bode-plot">
+<h4><span class="section-number">6.4.4.4.2. </span>Make Bode plot<a class="headerlink" href="#make-bode-plot" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">dsz</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="s">&#39;+&#39;</span><span class="p">,</span><span class="n">dsm</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">legend(&#39;D(jw)&#39;,&#39;ZOH&#39;,&#39;Tustin&#39;,&#39;MPZ&#39;)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude and phase of discrete equivalents for D(s) = 5/(s+5) - Fs = 15 Hz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/digictrl_45_0.svg" src="../../_images/digictrl_45_0.svg" /></div>
+</div>
+<p>Repeat comparison for  <span class="math notranslate nohighlight">\(f_𝑠=5\)</span> Hz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h5><span class="section-number">6.4.4.4.2.1. </span>Hold equivalent<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsz</span><span class="p">=</span><span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.6321
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.3679
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.2 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h5><span class="section-number">6.4.4.4.2.2. </span>Tustin equivalent<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dst</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;tustin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dst =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.3333 z + 0.3333
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     z - 0.3333
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.2 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h5><span class="section-number">6.4.4.4.2.3. </span>Matched pole-zero<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsm</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;mpz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsm =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.6321
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.3679
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.2 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4><span class="section-number">6.4.4.4.3. </span>Make Bode plot<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">dsz</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="s">&#39;+&#39;</span><span class="p">,</span><span class="n">dsm</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">legend(&#39;D(jw)&#39;,&#39;ZOH&#39;,&#39;Tustin&#39;,&#39;MPZ&#39;)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude and phase of discrete equivalents for D(s) = 5/(s+5) - Fs = 5 Hz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/digictrl_55_0.svg" src="../../_images/digictrl_55_0.svg" /></div>
+</div>
+<p>You should note that the approximations are good for frequencies below about <span class="math notranslate nohighlight">\(\omega_s/4\)</span>. If <span class="math notranslate nohighlight">\(\omega_s\)</span> is sufficiently high, then break frequencies are accurately reproduced. MPZ and Tustin show a notch at <span class="math notranslate nohighlight">\(\omega_s/2\)</span>
+because of the zero term at <span class="math notranslate nohighlight">\(1+z^{-1}\)</span>. Apart from the large difference at <span class="math notranslate nohighlight">\(\omega_s/2\)</span>, which is typically outside the working frequency, all methods have similar performance. Since MPZ is easier to calculate by hand, it is often to be preferred. However, if you have access to MATLAB and the control system toolbox function <em>c2d</em>, there is no need to use anything other than ZOH (which is the default) or the Tustin method.</p>
+</div>
+</div>
+<div class="section" id="design-example">
+<h3><span class="section-number">6.4.4.5. </span>Design Example<a class="headerlink" href="#design-example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="plan-for-classroom-session">
+<h4><span class="section-number">6.4.4.5.1. </span>Plan for classroom session<a class="headerlink" href="#plan-for-classroom-session" title="Permalink to this headline">¶</a></h4>
+<p>In the session we will:</p>
+<ul class="simple">
+<li><p>design a continous compensator for a plant and discretize it by MPZ method</p></li>
+<li><p>see how the digital compensator would be implemented</p></li>
+<li><p>discuss the limitations of “continuous design”</p></li>
+<li><p>redesign the compensator using a digital-design approach.</p></li>
+</ul>
+<p>Let us consider the lead compensation of the double integrator system
+shown below.</p>
+</div>
+<div class="section" id="id5">
+<h4><span class="section-number">6.4.4.5.2. </span>Design Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Figure 1" src="../../_images/ex1-1.png" /></p>
+<p>Let us further assume that we want to have the dominant closed-loop poles with ideal damping <span class="math notranslate nohighlight">\(\zeta=1/\sqrt{2}\)</span> and natural frequency <span class="math notranslate nohighlight">\(\omega_n = 2\sqrt{2}\)</span> rad/s. Furthermore, let us assume that the zero will be placed at <span class="math notranslate nohighlight">\(s=-1\)</span> so that the compensator <span class="math notranslate nohighlight">\(D(s) = K(s+1)/(s+p)\)</span>.</p>
+<p>The root-locus design parameters will then be obtained from the pole-zero map shown below.</p>
+</div>
+<div class="section" id="root-locus-design-parameters">
+<h4><span class="section-number">6.4.4.5.3. </span>Root Locus Design Parameters<a class="headerlink" href="#root-locus-design-parameters" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Figure 2" src="../../_images/ex1-2.png" /></p>
+<div class="math notranslate nohighlight">
+\[\theta_z = \tan^{-1} 2/1 = 116.57^\circ\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    -\theta_p + 116.57 -270 = &amp; -180 \\
+    -\theta_p = &amp; -180 - 153.43 \\
+    \theta_p = &amp; 26.57^\circ\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    -\tan 26.57 = &amp; \frac{2}{x} \\
+    x  = &amp; 2/\tan 26.57 = 4 \\
+    p = &amp; -6\end{aligned}\end{split}\]</div>
+<p>To calculate the gain, we need to know that <span class="math notranslate nohighlight">\(l_1=2\sqrt{2}\)</span>, <span class="math notranslate nohighlight">\(l_2=\sqrt{5}\)</span>, <span class="math notranslate nohighlight">\(l_3=\sqrt{20}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[K = \frac{(2\sqrt{2})^2\times \sqrt{20}}{\sqrt{5}} = \frac{8\times 2\sqrt{5}}{\sqrt{5}} = 16.\]</div>
+<div class="math notranslate nohighlight">
+\[D(s) = \frac{16(s+1)}{(s+6)}.\]</div>
+<p>To convert to <span class="math notranslate nohighlight">\(D(z)\)</span> let the sampling frequency <span class="math notranslate nohighlight">\(\omega_s=20\times \omega_n = 40\sqrt{2}=56.67\)</span> rad/s. Thus
+<span class="math notranslate nohighlight">\(f_s=\omega_s/2\pi = 9\)</span> Hz so sampling period <span class="math notranslate nohighlight">\(T = 1/f_s \approx 0.1\)</span> s.</p>
+<p>Let’s pretend that we are solving this problem in a context where we only have a calculator so we’ll use matched-pole zero.</p>
+<div class="math notranslate nohighlight">
+\[D(z)=k\frac{1-e^{-aT}z^{-1}}{1-e^{-bT}z^{-1}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is determined by matching the DC gain of the two compensators. For the continuous compensator</p>
+<div class="math notranslate nohighlight">
+\[\left.$D(s)\right|_{s=0} = 16/6.\]</div>
+<p>For the digital compensator</p>
+<div class="math notranslate nohighlight">
+\[D(z)|_{z=1} = k(1-e^{-aT})/(1-e^{-bT}),\]</div>
+<p>so</p>
+<div class="math notranslate nohighlight">
+\[k=\frac{16}{6}\times\frac{1-e^{-bT}}{1-e^{-aT}}\]</div>
+<p>For our design, <span class="math notranslate nohighlight">\(T=0.1\)</span>, <span class="math notranslate nohighlight">\(a=1\)</span> and <span class="math notranslate nohighlight">\(b=6\)</span> so $<span class="math notranslate nohighlight">\(\begin{aligned}
+    k = &amp; \frac{16}{6}\times\frac{1-e^{-0.6}}{1-e^{-0.1}} \\
+    = &amp; \frac{16}{6}\times\frac{1-0.5488}{1-0.9048} = \frac{16}{6}\times\frac{0.4512}{0.0952}  \\
+    k  = &amp; 12.64\end{aligned}\)</span>$</p>
+<p>So $<span class="math notranslate nohighlight">\(D(z) = \frac{12.64(1-0.9048z^{-1})}{(1-0.5488z^{-1})}.\)</span>$</p>
+</div>
+<div class="section" id="implementation-of-design">
+<h4><span class="section-number">6.4.4.5.4. </span>Implementation of design<a class="headerlink" href="#implementation-of-design" title="Permalink to this headline">¶</a></h4>
+<p>Since</p>
+<p><span class="math notranslate nohighlight">\(D(z)=U(z)/E(z)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+	(1-0.5488z^{-1})U(z) = &amp; 12.64(1-0.9048z^{-1})E(z) \\
+	U(z) - 0.5488z^{-1}U(z) = &amp; 12.64 E(z) - 11.44 z^{-1} E(z) \\
+	U(z) = &amp; 0.5488z^{-1}U(z) + 12.64 E(z) - 11.44 z^{-1} E(z)\end{aligned}\end{split}\]</div>
+<p>Converting this into (sampled) time domain</p>
+<div class="math notranslate nohighlight">
+\[u(n) = 0.5488 u(n-1) + 12.64 e(n) - 11.44 e(n-1)\]</div>
+</div>
+<div class="section" id="implementation-of-design-pseudocode">
+<h4><span class="section-number">6.4.4.5.5. </span>Implementation of design - pseudocode<a class="headerlink" href="#implementation-of-design-pseudocode" title="Permalink to this headline">¶</a></h4>
+<p>We could implement this in pseudo code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>while (true) do
+  /* read current error from ADC */
+  e(n) = ADC
+  /* calculate and output control action */
+  u(n) = 0.5488 * u(n-1) + 12.64 * e(n) - 11.44 * e(n-1)
+  /* Store past values */
+  e(n-1) = e(n)
+  u(n-1) = u(n)
+  wait for next sample time
+end while
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="limits-of-continuous-design-approach">
+<h3><span class="section-number">6.4.4.6. </span>Limits of Continuous Design Approach<a class="headerlink" href="#limits-of-continuous-design-approach" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Limitations on sampling rate</p></li>
+<li><p>Lag effect of ZOH at low-sampling rates</p></li>
+</ul>
+<p>See notes for more detail.</p>
+<p>If an exact discrete analysis or a simulation of a system were performed and discretization determined for a large range of sampling rates the digitised system would be unstable for rates slower than approximately <span class="math notranslate nohighlight">\(5\omega_n\)</span> (where <span class="math notranslate nohighlight">\(\omega_n\)</span> is the natural frequency of the system dominant poles) and damping would be degraded for rates slower than <span class="math notranslate nohighlight">\(10\omega_n\)</span>. At sampling rates higher than <span class="math notranslate nohighlight">\(20\omega_n\)</span> (or <span class="math notranslate nohighlight">\(20\times \omega_{BW}\)</span> for more complex systems) then all methods yield reasonable results and can be used with confidence at rates of <span class="math notranslate nohighlight">\(30\times \omega_{BW}\)</span> or higher.</p>
+<p>Errors come about because the approximations ignore the phase lag effect of the zero-order-hold (ZOH). The ZOH can be approximated by</p>
+<div class="math notranslate nohighlight">
+\[G_{zoh}(s)\approx \frac{2/T}{s+(2/T)}\]</div>
+<p>which is based on the idea that, on average, the ZOH delays the signal by about <span class="math notranslate nohighlight">\(T/2\)</span> seconds and this transfer function is a first-order lag with time constant <span class="math notranslate nohighlight">\(T/2\)</span> and DC gain of 1. If this was added to the plant transfer function then a more accurate model of the delayed plant wiould be obtained and a more stable design for <span class="math notranslate nohighlight">\(D(s)\)</span>.</p>
+<p>However, the advantage of continuous design is that <span class="math notranslate nohighlight">\(T\)</span> is not chosen until after <span class="math notranslate nohighlight">\(D(s)\)</span> is designed and the appearance of <span class="math notranslate nohighlight">\(T\)</span> so early invalidates this assumption.</p>
+</div>
+</div>
+<div class="section" id="direct-digital-design">
+<h2><span class="section-number">6.4.5. </span>Direct Digital Design<a class="headerlink" href="#direct-digital-design" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Used when limitations on sampling would be breached.</p></li>
+<li><p>Stability boundary is unit circle which adds complications not
+present for continous time systems</p></li>
+<li><p>Additional complexity added because of distorting effect of the
+mapping <span class="math notranslate nohighlight">\(z=e^{sT}\)</span></p></li>
+</ul>
+<p>We will illustrate with an example.</p>
+<p>Direct digital design may be used if the zero-order hold is to be taken into account or if the sample time is somehow constrained. The discrete transfer function for the plant, hold and compensator are used throughout and the root locus method<sup>1</sup> is used in the <span class="math notranslate nohighlight">\(z\)</span>-domain.</p>
+<p>In this presentation, we will consider how the plant is digitized and how the compensator can be designed using the root locus technique in the <span class="math notranslate nohighlight">\(z\)</span>-domain.</p>
+<div class="section" id="analysis-tools">
+<h3><span class="section-number">6.4.5.1. </span>Analysis Tools<a class="headerlink" href="#analysis-tools" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="assumed-architecture">
+<h4><span class="section-number">6.4.5.1.1. </span>Assumed architecture<a class="headerlink" href="#assumed-architecture" title="Permalink to this headline">¶</a></h4>
+<p><img alt="assumed architecture" src="../../_images/digisys.png" /></p>
+</div>
+<div class="section" id="discrete-equivalent">
+<h4><span class="section-number">6.4.5.1.2. </span>Discrete equivalent<a class="headerlink" href="#discrete-equivalent" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Discrete equivalent" src="../../_images/digequiv.png" /></p>
+<p>The zero-order hold (ZOH) precisely defines what happens to the continuous system between samples for there is a unique solution for the combination of the transfer functions of the ZOH and G(s). The transfer
+function for ZOH (see <a class="reference internal" href="../2/dsm.html"><span class="doc std std-doc">Section 6.2</span></a>) is <span class="math notranslate nohighlight">\((1-e^{-sT})/s\)</span> so for hold followed by plant we can use the mathematical development show in to determine <span class="math notranslate nohighlight">\(G(z)\)</span>. As we showed, the <span class="math notranslate nohighlight">\(1/s\)</span> term is present because the output of ZOH is a piecewise constant function of time, and <span class="math notranslate nohighlight">\(1-z^{-1}\)</span> represents a step followed by a negative step delayed by one sample period.</p>
+<div class="section" id="hold-plus-plant">
+<h5><span class="section-number">6.4.5.1.2.1. </span>Hold plus plant<a class="headerlink" href="#hold-plus-plant" title="Permalink to this headline">¶</a></h5>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+        \left(\frac{1-e^{-sT}}{s}\right)G(s) = &amp; (1-e^{-sT})\frac{G(s)}{s} \\
+        \mathcal{Z}\left\{(1-e^{-sT})\frac{G(s)}{s}\right\} = &amp; \mathcal{Z}\{1-e^{-sT}\}\mathcal{Z}\left\{\frac{G(s)}{s}\right\} \\
+        G(z) = &amp; (1-z^{-1}) \mathcal{Z}\left\{\frac{G(s)}{s}\right\}
+    \end{aligned}\end{split}\]</div>
+<p>For the discrete equivalent system</p>
+<div class="math notranslate nohighlight">
+\[\frac{C(z)}{D(z)} = \frac{DG(z)}{1+DG(z)}\]</div>
+<p>and the closed-loop characteristic equation (CLCE) is</p>
+<div class="math notranslate nohighlight">
+\[1+DG(z)=0.\]</div>
+<p>The root-locus plotting rules still apply but the interpretation is different.</p>
+</div>
+</div>
+</div>
+<div class="section" id="example">
+<h3><span class="section-number">6.4.5.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[G(s)=\frac{a}{s+a}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    G(z) = &amp; (1-z^{-1})\mathcal{Z}\left\{\frac{a}{s(s+a)}\right\} \\
+         = &amp; (1-z^{-1})\mathcal{Z}\left\{\frac{1}{s}-\frac{1}{s+a}\right\} \\
+         = &amp; (1-z^{-1})\left\{\frac{z}{z-1}-\frac{z}{z+e^{-aT}}\right\} \\
+         = &amp; \left(\frac{z-1}{z}\right)\left\{\frac{z(z-e^{-aT})-z(z-1)}{(z-1)(z+e^{-aT})}\right\} \\\end{aligned}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[G(z) = \frac{1-e^{-aT}}{z-e^{-aT}}.\]</div>
+<p>So <span class="math notranslate nohighlight">\(G(z)=(1-\alpha)/(z-\alpha)\)</span> where <span class="math notranslate nohighlight">\(\alpha=e^{-aT}\)</span>.</p>
+<p>The implications of this result is assessed in the next two figures.</p>
+<div class="section" id="root-locus-of-plant-g-s-a-s-a">
+<h4><span class="section-number">6.4.5.2.1. </span>Root locus of plant <span class="math notranslate nohighlight">\(G(s) = a/(s + a)\)</span><a class="headerlink" href="#root-locus-of-plant-g-s-a-s-a" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Root locus of plant G(s) = a/(s + a)" src="../../_images/slocus.png" /></p>
+<p>This is stable for all open-loop gain <span class="math notranslate nohighlight">\(K\)</span>.</p>
+</div>
+<div class="section" id="root-locus-of-hold-equivalent-plant-g-z-1-alpha-z-alpha">
+<h4><span class="section-number">6.4.5.2.2. </span>Root locus of hold-equivalent plant <span class="math notranslate nohighlight">\(G(z) = (1 − \alpha)/(z + \alpha)\)</span><a class="headerlink" href="#root-locus-of-hold-equivalent-plant-g-z-1-alpha-z-alpha" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Root locus of hold-equivalent plant G(z) = (1 − \alpha)/(z + \alpha)" src="../../_images/zlocus.png" /></p>
+<p>This is unstable for some gain <span class="math notranslate nohighlight">\(K\)</span> because of the time delay introduced
+by ZOH.</p>
+</div>
+<div class="section" id="discrete-three-term-compensators">
+<h4><span class="section-number">6.4.5.2.3. </span>Discrete Three Term Compensators<a class="headerlink" href="#discrete-three-term-compensators" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Implementation</strong></p></th>
+<th class="head"><p><strong>Transfer function</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Proportional</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(u(n) = K_Pe(n)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(D(z)=K_P\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derivative</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(u(n) = K_D(e(n)-e(n-1)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(D(z)=K_D(1-z^{-1})\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>Integral</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(u(n) = u(n-1) + K_Ie(n)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(D(z)=K_I/(1-z^{-1})\)</span>$</p></td>
+</tr>
+</tbody>
+</table>
+<p>Of course, these can be combined to give P+D and PID. There are also
+equivalents of lead, lag and lead-lag.</p>
+</div>
+</div>
+<div class="section" id="design-example-repeated">
+<h3><span class="section-number">6.4.5.3. </span>Design example repeated<a class="headerlink" href="#design-example-repeated" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-double-integrator-plant-again">
+<h4><span class="section-number">6.4.5.3.1. </span>Example: Double-integrator plant again<a class="headerlink" href="#example-double-integrator-plant-again" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[G(s)=\frac{1}{s^2}\]</div>
+<p>Hold equivalent is</p>
+<div class="math notranslate nohighlight">
+\[G(z)=\frac{T^2}{2}\frac{(z+1)}{(z-1)^2}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(T = 0.1\)</span> seconds then</p>
+<div class="math notranslate nohighlight">
+\[G(z)=\frac{1}{200}\frac{(z+1)}{(z-1)^2}\]</div>
+</div>
+<div class="section" id="root-locus">
+<h4><span class="section-number">6.4.5.3.2. </span>Root locus<a class="headerlink" href="#root-locus" title="Permalink to this headline">¶</a></h4>
+<p><img alt="Root locus" src="../../_images/zdi.png" /></p>
+<p>Note, root-locus is outside unit circle so system is unstable for all <span class="math notranslate nohighlight">\(K_P\)</span>.</p>
+<p>We introduce proportional plus derivative compensation to bring the root locus inside the unit circle. Thus, from the table</p>
+<div class="math notranslate nohighlight">
+\[U(z)=K_PE(z)+K_D(1-z^{-1})E(z)\]</div>
+<p>Hence</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    D(z) = \frac{U(z)}{E(z)} = &amp; K_P + K_D - K_D z^{-1} \\
+    = &amp; \frac{(K_P+K_D)z - K_D}{z} \\
+    = &amp; (K_P+K_D)\left(\frac{z-(K_D/(K_P+K_D))}{z}\right) \\
+    = &amp; K_c\left(\frac{z-\gamma}{z}\right)\end{aligned}\end{split}\]</div>
+<p>We note that
+$<span class="math notranslate nohighlight">\(DG(z)=\frac{K_c}{200}\left(\frac{z-\gamma}{z}\right)\frac{(z+1)}{(z-1)^2}\)</span>$</p>
+<p>and hence the root-locus gain <span class="math notranslate nohighlight">\(K_o=K_c/200\)</span>. The compensator adds a pole at <span class="math notranslate nohighlight">\(z=0\)</span> and a zero at <span class="math notranslate nohighlight">\(z=\gamma\)</span>.</p>
+<p>As before, we would like the system to have ideal damping and a natural frequency of <span class="math notranslate nohighlight">\(2\sqrt{2}\)</span>. But as we are now working in the <span class="math notranslate nohighlight">\(z\)</span>-plane, we also need to map the desired closed-loop poles by the mapping <span class="math notranslate nohighlight">\(s=e^{sT}\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(s=-2\pm j2\)</span> and <span class="math notranslate nohighlight">\(z=e^{sT}\)</span> then <span class="math notranslate nohighlight">\(z=e^{-2T}e^{\pm j2T} = e^{-0.2}(\cos0.2\pm j\sin0.2) = 0.8024\pm j0.1627\)</span>.</p>
+<p>Given this location for the desired closed-loop dominant poles, it is a matter of trigonometry to determine that <span class="math notranslate nohighlight">\(\gamma=0.8532\)</span> and the root locus gain <span class="math notranslate nohighlight">\(K_o=0.0465\)</span>.</p>
+<p>Now since <span class="math notranslate nohighlight">\(K_c=200 K_o = 9.31\)</span> it is easy to show that <span class="math notranslate nohighlight">\(K_D=7.9367\)</span> and <span class="math notranslate nohighlight">\(K_P=1.3703.\)</span></p>
+<p>The proof is left as an exercise.</p>
+</div>
+</div>
+</div>
+<div class="section" id="footnotes">
+<h2><span class="section-number">6.4.6. </span>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h2>
+<p>1: Frequency response methods can be used, but are complicated by the fact that the stability boundary is the unit circle. We leave the methods, which are well covered in Franklin, Powell and Workman, as a topic for further research.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "imatlab"
+        },
+        kernelOptions: {
+            kernelName: "imatlab",
+            path: "./06/4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'imatlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../3/cse.html" title="previous page"><span class="section-number">6.3. </span>Continuous System Equivalence</a>
+    <a class='right-next' id="next-link" href="../../07/index.html" title="next page"><span class="section-number">7. </span>Modelling Systems in State-Space</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dr Chris P. Jobling<br/>
+        
+            &copy; Copyright Swansea University (2019-2021).<br/>
+          <div class="extra_footer">
+            This page was created by 
+<a href="https://www.swansea.ac.uk/staff/engineering/c.p.jobling/">
+  Dr Chris P. Jobling
+</a> 
+for 
+<a href="https://www.swansea.ac.uk">
+  Swansea University
+</a>.
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
