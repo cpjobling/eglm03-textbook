@@ -159,7 +159,11 @@
       file: homework/ssm/problems
     - title: Homework 9 - Pole Placement and Observers
       file: homework/ppo/problems
-    
+  - title: Solutions to Selected Homework Problems
+    file: homework/solutions
+    sections:
+    - title: Solutions 1 - Revision
+      file: homework/revision/solutions
 
 - part: Handouts
   chapters:
