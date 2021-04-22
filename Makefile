@@ -11,24 +11,23 @@ help:
 	@echo "  site 		 to build the site HTML, store in _site/, and serve with Jekyll"
 
 
-install:
-	jupyter-book install ./
+linkcheck:
+	jupyter-book build . --builder linkcheck
 
-book:
-	jupyter-book build ./
-
-runall:
-	jupyter-book run ./content
+rebuild:
+	make clean
+	make build
 
 clean:
-	python scripts/clean.py
+	jupyter-book clean .
 
-serve:
-	bundle exec guard
+build:  
+	make assets
+	jupyter-book build .
 
-build:
-	jupyter-book build ./ --overwrite
+site:   
+	make clean
+	jupyter-book build .
+	touch _build/html/.nojekyll
+	ghp-import --no-jekyll -p -f ./_build/html
 
-site: build
-	bundle exec jekyll build --destination docs
-	touch docs/.nojekyll
