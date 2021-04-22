@@ -127,12 +127,12 @@
         - title: Combined Observer and Controller
           file: 08/4/observer_controller
 
-    - part: Appendices
+- part: Appendices
       
-      chapters:
+  chapters:
 
-        - title: Appendix A Defining Transfer Functions in MATLAB
-          file: 01/mattf
+  - title: Appendix A Defining Transfer Functions in MATLAB
+    file: 01/mattf
 
 - part: Homework
   
