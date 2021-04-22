@@ -9,6 +9,9 @@ title                       : EGLM03 Modern Control Systems  # The title of the 
 author                      : Dr Chris P. Jobling  # The author of the book
 copyright                   : "Swansea University (2019-2021)"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, .github, "*.ipynb_checkpoints"]
+# Auto-exclude files not in the toc
+only_build_toc_files        : false
 
 
 email: c.p.jobling@swansea.ac.uk
@@ -17,18 +20,44 @@ description: >-
 
 # Execution settings
 execute:
-    execute_notebooks: cache
+    execute_notebooks: auto
     cache: ""
-    exclude_patterns: [_build, Thumbs.db, .DS_Store, .github, "*.ipynb_checkpoints"]
+    exclude_patterns          : []    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+    timeout                   : 30    # The maximum time (in seconds) each notebook cell is allowed to run.
+    run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
+                                    # otherwise the notebook's parent directory will be the cwd.
+    allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+    stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
 
+
+#######################################################################################
+# Parse and render settings
+parse:
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    # - deflist
+    - dollarmath
+    # - html_admonition
+    # - html_image
+    - linkify
+    # - replacements
+    # - smartquotes
+    - substitution
+    
 repository:
     url: https://github.com/cpjobling/eglm03-textbook
     path_to_book: ""
     branch: master
 
+myst_url_schemes          : [mailto, http, https]  # URI schemes that will be recognised as external URLs in Markdown links
+
+
+#######################################################################################
+# HTML-specific settings
 html:
     baseurl: https://cpjobling.github.io/eglm03-textbook/ 
-    use_edit_page_button: true
+    use_edit_page_button: false
     use_repository_button: true
     use_issues_button: true
     favicon: ""
@@ -48,9 +77,31 @@ html:
        <a href="https://jupyterbook.org">
         Jupyter Book
       </a>
+    baseurl: "https://cpjobling.github.io/eglm03-textbook"
+    comments:
+      hypothesis: true
+      utterences: false
 
+#######################################################################################
+# Launch button settings
+launch_buttons:
+  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : "" # The URL of the BinderHub (e.g., https://mybinder.org)
+  jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
+  colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
+
+#######################################################################################
+# LaTeX-specific settings
+latex:
+  latex_engine              : lualatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
+  use_jupyterbook_latex     : true # use jupyterbook-latex for pdf builds as default
+  
 colab_default: false
+
 sphinx:
+  extra_extensions          :   # A list of extra extensions to load by Sphinx (added to those already used by JB).
+  local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items                   :   # key-value pairs to directly over-ride the Sphinx configuration
   config:
     html_extra_path: ['_assets']
     exclude_patterns: ['**/README.md','portfolio','README.md','LICENSE.md']
