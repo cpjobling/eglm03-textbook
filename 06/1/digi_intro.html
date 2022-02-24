@@ -1142,12 +1142,15 @@ Transform of the Forward Shift:</p>
 \[\mathcal{Z}\triangle v = z V(z) - zv_0\]</div>
 <p>To prove the relationship illustrated in we note that</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\triangle v = v_1\ v_2\ v_3\ \ldots\ v_{k+1}\ldots$$ so that\\\begin{split}$$\begin{eqnarray*}
+\[\triangle v = v_1\ v_2\ v_3\ \ldots\ v_{k+1}\ldots\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
   \mathcal{Z}\triangle v &amp; = &amp;  v_1 z^0 + v_2 z^{-1} + v_3 z^{-3} + \cdots
   + v_{k+1}z^{-k}+\cdots \\
 &amp; = &amp; z(v_0 + v_1 z^{-1} + v_2 z^{-2} + \cdots
   + v_{k+1}z^{-{k+1}}+\cdots)-zv_0\\
-&amp;=&amp; zV(z) - zv_0.\end{eqnarray*}\end{split}\end{aligned}\end{align} \]</div>
+&amp;=&amp; zV(z) - zv_0.\end{eqnarray*}\end{split}\]</div>
 <p>Similar arguments may be used to prove
 the other relationships shown in the previous slide.</p>
 </div>
@@ -1164,9 +1167,9 @@ the other relationships shown in the previous slide.</p>
 <p>The inverse <span class="math notranslate nohighlight">\(z\)</span> transform of <span class="math notranslate nohighlight">\(V\)</span> is <span class="math notranslate nohighlight">\(\mathcal{Z}^{-1} V = v\)</span>, where <span class="math notranslate nohighlight">\(v\)</span> is a digital signal, that is a sequence.</p>
 <p>This contrasts with the inverse Laplace transformation, which gives functions of time.</p>
 <p>As the definition of the transform involves <span class="math notranslate nohighlight">\(z^{-1}\)</span>, through</p>
-<p>$<span class="math notranslate nohighlight">\(V=\sum_{k=0}^{\infty} v_k z^{-k},\)</span><span class="math notranslate nohighlight">\( it is often useful to commence
-    the inversion if \)</span>V(z)<span class="math notranslate nohighlight">\( by expressing it as a function of \)</span>z^{-1}<span class="math notranslate nohighlight">\(
-    rather than of \)</span>z$.</p>
+<div class="math notranslate nohighlight">
+\[V=\sum_{k=0}^{\infty} v_k z^{-k},\]</div>
+<p>it is often useful to commence the inversion if <span class="math notranslate nohighlight">\(V(z)\)</span> by expressing it as a function of <span class="math notranslate nohighlight">\(z^{-1}\)</span> rather than of <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <div class="section" id="methods-of-obtaining-the-inverse-z-transform">
 <h3><span class="section-number">6.1.8.1. </span>Methods of obtaining the inverse z Transform<a class="headerlink" href="#methods-of-obtaining-the-inverse-z-transform" title="Permalink to this headline">¶</a></h3>
 <p>There are several methods for obtaining inverse <span class="math notranslate nohighlight">\(z\)</span> transforms.</p>
