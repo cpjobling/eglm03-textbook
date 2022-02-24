@@ -819,13 +819,15 @@ the <em>difference equation</em></p>
 <h3><span class="section-number">6.2.1.2. </span>Difference equation in terms of the delay operator<a class="headerlink" href="#difference-equation-in-terms-of-the-delay-operator" title="Permalink to this headline">¶</a></h3>
 <p>Unlike the differential equation, however, which is hardly ever expressed in an integral form, the difference equation is more usually expressed in terms of the delay operator <span class="math notranslate nohighlight">\(\nabla\)</span>.</p>
 <p>Applying the operator <span class="math notranslate nohighlight">\(\nabla^n\)</span> to equation (1)
-gives $<span class="math notranslate nohighlight">\(\begin{eqnarray}
+gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
 y + a_{1}\nabla y + \ldots  + a_n \nabla^n y &amp;=&amp; b_0 u +
 b_{1}\nabla u + \ldots +  b_n\nabla^n u\\
   y_{k} + a_{1}y_{k-1} + \ldots +  a_n y_{k-n}
    &amp;=&amp; b_0
    u_{k} + b_{1} u_{k-1} + \ldots + b_n u_{k-n}.
-   \end{eqnarray}\)</span>$</p>
+   \end{eqnarray}\end{split}\]</div>
 <p>### z-transform of difference equation</p>
 <p>Applying the <span class="math notranslate nohighlight">\(z\)</span> transform directly to the difference equation with the delay operator
 (3) gives</p>
@@ -839,28 +841,33 @@ b_{1}\nabla u + \ldots +  b_n\nabla^n u\\
 </div>
 <div class="section" id="z-transfer-function">
 <h3><span class="section-number">6.2.1.3. </span>z Transfer Function<a class="headerlink" href="#z-transfer-function" title="Permalink to this headline">¶</a></h3>
-<p>Given that $<span class="math notranslate nohighlight">\((1 +
+<p>Given that</p>
+<div class="math notranslate nohighlight">
+\[(1 +
 a_{1}z^{-1} + \ldots +  a_n z^{-n}) Y(z) = (b_0 + b_1 z^{-1} +
-\ldots + b_n z^{-n}) U(z)\)</span>$</p>
-<p>The <span class="math notranslate nohighlight">\(z\)</span> transfer function is
-$<span class="math notranslate nohighlight">\(H(z) = \frac{Y(z)}{U(z)}=\frac{b_0 + b_{1}z^{-1} + \ldots + b_n
-z^{-n}}{1 + a_1z^{-1} + \ldots + a_n z^{-n}}\)</span>$</p>
+\ldots + b_n z^{-n}) U(z)\]</div>
+<p>The <span class="math notranslate nohighlight">\(z\)</span> transfer function is</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{Y(z)}{U(z)}=\frac{b_0 + b_{1}z^{-1} + \ldots + b_n
+z^{-n}}{1 + a_1z^{-1} + \ldots + a_n z^{-n}}\]</div>
 <p>A digital system in this general form is known as a “<em>pole-zero,
 infinite impulse response, recursive auto-regressive moving average
 digital filter(!)</em>”</p>
 </div>
 <div class="section" id="z-transfer-function-2">
 <h3><span class="section-number">6.2.1.4. </span>z Transfer Function (2)<a class="headerlink" href="#z-transfer-function-2" title="Permalink to this headline">¶</a></h3>
-<p>If <span class="math notranslate nohighlight">\(b_1 = b_2 = \cdots = b_n = 0\)</span> then the transfer function is
-$<span class="math notranslate nohighlight">\(H(z) = \frac{b_0}{1 + a_1z^{-1} + \ldots + a_n z^{-n}}\)</span>$</p>
+<p>If <span class="math notranslate nohighlight">\(b_1 = b_2 = \cdots = b_n = 0\)</span> then the transfer function is</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{b_0}{1 + a_1z^{-1} + \ldots + a_n z^{-n}}\]</div>
 <p>A digital system in this form is known as an “<em>all pole, infinite
 impulse response, recursive auto-regressive digital filter.</em>”</p>
 </div>
 <div class="section" id="z-transfer-function-3">
 <h3><span class="section-number">6.2.1.5. </span>z Transfer Function (3)<a class="headerlink" href="#z-transfer-function-3" title="Permalink to this headline">¶</a></h3>
-<p>When <span class="math notranslate nohighlight">\(a_1 = a_2 = \cdots = a_n = 0\)</span> then the transfer function is
-$<span class="math notranslate nohighlight">\(H(z) = b_0 + b_{1}z^{-1} + \ldots + b_n
-z^{-n}\)</span>$</p>
+<p>When <span class="math notranslate nohighlight">\(a_1 = a_2 = \cdots = a_n = 0\)</span> then the transfer function is</p>
+<div class="math notranslate nohighlight">
+\[H(z) = b_0 + b_{1}z^{-1} + \ldots + b_n
+z^{-n}\]</div>
 <p>A digital system in this form is known as an “<em>all zero, finite impulse
 response, non recursive moving average digital filter.</em>”</p>
 </div>
@@ -875,10 +882,10 @@ response, non recursive moving average digital filter.</em>”</p>
 </div>
 <div class="section" id="canonical-forms">
 <h3><span class="section-number">6.2.1.7. </span>Canonical Forms<a class="headerlink" href="#canonical-forms" title="Permalink to this headline">¶</a></h3>
-<p>With the transfer function written as
-$<span class="math notranslate nohighlight">\(H(z) = \frac{b_0 z^n + b_{n-1} z^{n-1} + \cdots + b_1 z + b_n}{z^n + a_1 z^{n-1} + \cdots + a_{n-1} z + b_n}\)</span><span class="math notranslate nohighlight">\(
-    there is a direct analogy with the general form of the continuous
-    system transfer function with \)</span>s<span class="math notranslate nohighlight">\( instead of \)</span>z$.</p>
+<p>With the transfer function written as</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{b_0 z^n + b_{n-1} z^{n-1} + \cdots + b_1 z + b_n}{z^n + a_1 z^{n-1} + \cdots + a_{n-1} z + b_n}\]</div>
+<p>there is a direct analogy with the general form of the continuous system transfer function with <span class="math notranslate nohighlight">\(s\)</span> instead of <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <p>This was implemented with the physically realistic integral operator
 <span class="math notranslate nohighlight">\(\int
     dt\)</span> for which the digital equivalent is the delay operator <span class="math notranslate nohighlight">\(\nabla\)</span>.</p>
@@ -900,16 +907,19 @@ zero and will not be considered further.</p>
 <h3><span class="section-number">6.2.3.1. </span>Digital System Response<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The response of a
 digital system with transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> to a digital input signal
-<span class="math notranslate nohighlight">\(u\)</span> is the digital output signal <span class="math notranslate nohighlight">\(y\)</span> given in transform form as
-$<span class="math notranslate nohighlight">\(\begin{equation}
-  Y(z) =H(z) U(z)\end{equation}\)</span>$</p>
+<span class="math notranslate nohighlight">\(u\)</span> is the digital output signal <span class="math notranslate nohighlight">\(y\)</span> given in transform form as</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+  Y(z) =H(z) U(z)\end{equation}\]</div>
 <p>The inverse transform needed to determine the digital system response is
 obtained using the inverse z transform methods, e.g. polynomial division
 and partial fraction expansion, discussed in a previous lecture.</p>
 <p>Taking the inverse transform gives the digital
-system response as $<span class="math notranslate nohighlight">\(\begin{equation}
+system response as</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
   y_k = \mathcal{Z}^{-1}Y(z) = \mathcal{Z}^{-1} \left\{H(z)
-  U(z)\right\}\end{equation}\)</span>$</p>
+  U(z)\right\}\end{equation}\]</div>
 </div>
 </div>
 <div class="section" id="response-to-singularity-signals">
@@ -921,30 +931,38 @@ the digital impulse signal and the digital step input.</p>
 <div class="section" id="impulse-signal">
 <h4><span class="section-number">6.2.4.1.1. </span>Impulse signal<a class="headerlink" href="#impulse-signal" title="Permalink to this headline">¶</a></h4>
 <p>The digital impulse
-signal is given by $<span class="math notranslate nohighlight">\(\begin{equation}
-  v = \delta = \{\delta_k\}\end{equation}\)</span>$</p>
+signal is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+  v = \delta = \{\delta_k\}\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\delta_0 = 1\)</span> when <span class="math notranslate nohighlight">\(k = 0\)</span>, and
 <span class="math notranslate nohighlight">\(\delta_k = 0\)</span> otherwise.</p>
 <p>Therefore the sequence for the impulse is
-simply $<span class="math notranslate nohighlight">\(\delta_k = 1,\ 0,\ 0,\ 0,\ \ldots.\)</span>$</p>
-<p>The transform of the digital impulse signal is $<span class="math notranslate nohighlight">\(\begin{equation}
-  V = \Delta = \sum_{k=0}^{\infty}\delta_k z^{-k} = 1\end{equation}\)</span>$</p>
+simply</p>
+<div class="math notranslate nohighlight">
+\[\delta_k = 1,\ 0,\ 0,\ 0,\ \ldots.\]</div>
+<p>The transform of the digital impulse signal is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+  V = \Delta = \sum_{k=0}^{\infty}\delta_k z^{-k} = 1\end{equation}\]</div>
 </div>
 <div class="section" id="example-1-impulse-response-calculate-the-impulse">
 <h4><span class="section-number">6.2.4.1.2. </span>Example 1: Impulse Response Calculate the impulse<a class="headerlink" href="#example-1-impulse-response-calculate-the-impulse" title="Permalink to this headline">¶</a></h4>
-<p>response of the digital system with transfer function
-$<span class="math notranslate nohighlight">\(H(z) = \frac{4z^2 - 16}{z^2 - 0.25}\)</span>$</p>
+<p>response of the digital system with transfer function</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{4z^2 - 16}{z^2 - 0.25}\]</div>
 <p>Consider the system</p>
 <div class="math notranslate nohighlight">
 \[H(z) = \frac{4z^2 - 16}{z^2 - 0.25}\]</div>
 <p>The impulse response will be</p>
 <div class="math notranslate nohighlight">
 \[Y(z) = H(z)\times 1 = \frac{4z^2 - 16}{z^2 - 0.25}\]</div>
-<p>We shall determine this response using the partial fraction expansion.
-$<span class="math notranslate nohighlight">\(\begin{eqnarray*}
+<p>We shall determine this response using the partial fraction expansion.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
 Y(z) &amp;=&amp; \frac{4 - 16z^{-2}}{1 - 0.25 z^{-2}}\\
      &amp;=&amp; \frac{4(4 - 16z^{-2})}{4 - z^{-2}}\\
-     &amp;=&amp; \frac{4(2 - 4z^{-1})(2 + 4z^{-1})}{(2 - z^{-1})(2 + z^{-1})}\end{eqnarray*}\)</span>$</p>
+     &amp;=&amp; \frac{4(2 - 4z^{-1})(2 + 4z^{-1})}{(2 - z^{-1})(2 + z^{-1})}\end{eqnarray*}\end{split}\]</div>
 <p>Assuming a partial fraction expansion of the form</p>
 <div class="math notranslate nohighlight">
 \[Y(z) = \frac{A}{2 - z^{-1}} + \frac{B}{2 + z^{-1}} + C\]</div>
@@ -961,17 +979,19 @@ Y(z) &amp;=&amp; \frac{4 - 16z^{-2}}{1 - 0.25 z^{-2}}\\
 16 &amp;=&amp; 2A +2B + 4C\\ 
 0 &amp;=&amp; A - B\\ 
 -64 &amp;=&amp; -C\end{eqnarray}\end{split}\]</div>
-<p>Hence
-$<span class="math notranslate nohighlight">\(\begin{eqnarray}
-C &amp;=&amp; 64\\ A &amp;=&amp; B\\ 16 &amp;=&amp; 4A + 256\\ A &amp;=&amp; B = -60\end{eqnarray}\)</span>$</p>
-<p>Thus
-$<span class="math notranslate nohighlight">\(\begin{eqnarray*}
+<p>Hence</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+C &amp;=&amp; 64\\ A &amp;=&amp; B\\ 16 &amp;=&amp; 4A + 256\\ A &amp;=&amp; B = -60\end{eqnarray}\end{split}\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
     Y(z) &amp;=&amp; 64 -\frac{60}{2-z^{-1}}-\frac{60}{2+z^{-1}}\\
     &amp;=&amp; 64 -\frac{30}{1-1/2 z^{-1}}-\frac{30}{1+1/2 z^{-1}}\\
      y_k&amp; =&amp; \left\{64\delta_k - 30\left(\frac{1}{2}\right)^k - 30
 \left(-\frac{1}{2}\right)^k\right\}\\
  &amp;=&amp; \left\{4,\ 0,\ -15,\ 0,\ -3.75,\ 0,\ -0.9375,\ \ldots
- \right\}\end{eqnarray*}\)</span>$</p>
+ \right\}\end{eqnarray*}\end{split}\]</div>
 </div>
 </div>
 <div class="section" id="step-response">
@@ -979,26 +999,33 @@ $<span class="math notranslate nohighlight">\(\begin{eqnarray*}
 <div class="section" id="step-signal">
 <h4><span class="section-number">6.2.4.2.1. </span>Step signal<a class="headerlink" href="#step-signal" title="Permalink to this headline">¶</a></h4>
 <p>The digital step signal
-is $<span class="math notranslate nohighlight">\(\begin{equation}
-  v = \epsilon = \{\epsilon_k\}\end{equation}\)</span>$</p>
+is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation}
+  v = \epsilon = \{\epsilon_k\}\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon_k = 1\)</span> when <span class="math notranslate nohighlight">\(k \ge 0\)</span>,
 and <span class="math notranslate nohighlight">\(\epsilon_k = 0\)</span> otherwise.</p>
 <p>Therefore the sequence for the step is
-simply $<span class="math notranslate nohighlight">\(\epsilon_k = 1,\ 1,\ 1,\ 1,\ \ldots.\)</span>$</p>
+simply</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_k = 1,\ 1,\ 1,\ 1,\ \ldots.\]</div>
 </div>
 <div class="section" id="z-transform-of-step-signal">
 <h4><span class="section-number">6.2.4.2.2. </span>z-transform of step signal<a class="headerlink" href="#z-transform-of-step-signal" title="Permalink to this headline">¶</a></h4>
 <p>The transform of the
-digital step signal is $<span class="math notranslate nohighlight">\(\begin{eqnarray}
+digital step signal is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
   V = E &amp;=&amp; \sum_{k=0}^{\infty}\epsilon_k z^{-k}\\
         &amp;=&amp; \sum_{k=0}^{\infty} z^{-k}\nonumber \\
         &amp;=&amp; 1 + z^{-1} + z^{-2} + z^{-3} + \cdots z^{-n} + \cdots \nonumber\\
-        &amp;=&amp; \frac{1}{1-z^{-1}} = \frac{z}{z-1}.\end{eqnarray}\)</span>$</p>
+        &amp;=&amp; \frac{1}{1-z^{-1}} = \frac{z}{z-1}.\end{eqnarray}\end{split}\]</div>
 </div>
 <div class="section" id="example-2-step-response">
 <h4><span class="section-number">6.2.4.2.3. </span>Example 2: Step Response<a class="headerlink" href="#example-2-step-response" title="Permalink to this headline">¶</a></h4>
-<p>Calculate the step response of the digital system with transfer function
-$<span class="math notranslate nohighlight">\(H(z) = \frac{4z^2 - 16}{z^2 - 0.25}\)</span>$</p>
+<p>Calculate the step response of the digital system with transfer function</p>
+<div class="math notranslate nohighlight">
+\[H(z) = \frac{4z^2 - 16}{z^2 - 0.25}\]</div>
 <p>The step response of the example system is</p>
 <div class="math notranslate nohighlight">
 \[Y(z) = H(z)\times \frac{z}{z-1} = \frac{z(4z^2 - 16)}{(z-1)(z^2 - 0.25)}\]</div>
