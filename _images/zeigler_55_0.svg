@@ -57,12 +57,12 @@
         /><glyph unicode="C" horiz-adv-x="74.1" d="M54.5 47.4 L69.7 47.4 Q69 53.6 66.3 58.4 Q63.6 63.2 59.45 66.45 Q55.3 69.7 50.05 71.4 Q44.8 73.1 38.9 73.1 Q30.7 73.1 24.15 70.2 Q17.6 67.3 13.1 62.2 Q8.6 57.1 6.2 50.25 Q3.8 43.4 3.8 35.4 Q3.8 27.6 6.2 20.85 Q8.6 14.1 13.1 9.1 Q17.6 4.1 24.15 1.25 Q30.7 -1.6 38.9 -1.6 Q45.5 -1.6 51 0.4 Q56.5 2.4 60.6 6.2 Q64.7 10 67.2 15.4 Q69.7 20.8 70.3 27.5 L55.1 27.5 Q54.2 20.3 50.15 15.9 Q46.1 11.5 38.9 11.5 Q33.6 11.5 29.9 13.55 Q26.2 15.6 23.9 19 Q21.6 22.4 20.55 26.65 Q19.5 30.9 19.5 35.4 Q19.5 40.1 20.55 44.5 Q21.6 48.9 23.9 52.35 Q26.2 55.8 29.9 57.85 Q33.6 59.9 38.9 59.9 Q41.8 59.9 44.45 58.95 Q47.1 58 49.2 56.3 Q51.3 54.6 52.7 52.35 Q54.1 50.1 54.5 47.4 Z"
       /></font
     ></defs
-    ><g style="fill:white; stroke:white;"
+    ><g style="fill:rgb(240,240,240); stroke:rgb(240,240,240);"
     ><rect x="0" y="0" width="560" style="clip-path:url(#clipPath1); stroke:none;" height="420"
     /></g
-    ><g style="fill:white; text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:white; color-interpolation:sRGB;"
+    ><g style="fill:rgb(240,240,240); text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:rgb(240,240,240); color-interpolation:sRGB;"
     ><rect x="0" width="560" height="420" y="0" style="stroke:none;"
-      /><path style="stroke:none;" d="M73 374 L507 374 L507 31 L73 31 Z"
+      /><path d="M73 374 L507 374 L507 31 L73 31 Z" style="fill:white; stroke:none;"
     /></g
     ><g style="fill:rgb(38,38,38); text-rendering:geometricPrecision; image-rendering:optimizeQuality; color-rendering:optimizeQuality; stroke-linejoin:round; stroke:rgb(38,38,38); color-interpolation:linearRGB; stroke-width:0.5;"
     ><line y2="374" style="fill:none;" x1="73" x2="507" y1="374"

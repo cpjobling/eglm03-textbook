@@ -75,12 +75,12 @@
         /><glyph unicode="L" horiz-adv-x="59.3" d="M6.9 71.4 L6.9 0 L57.4 0 L57.4 13.2 L22.6 13.2 L22.6 71.4 Z"
       /></font
     ></defs
-    ><g style="fill:white; stroke:white;"
+    ><g style="fill:rgb(240,240,240); stroke:rgb(240,240,240);"
     ><rect x="0" y="0" width="560" style="clip-path:url(#clipPath1); stroke:none;" height="420"
     /></g
-    ><g style="fill:white; text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:white; color-interpolation:sRGB;"
+    ><g style="fill:rgb(240,240,240); text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:rgb(240,240,240); color-interpolation:sRGB;"
     ><rect x="0" width="560" height="420" y="0" style="stroke:none;"
-      /><path style="stroke:none;" d="M73 175 L507 175 L507 31 L73 31 Z"
+      /><path d="M73 175 L507 175 L507 31 L73 31 Z" style="fill:white; stroke:none;"
     /></g
     ><g style="fill-opacity:0.251; color-rendering:optimizeQuality; color-interpolation:linearRGB; text-rendering:geometricPrecision; stroke:rgb(26,26,26); stroke-linecap:butt; stroke-miterlimit:1; stroke-opacity:0.251; fill:rgb(26,26,26); stroke-dasharray:1,3; stroke-width:0.5; stroke-linejoin:bevel; image-rendering:optimizeQuality;"
     ><line y2="31" style="fill:none;" x1="116.549" x2="116.549" y1="175"

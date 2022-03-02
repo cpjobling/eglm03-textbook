@@ -1085,87 +1085,6 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> TF  Construct transfer function or convert to transfer function.
- 
-   Construction:
-     SYS = TF(NUM,DEN) creates a continuous-time transfer function SYS with
-     numerator NUM and denominator DEN. SYS is an object of type TF when
-     NUM,DEN are numeric arrays, of type GENSS when NUM,DEN depend on tunable
-     parameters (see REALP and GENMAT), and of type USS when NUM,DEN are
-     uncertain (requires Robust Control Toolbox).
- 
-     SYS = TF(NUM,DEN,TS) creates a discrete-time transfer function with
-     sample time TS (set TS=-1 if the sample time is undetermined).
- 
-     S = TF(&#39;s&#39;) specifies the transfer function H(s) = s (Laplace variable).
-     Z = TF(&#39;z&#39;,TS) specifies H(z) = z with sample time TS.
-     You can then specify transfer functions directly as expressions in S
-     or Z, for example,
-        s = tf(&#39;s&#39;);  H = exp(-s)*(s+1)/(s^2+3*s+1)
- 
-     SYS = TF creates an empty TF object.
-     SYS = TF(M) specifies a static gain matrix M.
- 
-     You can set additional model properties by using name/value pairs.
-     For example,
-        sys = tf(1,[1 2 5],0.1,&#39;Variable&#39;,&#39;q&#39;,&#39;IODelay&#39;,3)
-     also sets the variable and transport delay. Type &quot;properties(tf)&quot;
-     for a complete list of model properties, and type
-        help tf.&lt;PropertyName&gt;
-     for help on a particular property. For example, &quot;help tf.Variable&quot;
-     provides information about the &quot;Variable&quot; property.
- 
-     By default, transfer functions are displayed as functions of &#39;s&#39; or &#39;z&#39;.
-     Alternatively, you can use the variable &#39;p&#39; in continuous time and the
-     variables &#39;z^-1&#39;, &#39;q&#39;, or &#39;q^-1&#39; in discrete time by modifying the
-     &quot;Variable&quot; property.
- 
-   Data format:
-     For SISO models, NUM and DEN are row vectors listing the numerator
-     and denominator coefficients in descending powers of s,p,z,q or in
-     ascending powers of z^-1 (DSP convention). For example,
-        sys = tf([1 2],[1 0 10])
-     specifies the transfer function (s+2)/(s^2+10) while
-        sys = tf([1 2],[1 5 10],0.1,&#39;Variable&#39;,&#39;z^-1&#39;)
-     specifies (1 + 2 z^-1)/(1 + 5 z^-1 + 10 z^-2).
- 
-     For MIMO models with NY outputs and NU inputs, NUM and DEN are
-     NY-by-NU cell arrays of row vectors where NUM{i,j} and DEN{i,j}
-     specify the transfer function from input j to output i. For example,
-        H = tf( {-5 ; [1 -5 6]} , {[1 -1] ; [1 1 0]})
-     specifies the two-output, one-input transfer function
-        [     -5 /(s-1)      ]
-        [ (s^2-5s+6)/(s^2+s) ]
- 
-   Arrays of transfer functions:
-     You can create arrays of transfer functions by using ND cell arrays
-     for NUM and DEN above. For example, if NUM and DEN are cell arrays
-     of size [NY NU 3 4], then
-        SYS = TF(NUM,DEN)
-     creates the 3-by-4 array of transfer functions
-        SYS(:,:,k,m) = TF(NUM(:,:,k,m),DEN(:,:,k,m)),  k=1:3,  m=1:4.
-     Each of these transfer functions has NY outputs and NU inputs.
- 
-     To pre-allocate an array of zero transfer functions with NY outputs
-     and NU inputs, use the syntax
-        SYS = TF(ZEROS([NY NU k1 k2...])) .
- 
-   Conversion:
-     SYS = TF(SYS) converts any dynamic system SYS to the transfer function
-     representation. The resulting SYS is always of class TF.
- 
-   See also TF/EXP, FILT, TFDATA, ZPK, SS, FRD, GENSS, USS, DYNAMICSYSTEM.
-
-    Documentation for tf
-       doc tf
-
-    Other functions named tf
-
-       DynamicSystem/tf    idParametric/tf    mpc/tf    StaticModel/tf
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="digital-transfer-function-block">
@@ -1174,32 +1093,6 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4 z^2 - 16
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z^2 - 0.25
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: unspecified
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -1375,6 +1268,9 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
        float: double, single
  
     See also POLY, ROOTS, DECONV.
+
+    Documentation for residue
+       doc residue
 </pre></div>
 </div>
 </div>
@@ -1391,14 +1287,10 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r =
    -15
     15
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+p =
     0.5000
    -0.5000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k =
+k =
      4
 </pre></div>
 </div>
@@ -1418,15 +1310,11 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
   -16.0000
    15.0000
     5.0000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+p =
     1.0000
     0.5000
    -0.5000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k =
+k =
      4
 </pre></div>
 </div>
@@ -1446,51 +1334,23 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>U =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    z
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: unspecified
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Y =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        4 z^3 - 16 z
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z^3 - z^2 - 0.25 z + 0.25
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: unspecified
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+ 
+    z
+  -----
+  z - 1
+ 
+Sample time: unspecified
+Discrete-time transfer function.
+
+
+Y =
+ 
+        4 z^3 - 16 z
+  -------------------------
+  z^3 - z^2 - 0.25 z + 0.25
+ 
+Sample time: unspecified
+Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
@@ -1505,9 +1365,7 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num =
      4     0   -16     0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>den =
+den =
     1.0000   -1.0000   -0.2500    0.2500
 </pre></div>
 </div>
@@ -1525,15 +1383,11 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
   -16.0000
    15.0000
     5.0000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p =
+p =
     1.0000
     0.5000
    -0.5000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k =
+k =
      4
 </pre></div>
 </div>
@@ -1548,6 +1402,12 @@ Y(z) &amp;=&amp; \frac{4z^3 - 16z}{z^3 - z^2 - 0.25z + 0.25}\\
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="s">matlab</span>
 <span class="n">digiresp_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error using cd
+Unable to change current folder to &#39;/Users/eechris/Documents/code/src/github.com/cpjobling/eglm03-textbook/06/2/matlab/matlab&#39; (Name is nonexistent or not a folder).
 </pre></div>
 </div>
 </div>

@@ -48,12 +48,12 @@
         /><glyph unicode="Z" horiz-adv-x="64.8" d="M2.3 12.4 L2.3 0 L62.5 0 L62.5 13.2 L23.2 13.2 L61.5 59 L61.5 71.4 L5.3 71.4 L5.3 58.2 L40.6 58.2 Z"
       /></font
     ></defs
-    ><g style="fill:white; stroke:white;"
+    ><g style="fill:rgb(240,240,240); stroke:rgb(240,240,240);"
     ><rect x="0" y="0" width="560" style="clip-path:url(#clipPath1); stroke:none;" height="420"
     /></g
-    ><g style="fill:white; text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:white; color-interpolation:sRGB;"
+    ><g style="fill:rgb(240,240,240); text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:rgb(240,240,240); color-interpolation:sRGB;"
     ><rect x="0" width="560" height="420" y="0" style="stroke:none;"
-      /><path style="stroke:none;" d="M73 374 L507 374 L507 31 L73 31 Z"
+      /><path d="M73 374 L507 374 L507 31 L73 31 Z" style="fill:white; stroke:none;"
     /></g
     ><g style="fill:rgb(38,38,38); text-rendering:geometricPrecision; image-rendering:optimizeQuality; color-rendering:optimizeQuality; stroke-linejoin:round; stroke:rgb(38,38,38); color-interpolation:linearRGB; stroke-width:0.5;"
     ><line y2="374" style="fill:none;" x1="73" x2="507" y1="374"
