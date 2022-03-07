@@ -23,11 +23,11 @@ clean:
 
 build:  
 	make assets
-	jupyter-book build .
+	jupyter-book build --keep-going .
 
 site:   
 	make clean
-	jupyter-book build .
+	jupyter-book build --keep-going  .
 	touch _build/html/.nojekyll
 	ghp-import --no-jekyll -p -f ./_build/html
 
