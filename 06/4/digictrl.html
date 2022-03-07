@@ -877,7 +877,7 @@ implemented using a computer or microcomputer.</p>
 <div class="math notranslate nohighlight">
 \[|z|=1\]</div>
 <ul class="simple">
-<li><p>Maximum frequency is half the sampling frequency <span class="math notranslate nohighlight">\(\omega_s/2\)</span> (a consequence of Nyquist’s sampling theorem) and is mapped to the negative real axis in the z-plane.</p></li>
+<li><p>Maximum frequency is half the sampling frequency <span class="math notranslate nohighlight">\(\omega_s/2\)</span> (a consequence of <a class="reference external" href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem">Shannon-Nyquist’s sampling theorem</a> and is mapped to the negative real axis in the z-plane.</p></li>
 </ul>
 <p>For proofs, see the problems in the self-directed learning exercises.</p>
 </div>
@@ -932,13 +932,6 @@ mapping.</p></li>
 <p>Given a continuous <span class="math notranslate nohighlight">\(D(s)\)</span> find best equivalent <span class="math notranslate nohighlight">\(D(z)\)</span>.</p>
 <p>Take a transfer function (here <span class="math notranslate nohighlight">\(D(s)=p/(s+p)\)</span>) and return an equivalent
 <span class="math notranslate nohighlight">\(D(z)\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c">% rad/s</span>
@@ -1060,7 +1053,7 @@ mapping.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/digictrl_31_0.svg" src="../../_images/digictrl_31_0.svg" /></div>
+<img alt="../../_images/digictrl_30_0.svg" src="../../_images/digictrl_30_0.svg" /></div>
 </div>
 <p>See <a class="reference internal" href="../3/cse.html"><span class="doc std std-doc">Section 6.3</span></a> for mathematical derivations.</p>
 </div>
@@ -1100,7 +1093,7 @@ mapping.</p></li>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
-<img alt="../../_images/digictrl_35_7.svg" src="../../_images/digictrl_35_7.svg" /></div>
+<img alt="../../_images/digictrl_34_7.svg" src="../../_images/digictrl_34_7.svg" /></div>
 </div>
 <p>Run comparison for <span class="math notranslate nohighlight">\(f_s = 15\)</span> Hz.</p>
 <div class="cell docutils container">
@@ -1232,7 +1225,7 @@ mapping.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/digictrl_45_0.svg" src="../../_images/digictrl_45_0.svg" /></div>
+<img alt="../../_images/digictrl_44_0.svg" src="../../_images/digictrl_44_0.svg" /></div>
 </div>
 <p>Repeat comparison for  <span class="math notranslate nohighlight">\(f_𝑠=5\)</span> Hz.</p>
 <div class="cell docutils container">
@@ -1364,7 +1357,7 @@ mapping.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/digictrl_55_0.svg" src="../../_images/digictrl_55_0.svg" /></div>
+<img alt="../../_images/digictrl_54_0.svg" src="../../_images/digictrl_54_0.svg" /></div>
 </div>
 <p>You should note that the approximations are good for frequencies below about <span class="math notranslate nohighlight">\(\omega_s/4\)</span>. If <span class="math notranslate nohighlight">\(\omega_s\)</span> is sufficiently high, then break frequencies are accurately reproduced. MPZ and Tustin show a notch at <span class="math notranslate nohighlight">\(\omega_s/2\)</span>
 because of the zero term at <span class="math notranslate nohighlight">\(1+z^{-1}\)</span>. Apart from the large difference at <span class="math notranslate nohighlight">\(\omega_s/2\)</span>, which is typically outside the working frequency, all methods have similar performance. Since MPZ is easier to calculate by hand, it is often to be preferred. However, if you have access to MATLAB and the control system toolbox function <em>c2d</em>, there is no need to use anything other than ZOH (which is the default) or the Tustin method.</p>
@@ -1417,7 +1410,7 @@ shown below.</p>
 \[D(z)=k\frac{1-e^{-aT}z^{-1}}{1-e^{-bT}z^{-1}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is determined by matching the DC gain of the two compensators. For the continuous compensator</p>
 <div class="math notranslate nohighlight">
-\[\left.$D(s)\right|_{s=0} = 16/6.\]</div>
+\[\left.D(s)\right|_{s=0} = 16/6.\]</div>
 <p>For the digital compensator</p>
 <div class="math notranslate nohighlight">
 \[D(z)|_{z=1} = k(1-e^{-aT})/(1-e^{-bT}),\]</div>
