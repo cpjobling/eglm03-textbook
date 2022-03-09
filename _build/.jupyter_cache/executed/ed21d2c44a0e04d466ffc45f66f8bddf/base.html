@@ -57,7 +57,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/_build/.jupyter_cache/executed/b5f6ab15fb1890b428c16578dbaa0d85/base.html" />
+    <link rel="canonical" href="https://cpjobling.github.io/eglm03-textbook/_build/.jupyter_cache/executed/ed21d2c44a0e04d466ffc45f66f8bddf/base.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
 
@@ -66,7 +66,7 @@
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/_build/.jupyter_cache/executed/b5f6ab15fb1890b428c16578dbaa0d85/base.html" />
+<meta property="og:url"         content="https://cpjobling.github.io/eglm03-textbook/_build/.jupyter_cache/executed/ed21d2c44a0e04d466ffc45f66f8bddf/base.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="&lt;no title&gt;" />
 <meta property="og:description" content="" />
@@ -539,7 +539,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../../_sources/_build/.jupyter_cache/executed/b5f6ab15fb1890b428c16578dbaa0d85/base.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../../_sources/_build/.jupyter_cache/executed/ed21d2c44a0e04d466ffc45f66f8bddf/base.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -559,7 +559,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F_build/.jupyter_cache/executed/b5f6ab15fb1890b428c16578dbaa0d85/base.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/cpjobling/eglm03-textbook/issues/new?title=Issue%20on%20page%20%2F_build/.jupyter_cache/executed/ed21d2c44a0e04d466ffc45f66f8bddf/base.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -598,40 +598,41 @@
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%cd matlab</span>
-<span class="n">pwd</span>
-<span class="s">clear</span> <span class="s">all</span>
-<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
-<span class="n">format</span> <span class="s">compact</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-    &#39;/Users/eechris/code/src/github.com/cpjobling/eglm03-textbook/04/2&#39;
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-svg&#39;</span><span class="p">)</span>  <span class="c">% Static svg figures.</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">);</span>
-<span class="n">G</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">((</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">zgrid</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G =
+<img alt="../../../../_images/base_1_02.svg" src="../../../../_images/base_1_02.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c">% rad/s</span>
+<span class="n">ds</span> <span class="p">=</span> <span class="n">tf</span><span class="p">([</span><span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="n">p</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ds =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------
-  5 s^2 + 6 s + 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s + 5
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -644,24 +645,76 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Gc</span><span class="p">=</span><span class="n">feedback</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span> <span class="c">% Hz</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dz</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gc =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dz =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.2696
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 6 s + 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.7304
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.062832 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="s">&#39;-&#39;</span><span class="p">,</span><span class="n">dz</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/base_5_04.svg" src="../../../../_images/base_5_04.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="p">=</span> <span class="n">tf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">bode</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">grid</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ds =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  s + 5
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
@@ -670,258 +723,245 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
 </pre></div>
 </div>
+<img alt="../../../../_images/base_6_7.svg" src="../../../../_images/base_6_7.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ge</span><span class="p">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">G</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsz</span><span class="p">=</span><span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ge =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsz =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 6 s + 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.2835
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 6 s + 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Step Response&#39;</span><span class="p">),</span><span class="n">grid</span>
-<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Ge</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Error Response&#39;</span><span class="p">),</span><span class="n">grid</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../../_images/base_4_04.svg" src="../../../../_images/base_4_04.svg" /></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kprop</span> <span class="p">=</span> <span class="mi">19</span><span class="p">;</span>  
-<span class="n">D</span> <span class="p">=</span> <span class="n">Kprop</span><span class="p">;</span>  
-<span class="n">Go</span> <span class="p">=</span> <span class="n">D</span><span class="o">*</span><span class="n">G</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Go =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.7165
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        19
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.066667 seconds
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 6 s + 1
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dst</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;tustin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dst =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Gc</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">Ge</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Go</span><span class="p">);</span>  
-<span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Step Response: Kprop = 19&#39;</span><span class="p">),</span><span class="n">grid</span>
-<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Ge</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Error Response: Kprop = 19&#39;</span><span class="p">),</span><span class="n">grid</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../../_images/base_6_01.svg" src="../../../../_images/base_6_01.svg" /></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Td</span> <span class="p">=</span> <span class="mi">4</span><span class="o">/</span><span class="mi">19</span><span class="p">;</span>  
-<span class="n">Deriv</span> <span class="p">=</span> <span class="n">Td</span><span class="o">*</span><span class="n">s</span><span class="p">;</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">Kprop</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Deriv</span><span class="p">);</span>  
-<span class="n">Go</span> <span class="p">=</span> <span class="n">D</span><span class="o">*</span><span class="n">G</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Gc</span> <span class="p">=</span> <span class="n">feedback</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  
-<span class="n">Ge</span><span class="p">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Go</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gc =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      4 s + 19
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.1429 z + 0.1429
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 10 s + 20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     z - 0.7143
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.066667 seconds
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ge =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsm</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;mpz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsm =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   5 s^2 + 6 s + 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.2835
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.7165
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.066667 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">dsz</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="s">&#39;+&#39;</span><span class="p">,</span><span class="n">dsm</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">legend(&#39;D(jw)&#39;,&#39;ZOH&#39;,&#39;Tustin&#39;,&#39;MPZ&#39;)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude and phase of discrete equivalents for D(s) = 5/(s+5) - Fs = 15 Hz&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/base_11_0.svg" src="../../../../_images/base_11_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Fs</span> <span class="p">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">Ts</span> <span class="p">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsz</span><span class="p">=</span><span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;zoh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsz =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.6321
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.3679
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.2 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dst</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;tustin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dst =
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.3333 z + 0.3333
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  -----------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^2 + 10 s + 20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     z - 0.3333
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.2 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Step Response: Kprop = 19, Td = 4/19&#39;</span><span class="p">),</span><span class="n">grid</span>
-<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Ge</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Error Response: Kprop = 19, Td = 4/19&#39;</span><span class="p">),</span><span class="n">grid</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">dsm</span> <span class="p">=</span> <span class="n">c2d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="s">&#39;mpz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../../_images/base_9_02.svg" src="../../../../_images/base_9_02.svg" /></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ti</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>  
-<span class="n">Integ</span> <span class="p">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Ti</span><span class="p">)</span><span class="o">/</span><span class="n">s</span><span class="p">;</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">Kprop</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Deriv</span> <span class="o">+</span> <span class="n">Integ</span><span class="p">);</span>  
-<span class="n">Go</span> <span class="p">=</span> <span class="n">D</span><span class="o">*</span><span class="n">G</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Go =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dsm =
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4 s^2 + 19 s + 9.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    0.6321
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ------------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ----------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^3 + 6 s^2 + s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  z - 0.3679
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample time: 0.2 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discrete-time transfer function.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Gc</span><span class="p">=</span><span class="n">feedback</span><span class="p">(</span><span class="n">Go</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Ge</span><span class="p">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">Go</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bode</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">dsz</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">,</span><span class="n">dst</span><span class="p">,</span><span class="s">&#39;+&#39;</span><span class="p">,</span><span class="n">dsm</span><span class="p">,</span><span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">grid</span>
+<span class="s">legend(&#39;D(jw)&#39;,&#39;ZOH&#39;,&#39;Tustin&#39;,&#39;MPZ&#39;)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;Magnitude and phase of discrete equivalents for D(s) = 5/(s+5) - Fs = 5 Hz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gc =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      4 s^2 + 19 s + 9.5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^3 + 10 s^2 + 20 s + 9.5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ge =
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       5 s^3 + 6 s^2 + s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  ---------------------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5 s^3 + 10 s^2 + 20 s + 9.5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous-time transfer function.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Gc</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Step Response: Kprop = 19, Td = 4/19, Ti = 2&#39;</span><span class="p">),</span><span class="n">grid</span> 
-<span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">),</span><span class="n">step</span><span class="p">(</span><span class="n">Ge</span><span class="p">),</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Error Response: Kprop = 19, Td = 4/19, Ti = 2&#39;</span><span class="p">),</span><span class="n">grid</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../../_images/base_12_03.svg" src="../../../../_images/base_12_03.svg" /></div>
+<img alt="../../../../_images/base_16_03.svg" src="../../../../_images/base_16_03.svg" /></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -937,7 +977,7 @@
         },
         kernelOptions: {
             kernelName: "imatlab",
-            path: "./_build/.jupyter_cache/executed/b5f6ab15fb1890b428c16578dbaa0d85"
+            path: "./_build/.jupyter_cache/executed/ed21d2c44a0e04d466ffc45f66f8bddf"
         },
         predefinedOutput: true
     }
