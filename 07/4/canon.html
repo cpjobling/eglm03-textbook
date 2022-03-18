@@ -826,8 +826,13 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-8-part-of-a-system-with-repeated-poles">
+     7.4.11.1. Figure 8 Part of a system with repeated poles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-4">
-     7.4.11.1. Example 4
+     7.4.11.2. Example 4
     </a>
    </li>
   </ul>
@@ -1968,7 +1973,7 @@ valid to allocate the residues to the output matrix, leaving the elements of the
   \vdots \\
   1
 \end{array}\right] u\\ y &amp;=&amp; \left[r_1,\ r_2,\ r_3,\ \ldots,\ r_n\right] \mathbf{x} + d u\end{eqnarray*}\end{split}\]</div>
-<p>The most important property of the normal canonical model is that the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix is diagonal and that the elements on the diagonal are the eigenvalues of the system matrix. If you form the systemtransition matrix for this system each state response is simply of the form <span class="math notranslate nohighlight">\(r_i e^{p_i t}\)</span>, that is each state response is equal to the corresponding mode response<sup>1</sup>.</p>
+<p>The most important property of the normal canonical model is that the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix is diagonal and that the elements on the diagonal are the eigenvalues of the system matrix. If you form the system transition matrix for this system each state response is simply of the form <span class="math notranslate nohighlight">\(r_i e^{p_i t}\)</span>, that is each state response is equal to the corresponding mode response<sup>1</sup>.</p>
 </div>
 <div class="section" id="example-3">
 <h3><span class="section-number">7.4.8.5. </span>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
@@ -2025,9 +2030,6 @@ u\end{eqnarray*}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{equation}x_1 = x_{1}(0)e^{p_1t}+r_1\int_0^tu(\tau)e^{p_1(t-\tau)}d\tau\end{equation}\]</div>
 <p>Repeated for the other states.</p>
-<p>These are then combined through the output equation to give the solution for <span class="math notranslate nohighlight">\(y\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{equation}y(t) = x_1(t) + x_2(t) + ... + x_n(t) + du(t).\end{equation}\]</div>
 <div class="section" id="system-response">
 <h3><span class="section-number">7.4.9.1. </span>System Response<a class="headerlink" href="#system-response" title="Permalink to this headline">¶</a></h3>
 <p>Combine state responses through the output equation</p>
@@ -2063,8 +2065,15 @@ block diagram for the single pole $<span class="math notranslate nohighlight">\(
 \[\begin{equation}A(s) = \frac{r_i}{s-p_i}U(s)\end{equation}\]</div>
 <p>and that at <span class="math notranslate nohighlight">\(B\)</span> is</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{equation}B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)\end{equation}$$ as
-required.\\### Figure 8 Part of a system with repeated poles\\![Part of a system with repeated poles](pictures/jordanblock.png)\\For this portion of the state space model we have \\\begin{split}$$\begin{eqnarray*}
+\[\begin{equation}B(s) = \frac{1}{s-p_i}\times\frac{1}{s-p_i}\times r_{i+1} U(s)\end{equation}\]</div>
+<p>as
+required.</p>
+<div class="section" id="figure-8-part-of-a-system-with-repeated-poles">
+<h3><span class="section-number">7.4.11.1. </span>Figure 8 Part of a system with repeated poles<a class="headerlink" href="#figure-8-part-of-a-system-with-repeated-poles" title="Permalink to this headline">¶</a></h3>
+<p><img alt="Part of a system with repeated poles" src="../../_images/jordanblock.png" /></p>
+<p>For this portion of the state space model we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
 \left[\begin{array}{c}
   \dot{x}_i \\
   \dot{x}_{i+1}
@@ -2081,12 +2090,14 @@ required.\\### Figure 8 Part of a system with repeated poles\\![Part of a system
 y &amp; = &amp; \left[r_{i+1},\ r_i\right]\left[\begin{array}{c}
   x_i \\
   x_{i+1}
-\end{array}\right].\end{eqnarray*}\end{split}\end{aligned}\end{align} \]</div>
+\end{array}\right].\end{eqnarray*}
+\end{split}\]</div>
 <p>By comparison of this result with the normal situation we see that the
 state matrices (of the observer controllable canonical form) are
 modified as follows.</p>
-<ul>
-<li><p>in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span></p>
+<ul class="simple">
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{A}\)</span></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left[\begin{array}{cc}
         p_i &amp; 0 \\
@@ -2094,9 +2105,11 @@ modified as follows.</p>
       \end{array}\right] \rightarrow \left[\begin{array}{cc}
         p_i &amp; 1 \\
         0 &amp; p_{i} \\
-      \end{array}\right];\end{split}\]</div>
-</li>
-<li><p>in <span class="math notranslate nohighlight">\(\mathbf{B}\)</span></p>
+      \end{array}\right];
+\end{split}\]</div>
+<ul class="simple">
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{B}\)</span></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left[\begin{array}{c}
         1 \\
@@ -2104,23 +2117,24 @@ modified as follows.</p>
       \end{array}\right] \rightarrow \left[\begin{array}{c}
         0 \\
         1 \\
-      \end{array}\right];\end{split}\]</div>
-</li>
-<li><p>in <span class="math notranslate nohighlight">\(\mathbf{C}\)</span></p>
+      \end{array}\right];
+\end{split}\]</div>
+<ul class="simple">
+<li><p>in <span class="math notranslate nohighlight">\(\mathbf{C}\)</span></p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left[\begin{array}{cc}
         r_i &amp; r_{i+1}\\
       \end{array}\right] \rightarrow \left[\begin{array}{cc}
         r_{i+1} &amp; r_i\\
       \end{array}\right].\end{split}\]</div>
-</li>
-</ul>
 <p>The block</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}\left[\begin{array}{cc}
     p_i &amp; 1 \\
     0 &amp; p_{i} \\
-  \end{array}\right]\end{equation}\end{split}\]</div>
+  \end{array}\right]\end{equation}
+\end{split}\]</div>
 <p>is known as a “<em>Jordan Block</em>”. A matrix with one (or more) Jordan Blocks instead of a pure diagonal</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}\left[\begin{array}{cc}
@@ -2138,8 +2152,9 @@ the case where the multiplicity is 3 as in</p>
     0 &amp; p_{i} &amp; 1 \\
     0 &amp; 0 &amp; p_i
   \end{array}\right].\end{equation}\end{split}\]</div>
+</div>
 <div class="section" id="example-4">
-<h3><span class="section-number">7.4.11.1. </span>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.11.2. </span>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
 <p><strong>Not examined</strong></p>
 <p>The system with transfer function</p>
 <div class="math notranslate nohighlight">
