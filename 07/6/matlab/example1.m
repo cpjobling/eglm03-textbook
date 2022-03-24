@@ -18,36 +18,36 @@ B = [1
 %%
 Tinv = inv(T)
 %% Modified state equations
-%%
+
 Ax = Tinv*A*T
 %%
 Bx = Tinv*B
 %% Set up symbolic problem
-%%
+
 syms t tau
 phi(t) = expm(A*t)
 %% Compute term 1
-%%
+
 x0 = [1 1]';
 term1 = phi(t)*x0
 %% Compute term2
-%%
+
 term2 = int(phi(t - tau)*B*1,tau,0,t)
 %% Form total response
-%%
+
 x = term1 + term2
 %% Simplify result
-%%
+
 expand(x)
 %% Print it nicely
 % for m-file
-%%
+
 pretty(ans)
 %% Plot response
-%%
+
 subplot(211)
-ezplot(x(1),[0,3])
-title('x_1(t)')
+fplot(x(1),[0,3])
+title('x_1(t)'),grid,xlabel('t')
 subplot(212)
-title('x_2(t)')
-ezplot(x(2),[0,3])
+fplot(x(2),[0,3])
+title('x_2(t)'),grid,xlabel('t')

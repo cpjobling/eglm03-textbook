@@ -7,7 +7,7 @@
 # Book settings
 title                       : EGLM03 Modern Control Systems  # The title of the book. Will be placed in the left navbar.
 author                      : Dr Chris P. Jobling  # The author of the book
-copyright                   : "Swansea University (2019-2021)"  # Copyright year to be placed in the footer
+copyright                   : "Swansea University (2019-2022)"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, .github, "*.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
